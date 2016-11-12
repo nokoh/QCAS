@@ -121,7 +121,7 @@ public class Teacher {
     
     /* Method will create reports to include number of tests taken during the last month, last quarter and over the last year. */
     public void viewTestsOverPeriod(){
-    
+
     }
     
     /* Average student scores over last month, quarter and year. */
