@@ -15,6 +15,9 @@ import java.util.ArrayList;
 import java.util.StringTokenizer;
 import au.com.bytecode.opencsv.CSVReader;
 import java.io.File;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.Scanner;
 
 /**
  *
@@ -32,14 +35,50 @@ public class Teacher {
 
     /*This method will allow the teacher to import a text file to the system.*/
     public void uploadQuestions() throws FileNotFoundException, IOException{
-        BufferedReader reader = new BufferedReader(new FileReader("sample.txt"));
-        String line = reader.readLine();
-        StringTokenizer str = new StringTokenizer(line, "MC");
-   //     String [] nextLine;
-        while ((str.nextToken()) != null) {
-        // nextLine[] is an array of values from the line
-        System.out.println(line);
-     }
+        
+        String nameOfFile;
+        Scanner readInput = new Scanner(System.in);
+        System.out.println("Please enter the name of the file to be uploaded. e.g. sample.txt");
+        nameOfFile = readInput.next();
+        File file = new java.io.File(nameOfFile);//assigns file name specified in constructor.
+        
+        /* Checks if file exists in project folder */
+        if (file.exists()){
+        }
+        else {
+	System.out.println("The system cannot find the inputfile specified, please check the CSV file");
+	System.exit(-1);//exit if file not found
+        }
+        
+        try(BufferedReader reader = new BufferedReader(new FileReader(file))){
+           this.fileData  = new ArrayList<>();//uses the length of file to set the size of arrayList.
+                for (int i = 0; i < getFileLength(); i++){
+                    this.fileData.add(reader.readLine()); //adds each line in text file to quiz questions arrayList.
+                }          
+     
+    }
+    }
+    
+     /**
+     * Method establishes connection to database, and sets the connection variable for connecting to the database.
+     * @throws SQLException
+     */
+    public void connectToDatabase() throws SQLException{
+        String url = "jdbc:mysql://adelaide-mysql-qcas1.caswkasqdmel.ap-southeast-2.rds.amazonaws.com:3306/QuizDB"; //creates network connection to database for application   
+        String username = "qcastest";//username for accessing database
+        String password = "qcastest";//password for accessing database
+        
+        try {
+         this.con = DriverManager.getConnection(url, username, password);  
+           if (this.con != null) {
+               System.out.println("Conencted");
+            }
+        }
+        catch (SQLException e) {
+            System.out.println("SQLException: " + e);
+            this.con.close();//closes connection resource
+        } // end of try-with-resources 
+        
     }
     
     public void readerTest() throws FileNotFoundException, IOException{
@@ -48,7 +87,7 @@ public class Teacher {
         ArrayList <String[]> MAArray = new ArrayList<>();
         ArrayList <String[]> TFArray = new ArrayList<>();
         ArrayList <String[]> FIBArray = new ArrayList<>();
-    CSVReader readerCSV = new CSVReader(new FileReader("sample.txt"),',', '"', 0);
+        CSVReader readerCSV = new CSVReader(new FileReader("sample.txt"),',', '"', 0);
     
       //Read CSV line by line and use the string array as you want
       String[] nextLine;
