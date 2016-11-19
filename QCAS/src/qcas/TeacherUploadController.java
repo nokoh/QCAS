@@ -87,27 +87,6 @@ public class TeacherUploadController implements Initializable {
                 Logger.getLogger(TeacherViewController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
-        
-            
-         //   readFile();            
-        
-                
-     /*   if(event.getSource() == uploadButton){
-        
-        //get reference to the button's stage         
-        stage=(Stage)uploadButton.getScene().getWindow();
-        
-        //load up OTHER FXML document
-        root = FXMLLoader.load(getClass().getResource("uploadFile.fxml"));
-      
-     //create a new scene with root and set the stage
-      scene = new Scene(root);
-      stage.setScene(scene);
-      stage.show();
-      
-      String fileName = uploadField.getText().trim();    
-    }
-        */
 }
     
 public void connectToDatabase() throws SQLException{
@@ -328,8 +307,4 @@ private void addToDatabase(String[] questionArray) throws SQLException {
 		}
         return length;			
     }
-
-    
-    
-    
 }
