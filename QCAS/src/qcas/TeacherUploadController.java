@@ -42,7 +42,7 @@ import javafx.stage.Stage;
  *
  * @author Nnamdi
  */
-public class TeacherViewController implements Initializable {
+public class TeacherUploadController implements Initializable {
     
     
     Scene scene;
