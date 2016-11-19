@@ -67,7 +67,7 @@ public class TeacherUploadController implements Initializable {
 
     @FXML
     private void uploadFile() throws IOException, SQLException{
-        
+        String testing;
         Stage primaryStage = (Stage)uploadButton.getScene().getWindow();
 
         uploadButton.setOnAction(e -> {
