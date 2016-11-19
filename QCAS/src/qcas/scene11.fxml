@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qcas.LoginScreenController">
+<children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bbbdbf" height="91.0" layoutX="28.0" layoutY="26.0" stroke="BLACK" strokeType="INSIDE" width="543.0" />
+      <Pagination layoutX="200.0" layoutY="413.0" prefHeight="34.0" prefWidth="200.0" />
+      <Button layoutX="224.0" layoutY="367.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="153.0" text="Next" />
+      <RadioButton layoutX="132.0" layoutY="198.0" mnemonicParsing="false" text="a)" />
+      <RadioButton layoutX="132.0" layoutY="239.0" mnemonicParsing="false" text="b)" />
+      <RadioButton layoutX="132.0" layoutY="280.0" mnemonicParsing="false" text="c)" />
+      <RadioButton layoutX="132.0" layoutY="321.0" mnemonicParsing="false" text="d)" />
+      <Label layoutX="499.0" layoutY="413.0" text="Multiple Answer">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <Label layoutX="70.0" layoutY="49.0" text="Select All of the Correct Answers">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
+      <Label layoutX="58.0" layoutY="140.0" text="Question:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <VBox layoutX="172.0" layoutY="190.0" prefHeight="177.0" prefWidth="418.0">
+         <children>
+            <Label prefHeight="40.0" prefWidth="435.0" text="MAOptionA" wrapText="true" />
+            <Label prefHeight="43.0" prefWidth="434.0" text="MAOptionB" wrapText="true" />
+            <Label prefHeight="47.0" prefWidth="457.0" text="MAOptionC" wrapText="true" />
+            <Label prefHeight="48.0" prefWidth="439.0" text="MAOptionD" wrapText="true" />
+         </children>
+      </VBox>
+      <Label layoutX="138.0" layoutY="126.0" prefHeight="45.0" prefWidth="425.0" text="MAQuestionDescription" wrapText="true" />
+   </children>
+</AnchorPane>

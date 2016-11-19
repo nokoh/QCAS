@@ -19,7 +19,7 @@ public class QCAS extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("TeacherUpload.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Scene3.fxml"));
         
         Scene scene = new Scene(root);
         
@@ -32,6 +32,5 @@ public class QCAS extends Application {
      */
     public static void main(String[] args) {
         launch(args);
-    }
-    
+    } 
 }
