@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -7,16 +8,16 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qcas.LoginScreenController">  
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="qcas.LoginScreenController">  
 <children>
-      <Button layoutX="235.0" layoutY="152.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="163.0" text="5 Questions" />
-      <Button layoutX="238.0" layoutY="200.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="163.0" text="10 Questions" />
-      <Button layoutX="237.0" layoutY="248.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="163.0" text="15 Questions" />
-      <Button layoutX="237.0" layoutY="291.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="163.0" text="20 Questions" />
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="91.0" layoutY="90.0" prefHeight="35.0" prefWidth="451.0" text="Select the Desired # of Quiz Questions" textAlignment="CENTER">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b4b4b5" height="89.0" layoutX="19.0" layoutY="15.0" stroke="BLACK" strokeType="INSIDE" width="560.0" />
+      <Button layoutX="219.0" layoutY="153.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="163.0" text="8 Questions" />
+      <Button layoutX="219.0" layoutY="200.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="163.0" text="16 Questions" />
+      <Button layoutX="219.0" layoutY="247.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="163.0" text="24 Questions" />
+      <Button layoutX="219.0" layoutY="291.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="163.0" text="32 Questions" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="25.0" layoutY="37.0" prefHeight="45.0" prefWidth="552.0" text="Select the Desired # of Quiz Questions" textAlignment="CENTER">
          <font>
-            <Font name="System Bold" size="24.0" />
+            <Font name="System Bold" size="30.0" />
          </font>
       </Label>
    </children>

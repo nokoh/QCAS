@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author Nnamdi
+ * 
  */
 public class QCAS extends Application {
     
