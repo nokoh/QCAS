@@ -122,7 +122,8 @@ public class LoginScreenController implements Initializable {
             else {
                 loginMessage.setFill(Color.FIREBRICK);
                 loginMessage.setText("User ID or Password is incorrect!");
-                
+                userIDField.clear();
+                passwordField.clear();
             }
             
         }
