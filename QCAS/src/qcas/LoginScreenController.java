@@ -52,8 +52,7 @@ public class LoginScreenController implements Initializable {
             
             username = userIDField.getText();
             password = passwordField.getText();
-            
-            
+                
             
         });
         
