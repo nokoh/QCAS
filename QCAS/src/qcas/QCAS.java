@@ -12,7 +12,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
- *
+ *  GROUP Project // QCAS - Quiz Creation Assessment System 
  * 
  */
 public class QCAS extends Application {

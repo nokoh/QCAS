@@ -9,8 +9,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="644.0" prefWidth="600.0" style="-fx-background-color: lightBlue;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="qcas.Scene6Controller">
+<AnchorPane id="AnchorPane" prefHeight="644.0" prefWidth="600.0" style="-fx-background-color: lightBlue;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qcas.Scene6Controller">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#edeeee" height="45.0" layoutX="15.0" layoutY="212.0" stroke="BLACK" strokeType="INSIDE" width="572.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f2f0f0" height="45.0" layoutX="14.0" layoutY="160.0" stroke="BLACK" strokeType="INSIDE" width="572.0" />
@@ -26,7 +25,7 @@
             <Font size="10.0" />
          </font>
       </Label>
-      <Button layoutX="242.0" layoutY="586.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="117.0" text="Print to PDF" />
+      <Button id="printToPDFButton" fx:id="printToPDFButton" layoutX="242.0" layoutY="586.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="117.0" text="Print to PDF" />
       <Label layoutX="186.0" layoutY="75.0" prefHeight="25.0" prefWidth="82.0" text="Last Month">
          <font>
             <Font name="System Bold" size="12.0" />

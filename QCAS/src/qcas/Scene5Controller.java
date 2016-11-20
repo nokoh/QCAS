@@ -10,14 +10,20 @@ import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 
 /**
+ * 
  * FXML Controller class
- *
- * @author Shay
+ *@author Shay
+ * 
+ * 
+ * 
+ *      Scene 5 // Return Home Screen After File is Uploaded by Teacher
  */
 public class Scene5Controller implements Initializable {
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {

@@ -1,4 +1,3 @@
-
 package qcas;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -16,9 +15,9 @@ public class Scene6Controller implements Initializable {
      * @param url
      * @param rb
      */
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-    
 }

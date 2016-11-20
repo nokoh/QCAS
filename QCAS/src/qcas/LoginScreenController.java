@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Login Screen - Scene 1
  */
 package qcas;
 
@@ -18,8 +16,9 @@ import javafx.stage.Stage;
 
 /**
  * FXML Controller class
- *
  * @author Shay
+ * 
+ *                             Login Screen - Scene 1 
  */
 public class LoginScreenController implements Initializable {
     
@@ -35,6 +34,8 @@ public class LoginScreenController implements Initializable {
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -53,10 +54,7 @@ public class LoginScreenController implements Initializable {
             username = userIDField.getText();
             password = passwordField.getText();
                 
-            System.out.println("Something Random");
-        });
-        
-        
+          
+        }); 
     }
-    
 }

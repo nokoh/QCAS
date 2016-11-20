@@ -13,15 +13,19 @@ import javafx.fxml.Initializable;
  * FXML Controller class
  *
  * @author Shay
+ * 
+ * 
+ *                  Scene 8 // Click Begin Quiz to Start Screen
  */
 public class Scene8Controller implements Initializable {
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-    
 }

@@ -13,6 +13,8 @@ import javafx.fxml.Initializable;
  * FXML Controller class
  *
  * @author Shay
+ * 
+ *               Select Difficulty Screen // Scene 3   
  */
 public class Scene3Controller implements Initializable {
 
@@ -25,5 +27,4 @@ public class Scene3Controller implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-    
 }

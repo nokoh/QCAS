@@ -12,7 +12,9 @@ import javafx.scene.control.TextField;
 /**
  * FXML Controller class
  *
- * @author Shay McDowell // Scene 2 // Difficulty Selection Screen
+ * @author Shay 
+ * 
+ *                      // Scene 2 // Difficulty Selection Screen
  * 
  */
 public class Scene2Controller implements Initializable {
@@ -22,12 +24,10 @@ public class Scene2Controller implements Initializable {
     String fileName;
     
     @FXML
-    private Button easyDifficulty;
-    private Button mediumDifficulty;
-    private Button hardDifficulty;
-    private Button mixedDifficulty;
-    private TextField noOfQuestions;
-    
+    private Button easyButton;
+    private Button mediumButton;
+    private Button hardButton;
+    private Button mixedButton;
     
     /**
      * Initializes the controller class.
@@ -52,17 +52,13 @@ public class Scene2Controller implements Initializable {
         String selection;
         
       //  Quiz newQuiz = new Quiz(num, );
-        easyDifficulty.setOnAction(e -> {
-            
-            
-        });
-        
+        easyButton.setOnAction(e -> {
+               
+        });  
     }
     
     public void generateQuiz(){
         
-        
-        
-        
+           
     }
 }

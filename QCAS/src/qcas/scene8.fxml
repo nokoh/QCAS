@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -7,13 +8,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qcas.LoginScreenController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="qcas.LoginScreenController">
 <children>
-      <Button layoutX="222.0" layoutY="200.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="157.0" text="Begin Quiz" />
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="176.0" layoutY="130.0" text="Click 'Begin Quiz' to Start.  ">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cbcccd" height="95.0" layoutX="19.0" layoutY="15.0" stroke="BLACK" strokeType="INSIDE" width="563.0" />
+      <Button id="beginQuizButton" fx:id="beginQuizButton" layoutX="222.0" layoutY="200.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="157.0" text="Begin Quiz" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="107.0" layoutY="40.0" prefHeight="45.0" prefWidth="387.0" text="Click 'Begin Quiz' to Start">
          <font>
-            <Font size="21.0" />
+            <Font name="System Bold" size="30.0" />
          </font>
       </Label>
    </children>
