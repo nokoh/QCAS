@@ -37,7 +37,6 @@ public class LoginScreenController implements Initializable {
 
     Connection connection;
     Scene scene;
-   
 
     @FXML
     private Button teacherLogin;
@@ -46,7 +45,7 @@ public class LoginScreenController implements Initializable {
     private TextField userIDField;
     @FXML
     private PasswordField passwordField;
-    
+
     @FXML
     private Text loginMessage = new Text();
 
@@ -61,19 +60,18 @@ public class LoginScreenController implements Initializable {
 
     public void verifyLogin() {
 
-            Stage primaryStage = (Stage) teacherLogin.getScene().getWindow();
-            teacherLogin.setOnAction(e ->{
+        Stage primaryStage = (Stage) teacherLogin.getScene().getWindow();
+        teacherLogin.setOnAction(e -> {
+            try {
                 try {
-                    try {
-                        authentication();
-                    } catch (IOException ex) {
-                        Logger.getLogger(LoginScreenController.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                } catch (SQLException ex) {
+                    authentication();
+                } catch (IOException ex) {
                     Logger.getLogger(LoginScreenController.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            });
-        
+            } catch (SQLException ex) {
+                Logger.getLogger(LoginScreenController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
 
     }
 
@@ -94,39 +92,44 @@ public class LoginScreenController implements Initializable {
 
         String userID = userIDField.getText();
         String userPassword = passwordField.getText();
-        
-        
-        String loginQuery = "select count(*) as counts from (select studentid as id, password from Students"
-                + " union select teacherid as id, password from Teachers) as login where id = ? and password = ?";
-                
-        
+
+        String loginQuery = "select userid, Status from Users where userid = ? and password = ?";
+
         PreparedStatement preparedStatement = connection.prepareStatement(loginQuery);
         preparedStatement.setString(1, userID);
         preparedStatement.setString(2, userPassword);
- 
-        
+
         ResultSet rset = preparedStatement.executeQuery();
-        
+
         if (rset.next()) {
-            if (rset.getInt(1) > 0){
+            if (rset.getString("Status").equals("Student")) {
                 loginMessage.setFill(Color.FIREBRICK);
-                loginMessage.setText("Count: " + rset.getInt(1) + ". user authenticated.");
-                
+                loginMessage.setText("UserID: " + rset.getString("userid") + ". user authenticated.");
+
                 Parent selectDifficulty = FXMLLoader.load(getClass().getResource("scene2.fxml"));
                 Scene selectDifficultyScene = new Scene(selectDifficulty);
-                Stage screenStage = (Stage)teacherLogin.getScene().getWindow();
+                Stage screenStage = (Stage) teacherLogin.getScene().getWindow();
                 screenStage.hide();
                 screenStage.setScene(selectDifficultyScene);
                 screenStage.show();
+            } else {
+                loginMessage.setFill(Color.FIREBRICK);
+                loginMessage.setText("UserID: " + rset.getString("userid") + ". user authenticated.");
+                
+                Parent teacherHome = FXMLLoader.load(getClass().getResource("scene3.fxml"));
+                Scene teacherHomeScene = new Scene(teacherHome);
+                Stage screenStage = (Stage) teacherLogin.getScene().getWindow();
+                screenStage.hide();
+                screenStage.setScene(teacherHomeScene);
+                screenStage.show();
             }
+        }
             else {
                 loginMessage.setFill(Color.FIREBRICK);
                 loginMessage.setText("User ID or Password is incorrect!");
                 userIDField.clear();
                 passwordField.clear();
             }
-            
-        }
 
     }
 
