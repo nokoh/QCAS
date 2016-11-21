@@ -14,7 +14,7 @@ import javafx.scene.control.TextField;
  *
  * @author Shay 
  * 
- *                      // Scene 2 // Difficulty Selection Screen
+ *             // Scene 2 // Difficulty Selection Screen // For Student
  * 
  */
 public class Scene2Controller implements Initializable {
@@ -25,8 +25,11 @@ public class Scene2Controller implements Initializable {
     
     @FXML
     private Button easyButton;
+    @FXML
     private Button mediumButton;
+    @FXML
     private Button hardButton;
+    @FXML
     private Button mixedButton;
     
     /**
@@ -37,7 +40,6 @@ public class Scene2Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        
         
     }
     

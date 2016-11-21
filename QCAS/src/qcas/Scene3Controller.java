@@ -1,23 +1,33 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package qcas;
 
+package qcas;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 
 /**
  * FXML Controller class
  *
  * @author Shay
  * 
- *               Select Difficulty Screen // Scene 3   
+ * 
+ *      // Scene 3//         Select Difficulty Screen for Student 
+ * 
+ * Student Will be allowed to select the difficulty level of questions.
  */
 public class Scene3Controller implements Initializable {
 
+    Scene scene;
+    
+    @FXML
+    private Button importFileButton;  
+    
+    @FXML 
+    private Button viewReportsButton;
+    
+    
     /**
      * Initializes the controller class.
      * @param url

@@ -9,7 +9,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="qcas.LoginScreenController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qcas.LoginScreenController">
 <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b7b9bc" height="100.0" layoutX="27.0" layoutY="19.0" stroke="BLACK" strokeType="INSIDE" width="546.0" />
       <Pagination id="questionNumber" fx:id="questionNumber" layoutX="211.0" layoutY="366.0" prefHeight="28.0" prefWidth="200.0" />
@@ -20,7 +20,7 @@
       </Label>
       <VBox layoutX="205.0" layoutY="157.0" prefHeight="171.0" prefWidth="365.0" style="-fx-background-insets: 4;">
          <children>
-            <Label prefHeight="46.0" prefWidth="365.0" text="MCOptionA" wrapText="true" />
+            <Label id="MCOptionA" fx:id="MCOptionA" prefHeight="46.0" prefWidth="365.0" text="MCOptionA" />
             <Label prefHeight="38.0" prefWidth="365.0" text="MCOptionB" wrapText="true" />
             <Label prefHeight="41.0" prefWidth="365.0" text="MCOptionC" wrapText="true" />
             <Label prefHeight="43.0" prefWidth="365.0" text="MCOptionD" wrapText="true" />
@@ -30,15 +30,15 @@
             <Font size="10.0" />
          </font>
       </Label>
-      <Button layoutX="119.0" layoutY="172.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" text="A" />
-      <Button layoutX="120.0" layoutY="211.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" text="B" />
-      <Button id="cButton" fx:id="cButton" layoutX="120.0" layoutY="251.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" text="C" />
-      <Button id="dButton" fx:id="dButton" layoutX="120.0" layoutY="290.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" text="D" />
+      <Button id="AButton" fx:id="AButton" layoutX="119.0" layoutY="172.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" text="A" />
+      <Button id="BButton" fx:id="BButton" layoutX="120.0" layoutY="211.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" text="B" />
+      <Button id="CButton" fx:id="CButton" layoutX="120.0" layoutY="251.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" text="C" />
+      <Button id="DButton" fx:id="DButton" layoutX="120.0" layoutY="290.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" text="D" />
       <Label layoutX="62.0" layoutY="126.0" text="Question:">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label layoutX="127.0" layoutY="121.0" prefHeight="46.0" prefWidth="473.0" text="MCQuestionDescription" wrapText="true" />
+      <Label id="MCQuestionDescriptionLabel" fx:id="MCQuestionDescriptionLabel" layoutX="120.0" layoutY="130.0" prefHeight="37.0" prefWidth="467.0" text="MCQuestionDescription" wrapText="true" />
    </children>
 </AnchorPane>

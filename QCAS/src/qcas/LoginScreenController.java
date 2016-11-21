@@ -1,8 +1,7 @@
 /*
- * Login Screen - Scene 1
+ * Login Screen - Scene 1 // Login Screen // Home // 
  */
 package qcas;
-
 import java.net.URL;
 import java.sql.Connection;
 import java.util.ResourceBundle;
@@ -13,12 +12,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
 /**
  * FXML Controller class
  * @author Shay
  * 
- *                             Login Screen - Scene 1 
+ *          Home Screen  //  Login Screen - Scene 1 // For Teacher and Student
  */
 public class LoginScreenController implements Initializable {
     
