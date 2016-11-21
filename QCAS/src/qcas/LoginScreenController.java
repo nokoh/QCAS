@@ -25,22 +25,24 @@ import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+
 /**
  * FXML Controller class
+ *
  * @author Shay
- * 
- *          Home Screen  //  Login Screen - Scene 1 // For Teacher and Student
+ *
+ * Home Screen // Login Screen - Scene 1 // For Teacher and Student
  */
 public class LoginScreenController implements Initializable {
 
     Connection connection;
     Scene scene;
+    String userId;
+    String userPassword;
 
-   
-    @FXML 
+    @FXML
     private Button teacherLogin;
-        
-   
+
     private TextField userIDField;
     @FXML
     private PasswordField passwordField;
@@ -50,6 +52,7 @@ public class LoginScreenController implements Initializable {
 
     /**
      * Initializes the controller class.
+     *
      * @param url
      * @param rb
      */
@@ -59,4 +62,34 @@ public class LoginScreenController implements Initializable {
 
     }
 
+    public void loginVerify() {
+        teacherLogin.setOnAction(e -> {
+            try {
+                authentication();
+            } catch (SQLException ex) {
+                Logger.getLogger(LoginScreenController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
     }
+
+    public void authentication() throws SQLException {
+        String url = "jdbc:mysql://adelaide-mysql-qcas1.caswkasqdmel.ap-southeast-2.rds.amazonaws.com:3306/UserDB"; //creates network connection to database for application   
+        String username = "qcastest";//username for accessing database
+        String password = "qcastest";//password for accessing database
+
+        try {
+            this.connection = DriverManager.getConnection(url, username, password);
+            if (this.connection != null) {
+                System.out.println("Conencted");
+            }
+        } catch (SQLException e) {
+            System.out.println("SQLException: " + e);
+            this.connection.close();//closes connection resource
+        } // end of try-with-resourc
+
+        userId = userIDField.getText();
+        userPassword = passwordField.getText();
+
+    }
+
+}
