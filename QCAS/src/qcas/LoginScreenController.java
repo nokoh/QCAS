@@ -35,15 +35,20 @@ import javafx.stage.Stage;
  */
 public class LoginScreenController implements Initializable {
 
-    Connection connection;
+    Connection connection = null;
     Scene scene;
-    String userId;
-    String userPassword;
+    String userId = "";
+    String userPassword = "";
+    Stage homeStage;
+
+   
 
     @FXML
-    private Button teacherLogin;
-
+    private Button login;
+    
+    @FXML
     private TextField userIDField;
+    
     @FXML
     private PasswordField passwordField;
 
@@ -61,18 +66,24 @@ public class LoginScreenController implements Initializable {
         // TODO
 
     }
-
+    
+    @FXML
     public void loginVerify() {
-        teacherLogin.setOnAction(e -> {
+        login.setOnAction(e -> {
             try {
-                authentication();
+                try {
+                    authentication();
+                } catch (IOException ex) {
+                    Logger.getLogger(LoginScreenController.class.getName()).log(Level.SEVERE, null, ex);
+                }
             } catch (SQLException ex) {
                 Logger.getLogger(LoginScreenController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
     }
-
-    public void authentication() throws SQLException {
+    
+    @FXML
+    public void authentication() throws SQLException, IOException {
         String url = "jdbc:mysql://adelaide-mysql-qcas1.caswkasqdmel.ap-southeast-2.rds.amazonaws.com:3306/UserDB"; //creates network connection to database for application   
         String username = "qcastest";//username for accessing database
         String password = "qcastest";//password for accessing database
@@ -89,6 +100,43 @@ public class LoginScreenController implements Initializable {
 
         userId = userIDField.getText();
         userPassword = passwordField.getText();
+
+        String loginQuery = "Select userid, Status from Users WHERE userid = ? and password = ?";
+
+        PreparedStatement preparedStatement = connection.prepareStatement(loginQuery);
+
+        preparedStatement.setString(1, userId);
+        preparedStatement.setString(2, userPassword);
+        ResultSet rset = preparedStatement.executeQuery();
+        
+        if (rset.next()) {
+            if (rset.getString("Status").equals("Student")) {
+                Parent studentHomePage = FXMLLoader.load(getClass().getResource("studentProfileScene.fxml"));
+                Scene studentHomeScene = new Scene(studentHomePage);
+                homeStage = (Stage)login.getScene().getWindow();
+                homeStage.hide();
+                homeStage.setScene(studentHomeScene);
+                homeStage.show();
+                
+                
+            } else
+            {
+                Parent teacherHomePage = FXMLLoader.load(getClass().getResource("scene3.fxml"));
+                Scene teacherHomeScene = new Scene(teacherHomePage);
+                homeStage = (Stage)login.getScene().getWindow();
+                homeStage.hide();
+                homeStage.setScene(teacherHomeScene);
+                homeStage.show();
+                
+            }
+        }else
+        {
+            loginMessage.setText("User ID or Password is incorrect!");
+            loginMessage.setFill(Color.FIREBRICK);
+                
+                userIDField.clear();
+                passwordField.clear();
+        }
 
     }
 
