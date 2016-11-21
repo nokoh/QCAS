@@ -2,6 +2,7 @@
  * Login Screen - Scene 1 // Login Screen // Home // 
  */
 package qcas;
+
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -36,9 +37,14 @@ public class LoginScreenController implements Initializable {
     Scene scene;
 
     @FXML
+// <<<<<<< HEAD
     private Button login; 
+    
+    @FXML 
+    private Button teacherLogin;
 
     @FXML
+// >>>>>>> origin/master
     private TextField userIDField;
     @FXML
     private PasswordField passwordField;
@@ -53,7 +59,8 @@ public class LoginScreenController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        // TODO
 
-        }
+    }
+
     }
