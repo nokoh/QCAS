@@ -36,15 +36,11 @@ public class LoginScreenController implements Initializable {
     Connection connection;
     Scene scene;
 
-    @FXML
-// <<<<<<< HEAD
-    private Button login; 
-    
+   
     @FXML 
     private Button teacherLogin;
-
-    @FXML
-// >>>>>>> origin/master
+        
+   
     private TextField userIDField;
     @FXML
     private PasswordField passwordField;
