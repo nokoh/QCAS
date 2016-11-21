@@ -30,7 +30,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <VBox layoutX="91.0" layoutY="120.0" prefHeight="72.0" prefWidth="152.0">
+      <VBox layoutX="91.0" layoutY="120.0" prefHeight="78.0" prefWidth="152.0">
          <children>
             <Label id="numberCorrectLabel" fx:id="numberCorrectLabel" prefHeight="38.0" prefWidth="121.0" text="numberCorrectLabel">
                <font>
