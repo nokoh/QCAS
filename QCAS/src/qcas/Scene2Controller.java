@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -27,7 +28,10 @@ public class Scene2Controller implements Initializable {
     private Button hardDifficulty;
     private Button mixedDifficulty;
     private TextField noOfQuestions;
+    private Label sessionName = new Label();
     
+    LoginScreenController userSession = new LoginScreenController();
+
     
     /**
      * Initializes the controller class.
@@ -37,7 +41,7 @@ public class Scene2Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        
+         
         
     }
     
@@ -53,7 +57,9 @@ public class Scene2Controller implements Initializable {
         
       //  Quiz newQuiz = new Quiz(num, );
         easyDifficulty.setOnAction(e -> {
-            
+            Stage screenStage = (Stage) easyDifficulty.getScene().getWindow();
+            String title = screenStage.getTitle().toString().trim();
+            System.out.println(title);
             
         });
         

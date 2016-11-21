@@ -37,7 +37,11 @@ public class LoginScreenController implements Initializable {
 
     Connection connection;
     Scene scene;
-
+    
+    String userID;
+    
+    String userPassword;
+    
     @FXML
     private Button teacherLogin;
 
@@ -58,6 +62,10 @@ public class LoginScreenController implements Initializable {
 
     }
 
+    public LoginScreenController(){
+        
+    }
+    
     public void verifyLogin() {
 
         Stage primaryStage = (Stage) teacherLogin.getScene().getWindow();
@@ -90,8 +98,8 @@ public class LoginScreenController implements Initializable {
             this.connection.close();//closes connection resource
         } // end of try-with-resources 
 
-        String userID = userIDField.getText();
-        String userPassword = passwordField.getText();
+        userID = userIDField.getText();
+        userPassword = passwordField.getText();
 
         String loginQuery = "select userid, Status from Users where userid = ? and password = ?";
 
@@ -105,10 +113,11 @@ public class LoginScreenController implements Initializable {
             if (rset.getString("Status").equals("Student")) {
                 loginMessage.setFill(Color.FIREBRICK);
                 loginMessage.setText("UserID: " + rset.getString("userid") + ". user authenticated.");
-
+                
                 Parent selectDifficulty = FXMLLoader.load(getClass().getResource("scene2.fxml"));
                 Scene selectDifficultyScene = new Scene(selectDifficulty);
                 Stage screenStage = (Stage) teacherLogin.getScene().getWindow();
+                screenStage.setTitle(userID);
                 screenStage.hide();
                 screenStage.setScene(selectDifficultyScene);
                 screenStage.show();
