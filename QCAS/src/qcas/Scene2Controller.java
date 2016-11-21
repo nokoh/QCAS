@@ -21,6 +21,7 @@ public class Scene2Controller implements Initializable {
     Scene scene;
     Connection con;
     String fileName;
+    int currentUserID;
     
     @FXML
     private Button easyDifficulty;
@@ -41,8 +42,7 @@ public class Scene2Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-         
-        
+      //  getCurrentUser();
     }
     
     public void selectDifficulty(){
@@ -57,17 +57,17 @@ public class Scene2Controller implements Initializable {
         
       //  Quiz newQuiz = new Quiz(num, );
         easyDifficulty.setOnAction(e -> {
-            Stage screenStage = (Stage) easyDifficulty.getScene().getWindow();
-            String title = screenStage.getTitle().toString().trim();
-            System.out.println(title);
+            
             
         });
         
     }
     
-    public void generateQuiz(){
+    public void getCurrentUser(){
         
-        
+        Stage screenStage = (Stage) easyDifficulty.getScene().getWindow();
+        this.currentUserID = Integer.parseInt(screenStage.getTitle().toString().trim());
+        System.out.println(this.currentUserID);
         
         
     }

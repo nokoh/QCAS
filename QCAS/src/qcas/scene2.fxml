@@ -8,10 +8,10 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qcas.LoginScreenController">   
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qcas.Scene2Controller">   
     <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a1a1a1" height="76.0" layoutX="18.0" layoutY="19.0" stroke="BLACK" strokeType="INSIDE" width="563.0" />
-      <Button fx:id="easyDifficulty" layoutX="240.0" layoutY="218.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="122.0" text="Easy" />
+      <Button fx:id="easyDifficulty" layoutX="240.0" layoutY="218.0" mnemonicParsing="false" onAction="#selectDifficulty" prefHeight="25.0" prefWidth="122.0" text="Easy" />
       <Button fx:id="mediumDifficulty" layoutX="242.0" layoutY="259.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="122.0" text="Medium" />
       <Button fx:id="hardDifficulty" layoutX="242.0" layoutY="301.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="122.0" text="Hard" />
       <Button fx:id="mixedDifficulty" layoutX="242.0" layoutY="341.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="122.0" text="Mixed" />
@@ -25,7 +25,7 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Label fx:id="sessionName" layoutX="145.0" layoutY="123.0" prefHeight="30.0" prefWidth="185.0" text="Student" />
+      <Label fx:id="sessionName" layoutX="145.0" layoutY="123.0" prefHeight="30.0" prefWidth="185.0" text="student" />
       <TextField fx:id="noOfQuestions" layoutX="225.0" layoutY="175.0" />
    </children>
 </AnchorPane>
