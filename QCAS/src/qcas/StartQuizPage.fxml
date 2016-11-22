@@ -8,10 +8,10 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qcas.Scene2Controller">   
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="qcas.StartQuizPageController">
     <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a1a1a1" height="76.0" layoutX="18.0" layoutY="19.0" stroke="BLACK" strokeType="INSIDE" width="563.0" />
-      <Button id="easyButton" fx:id="easyButton" layoutX="242.0" layoutY="143.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="122.0" text="Easy" />
+      <Button id="easyButton" fx:id="easyButton" layoutX="242.0" layoutY="143.0" mnemonicParsing="false" onAction="#startQuiz" prefHeight="25.0" prefWidth="122.0" text="Easy" />
       <Button id="mediumButton" fx:id="mediumButton" layoutX="242.0" layoutY="188.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="122.0" text="Medium" />
       <Button id="hardButton" fx:id="hardButton" layoutX="242.0" layoutY="233.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="122.0" text="Hard" />
       <Button id="mixedButton" fx:id="mixedButton" layoutX="242.0" layoutY="276.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="122.0" text="Mixed" />

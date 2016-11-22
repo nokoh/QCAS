@@ -45,17 +45,10 @@ public class Scene2Controller implements Initializable {
     
     public void selectDifficulty(){
         
-        int num;
-
-        String easy = "";
-        String medium = "medium";        
-        String hard = "hard";
-        String mixed = "mixed";
-        String selection;
-        
-      //  Quiz newQuiz = new Quiz(num, );
+        int num; 
+     
         easyButton.setOnAction(e -> {
-               
+               System.out.println("test");
         });  
     }
     
