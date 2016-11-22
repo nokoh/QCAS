@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 
 /**
  * FXML Controller class
@@ -20,12 +21,7 @@ import javafx.scene.control.Button;
  * ** Student Logged In Scene // Student Chooses to view Report or Take New Quiz
  */
 public class StudentProfileSceneController implements Initializable {
-
-    /**
-     * Initializes the controller class.
-     * @param url
-     * @param rb
-     */
+    
     Scene scene;
     
     @FXML
@@ -33,10 +29,24 @@ public class StudentProfileSceneController implements Initializable {
     
     @FXML 
     private Button viewReportButton;
+ 
+    @FXML
+    private Label UserIDLabel;
     
+    /**
+     * Initializes the controller class.
+     * @param url
+     * @param rb
+     */
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
+
+    public void initID(String ID){
+        
+        UserIDLabel.setText(ID);
+        
+    }
 }

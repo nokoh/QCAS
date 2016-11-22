@@ -41,14 +41,12 @@ public class LoginScreenController implements Initializable {
     String userPassword = "";
     Stage homeStage;
 
-   
-
     @FXML
     private Button login;
-    
+
     @FXML
     private TextField userIDField;
-    
+
     @FXML
     private PasswordField passwordField;
 
@@ -66,7 +64,7 @@ public class LoginScreenController implements Initializable {
         // TODO
 
     }
-    
+
     @FXML
     public void loginVerify() {
         login.setOnAction(e -> {
@@ -81,7 +79,7 @@ public class LoginScreenController implements Initializable {
             }
         });
     }
-    
+
     @FXML
     public void authentication() throws SQLException, IOException {
         String url = "jdbc:mysql://adelaide-mysql-qcas1.caswkasqdmel.ap-southeast-2.rds.amazonaws.com:3306/UserDB"; //creates network connection to database for application   
@@ -108,34 +106,35 @@ public class LoginScreenController implements Initializable {
         preparedStatement.setString(1, userId);
         preparedStatement.setString(2, userPassword);
         ResultSet rset = preparedStatement.executeQuery();
-        
+
         if (rset.next()) {
             if (rset.getString("Status").equals("Student")) {
-                Parent studentHomePage = FXMLLoader.load(getClass().getResource("studentProfileScene.fxml"));
+                FXMLLoader f = new FXMLLoader(getClass().getResource("studentProfileScene.fxml"));
+                Parent studentHomePage = f.load();
+                StudentProfileSceneController sc = f.<StudentProfileSceneController>getController();
+                sc.initID(rset.getString("userID"));
+//                Parent studentHomePage = FXMLLoader.load(getClass().getResource("studentProfileScene.fxml"));
                 Scene studentHomeScene = new Scene(studentHomePage);
-                homeStage = (Stage)login.getScene().getWindow();
+                homeStage = (Stage) login.getScene().getWindow();
                 homeStage.hide();
                 homeStage.setScene(studentHomeScene);
                 homeStage.show();
-                
-                
-            } else
-            {
+
+            } else {
                 Parent teacherHomePage = FXMLLoader.load(getClass().getResource("scene3.fxml"));
                 Scene teacherHomeScene = new Scene(teacherHomePage);
-                homeStage = (Stage)login.getScene().getWindow();
+                homeStage = (Stage) login.getScene().getWindow();
                 homeStage.hide();
                 homeStage.setScene(teacherHomeScene);
                 homeStage.show();
-                
+
             }
-        }else
-        {
+        } else {
             loginMessage.setText("User ID or Password is incorrect!");
             loginMessage.setFill(Color.FIREBRICK);
-                
-                userIDField.clear();
-                passwordField.clear();
+
+            userIDField.clear();
+            passwordField.clear();
         }
 
     }
