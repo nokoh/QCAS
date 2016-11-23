@@ -1,6 +1,7 @@
 package qcas;
 import java.lang.reflect.Field;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -20,7 +21,11 @@ import javafx.scene.control.Label;
  */
 public class Scene9Controller implements Initializable {
     
-    Scene scene; 
+    Scene scene;
+    ArrayList<MultipleChoice>multipleChoiceQuestions = new ArrayList();
+    ArrayList<Question>multipleAnswerQuestions = new ArrayList();
+    ArrayList<Question>trueFalseQuestions = new ArrayList();
+    ArrayList<Question>fillInTheBlanksQuestions = new ArrayList();
     
     @FXML 
     private Label MCQuestionDescriptionLable;
@@ -47,8 +52,9 @@ public class Scene9Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-    
-     MCQuestionDescriptionLable.setText("Baloon");
        
-    }    
+       
+    }
+
+
 }

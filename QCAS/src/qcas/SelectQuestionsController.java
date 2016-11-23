@@ -25,6 +25,11 @@ public class SelectQuestionsController implements Initializable {
     
     int numOfQuestions;
     Scene scene;
+    String userId;
+    
+    public void initID(String ID){ 
+        userId = ID;
+    }
     
 
     public int getNumOfQuestions() {
@@ -65,6 +70,7 @@ public class SelectQuestionsController implements Initializable {
                 root = f.load();
                 StartQuizPageController sc = f.<StartQuizPageController>getController();
                 sc.numberOfQuestions = 8;
+                sc.userId = userId;
                 scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
