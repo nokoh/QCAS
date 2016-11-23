@@ -44,6 +44,7 @@ public class Scene3Controller implements Initializable {
     Scene scene;
     Connection con;
     String fileName;
+    Stage homeStage;
     
     @FXML
     private Button importFileButton;   
@@ -313,4 +314,74 @@ private void addToDatabase(String[] questionArray) throws SQLException {
 		}
         return length;			
     }
+    /**
+ * The viewReports() method switches the scene to the Teacher Report Scene 
+ * The Teacher Report Scene is **Scene Number 6**
+     * @throws java.io.IOException
+ */         
+            @FXML
+        public void viewReports() throws IOException{
+            viewReportsButton.setOnAction(r ->{
+                try {
+                    viewReportsButtonClicked();
+                } catch (IOException ex) {
+                    Logger.getLogger(Scene3Controller.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }); {
+        }         
+        }
+      /**
+        *  The returnHome() method switches back to the login screen.
+        * 
+     * @throws java.io.IOException
+        **/
+            @FXML
+        public void returnHome() throws IOException{
+            returnHomeButton.setOnAction(h ->{
+                
+                try {
+                    returnHomeButtonClicked();
+                } catch (IOException ex) {
+                    Logger.getLogger(Scene3Controller.class.getName()).log(Level.SEVERE, null, ex);
+                }                 
+            } ); {
+         }       
+        }
+        /**
+         * 
+         * 
+     * @throws java.io.IOException
+         */
+            @FXML
+        public void viewReportsButtonClicked() throws IOException {
+     
+            FXMLLoader ff = new FXMLLoader(getClass().getResource("scene6.fxml"));
+                Parent scene3 = ff.load();
+                Scene6Controller s6 = ff.<Scene6Controller>getController();
+                
+                Scene teacherChoose = new Scene(scene3);
+                homeStage = (Stage) viewReportsButton.getScene().getWindow();
+                homeStage.hide();
+                homeStage.setScene(teacherChoose);
+                homeStage.show();
+    }
+     /**
+     * 
+     * @throws java.io.IOException
+      */
+            @FXML
+        public void returnHomeButtonClicked() throws IOException{
+            FXMLLoader f = new FXMLLoader(getClass().getResource("LoginScreen.fxml"));
+                Parent scene3 = f.load();
+                LoginScreenController ls = f.<LoginScreenController>getController();
+                
+                Scene LoginScreen = new Scene(scene3);
+                homeStage = (Stage) returnHomeButton.getScene().getWindow();
+                homeStage.hide();
+                homeStage.setScene(LoginScreen);
+                homeStage.show();
+       
+    }
+
+
 }

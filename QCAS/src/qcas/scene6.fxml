@@ -100,6 +100,6 @@
           <NumberAxis label="# Correct &amp; Incorrect" side="LEFT" upperBound="50.0" />
         </yAxis>
       </StackedBarChart>
-      <Button id="returnHomeButton" fx:id="returnHomeButton" layoutX="303.0" layoutY="587.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="117.0" text="Return Home" />
+      <Button id="returnHomeButton" fx:id="returnHomeButton" layoutX="303.0" layoutY="587.0" mnemonicParsing="false" onAction="#returnHomeButtonClicked" prefHeight="25.0" prefWidth="117.0" text="Return Home" />
    </children>
 </AnchorPane>
