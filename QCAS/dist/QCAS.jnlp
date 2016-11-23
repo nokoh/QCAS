@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="QCAS.jar" size="56434" download="eager" />
+    <jar href="QCAS.jar" size="47795" download="eager" />
     <jar href="lib\mysql-connector-java-5.1.40-bin.jar" size="990927" download="eager" />
     <jar href="lib\opencsv-2.4.jar" size="25965" download="eager" />
   </resources>
