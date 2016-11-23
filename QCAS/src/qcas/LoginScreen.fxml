@@ -18,17 +18,17 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: maroon;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qcas.LoginScreenController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-image: maroon;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qcas.LoginScreenController">
 <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f8f8f8" height="325.0" layoutX="15.0" layoutY="56.0" stroke="BLACK" strokeType="INSIDE" width="570.0" />
-      <ImageView fitHeight="135.0" fitWidth="162.0" layoutX="120.0" layoutY="151.0" opacity="0.65" pickOnBounds="true">
+      <ImageView id="imageView" fx:id="imageView" cache="true" fitHeight="400.0" fitWidth="607.0" pickOnBounds="true">
          <image>
             <Image url="@../../../../../../Pictures/Camera%20Roll/CMU%20Plaid.jpg" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a5a7a8" height="95.0" layoutX="15.0" layoutY="15.0" stroke="BLACK" strokeType="INSIDE" width="570.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f7f7f7" height="325.0" layoutX="15.0" layoutY="56.0" stroke="BLACK" strokeType="INSIDE" width="570.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a1212" height="95.0" layoutX="15.0" layoutY="15.0" stroke="BLACK" strokeType="INSIDE" width="570.0" />
       <Button id="login" fx:id="login" layoutX="377.0" layoutY="205.0" mnemonicParsing="false" onAction="#loginVerify" prefHeight="25.0" prefWidth="141.0" text="Login" textFill="#9a2929" />
-      <Label alignment="CENTER" layoutX="29.0" layoutY="29.0" prefHeight="67.0" prefWidth="558.0" text="Quiz Creation &amp; Assessment System " textAlignment="CENTER" textFill="#7c1515">
+      <Label alignment="CENTER" layoutX="33.0" layoutY="29.0" prefHeight="67.0" prefWidth="558.0" text="Quiz Creation &amp; Assessment System " textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Century Gothic Bold" size="31.0" />
          </font>

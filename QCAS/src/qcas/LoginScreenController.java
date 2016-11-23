@@ -3,6 +3,11 @@
  */
 package qcas;
 
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.image.ImageObserver;
+import java.awt.image.ImageProducer;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -22,6 +27,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -40,6 +47,7 @@ public class LoginScreenController implements Initializable {
     String userId = "";
     String userPassword = "";
     Stage homeStage;
+    ImageView imageView;
 
     @FXML
     private Button login;
@@ -64,7 +72,7 @@ public class LoginScreenController implements Initializable {
         // TODO
 
     }
-
+  
     @FXML
     public void loginVerify() {
         login.setOnAction(e -> {
@@ -137,6 +145,4 @@ public class LoginScreenController implements Initializable {
             passwordField.clear();
         }
 
-    }
-
-}
+    }}
