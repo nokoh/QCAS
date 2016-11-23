@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.effect.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
@@ -15,32 +18,44 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qcas.LoginScreenController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: maroon;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qcas.LoginScreenController">
 <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f8f8f8" height="325.0" layoutX="15.0" layoutY="56.0" stroke="BLACK" strokeType="INSIDE" width="570.0" />
+      <ImageView fitHeight="135.0" fitWidth="162.0" layoutX="120.0" layoutY="151.0" opacity="0.65" pickOnBounds="true">
+         <image>
+            <Image url="@../../../../../../Pictures/Camera%20Roll/CMU%20Plaid.jpg" />
+         </image>
+      </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a5a7a8" height="95.0" layoutX="15.0" layoutY="15.0" stroke="BLACK" strokeType="INSIDE" width="570.0" />
-      <Button id="login" fx:id="login" layoutX="377.0" layoutY="205.0" mnemonicParsing="false" onAction="#loginVerify" prefHeight="25.0" prefWidth="141.0" text="Login" textFill="#bf3232" />
-      <Label alignment="CENTER" layoutX="24.0" layoutY="29.0" prefHeight="67.0" prefWidth="552.0" text="Quiz Creation &amp; Assessment System " textAlignment="CENTER" textFill="#9e2f2f" underline="true">
+      <Button id="login" fx:id="login" layoutX="377.0" layoutY="205.0" mnemonicParsing="false" onAction="#loginVerify" prefHeight="25.0" prefWidth="141.0" text="Login" textFill="#9a2929" />
+      <Label alignment="CENTER" layoutX="29.0" layoutY="29.0" prefHeight="67.0" prefWidth="558.0" text="Quiz Creation &amp; Assessment System " textAlignment="CENTER" textFill="#7c1515">
          <font>
-            <Font name="System Bold" size="30.0" />
+            <Font name="Century Gothic Bold" size="31.0" />
          </font>
          <opaqueInsets>
             <Insets top="1.0" />
          </opaqueInsets>
       </Label>
-      <PasswordField fx:id="passwordField" layoutX="133.0" layoutY="239.0" prefHeight="24.0" prefWidth="135.0" />
-      <Separator layoutX="292.0" layoutY="137.0" orientation="VERTICAL" prefHeight="162.0" prefWidth="38.0" style="-fx-background-insets: darkred;" styleClass="thick" />
+      <PasswordField fx:id="passwordField" layoutX="133.0" layoutY="239.0" prefHeight="24.0" prefWidth="135.0" promptText="Password" />
+      <Separator layoutX="292.0" layoutY="137.0" orientation="VERTICAL" prefHeight="162.0" prefWidth="38.0" style="-fx-background-insets: darkred;" styleClass="thick">
+         <effect>
+            <Glow />
+         </effect></Separator>
       <Label layoutX="38.0" layoutY="243.0" text="Password:">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="System Bold" size="14.0" />
          </font>
       </Label>
       <Label layoutX="44.0" layoutY="176.0" prefHeight="17.0" prefWidth="57.0" text=" User ID:">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="userIDField" layoutX="133.0" layoutY="172.0" prefHeight="24.0" prefWidth="135.0" />
-      <Label layoutX="157.0" layoutY="317.0" text="Please Enter Your User ID and Password, Then Click 'Enter'" />
+      <Label layoutX="157.0" layoutY="317.0" text="Please Enter Your User ID and Password, Then Click 'Login'" />
+      <TextField fx:id="userIDField" layoutX="133.0" layoutY="172.0" prefHeight="24.0" prefWidth="135.0" promptText="UserID" />
       <Text fx:id="loginMessage" fill="#eb3e3e" layoutX="122.0" layoutY="295.0" opacity="0.99" strokeType="OUTSIDE" strokeWidth="0.0" />
     </children>
+   <effect>
+      <InnerShadow />
+   </effect>
 </AnchorPane>
