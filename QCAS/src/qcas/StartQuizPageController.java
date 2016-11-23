@@ -30,6 +30,7 @@ import javafx.stage.Stage;
 public class StartQuizPageController implements Initializable {
     Scene scene;
     Connection con;
+    int numberOfQuestions;
     
     ArrayList<MultipleChoice>multipleChoiceQuestions = new ArrayList();
     ArrayList<Question>multipleAnswerQuestions = new ArrayList();
@@ -61,28 +62,28 @@ public class StartQuizPageController implements Initializable {
         
         easyButton.setOnAction(e -> {
 
-        for(int i = 0; i < 2; i++){
+        for(int i = 0; i < this.numberOfQuestions/4; i++){
             try {
                 MultipleChoice mcq = new MultipleChoice("E");
             } catch (SQLException ex) {
                 Logger.getLogger(StartQuizPageController.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        for(int i = 0; i < 2; i++){
+        for(int i = 0; i < this.numberOfQuestions/4; i++){
             try {
                 MultipleAnswer ma = new MultipleAnswer("E");
             } catch (SQLException ex) {
                 Logger.getLogger(StartQuizPageController.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        for(int i = 0; i < 2; i++){
+        for(int i = 0; i < this.numberOfQuestions/4; i++){
             try {
                 TrueFalse tf = new TrueFalse("E");
             } catch (SQLException ex) {
                 Logger.getLogger(StartQuizPageController.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        for(int i = 0; i < 2; i++){
+        for(int i = 0; i < this.numberOfQuestions/4; i++){
             try {
                 FillInTheBlanks fib = new FillInTheBlanks("E");
             } catch (SQLException ex) {
@@ -95,7 +96,8 @@ public class StartQuizPageController implements Initializable {
             try {
                 connectToLiveDatabase();
                 //load up OTHER FXML document
-                root = FXMLLoader.load(getClass().getResource("scene9.fxml"));
+                FXMLLoader f = new FXMLLoader(getClass().getResource("scene9.fxml"));
+                root = f.load();
                 scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
@@ -105,8 +107,98 @@ public class StartQuizPageController implements Initializable {
              //   Logger.getLogger(StartQuizPageController.class.getName()).log(Level.SEVERE, null, ex);
             } 
         });
-        mediumButton.setOnAction(e -> {});
-        hardButton.setOnAction(e -> {});
+        mediumButton.setOnAction(e -> {
+        for(int i = 0; i < this.numberOfQuestions/4; i++){
+            try {
+                MultipleChoice mcq = new MultipleChoice("M");
+            } catch (SQLException ex) {
+                Logger.getLogger(StartQuizPageController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        for(int i = 0; i < this.numberOfQuestions/4; i++){
+            try {
+                MultipleAnswer ma = new MultipleAnswer("M");
+            } catch (SQLException ex) {
+                Logger.getLogger(StartQuizPageController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        for(int i = 0; i < this.numberOfQuestions/4; i++){
+            try {
+                TrueFalse tf = new TrueFalse("M");
+            } catch (SQLException ex) {
+                Logger.getLogger(StartQuizPageController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        for(int i = 0; i < this.numberOfQuestions/4; i++){
+            try {
+                FillInTheBlanks fib = new FillInTheBlanks("M");
+            } catch (SQLException ex) {
+                Logger.getLogger(StartQuizPageController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        Stage stage;
+            Parent root;
+            stage = (Stage)easyButton.getScene().getWindow();
+            try {
+                connectToLiveDatabase();
+                //load up OTHER FXML document
+                FXMLLoader f = new FXMLLoader(getClass().getResource("scene9.fxml"));
+                root = f.load();
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+                } catch (IOException ex) {
+             //   Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+             //   Logger.getLogger(StartQuizPageController.class.getName()).log(Level.SEVERE, null, ex);
+            } 
+        });
+        hardButton.setOnAction(e -> {
+        for(int i = 0; i < this.numberOfQuestions/4; i++){
+            try {
+                MultipleChoice mcq = new MultipleChoice("H");
+            } catch (SQLException ex) {
+                Logger.getLogger(StartQuizPageController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        for(int i = 0; i < this.numberOfQuestions/4; i++){
+            try {
+                MultipleAnswer ma = new MultipleAnswer("H");
+            } catch (SQLException ex) {
+                Logger.getLogger(StartQuizPageController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        for(int i = 0; i < this.numberOfQuestions/4; i++){
+            try {
+                TrueFalse tf = new TrueFalse("H");
+            } catch (SQLException ex) {
+                Logger.getLogger(StartQuizPageController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        for(int i = 0; i < this.numberOfQuestions/4; i++){
+            try {
+                FillInTheBlanks fib = new FillInTheBlanks("H");
+            } catch (SQLException ex) {
+                Logger.getLogger(StartQuizPageController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        Stage stage;
+            Parent root;
+            stage = (Stage)easyButton.getScene().getWindow();
+            try {
+                connectToLiveDatabase();
+                //load up OTHER FXML document
+                FXMLLoader f = new FXMLLoader(getClass().getResource("scene9.fxml"));
+                root = f.load();
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+                } catch (IOException ex) {
+             //   Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+             //   Logger.getLogger(StartQuizPageController.class.getName()).log(Level.SEVERE, null, ex);
+            } 
+        });
         mixedButton.setOnAction(e -> {});
     
     }

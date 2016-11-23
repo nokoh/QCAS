@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="qcas.LoginScreenController">
+<children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8ac1f5" height="72.0" layoutX="14.0" layoutY="123.0" stroke="BLACK" strokeType="INSIDE" width="212.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#aaacae" height="78.0" layoutX="34.0" layoutY="19.0" stroke="BLACK" strokeType="INSIDE" width="527.0" />
+      <Button id="printToPDFButton" fx:id="PrintToPDFButton" layoutX="233.0" layoutY="320.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="130.0" text="Print to PDF " />
+      <Button id="returnHomeButton" fx:id="returnHomeButton" layoutX="235.0" layoutY="354.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="130.0" text="Return Home" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="171.0" layoutY="33.0" prefHeight="51.0" prefWidth="258.0" text="Quiz Results" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
+      <Label layoutX="34.0" layoutY="134.0" prefHeight="25.0" prefWidth="86.0" text="# Correct:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="24.0" layoutY="148.0" prefHeight="51.0" prefWidth="105.0" text="# Incorrect:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <VBox layoutX="91.0" layoutY="120.0" prefHeight="78.0" prefWidth="152.0">
+         <children>
+            <Label id="numberCorrectLabel" fx:id="numberCorrectLabel" prefHeight="38.0" prefWidth="121.0" text="numberCorrectLabel">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Label>
+            <Label id="numberIncorrectLabel" fx:id="numberIncorrectLabel" prefHeight="34.0" prefWidth="131.0" text="numberIncorrectLabel">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <Label layoutX="503.0" layoutY="359.0" text="Student Report">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <BarChart id="barChartStudent" fx:id="barChartStudent" layoutX="235.0" layoutY="107.0" prefHeight="183.0" prefWidth="346.0" title="Results Based on Question Type">
+        <xAxis>
+          <CategoryAxis endMargin="15.0" label="Type of Question" side="BOTTOM" startMargin="2.0" tickLength="3.0" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis label="# Correct" minorTickCount="2" side="LEFT" upperBound="15.0" />
+        </yAxis>
+      </BarChart>
+   </children>
+</AnchorPane>

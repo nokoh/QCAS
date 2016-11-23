@@ -30,6 +30,7 @@ public class StudentProfileSceneController implements Initializable {
     
     Scene scene;
     Stage homeStage;
+    String currentUserName;
     
     @FXML
     private Button takeQuizButton;      
@@ -64,7 +65,8 @@ public class StudentProfileSceneController implements Initializable {
             stage = (Stage)takeQuizButton.getScene().getWindow();
             try {
                 //load up OTHER FXML document
-                root = FXMLLoader.load(getClass().getResource("SelectQuestions.fxml"));
+                FXMLLoader f = new FXMLLoader(getClass().getResource("SelectQuestions.fxml"));
+                root = f.load();
                 scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();

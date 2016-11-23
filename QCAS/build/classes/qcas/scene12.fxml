@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="qcas.LoginScreenController">
+<children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#aaacae" height="81.0" layoutX="27.0" layoutY="36.0" stroke="BLACK" strokeType="INSIDE" width="546.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="128.0" layoutX="213.0" layoutY="187.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+      <Button id="trueButton" fx:id="trueButton" layoutX="248.0" layoutY="209.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="129.0" text="True" />
+      <Button id="falseButton" fx:id="falseButton" layoutX="248.0" layoutY="257.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="129.0" text="False" />
+      <Label contentDisplay="CENTER" layoutX="121.0" layoutY="54.0" prefHeight="45.0" prefWidth="385.0" text="Select Either True or False" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
+      <Label layoutX="68.0" layoutY="135.0" prefHeight="35.0" prefWidth="85.0" text="Statement:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label id="TFStatementLabel" fx:id="TFStatementLabel" layoutX="142.0" layoutY="123.0" prefHeight="81.0" prefWidth="444.0" text="TFStatementLabel" />
+      <Label layoutX="528.0" layoutY="402.0" text="True / False">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <Button id="nextButton" fx:id="nextButton" layoutX="248.0" layoutY="334.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="129.0" text="Next" />
+      <Pagination id="pagination" fx:id="pagination" layoutX="213.0" layoutY="387.0" prefHeight="34.0" prefWidth="200.0" />
+   </children>
+</AnchorPane>

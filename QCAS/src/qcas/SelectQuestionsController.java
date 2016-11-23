@@ -25,6 +25,7 @@ public class SelectQuestionsController implements Initializable {
     
     int numOfQuestions;
     Scene scene;
+    
 
     public int getNumOfQuestions() {
         return numOfQuestions;
@@ -60,7 +61,10 @@ public class SelectQuestionsController implements Initializable {
             stage = (Stage)eightQuestionsButton.getScene().getWindow();
             try {
                 //load up OTHER FXML document
-                root = FXMLLoader.load(getClass().getResource("StartQuizPage.fxml"));
+                FXMLLoader f = new FXMLLoader(getClass().getResource("StartQuizPage.fxml"));
+                root = f.load();
+                StartQuizPageController sc = f.<StartQuizPageController>getController();
+                sc.numberOfQuestions = 8;
                 scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
@@ -75,7 +79,10 @@ public class SelectQuestionsController implements Initializable {
             stage = (Stage)eightQuestionsButton.getScene().getWindow();
             try {
                 //load up OTHER FXML document
-                root = FXMLLoader.load(getClass().getResource("StartQuizPage.fxml"));
+                FXMLLoader f = new FXMLLoader(getClass().getResource("StartQuizPage.fxml"));
+                root = f.load();
+                StartQuizPageController sc = f.<StartQuizPageController>getController();
+                sc.numberOfQuestions = 16;
                 scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
@@ -90,7 +97,10 @@ public class SelectQuestionsController implements Initializable {
             stage = (Stage)eightQuestionsButton.getScene().getWindow();
             try {
                 //load up OTHER FXML document
-                root = FXMLLoader.load(getClass().getResource("StartQuizPage.fxml"));
+                FXMLLoader f = new FXMLLoader(getClass().getResource("StartQuizPage.fxml"));
+                root = f.load();
+                StartQuizPageController sc = f.<StartQuizPageController>getController();
+                sc.numberOfQuestions = 24;
                 scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
@@ -105,7 +115,10 @@ public class SelectQuestionsController implements Initializable {
             stage = (Stage)eightQuestionsButton.getScene().getWindow();
             try {
                 //load up OTHER FXML document
-                root = FXMLLoader.load(getClass().getResource("StartQuizPage.fxml"));
+                FXMLLoader f = new FXMLLoader(getClass().getResource("StartQuizPage.fxml"));
+                root = f.load();
+                StartQuizPageController sc = f.<StartQuizPageController>getController();
+                sc.numberOfQuestions = 32;
                 scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();

@@ -80,7 +80,7 @@ public class Scene3Controller implements Initializable {
                 connectToDatabase();
                 readFile();
             } catch (SQLException | IOException ex) {
-                Logger.getLogger(TeacherViewController.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Scene3Controller.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         );
@@ -104,12 +104,14 @@ public void connectToDatabase() throws SQLException{
         
     }
 
+
 private void addToDatabase(String[] questionArray) throws SQLException {
     
         switch (questionArray[0]) {
             case "MC":
             try {
-            String set = "INSERT INTO QuizDB.MCQTable VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";//insert statement to add the updated valuse in the database.
+            String set = "INSERT INTO QuizDB.MCQTable (difficulty, description, choice1, anwer1, choice2, anwer2, choice3, anwer3, choice4, anwer4)" +
+                        "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";//insert statement to add the updated valuse in the database
             PreparedStatement stmt2 = this.con.prepareStatement(set);
             
             String difficulty = questionArray[1];
@@ -133,6 +135,7 @@ private void addToDatabase(String[] questionArray) throws SQLException {
             stmt2.setString(8, correct3);
             stmt2.setString(9, answer4);
             stmt2.setString(10, correct4);
+         //   stmt2.setInt(11, 0);
             stmt2.executeUpdate();//executes statement to insert values
         }
         catch (SQLException e) {
@@ -142,7 +145,8 @@ private void addToDatabase(String[] questionArray) throws SQLException {
             
             case "MA":
             try {
-            String set = "INSERT INTO QuizDB.MATable VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";//insert statement to add the updated valuse in the database.
+            String set = "INSERT INTO QuizDB.MATable (difficulty, description, choice1, answer1, choice2, answer2, choice3, answer3, choice4, answer4)" +
+                        "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";//insert statement to add the updated valuse in the database
             PreparedStatement stmt2 = this.con.prepareStatement(set);
             
             String difficulty = questionArray[1];
@@ -166,6 +170,7 @@ private void addToDatabase(String[] questionArray) throws SQLException {
             stmt2.setString(8, correct3);
             stmt2.setString(9, answer4);
             stmt2.setString(10, correct4);
+         //   stmt2.setInt(11, 0);
             stmt2.executeUpdate();//executes statement to insert values
         }
         catch (SQLException e) {
@@ -175,9 +180,10 @@ private void addToDatabase(String[] questionArray) throws SQLException {
             
             case "TF":
                 try {
-            String set = "INSERT INTO QuizDB.TFTable VALUES(?, ?, ?)";//insert statement to add the updated valuse in the database.
+            String set = "INSERT INTO QuizDB.TFTable (difficulty, description, answer)" +
+                        "VALUES (?, ?, ?);";//insert statement to add the updated valuse in the database.
             PreparedStatement stmt2 = this.con.prepareStatement(set);
-            /* Loop takes the value of each line in the array, 
+            /* Loop takes the value of each line in the sailorsList array, 
             splits the values at every comma and adds the values to the database. */
             String difficulty = questionArray[1];
             String description = questionArray[2]; 
@@ -187,6 +193,7 @@ private void addToDatabase(String[] questionArray) throws SQLException {
             stmt2.setString(1, difficulty);
             stmt2.setString(2, description);
             stmt2.setString(3, answer);
+         //   stmt2.setInt(4, this.questionId++);
 
             stmt2.executeUpdate();//executes statement to insert values
         }
@@ -197,7 +204,8 @@ private void addToDatabase(String[] questionArray) throws SQLException {
             
             case "FIB":
             try {
-            String set = "INSERT INTO QuizDB.FIBTable VALUES(?, ?, ?)";//insert statement to add the updated valuse in the database.
+            String set = "INSERT INTO QuizDB.FIBTable (difficulty, description, answer)" +
+                        "VALUES (?, ?, ?);";//insert statement to add the updated valuse in the database.
             PreparedStatement stmt2 = this.con.prepareStatement(set);
 
             String difficulty = questionArray[1];
@@ -207,6 +215,7 @@ private void addToDatabase(String[] questionArray) throws SQLException {
             stmt2.setString(1, difficulty);
             stmt2.setString(2, description);
             stmt2.setString(3, answer);
+         //   stmt2.setInt(4, this.questionId++);
 
             stmt2.executeUpdate();//executes statement to insert values
         }
@@ -219,19 +228,13 @@ private void addToDatabase(String[] questionArray) throws SQLException {
             break;
             
             default:
-            break;        
+            break;
+            
         }
 }
 
-/**
- * 
- *                          //   Reads File and Slices Text
- * 
- * @throws FileNotFoundException
- * @throws IOException
- * @throws SQLException 
- */
 
+/*Reads file and slices text*/
  public void readFile() throws FileNotFoundException, IOException, SQLException{
         int length = getFileLength();
         ArrayList <String[]> MCArray = new ArrayList<>();
@@ -241,8 +244,6 @@ private void addToDatabase(String[] questionArray) throws SQLException {
         CSVReader readerCSV = new CSVReader(new FileReader(this.fileName),',', '"', 0);
     
       //Read CSV line by line and use the string array as you want
-      
-      
       String[] nextLine;
       while ((nextLine = readerCSV.readNext()) != null) {
          if (nextLine != null) {
@@ -291,11 +292,7 @@ private void addToDatabase(String[] questionArray) throws SQLException {
       
       
     }
-    /**
-     * 
-     * @return 
-     * 
-     */
+    
     public int getFileLength() {
 		int length = 0;
 		BufferedReader reader = null;
