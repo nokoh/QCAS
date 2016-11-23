@@ -9,12 +9,12 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="qcas.LoginScreenController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qcas.Scene13Controller">
 <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8ac1f5" height="72.0" layoutX="14.0" layoutY="123.0" stroke="BLACK" strokeType="INSIDE" width="212.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#aaacae" height="78.0" layoutX="34.0" layoutY="19.0" stroke="BLACK" strokeType="INSIDE" width="527.0" />
       <Button id="printToPDFButton" fx:id="PrintToPDFButton" layoutX="233.0" layoutY="320.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="130.0" text="Print to PDF " />
-      <Button id="returnHomeButton" fx:id="returnHomeButton" layoutX="235.0" layoutY="354.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="130.0" text="Return Home" />
+      <Button id="returnHomeButton" fx:id="returnHomeButton" layoutX="235.0" layoutY="354.0" mnemonicParsing="false" onAction="#returnHomeButtonClicked" prefHeight="25.0" prefWidth="130.0" text="Return Home" />
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="171.0" layoutY="33.0" prefHeight="51.0" prefWidth="258.0" text="Quiz Results" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="30.0" />

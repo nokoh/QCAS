@@ -13,12 +13,12 @@
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#949697" height="94.0" layoutX="21.0" layoutY="18.0" stroke="BLACK" strokeType="INSIDE" width="559.0" />
       <Button id="importFileButton" fx:id="importFileButton" layoutX="226.0" layoutY="200.0" mnemonicParsing="false" onAction="#uploadFile" prefHeight="25.0" prefWidth="149.0" text="Import File" />
-      <Button id="viewReportsButton" fx:id="viewReportsButton" layoutX="226.0" layoutY="253.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" text="View Reports" />
+      <Button id="viewReportsButton" fx:id="viewReportsButton" layoutX="226.0" layoutY="253.0" mnemonicParsing="false" onAction="#viewReportsButtonClicked" prefHeight="25.0" prefWidth="149.0" text="View Reports" />
       <Label layoutX="184.0" layoutY="43.0" text="Select an Option">
          <font>
             <Font name="System Bold" size="30.0" />
          </font>
       </Label>
-      <Button id="returnHomeButton" fx:id="returnHomeButton" layoutX="226.0" layoutY="305.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" text="Return Home" />
+      <Button id="returnHomeButton" fx:id="returnHomeButton" layoutX="226.0" layoutY="305.0" mnemonicParsing="false" onAction="#returnHomeButtonClicked" prefHeight="25.0" prefWidth="149.0" text="Return Home" />
    </children>
 </AnchorPane>
