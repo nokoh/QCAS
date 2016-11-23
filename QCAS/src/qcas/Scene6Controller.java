@@ -7,6 +7,7 @@ import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.print.PrinterJob;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -32,10 +33,19 @@ public class Scene6Controller implements Initializable {
      * printToPDF() prints a PDF of the Report if the Print To PDF Button is clicked
      * 
      */
-    public static void printToPDF(){
+//    
+//    
+//        @FXML
+//    public  void printToPDF(){
+//        PrinterJob printToPDF = PrinterJob.createPrinterJob();
+//             if(printToPDF != null){
+//                printToPDF.showPrintDialog(scene.getWindow()); // Window must be your main Stage
+//                printToPDF.printPage(homeStage);
+//                printToPDF.endJob();
+ 
+
         
-        
-    }
+    
     /**
         *  The returnHome() method switches back to the login screen.
         * 

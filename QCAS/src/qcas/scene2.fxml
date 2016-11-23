@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.media.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
@@ -8,8 +10,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qcas.Scene2Controller">   
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: maroon;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qcas.Scene2Controller">   
     <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fbfdff" height="314.0" layoutX="18.0" layoutY="66.0" stroke="BLACK" strokeType="INSIDE" width="563.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a1a1a1" height="76.0" layoutX="18.0" layoutY="19.0" stroke="BLACK" strokeType="INSIDE" width="563.0" />
       <Button id="easyButton" fx:id="easyButton" layoutX="242.0" layoutY="143.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="122.0" text="Easy" />
       <Button id="mediumButton" fx:id="mediumButton" layoutX="242.0" layoutY="188.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="122.0" text="Medium" />
@@ -21,4 +24,7 @@
          </font>
       </Label>
    </children>
+   <effect>
+      <InnerShadow />
+   </effect>
 </AnchorPane>
