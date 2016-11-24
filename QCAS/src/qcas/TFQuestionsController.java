@@ -46,6 +46,10 @@ public class TFQuestionsController implements Initializable {
     Scene scene;
     String userId;
     Pane question = new Pane();
+    int userScore;
+    int numOfQuestions;
+    int numCorrect;
+    int numIncorrect;
 
     /**
      * Initializes the controller class.
@@ -57,6 +61,22 @@ public class TFQuestionsController implements Initializable {
 
     public void initID(String ID){ 
         userId = ID;
+    }
+    
+    public void setScore(int num){ 
+        userScore = num;
+    }
+    
+    public void setNumOfQuestions(int num){ 
+        numOfQuestions = num;
+    }
+    
+    public void setCorrect(int num){ 
+        numCorrect = num;
+    }
+    
+    public void setIncorrect(int num){ 
+        numIncorrect = num;
     }
     
     public void launchTF(ArrayList<MultipleChoice>multipleChoiceQuestions, ArrayList<MultipleAnswer>multipleAnswerQuestions, ArrayList<TrueFalse>trueFalseQuestions, 

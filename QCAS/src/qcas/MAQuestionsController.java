@@ -39,6 +39,10 @@ public class MAQuestionsController implements Initializable {
     Scene scene;
     String userId;
     Pane question = new Pane();
+    int userScore;
+    int numCorrect;
+    int numIncorrect;
+    int numOfQuestions;
     
 
     
@@ -70,6 +74,22 @@ public class MAQuestionsController implements Initializable {
     public void initID(String ID){ 
         userId = ID;
     }
+    
+    public void setScore(int num){ 
+        userScore = num;
+    }
+    
+    public void setNumOfQuestions(int num){ 
+        numOfQuestions = num;
+    }
+    
+    public void setCorrect(int num){ 
+        numCorrect = num;
+    }
+    
+    public void setIncorrect(int num){ 
+        numIncorrect = num;
+    }
 
     /**
      * Initializes the controller class.
@@ -82,6 +102,7 @@ public class MAQuestionsController implements Initializable {
     public void launchMA(ArrayList<MultipleChoice>multipleChoiceQuestions, ArrayList<MultipleAnswer>multipleAnswerQuestions, ArrayList<TrueFalse>trueFalseQuestions, 
         ArrayList<FillInTheBlanks>fillInTheBlanksQuestions,int size) throws IOException{
         Parent root;
+        this.multipleChoiceQuestions = multipleChoiceQuestions;
         this.trueFalseQuestions = trueFalseQuestions;
         this.fillInTheBlanksQuestions = fillInTheBlanksQuestions;
         System.out.println(multipleAnswerQuestions.get(0).description);
@@ -89,10 +110,63 @@ public class MAQuestionsController implements Initializable {
         if(size != 0){
             this.multipleAnswerQuestions = multipleAnswerQuestions;
             MAQuestionDescriptionLabel.setText(multipleAnswerQuestions.get(size-1).description);
-            AButton.setText(multipleAnswerQuestions.get(size-1).answer1);
-            BButton.setText(multipleAnswerQuestions.get(size-1).answer2);
-            CButton.setText(multipleAnswerQuestions.get(size-1).answer3);
-            DButton.setText(multipleAnswerQuestions.get(size-1).answer4);   
+            MAOptionALabel.setText(multipleAnswerQuestions.get(size-1).answer1);
+            MAOptionBLabel.setText(multipleAnswerQuestions.get(size-1).answer2);
+            MAOptionCLabel.setText(multipleAnswerQuestions.get(size-1).answer3);
+            MAOptionDLabel.setText(multipleAnswerQuestions.get(size-1).answer4); 
+            
+            AButton.setOnAction(e -> {
+            if(multipleAnswerQuestions.get(size-1).correct1.equals("correct")){
+                
+            }
+            int m = size - 1;
+            try {
+                launchMA(this.multipleChoiceQuestions, this.multipleAnswerQuestions, 
+                        this.trueFalseQuestions, this.fillInTheBlanksQuestions, m);
+            } catch (IOException ex) {
+                Logger.getLogger(MCQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        
+        BButton.setOnAction(e -> {
+            if(multipleAnswerQuestions.get(size-1).correct1.equals("correct")){
+                
+            }
+            int m = size - 1;
+            try {
+                launchMA(this.multipleChoiceQuestions, this.multipleAnswerQuestions,
+                        this.trueFalseQuestions, this.fillInTheBlanksQuestions , m);
+            } catch (IOException ex) {
+                Logger.getLogger(MCQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        });
+        
+        CButton.setOnAction(e -> {
+            if(multipleAnswerQuestions.get(size-1).correct1.equals("correct")){
+                
+            }
+            int m = size - 1;
+            try {
+                launchMA(this.multipleChoiceQuestions, this.multipleAnswerQuestions,
+                        this.trueFalseQuestions, this.fillInTheBlanksQuestions , m);
+            } catch (IOException ex) {
+                Logger.getLogger(MCQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        
+        DButton.setOnAction(e -> {
+            if(multipleAnswerQuestions.get(size-1).correct1.equals("correct")){
+                
+            }
+            int m = size - 1;
+            try {
+                launchMA(this.multipleChoiceQuestions, this.multipleAnswerQuestions, 
+                        this.trueFalseQuestions, this.fillInTheBlanksQuestions , m);
+            } catch (IOException ex) {
+                Logger.getLogger(MCQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
         }
         else{
             Stage stage = (Stage) AButton.getScene().getWindow();

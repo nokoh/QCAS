@@ -33,10 +33,11 @@ public class StartQuizPageController implements Initializable {
     int numberOfQuestions;
     String userId;
     
-    ArrayList<MultipleChoice>multipleChoiceQuestions = new ArrayList();
-    ArrayList<MultipleAnswer>multipleAnswerQuestions = new ArrayList();
-    ArrayList<TrueFalse>trueFalseQuestions = new ArrayList();
-    ArrayList<FillInTheBlanks>fillInTheBlanksQuestions = new ArrayList();
+    ArrayList <MultipleChoice> multipleChoiceQuestions = new ArrayList();
+    ArrayList <MultipleAnswer> multipleAnswerQuestions = new ArrayList();
+    ArrayList <TrueFalse> trueFalseQuestions = new ArrayList();
+    ArrayList <FillInTheBlanks> fillInTheBlanksQuestions = new ArrayList();
+    ArrayList <Question> questionsAnswered = new ArrayList();
 
     @FXML
     private Button easyButton;
@@ -219,6 +220,7 @@ public class StartQuizPageController implements Initializable {
                 sc.launchMCQ(this.multipleAnswerQuestions, this.multipleChoiceQuestions, 
                         this.trueFalseQuestions, this.fillInTheBlanksQuestions, this.numberOfQuestions/4);
                 sc.initID(userId);
+                sc.setNumOfQuestions(this.numberOfQuestions);
                 scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();

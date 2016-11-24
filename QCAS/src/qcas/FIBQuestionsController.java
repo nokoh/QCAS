@@ -36,6 +36,10 @@ public class FIBQuestionsController implements Initializable {
     Scene scene;
     String userId;
     Pane question = new Pane();
+    int userScore;
+    int numCorrect;
+    int numIncorrect;
+    int numOfQuestions;
 
     @FXML
     private Pagination pagination;
@@ -56,6 +60,21 @@ public class FIBQuestionsController implements Initializable {
     
     public void initID(String ID){ 
         userId = ID;
+    }
+    public void setScore(int num){ 
+        userScore = num;
+    }
+    
+    public void setNumOfQuestions(int num){ 
+        numOfQuestions = num;
+    }
+    
+    public void setCorrect(int num){ 
+        numCorrect = num;
+    }
+    
+    public void setIncorrect(int num){ 
+        numIncorrect = num;
     }
     
     public void launchFIB(ArrayList<MultipleChoice>multipleChoiceQuestions, ArrayList<MultipleAnswer>multipleAnswerQuestions, 
