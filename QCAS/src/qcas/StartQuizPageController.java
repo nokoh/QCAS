@@ -34,9 +34,9 @@ public class StartQuizPageController implements Initializable {
     String userId;
     
     ArrayList<MultipleChoice>multipleChoiceQuestions = new ArrayList();
-    ArrayList<Question>multipleAnswerQuestions = new ArrayList();
-    ArrayList<Question>trueFalseQuestions = new ArrayList();
-    ArrayList<Question>fillInTheBlanksQuestions = new ArrayList();
+    ArrayList<MultipleAnswer>multipleAnswerQuestions = new ArrayList();
+    ArrayList<TrueFalse>trueFalseQuestions = new ArrayList();
+    ArrayList<FillInTheBlanks>fillInTheBlanksQuestions = new ArrayList();
 
     @FXML
     private Button easyButton;
@@ -74,7 +74,7 @@ public class StartQuizPageController implements Initializable {
         }
         for(int i = 0; i < this.numberOfQuestions/4; i++){
             try {
-                MultipleAnswer ma = new MultipleAnswer("E");
+                MultipleAnswer ma = new MultipleAnswer("H");
                 this.multipleAnswerQuestions.add(ma);
                // System.out.println(this.multipleAnswerQuestions.get(i).description);
             } catch (SQLException ex) {
@@ -108,7 +108,8 @@ public class StartQuizPageController implements Initializable {
                 FXMLLoader f = new FXMLLoader(getClass().getResource("MCQuestions.fxml"));
                 root = f.load();
                 MCQuestionsController sc = f.<MCQuestionsController>getController();
-                sc.launchMCQ(this.multipleChoiceQuestions, this.numberOfQuestions/4);
+                sc.launchMCQ(this.multipleAnswerQuestions,   this.multipleChoiceQuestions, 
+                        this.trueFalseQuestions, this.fillInTheBlanksQuestions , this.numberOfQuestions/4);
                 sc.initID(userId);
                 scene = new Scene(root);
                 stage.setScene(scene);
@@ -147,7 +148,7 @@ public class StartQuizPageController implements Initializable {
         for(int i = 0; i < this.numberOfQuestions/4; i++){
             try {
                 FillInTheBlanks fib = new FillInTheBlanks("M");
-                this.trueFalseQuestions.add(fib);
+                this.fillInTheBlanksQuestions.add(fib);
             } catch (SQLException ex) {
                 Logger.getLogger(StartQuizPageController.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -161,7 +162,8 @@ public class StartQuizPageController implements Initializable {
                 FXMLLoader f = new FXMLLoader(getClass().getResource("MCQuestions.fxml"));
                 root = f.load();
                 MCQuestionsController sc = f.<MCQuestionsController>getController();
-                sc.launchMCQ(this.multipleChoiceQuestions, this.numberOfQuestions/4);
+                sc.launchMCQ(this.multipleAnswerQuestions,   this.multipleChoiceQuestions, 
+                        this.trueFalseQuestions, this.fillInTheBlanksQuestions , this.numberOfQuestions/4);
                 sc.initID(userId);
                 scene = new Scene(root);
                 stage.setScene(scene);
@@ -213,7 +215,9 @@ public class StartQuizPageController implements Initializable {
                 FXMLLoader f = new FXMLLoader(getClass().getResource("MCQuestions.fxml"));
                 root = f.load();
                 MCQuestionsController sc = f.<MCQuestionsController>getController();
-                sc.launchMCQ(this.multipleChoiceQuestions, this.numberOfQuestions/4);
+                sc.multipleAnswerQuestions = this.multipleAnswerQuestions;
+                sc.launchMCQ(this.multipleAnswerQuestions, this.multipleChoiceQuestions, 
+                        this.trueFalseQuestions, this.fillInTheBlanksQuestions, this.numberOfQuestions/4);
                 sc.initID(userId);
                 scene = new Scene(root);
                 stage.setScene(scene);

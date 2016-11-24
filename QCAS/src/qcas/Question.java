@@ -181,7 +181,7 @@ class MultipleAnswer extends Question {
             String select = "SELECT * FROM QuizDB.MATable WHERE difficulty = ? AND questionNumber = ?";//statement to select question from database.
             PreparedStatement stmt2 = this.con.prepareStatement(select);
             stmt2.setString(1, difficulty); //applies random variable to select statement.
-            stmt2.setInt(2, selector);
+            stmt2.setInt(2, 70);
             ResultSet rs = stmt2.executeQuery();//executes statement and returns value to resultset variable.
             
             /* Assigns each variable from column values to the different variables*/
@@ -198,7 +198,7 @@ class MultipleAnswer extends Question {
             this.correct3 = rs.getString("answer3");
             this.answer4 = rs.getString("choice4");
             this.correct4 = rs.getString("answer4");
-            
+            /*
             connectToLiveDatabase();
             //String delete = "DELETE FROM LiveQuizDB.MCQTable";//delete statement to delete current values in database
            // Statement deleteDB = this.con.createStatement();
@@ -219,7 +219,7 @@ class MultipleAnswer extends Question {
                         insertDB.setInt(11, this.number);
                         
                         insertDB.executeUpdate();
-                       
+                       */
         }
         rs.close(); //closes resultset resource.
         } catch (SQLException e) {
@@ -261,7 +261,7 @@ class TrueFalse extends Question {
             this.difficulty = rs.getString("difficulty");
             this.description = rs.getString("description");
             this.correctAnswer = rs.getString("answer"); 
-            
+            /*
             connectToLiveDatabase();
             //String delete = "DELETE FROM LiveQuizDB.MCQTable";//delete statement to delete current values in database
            // Statement deleteDB = this.con.createStatement();
@@ -275,7 +275,7 @@ class TrueFalse extends Question {
                         insertDB.setInt(4, this.number);  
                         
                         insertDB.executeUpdate();
-        }
+*/        }
             
         rs.close(); //closes resultset resource.
         } catch (SQLException e) {
@@ -317,7 +317,7 @@ class FillInTheBlanks extends Question {
             this.difficulty = rs.getString("difficulty");
             this.description = rs.getString("description");
             this.correctAnswer = rs.getString("answer");
-            
+            /*
             connectToLiveDatabase();
             //String delete = "DELETE FROM LiveQuizDB.MCQTable";//delete statement to delete current values in database
            // Statement deleteDB = this.con.createStatement();
@@ -330,7 +330,7 @@ class FillInTheBlanks extends Question {
                         insertDB.setString(3, this.correctAnswer);
                         insertDB.setInt(4, this.number);  
             
-                        insertDB.executeUpdate();
+                        insertDB.executeUpdate();*/
             
         }
         rs.close(); //closes resultset resource.

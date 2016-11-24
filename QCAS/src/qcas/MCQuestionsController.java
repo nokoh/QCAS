@@ -29,9 +29,9 @@ import javafx.stage.Stage;
 public class MCQuestionsController implements Initializable {
     
     ArrayList<MultipleChoice>multipleChoiceQuestions = new ArrayList();
-    ArrayList<Question>multipleAnswerQuestions = new ArrayList();
-    ArrayList<Question>trueFalseQuestions = new ArrayList();
-    ArrayList<Question>fillInTheBlanksQuestions = new ArrayList();
+    ArrayList<MultipleAnswer>multipleAnswerQuestions = new ArrayList();
+    ArrayList<TrueFalse>trueFalseQuestions = new ArrayList();
+    ArrayList<FillInTheBlanks>fillInTheBlanksQuestions = new ArrayList();
     
     Scene scene;
     String userId;
@@ -70,8 +70,13 @@ public class MCQuestionsController implements Initializable {
         
     }
 
-    public void launchMCQ(ArrayList<MultipleChoice>multipleChoiceQuestions, int size) throws IOException{
+    public void launchMCQ(ArrayList<MultipleAnswer>multipleAnswerQuestions, ArrayList<MultipleChoice>multipleChoiceQuestions, 
+            ArrayList<TrueFalse>trueFalseQuestions, ArrayList<FillInTheBlanks>fillInTheBlanksQuestions, int size) throws IOException{
         Parent root;
+        this.multipleAnswerQuestions = multipleAnswerQuestions;
+        this.trueFalseQuestions = trueFalseQuestions;
+        this.fillInTheBlanksQuestions = fillInTheBlanksQuestions;
+        
        // Stage stage = (Stage) AButton.getScene().getWindow();
         if(size != 0){
         this.multipleChoiceQuestions = multipleChoiceQuestions;
@@ -88,7 +93,8 @@ public class MCQuestionsController implements Initializable {
             }
             int m = size - 1;
             try {
-                launchMCQ(this.multipleChoiceQuestions, m);
+                launchMCQ(this.multipleAnswerQuestions,   this.multipleChoiceQuestions, 
+                        this.trueFalseQuestions, this.fillInTheBlanksQuestions , m);
             } catch (IOException ex) {
                 Logger.getLogger(MCQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -100,7 +106,8 @@ public class MCQuestionsController implements Initializable {
             }
             int m = size - 1;
             try {
-                launchMCQ(this.multipleChoiceQuestions, m);
+                launchMCQ(this.multipleAnswerQuestions,   this.multipleChoiceQuestions, 
+                        this.trueFalseQuestions, this.fillInTheBlanksQuestions , m);
             } catch (IOException ex) {
                 Logger.getLogger(MCQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -113,7 +120,8 @@ public class MCQuestionsController implements Initializable {
             }
             int m = size - 1;
             try {
-                launchMCQ(this.multipleChoiceQuestions, m);
+                launchMCQ(this.multipleAnswerQuestions,   this.multipleChoiceQuestions, 
+                        this.trueFalseQuestions, this.fillInTheBlanksQuestions , m);
             } catch (IOException ex) {
                 Logger.getLogger(MCQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -125,7 +133,8 @@ public class MCQuestionsController implements Initializable {
             }
             int m = size - 1;
             try {
-                launchMCQ(this.multipleChoiceQuestions, m);
+                launchMCQ(this.multipleAnswerQuestions,   this.multipleChoiceQuestions, 
+                        this.trueFalseQuestions, this.fillInTheBlanksQuestions , m);
             } catch (IOException ex) {
                 Logger.getLogger(MCQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -136,7 +145,8 @@ public class MCQuestionsController implements Initializable {
             FXMLLoader f = new FXMLLoader(getClass().getResource("MAQuestions.fxml"));
             root = f.load();
             MAQuestionsController sc = f.<MAQuestionsController>getController();
-            sc.launchMA(this.multipleAnswerQuestions, this.multipleChoiceQuestions.size());
+            sc.launchMA(this.multipleAnswerQuestions, this.trueFalseQuestions, 
+                    this.fillInTheBlanksQuestions, this.multipleAnswerQuestions.size());
             sc.initID(userId);
             scene = new Scene(root);
             stage.setScene(scene);
