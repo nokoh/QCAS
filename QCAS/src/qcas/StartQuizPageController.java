@@ -55,13 +55,17 @@ public class StartQuizPageController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
+    
+    public void setNumOfQuestions(int num){ 
+        numberOfQuestions = num;
+    }
     /*
     public void initID(String ID){ 
         UserIDLabel.setText(ID);
         
     }*/
     public void startQuiz(){
-        
+        int num = this.numberOfQuestions;
         easyButton.setOnAction(e -> {
 
         for(int i = 0; i < this.numberOfQuestions/4; i++){
@@ -112,6 +116,7 @@ public class StartQuizPageController implements Initializable {
                 sc.launchMCQ(this.multipleAnswerQuestions,   this.multipleChoiceQuestions, 
                         this.trueFalseQuestions, this.fillInTheBlanksQuestions , this.numberOfQuestions/4);
                 sc.initID(userId);
+                sc.setNumOfQuestions(this.numberOfQuestions);
                 scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
@@ -166,6 +171,7 @@ public class StartQuizPageController implements Initializable {
                 sc.launchMCQ(this.multipleAnswerQuestions,   this.multipleChoiceQuestions, 
                         this.trueFalseQuestions, this.fillInTheBlanksQuestions , this.numberOfQuestions/4);
                 sc.initID(userId);
+                sc.setNumOfQuestions(this.numberOfQuestions);
                 scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();

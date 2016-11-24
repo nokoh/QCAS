@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -32,6 +34,8 @@ public class FIBQuestionsController implements Initializable {
     ArrayList<MultipleAnswer>multipleAnswerQuestions = new ArrayList();
     ArrayList<TrueFalse>trueFalseQuestions = new ArrayList();
     ArrayList<FillInTheBlanks>fillInTheBlanksQuestions = new ArrayList();
+    ArrayList <Question> correctQuestions = new ArrayList();
+    ArrayList <Question> incorrectQuestions = new ArrayList();
     
     Scene scene;
     String userId;
@@ -77,13 +81,59 @@ public class FIBQuestionsController implements Initializable {
         numIncorrect = num;
     }
     
+    public ArrayList<Question> getCorrectQuestions() {
+        return correctQuestions;
+    }
+
+    public void setCorrectQuestions(ArrayList<Question> correctQuestions) {
+        this.correctQuestions = correctQuestions;
+    }
+
+    public ArrayList<Question> getIncorrectQuestions() {
+        return incorrectQuestions;
+    }
+
+    public void setIncorrectQuestions(ArrayList<Question> incorrectQuestions) {
+        this.incorrectQuestions = incorrectQuestions;
+    }
+    
     public void launchFIB(ArrayList<MultipleChoice>multipleChoiceQuestions, ArrayList<MultipleAnswer>multipleAnswerQuestions, 
             ArrayList<TrueFalse>trueFalseQuestions, ArrayList<FillInTheBlanks>fillInTheBlanksQuestions,int size) throws IOException{
         Parent root;
+        this.multipleAnswerQuestions = multipleAnswerQuestions;
+        this.multipleChoiceQuestions = multipleChoiceQuestions;
+        this.trueFalseQuestions = trueFalseQuestions;
        // Stage stage = (Stage) AButton.getScene().getWindow();
         if(size != 0){
             this.fillInTheBlanksQuestions = fillInTheBlanksQuestions;
-            FIBQuestionDescriptionLabel.setText(fillInTheBlanksQuestions.get(size-1).description);           
+            FIBQuestionDescriptionLabel.setText(fillInTheBlanksQuestions.get(size-1).description);
+            
+            nextButton.setOnAction(e -> {
+                
+                if(userAnswerField.getText().trim().equals(null)){
+                    
+                }
+                else{
+                    String answer = userAnswerField.getText().trim();
+                    if(answer.equalsIgnoreCase(fillInTheBlanksQuestions.get(size-1).correctAnswer)){
+                        this.numCorrect++;
+                        this.correctQuestions.add(fillInTheBlanksQuestions.get(size-1));
+                    }
+                    else {
+                        this.numIncorrect++;
+                        this.incorrectQuestions.add(fillInTheBlanksQuestions.get(size-1));
+                    }
+                    userAnswerField.setText(null);
+                }
+                int m = size - 1;
+            try {
+                launchFIB(this.multipleChoiceQuestions, this.multipleAnswerQuestions, 
+                        this.trueFalseQuestions, this.fillInTheBlanksQuestions, m);
+            } catch (IOException ex) {
+                Logger.getLogger(MCQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            });
+            
         }
         else{
             Stage stage = (Stage) nextButton.getScene().getWindow();
@@ -93,6 +143,11 @@ public class FIBQuestionsController implements Initializable {
             sc.launchTF(this.multipleChoiceQuestions, this.multipleAnswerQuestions, this.trueFalseQuestions, 
                     this.fillInTheBlanksQuestions, this.multipleAnswerQuestions.size());
             sc.initID(userId);
+            sc.setNumOfQuestions(this.numOfQuestions);
+            sc.setCorrect(this.numCorrect);
+            sc.setIncorrect(this.numIncorrect);
+            sc.setCorrectQuestions(this.correctQuestions);
+            sc.setIncorrectQuestions(this.incorrectQuestions);
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();

@@ -7,6 +7,7 @@ package qcas;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,6 +20,7 @@ import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 /**
@@ -30,6 +32,14 @@ public class QuizResultsController implements Initializable {
     
     Scene scene; 
     Stage homeStage;
+    String userId;
+    Pane question = new Pane();
+    int userScore;
+    int numOfQuestions;
+    int numCorrect;
+    int numIncorrect;
+    ArrayList <Question> correctQuestions = new ArrayList();
+    ArrayList <Question> incorrectQuestions = new ArrayList();
 
     @FXML
     private Button PrintToPDFButton;
@@ -41,6 +51,45 @@ public class QuizResultsController implements Initializable {
     private Label numberIncorrectLabel;
     @FXML
     private BarChart<?, ?> barChartStudent;
+    
+
+    
+    
+    public void initID(String ID){ 
+        userId = ID;
+    }
+    
+    public void setScore(int num){ 
+        userScore = num;
+    }
+    
+    public void setNumOfQuestions(int num){ 
+        numOfQuestions = num;
+    }
+    
+    public void setCorrect(int num){ 
+        numCorrect = num;
+    }
+    
+    public void setIncorrect(int num){ 
+        numIncorrect = num;
+    }
+    
+    public ArrayList<Question> getCorrectQuestions() {
+        return correctQuestions;
+    }
+
+    public void setCorrectQuestions(ArrayList<Question> correctQuestions) {
+        this.correctQuestions = correctQuestions;
+    }
+
+    public ArrayList<Question> getIncorrectQuestions() {
+        return incorrectQuestions;
+    }
+
+    public void setIncorrectQuestions(ArrayList<Question> incorrectQuestions) {
+        this.incorrectQuestions = incorrectQuestions;
+    }
 
     /**
      * Initializes the controller class.
@@ -83,7 +132,17 @@ public class QuizResultsController implements Initializable {
                 homeStage.setScene(LoginScreen);
                 homeStage.show();
     }
-
-    
-    
+        
+        public void launchQuizResults(ArrayList<Question>correctQuestions, ArrayList<Question>incorrectQuestions) throws IOException{
+        Parent root;
+        this.correctQuestions = correctQuestions;
+        this.incorrectQuestions = incorrectQuestions;
+       // Stage stage = (Stage) AButton.getScene().getWindow();
+       
+       numberCorrectLabel.setText(this.correctQuestions.size()+"");
+       numberIncorrectLabel.setText(this.incorrectQuestions.size()+"");
+       
+       
+        
+        }
 }

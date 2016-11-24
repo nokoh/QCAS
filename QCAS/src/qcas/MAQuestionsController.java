@@ -34,6 +34,8 @@ public class MAQuestionsController implements Initializable {
     ArrayList<MultipleAnswer>multipleAnswerQuestions = new ArrayList();
     ArrayList<TrueFalse>trueFalseQuestions = new ArrayList();
     ArrayList<FillInTheBlanks>fillInTheBlanksQuestions = new ArrayList();
+    ArrayList <Question> correctQuestions = new ArrayList();
+    ArrayList <Question> incorrectQuestions = new ArrayList();
 
     
     Scene scene;
@@ -43,9 +45,7 @@ public class MAQuestionsController implements Initializable {
     int numCorrect;
     int numIncorrect;
     int numOfQuestions;
-    
-
-    
+   
     @FXML 
     private Button AButton;
     @FXML 
@@ -91,6 +91,24 @@ public class MAQuestionsController implements Initializable {
         numIncorrect = num;
     }
 
+    public ArrayList<Question> getCorrectQuestions() {
+        return correctQuestions;
+    }
+
+    public void setCorrectQuestions(ArrayList<Question> correctQuestions) {
+        this.correctQuestions = correctQuestions;
+    }
+
+    public ArrayList<Question> getIncorrectQuestions() {
+        return incorrectQuestions;
+    }
+
+    public void setIncorrectQuestions(ArrayList<Question> incorrectQuestions) {
+        this.incorrectQuestions = incorrectQuestions;
+    }
+    
+    
+
     /**
      * Initializes the controller class.
      */
@@ -101,6 +119,7 @@ public class MAQuestionsController implements Initializable {
 
     public void launchMA(ArrayList<MultipleChoice>multipleChoiceQuestions, ArrayList<MultipleAnswer>multipleAnswerQuestions, ArrayList<TrueFalse>trueFalseQuestions, 
         ArrayList<FillInTheBlanks>fillInTheBlanksQuestions,int size) throws IOException{
+        
         Parent root;
         this.multipleChoiceQuestions = multipleChoiceQuestions;
         this.trueFalseQuestions = trueFalseQuestions;
@@ -113,11 +132,17 @@ public class MAQuestionsController implements Initializable {
             MAOptionALabel.setText(multipleAnswerQuestions.get(size-1).answer1);
             MAOptionBLabel.setText(multipleAnswerQuestions.get(size-1).answer2);
             MAOptionCLabel.setText(multipleAnswerQuestions.get(size-1).answer3);
-            MAOptionDLabel.setText(multipleAnswerQuestions.get(size-1).answer4); 
+            MAOptionDLabel.setText(multipleAnswerQuestions.get(size-1).answer4);
+            
+            
             
             AButton.setOnAction(e -> {
             if(multipleAnswerQuestions.get(size-1).correct1.equals("correct")){
-                
+                this.numCorrect++;
+                this.correctQuestions.add(multipleAnswerQuestions.get(size-1));
+            }else{
+                this.numIncorrect++;
+                this.incorrectQuestions.add(multipleAnswerQuestions.get(size-1));
             }
             int m = size - 1;
             try {
@@ -130,7 +155,12 @@ public class MAQuestionsController implements Initializable {
         
         BButton.setOnAction(e -> {
             if(multipleAnswerQuestions.get(size-1).correct1.equals("correct")){
-                
+                this.numCorrect++;
+                this.correctQuestions.add(multipleAnswerQuestions.get(size-1));
+            }
+            else{
+                this.numIncorrect++;
+                this.incorrectQuestions.add(multipleAnswerQuestions.get(size-1));
             }
             int m = size - 1;
             try {
@@ -144,7 +174,12 @@ public class MAQuestionsController implements Initializable {
         
         CButton.setOnAction(e -> {
             if(multipleAnswerQuestions.get(size-1).correct1.equals("correct")){
-                
+                this.numCorrect++;
+                this.correctQuestions.add(multipleAnswerQuestions.get(size-1));
+            }
+            else{
+                this.numIncorrect++;
+                this.incorrectQuestions.add(multipleAnswerQuestions.get(size-1));
             }
             int m = size - 1;
             try {
@@ -157,7 +192,12 @@ public class MAQuestionsController implements Initializable {
         
         DButton.setOnAction(e -> {
             if(multipleAnswerQuestions.get(size-1).correct1.equals("correct")){
-                
+                this.numCorrect++;
+                this.correctQuestions.add(multipleAnswerQuestions.get(size-1));
+            }
+            else{
+                this.numIncorrect++;
+                this.incorrectQuestions.add(multipleAnswerQuestions.get(size-1));
             }
             int m = size - 1;
             try {
@@ -176,6 +216,11 @@ public class MAQuestionsController implements Initializable {
             sc.launchFIB(this.multipleChoiceQuestions, this.multipleAnswerQuestions, this.trueFalseQuestions, 
                     this.fillInTheBlanksQuestions, this.multipleAnswerQuestions.size());
             sc.initID(userId);
+            sc.setNumOfQuestions(this.numOfQuestions);
+            sc.setCorrect(this.numCorrect);
+            sc.setIncorrect(this.numIncorrect);
+            sc.setCorrectQuestions(this.correctQuestions);
+            sc.setIncorrectQuestions(this.incorrectQuestions);
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();

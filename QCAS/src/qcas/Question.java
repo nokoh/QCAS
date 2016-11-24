@@ -251,7 +251,8 @@ class TrueFalse extends Question {
             String select = "SELECT * FROM QuizDB.TFTable WHERE difficulty = ? AND questionNumber = ?";//statement to select question from database.
             PreparedStatement stmt2 = this.con.prepareStatement(select);
             stmt2.setString(1, difficulty); //applies random variable to select statement.
-            stmt2.setInt(2, selector); //applies random variable to select statement.
+            //stmt2.setInt(2, selector); //applies random variable to select statement.
+            stmt2.setInt(2, 70); //applies random variable to select statement.
             ResultSet rs = stmt2.executeQuery();//executes statement and returns value to resultset variable.
             
             /* Assigns each variable from column values to the different variables*/
@@ -307,7 +308,8 @@ class FillInTheBlanks extends Question {
             String select = "SELECT * FROM QuizDB.FIBTable WHERE difficulty = ? AND questionNumber = ?";//statement to select question from database.
             PreparedStatement stmt2 = this.con.prepareStatement(select);
             stmt2.setString(1, difficulty); //applies random variable to select statement.
-            stmt2.setInt(2, selector); //applies random variable to select statement.
+          //  stmt2.setInt(2, selector); //applies random variable to select statement.
+            stmt2.setInt(2, 70); //applies random variable to select statement.
             ResultSet rs = stmt2.executeQuery();//executes statement and returns value to resultset variable.
             
             /* Assigns each variable from column values to the different variables*/

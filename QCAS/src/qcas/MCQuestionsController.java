@@ -193,6 +193,8 @@ public class MCQuestionsController implements Initializable {
             sc.setNumOfQuestions(this.numOfQuestions);
             sc.setCorrect(this.numCorrect);
             sc.setIncorrect(this.numIncorrect);
+            sc.setCorrectQuestions(this.correctQuestions);
+            sc.setIncorrectQuestions(this.incorrectQuestions);
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
