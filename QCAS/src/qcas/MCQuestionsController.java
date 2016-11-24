@@ -93,7 +93,7 @@ public class MCQuestionsController implements Initializable {
             int m = size - 1;
             try {
                 launchMCQ(this.multipleAnswerQuestions,   this.multipleChoiceQuestions, 
-                        this.trueFalseQuestions, this.fillInTheBlanksQuestions , m);
+                        this.trueFalseQuestions, this.fillInTheBlanksQuestions, m);
             } catch (IOException ex) {
                 Logger.getLogger(MCQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -144,7 +144,7 @@ public class MCQuestionsController implements Initializable {
             FXMLLoader f = new FXMLLoader(getClass().getResource("MAQuestions.fxml"));
             root = f.load();
             MAQuestionsController sc = f.<MAQuestionsController>getController();
-            sc.launchMA(this.multipleAnswerQuestions, this.trueFalseQuestions, 
+            sc.launchMA(this.multipleChoiceQuestions, this.multipleAnswerQuestions, this.trueFalseQuestions, 
                     this.fillInTheBlanksQuestions, this.multipleAnswerQuestions.size());
             sc.initID(userId);
             scene = new Scene(root);

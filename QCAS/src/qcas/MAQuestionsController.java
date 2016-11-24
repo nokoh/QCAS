@@ -30,6 +30,7 @@ import javafx.stage.Stage;
  */
 public class MAQuestionsController implements Initializable {
     
+    ArrayList<MultipleChoice>multipleChoiceQuestions = new ArrayList();
     ArrayList<MultipleAnswer>multipleAnswerQuestions = new ArrayList();
     ArrayList<TrueFalse>trueFalseQuestions = new ArrayList();
     ArrayList<FillInTheBlanks>fillInTheBlanksQuestions = new ArrayList();
@@ -78,8 +79,8 @@ public class MAQuestionsController implements Initializable {
         // TODO
     }
 
-    public void launchMA(ArrayList<MultipleAnswer>multipleAnswerQuestions, ArrayList<TrueFalse>trueFalseQuestions, 
-            ArrayList<FillInTheBlanks>fillInTheBlanksQuestions,int size) throws IOException{
+    public void launchMA(ArrayList<MultipleChoice>multipleChoiceQuestions, ArrayList<MultipleAnswer>multipleAnswerQuestions, ArrayList<TrueFalse>trueFalseQuestions, 
+        ArrayList<FillInTheBlanks>fillInTheBlanksQuestions,int size) throws IOException{
         Parent root;
         this.trueFalseQuestions = trueFalseQuestions;
         this.fillInTheBlanksQuestions = fillInTheBlanksQuestions;
@@ -91,10 +92,19 @@ public class MAQuestionsController implements Initializable {
             AButton.setText(multipleAnswerQuestions.get(size-1).answer1);
             BButton.setText(multipleAnswerQuestions.get(size-1).answer2);
             CButton.setText(multipleAnswerQuestions.get(size-1).answer3);
-            DButton.setText(multipleAnswerQuestions.get(size-1).answer4);  
+            DButton.setText(multipleAnswerQuestions.get(size-1).answer4);   
         }
         else{
-            
+            Stage stage = (Stage) AButton.getScene().getWindow();
+            FXMLLoader f = new FXMLLoader(getClass().getResource("FIBQuestions.fxml"));
+            root = f.load();
+            FIBQuestionsController sc = f.<FIBQuestionsController>getController();
+            sc.launchFIB(this.multipleChoiceQuestions, this.multipleAnswerQuestions, this.trueFalseQuestions, 
+                    this.fillInTheBlanksQuestions, this.multipleAnswerQuestions.size());
+            sc.initID(userId);
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
         }
         
         
