@@ -91,9 +91,7 @@ public class MAQuestionsController implements Initializable {
             AButton.setText(multipleAnswerQuestions.get(size-1).answer1);
             BButton.setText(multipleAnswerQuestions.get(size-1).answer2);
             CButton.setText(multipleAnswerQuestions.get(size-1).answer3);
-            DButton.setText(multipleAnswerQuestions.get(size-1).answer4);
-            
-            
+            DButton.setText(multipleAnswerQuestions.get(size-1).answer4);  
         }
         else{
             

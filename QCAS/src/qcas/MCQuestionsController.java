@@ -77,7 +77,6 @@ public class MCQuestionsController implements Initializable {
         this.trueFalseQuestions = trueFalseQuestions;
         this.fillInTheBlanksQuestions = fillInTheBlanksQuestions;
         
-       // Stage stage = (Stage) AButton.getScene().getWindow();
         if(size != 0){
         this.multipleChoiceQuestions = multipleChoiceQuestions;
         MCQuestionDescriptionLabel.setText(multipleChoiceQuestions.get(size-1).description);
