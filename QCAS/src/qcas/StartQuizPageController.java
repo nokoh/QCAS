@@ -122,6 +122,8 @@ public class StartQuizPageController implements Initializable {
                 stage.show();
                 } catch (IOException ex) {
              //   Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(StartQuizPageController.class.getName()).log(Level.SEVERE, null, ex);
             } 
         });
         
@@ -177,6 +179,8 @@ public class StartQuizPageController implements Initializable {
                 stage.show();
                 } catch (IOException ex) {
              //   Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(StartQuizPageController.class.getName()).log(Level.SEVERE, null, ex);
             } 
         });
         
@@ -232,10 +236,99 @@ public class StartQuizPageController implements Initializable {
                 stage.show();
                 } catch (IOException ex) {
              //   Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(StartQuizPageController.class.getName()).log(Level.SEVERE, null, ex);
             } 
         });
+        
+        
         mixedButton.setOnAction(e -> {
+            for(int i = 0; i < this.numberOfQuestions/8; i++){
+            try {
+                MultipleChoice mcq = new MultipleChoice("E");
+                this.multipleChoiceQuestions.add(mcq);
+            } catch (SQLException ex) {
+                Logger.getLogger(StartQuizPageController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+            for(int i = 0; i < this.numberOfQuestions/8; i++){
+            try {
+                MultipleChoice mcq = new MultipleChoice("M");
+                this.multipleChoiceQuestions.add(mcq);
+            } catch (SQLException ex) {
+                Logger.getLogger(StartQuizPageController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
             
+        for(int i = 0; i < this.numberOfQuestions/8; i++){
+            try {
+                MultipleAnswer ma = new MultipleAnswer("H");
+                this.multipleAnswerQuestions.add(ma);
+            } catch (SQLException ex) {
+                Logger.getLogger(StartQuizPageController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        for(int i = 0; i < this.numberOfQuestions/8; i++){
+            try {
+                MultipleAnswer ma = new MultipleAnswer("M");
+                this.multipleAnswerQuestions.add(ma);
+            } catch (SQLException ex) {
+                Logger.getLogger(StartQuizPageController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        for(int i = 0; i < this.numberOfQuestions/8; i++){
+            try {
+                TrueFalse tf = new TrueFalse("M");
+                this.trueFalseQuestions.add(tf);
+            } catch (SQLException ex) {
+                Logger.getLogger(StartQuizPageController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        for(int i = 0; i < this.numberOfQuestions/8; i++){
+            try {
+                TrueFalse tf = new TrueFalse("E");
+                this.trueFalseQuestions.add(tf);
+            } catch (SQLException ex) {
+                Logger.getLogger(StartQuizPageController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        for(int i = 0; i < this.numberOfQuestions/8; i++){
+            try {
+                FillInTheBlanks fib = new FillInTheBlanks("H");
+                this.fillInTheBlanksQuestions.add(fib);
+            } catch (SQLException ex) {
+                Logger.getLogger(StartQuizPageController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        for(int i = 0; i < this.numberOfQuestions/8; i++){
+            try {
+                FillInTheBlanks fib = new FillInTheBlanks("E");
+                this.fillInTheBlanksQuestions.add(fib);
+            } catch (SQLException ex) {
+                Logger.getLogger(StartQuizPageController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        Stage stage;
+            Parent root;
+            stage = (Stage)easyButton.getScene().getWindow();
+            try {
+                //load up OTHER FXML document
+                FXMLLoader f = new FXMLLoader(getClass().getResource("MCQuestions.fxml"));
+                root = f.load();
+                MCQuestionsController sc = f.<MCQuestionsController>getController();
+                sc.multipleAnswerQuestions = this.multipleAnswerQuestions;
+                sc.launchMCQ(this.multipleAnswerQuestions, this.multipleChoiceQuestions, 
+                        this.trueFalseQuestions, this.fillInTheBlanksQuestions, this.numberOfQuestions/4);
+                sc.initID(userId);
+                sc.setNumOfQuestions(this.numberOfQuestions);
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+                } catch (IOException ex) {
+             //   Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(StartQuizPageController.class.getName()).log(Level.SEVERE, null, ex);
+            } 
             
         });
     

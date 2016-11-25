@@ -7,6 +7,7 @@ package qcas;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -118,7 +119,7 @@ public class MAQuestionsController implements Initializable {
     }
 
     public void launchMA(ArrayList<MultipleChoice>multipleChoiceQuestions, ArrayList<MultipleAnswer>multipleAnswerQuestions, ArrayList<TrueFalse>trueFalseQuestions, 
-        ArrayList<FillInTheBlanks>fillInTheBlanksQuestions,int size) throws IOException{
+        ArrayList<FillInTheBlanks>fillInTheBlanksQuestions,int size) throws IOException, SQLException{
         
         Parent root;
         this.multipleChoiceQuestions = multipleChoiceQuestions;
@@ -150,11 +151,13 @@ public class MAQuestionsController implements Initializable {
                         this.trueFalseQuestions, this.fillInTheBlanksQuestions, m);
             } catch (IOException ex) {
                 Logger.getLogger(MCQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            }   catch (SQLException ex) {
+                    Logger.getLogger(MAQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
+                }
         });
         
         BButton.setOnAction(e -> {
-            if(multipleAnswerQuestions.get(size-1).correct1.equals("correct")){
+            if(multipleAnswerQuestions.get(size-1).correct2.equals("correct")){
                 this.numCorrect++;
                 this.correctQuestions.add(multipleAnswerQuestions.get(size-1));
             }
@@ -168,12 +171,14 @@ public class MAQuestionsController implements Initializable {
                         this.trueFalseQuestions, this.fillInTheBlanksQuestions , m);
             } catch (IOException ex) {
                 Logger.getLogger(MCQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            }   catch (SQLException ex) {
+                    Logger.getLogger(MAQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
+                }
             
         });
         
         CButton.setOnAction(e -> {
-            if(multipleAnswerQuestions.get(size-1).correct1.equals("correct")){
+            if(multipleAnswerQuestions.get(size-1).correct3.equals("correct")){
                 this.numCorrect++;
                 this.correctQuestions.add(multipleAnswerQuestions.get(size-1));
             }
@@ -187,11 +192,13 @@ public class MAQuestionsController implements Initializable {
                         this.trueFalseQuestions, this.fillInTheBlanksQuestions , m);
             } catch (IOException ex) {
                 Logger.getLogger(MCQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            }   catch (SQLException ex) {
+                    Logger.getLogger(MAQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
+                }
         });
         
         DButton.setOnAction(e -> {
-            if(multipleAnswerQuestions.get(size-1).correct1.equals("correct")){
+            if(multipleAnswerQuestions.get(size-1).correct4.equals("correct")){
                 this.numCorrect++;
                 this.correctQuestions.add(multipleAnswerQuestions.get(size-1));
             }
@@ -205,7 +212,9 @@ public class MAQuestionsController implements Initializable {
                         this.trueFalseQuestions, this.fillInTheBlanksQuestions , m);
             } catch (IOException ex) {
                 Logger.getLogger(MCQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            }   catch (SQLException ex) {
+                    Logger.getLogger(MAQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
+                }
         });
         }
         else{

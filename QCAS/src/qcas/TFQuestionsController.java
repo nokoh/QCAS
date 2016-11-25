@@ -7,6 +7,7 @@ package qcas;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -100,7 +101,7 @@ public class TFQuestionsController implements Initializable {
     }
     
     public void launchTF(ArrayList<MultipleChoice>multipleChoiceQuestions, ArrayList<MultipleAnswer>multipleAnswerQuestions, 
-            ArrayList<TrueFalse>trueFalseQuestions, ArrayList<FillInTheBlanks>fillInTheBlanksQuestions,int size) throws IOException{
+            ArrayList<TrueFalse>trueFalseQuestions, ArrayList<FillInTheBlanks>fillInTheBlanksQuestions,int size) throws IOException, SQLException{
         Parent root;
         this.multipleAnswerQuestions = multipleAnswerQuestions;
         this.multipleChoiceQuestions = multipleChoiceQuestions;
@@ -113,11 +114,11 @@ public class TFQuestionsController implements Initializable {
             trueButton.setOnAction(e -> {
                 if(trueFalseQuestions.get(size-1).correctAnswer.equals("true")){
                     this.numCorrect++;
-                    this.correctQuestions.add(fillInTheBlanksQuestions.get(size-1));
+                    this.correctQuestions.add(trueFalseQuestions.get(size-1));
                 }
                 else{
                     this.numIncorrect++;
-                    this.incorrectQuestions.add(fillInTheBlanksQuestions.get(size-1));
+                    this.incorrectQuestions.add(trueFalseQuestions.get(size-1));
                 }
                 int m = size - 1;
             try {
@@ -125,17 +126,19 @@ public class TFQuestionsController implements Initializable {
                         this.trueFalseQuestions, this.fillInTheBlanksQuestions, m);
             } catch (IOException ex) {
                 Logger.getLogger(MCQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            }   catch (SQLException ex) {
+                    Logger.getLogger(TFQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 
             });
             falseButton.setOnAction(e -> {
                 if(trueFalseQuestions.get(size-1).correctAnswer.equals("false")){
                     this.numCorrect++;
-                    this.correctQuestions.add(fillInTheBlanksQuestions.get(size-1));
+                    this.correctQuestions.add(trueFalseQuestions.get(size-1));
                 }
                 else{
                     this.numIncorrect++;
-                    this.incorrectQuestions.add(fillInTheBlanksQuestions.get(size-1));
+                    this.incorrectQuestions.add(trueFalseQuestions.get(size-1));
                 }
                 int m = size - 1;
             try {
@@ -143,7 +146,9 @@ public class TFQuestionsController implements Initializable {
                         this.trueFalseQuestions, this.fillInTheBlanksQuestions, m);
             } catch (IOException ex) {
                 Logger.getLogger(MCQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            }   catch (SQLException ex) {
+                    Logger.getLogger(TFQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
+                }
             });
             
         }

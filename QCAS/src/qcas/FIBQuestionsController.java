@@ -7,6 +7,7 @@ package qcas;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -98,7 +99,7 @@ public class FIBQuestionsController implements Initializable {
     }
     
     public void launchFIB(ArrayList<MultipleChoice>multipleChoiceQuestions, ArrayList<MultipleAnswer>multipleAnswerQuestions, 
-            ArrayList<TrueFalse>trueFalseQuestions, ArrayList<FillInTheBlanks>fillInTheBlanksQuestions,int size) throws IOException{
+            ArrayList<TrueFalse>trueFalseQuestions, ArrayList<FillInTheBlanks>fillInTheBlanksQuestions,int size) throws IOException, SQLException{
         Parent root;
         this.multipleAnswerQuestions = multipleAnswerQuestions;
         this.multipleChoiceQuestions = multipleChoiceQuestions;
@@ -111,7 +112,7 @@ public class FIBQuestionsController implements Initializable {
             nextButton.setOnAction(e -> {
                 
                 if(userAnswerField.getText().trim().equals(null)){
-                    
+                    String error = "Please enter your answer";
                 }
                 else{
                     String answer = userAnswerField.getText().trim();
@@ -131,7 +132,9 @@ public class FIBQuestionsController implements Initializable {
                         this.trueFalseQuestions, this.fillInTheBlanksQuestions, m);
             } catch (IOException ex) {
                 Logger.getLogger(MCQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            }   catch (SQLException ex) {
+                    Logger.getLogger(FIBQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
+                }
             });
             
         }

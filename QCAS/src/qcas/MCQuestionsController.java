@@ -7,6 +7,7 @@ package qcas;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -93,7 +94,7 @@ public class MCQuestionsController implements Initializable {
     }
 
     public void launchMCQ(ArrayList<MultipleAnswer>multipleAnswerQuestions, ArrayList<MultipleChoice>multipleChoiceQuestions, 
-            ArrayList<TrueFalse>trueFalseQuestions, ArrayList<FillInTheBlanks>fillInTheBlanksQuestions, int size) throws IOException{
+            ArrayList<TrueFalse>trueFalseQuestions, ArrayList<FillInTheBlanks>fillInTheBlanksQuestions, int size) throws IOException, SQLException{
         Parent root;
         this.multipleAnswerQuestions = multipleAnswerQuestions;
         this.trueFalseQuestions = trueFalseQuestions;
@@ -124,11 +125,13 @@ public class MCQuestionsController implements Initializable {
                         this.trueFalseQuestions, this.fillInTheBlanksQuestions, m);
             } catch (IOException ex) {
                 Logger.getLogger(MCQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(MCQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
         
         BButton.setOnAction(e -> {
-            if(multipleChoiceQuestions.get(size-1).correct1.equals("correct")){
+            if(multipleChoiceQuestions.get(size-1).correct2.equals("correct")){
                 this.numCorrect++;
                 this.correctQuestions.add(multipleChoiceQuestions.get(size-1));
             }
@@ -141,13 +144,15 @@ public class MCQuestionsController implements Initializable {
                 launchMCQ(this.multipleAnswerQuestions,   this.multipleChoiceQuestions, 
                         this.trueFalseQuestions, this.fillInTheBlanksQuestions , m);
             } catch (IOException ex) {
+                Logger.getLogger(MCQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
                 Logger.getLogger(MCQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
             }
             
         });
         
         CButton.setOnAction(e -> {
-            if(multipleChoiceQuestions.get(size-1).correct1.equals("correct")){
+            if(multipleChoiceQuestions.get(size-1).correct3.equals("correct")){
                 this.numCorrect++;
                 this.correctQuestions.add(multipleChoiceQuestions.get(size-1));
             }
@@ -161,11 +166,13 @@ public class MCQuestionsController implements Initializable {
                         this.trueFalseQuestions, this.fillInTheBlanksQuestions , m);
             } catch (IOException ex) {
                 Logger.getLogger(MCQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(MCQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
         
         DButton.setOnAction(e -> {
-            if(multipleChoiceQuestions.get(size-1).correct1.equals("correct")){
+            if(multipleChoiceQuestions.get(size-1).correct4.equals("correct")){
                 this.numCorrect++;
                 this.correctQuestions.add(multipleChoiceQuestions.get(size-1));
             }
@@ -178,6 +185,8 @@ public class MCQuestionsController implements Initializable {
                 launchMCQ(this.multipleAnswerQuestions,   this.multipleChoiceQuestions, 
                         this.trueFalseQuestions, this.fillInTheBlanksQuestions , m);
             } catch (IOException ex) {
+                Logger.getLogger(MCQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
                 Logger.getLogger(MCQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
