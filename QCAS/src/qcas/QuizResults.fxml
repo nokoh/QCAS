@@ -9,12 +9,12 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qcas.QuizResultsController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qcas.QuizResultsController">
     <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f4f4f5" height="72.0" layoutX="17.0" layoutY="123.0" stroke="BLACK" strokeType="INSIDE" width="209.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#aaacae" height="72.0" layoutX="15.0" layoutY="19.0" stroke="BLACK" strokeType="INSIDE" width="567.0" />
-      <Button id="printToPDFButton" fx:id="PrintToPDFButton" layoutX="235.0" layoutY="304.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="130.0" text="Print to PDF " />
-      <Button id="returnHomeButton" fx:id="returnHomeButton" layoutX="235.0" layoutY="347.0" mnemonicParsing="false" onAction="#returnHomeButtonClicked" prefHeight="25.0" prefWidth="130.0" text="Return Home" />
+      <Button id="printToPDFButton" fx:id="PrintToPDFButton" layoutX="343.0" layoutY="412.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="130.0" text="Print to PDF " />
+      <Button id="returnHomeButton" fx:id="returnHomeButton" layoutX="343.0" layoutY="448.0" mnemonicParsing="false" onAction="#returnHomeButtonClicked" prefHeight="25.0" prefWidth="130.0" text="Return Home" />
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="171.0" layoutY="30.0" prefHeight="51.0" prefWidth="258.0" text="Quiz Results" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="30.0" />
@@ -44,17 +44,17 @@
             </Label>
          </children>
       </VBox>
-      <Label layoutX="503.0" layoutY="359.0" text="Student Report">
+      <Label layoutX="696.0" layoutY="453.0" text="Student Report">
          <font>
             <Font size="10.0" />
          </font>
       </Label>
-      <BarChart id="barChartStudent" fx:id="barChartStudent" layoutX="235.0" layoutY="107.0" prefHeight="183.0" prefWidth="346.0" title="Results Based on Question Type">
+      <BarChart id="barChartStudent" fx:id="barChartStudent" layoutX="235.0" layoutY="107.0" prefHeight="287.0" prefWidth="548.0" title="Results Based on Question Type">
         <xAxis>
-          <CategoryAxis endMargin="15.0" label="Type of Question" side="BOTTOM" startMargin="2.0" tickLength="3.0" />
+          <CategoryAxis endMargin="15.0" label="Type of Question" side="BOTTOM" startMargin="2.0" tickLength="3.0" fx:id="xAxis" />
         </xAxis>
         <yAxis>
-          <NumberAxis label="# Correct" minorTickCount="2" side="LEFT" upperBound="15.0" />
+          <NumberAxis fx:id="yAxis" label="# Correct" minorTickCount="2" side="LEFT" upperBound="15.0" />
         </yAxis>
       </BarChart>
    </children>

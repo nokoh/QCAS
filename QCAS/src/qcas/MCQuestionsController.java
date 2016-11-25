@@ -121,7 +121,7 @@ public class MCQuestionsController implements Initializable {
             }
             int m = size - 1;
             try {
-                launchMCQ(this.multipleAnswerQuestions,   this.multipleChoiceQuestions, 
+                launchMCQ(this.multipleAnswerQuestions, this.multipleChoiceQuestions, 
                         this.trueFalseQuestions, this.fillInTheBlanksQuestions, m);
             } catch (IOException ex) {
                 Logger.getLogger(MCQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
@@ -198,7 +198,8 @@ public class MCQuestionsController implements Initializable {
             MAQuestionsController sc = f.<MAQuestionsController>getController();
             sc.launchMA(this.multipleChoiceQuestions, this.multipleAnswerQuestions, this.trueFalseQuestions, 
                     this.fillInTheBlanksQuestions, this.multipleAnswerQuestions.size());
-            sc.initID(userId);
+            sc.initID(this.userId);
+            System.out.println(userId);
             sc.setNumOfQuestions(this.numOfQuestions);
             sc.setCorrect(this.numCorrect);
             sc.setIncorrect(this.numIncorrect);

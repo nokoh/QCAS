@@ -9,9 +9,12 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,6 +22,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
@@ -51,7 +57,16 @@ public class QuizResultsController implements Initializable {
     @FXML
     private Label numberIncorrectLabel;
     @FXML
-    private BarChart<?, ?> barChartStudent;
+    private BarChart<String, Integer> barChartStudent;
+    @FXML
+    private CategoryAxis xAxis;
+    
+    @FXML
+    private NumberAxis yAxis;
+
+    
+    private ObservableList<String> difficultyNames = FXCollections.observableArrayList();
+
     
 
     
@@ -138,7 +153,10 @@ public class QuizResultsController implements Initializable {
         Parent root;
         this.correctQuestions = correctQuestions;
         this.incorrectQuestions = incorrectQuestions;
+        System.out.println("USerID" + userId);
         String questionDifficulty;
+        int [] difficultyCorrectScores = new int[3];
+        int [] difficultyInCorrectScores = new int[3];
        // Stage stage = (Stage) AButton.getScene().getWindow();
        MultipleChoice mc = new MultipleChoice("");
        MultipleAnswer ma = new MultipleAnswer("");
@@ -180,8 +198,69 @@ public class QuizResultsController implements Initializable {
                fib = (FillInTheBlanks)this.incorrectQuestions.get(i);
            }
        }
-       
-       
+           for(Question question:this.correctQuestions){
+           if(question.difficulty.equals("E")){
+               difficultyCorrectScores[0]++;        
+            }
+           }
+           
+           for(Question question:this.correctQuestions){
+           if(question.difficulty.equals("M")){
+               difficultyCorrectScores[1]++;        
+            }
+           }
+           
+           for(Question question:this.correctQuestions){
+           if(question.difficulty.equals("H")){
+               difficultyCorrectScores[2]++;        
+            }
+           }
+           
+           for(Question question:this.incorrectQuestions){
+           if(question.difficulty.equals("E")){
+               difficultyInCorrectScores[0]++;        
+            }
+           }
+           
+           for(Question question:this.incorrectQuestions){
+           if(question.difficulty.equals("M")){
+               difficultyInCorrectScores[1]++;        
+            }
+           }
+           
+           for(Question question:this.incorrectQuestions){
+           if(question.difficulty.equals("H")){
+               difficultyInCorrectScores[2]++;        
+            }
+           }
+                      
+           String correct = "Correct";
+           String inCorrect = "Incorrect";
+  
         
+           barChartStudent.setTitle("Reports for Student ID: " + userId);
+           xAxis.setLabel("Difficulty Levels");       
+           yAxis.setLabel("Number");
+            
+           /* Easy questions correct and incorrect */
+           XYChart.Series series1 = new XYChart.Series();
+           series1.setName("Easy");       
+           series1.getData().add(new XYChart.Data(correct, difficultyCorrectScores[0]));
+           series1.getData().add(new XYChart.Data(inCorrect, difficultyInCorrectScores[0]));
+           
+           /* Medium questions correct and incorrect */
+           XYChart.Series series2 = new XYChart.Series();
+           series2.setName("Medium");       
+           series2.getData().add(new XYChart.Data(correct, difficultyCorrectScores[1]));
+           series2.getData().add(new XYChart.Data(inCorrect, difficultyInCorrectScores[1]));
+           
+           /* Hard questions correct and incorrect */
+           XYChart.Series series3 = new XYChart.Series();
+           series3.setName("Hard");       
+           series3.getData().add(new XYChart.Data(correct, difficultyCorrectScores[2]));
+           series3.getData().add(new XYChart.Data(inCorrect, difficultyInCorrectScores[2]));
+
+           barChartStudent.getData().addAll(series1, series2, series3);
+
         }
 }

@@ -69,7 +69,7 @@ public class StudentProfileSceneController implements Initializable {
                 FXMLLoader f = new FXMLLoader(getClass().getResource("SelectQuestions.fxml"));
                 root = f.load();
                 SelectQuestionsController sc = f.<SelectQuestionsController>getController();
-                sc.userId = userId;
+                sc.initID(userId);
 //                Parent studentHomePage = FXMLLoader.load(getClass().getResource("studentProfileScene.fxml"));
                 scene = new Scene(root);
                 stage.setScene(scene);

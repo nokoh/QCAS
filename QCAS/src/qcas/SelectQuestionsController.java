@@ -70,7 +70,8 @@ public class SelectQuestionsController implements Initializable {
                 root = f.load();
                 StartQuizPageController sc = f.<StartQuizPageController>getController();
                 sc.numberOfQuestions = 8;
-                sc.userId = userId;
+                sc.initID(userId);
+                System.out.println(userId);
                 scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();

@@ -59,11 +59,11 @@ public class StartQuizPageController implements Initializable {
     public void setNumOfQuestions(int num){ 
         numberOfQuestions = num;
     }
-    /*
+    
     public void initID(String ID){ 
-        UserIDLabel.setText(ID);
-        
-    }*/
+        userId = ID;
+    }
+    
     public void startQuiz(){
         int num = this.numberOfQuestions;
         easyButton.setOnAction(e -> {
@@ -115,7 +115,8 @@ public class StartQuizPageController implements Initializable {
                 MCQuestionsController sc = f.<MCQuestionsController>getController();
                 sc.launchMCQ(this.multipleAnswerQuestions,   this.multipleChoiceQuestions, 
                         this.trueFalseQuestions, this.fillInTheBlanksQuestions , this.numberOfQuestions/4);
-                sc.initID(userId);
+                sc.initID(this.userId);
+                System.out.println(userId);
                 sc.setNumOfQuestions(this.numberOfQuestions);
                 scene = new Scene(root);
                 stage.setScene(scene);

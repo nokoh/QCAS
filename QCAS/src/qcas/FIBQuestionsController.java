@@ -145,7 +145,8 @@ public class FIBQuestionsController implements Initializable {
             TFQuestionsController sc = f.<TFQuestionsController>getController();
             sc.launchTF(this.multipleChoiceQuestions, this.multipleAnswerQuestions, this.trueFalseQuestions, 
                     this.fillInTheBlanksQuestions, this.multipleAnswerQuestions.size());
-            sc.initID(userId);
+            sc.initID(this.userId);
+            System.out.println(userId);
             sc.setNumOfQuestions(this.numOfQuestions);
             sc.setCorrect(this.numCorrect);
             sc.setIncorrect(this.numIncorrect);

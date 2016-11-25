@@ -157,8 +157,8 @@ public class TFQuestionsController implements Initializable {
             FXMLLoader f = new FXMLLoader(getClass().getResource("QuizResults.fxml"));
             root = f.load();
             QuizResultsController sc = f.<QuizResultsController>getController();
+            sc.initID(this.userId);
             sc.launchQuizResults(this.correctQuestions, this.incorrectQuestions);
-            sc.initID(userId);
             sc.setNumOfQuestions(this.numOfQuestions);
             sc.setCorrect(this.numCorrect);
             sc.setIncorrect(this.numIncorrect);
