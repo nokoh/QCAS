@@ -135,8 +135,6 @@ public class MAQuestionsController implements Initializable {
             MAOptionCLabel.setText(multipleAnswerQuestions.get(size-1).answer3);
             MAOptionDLabel.setText(multipleAnswerQuestions.get(size-1).answer4);
             
-            
-            
             AButton.setOnAction(e -> {
             if(multipleAnswerQuestions.get(size-1).correct1.equals("correct")){
                 this.numCorrect++;
@@ -174,7 +172,6 @@ public class MAQuestionsController implements Initializable {
             }   catch (SQLException ex) {
                     Logger.getLogger(MAQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            
         });
         
         CButton.setOnAction(e -> {
@@ -234,9 +231,6 @@ public class MAQuestionsController implements Initializable {
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
-        }
-        
-        
+        }  
     }
-    
 }

@@ -9,13 +9,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qcas.QuizResultsController">
+<AnchorPane id="AnchorPane" prefHeight="554.0" prefWidth="1123.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qcas.QuizResultsController">
     <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f4f4f5" height="72.0" layoutX="17.0" layoutY="123.0" stroke="BLACK" strokeType="INSIDE" width="209.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#aaacae" height="72.0" layoutX="15.0" layoutY="19.0" stroke="BLACK" strokeType="INSIDE" width="567.0" />
-      <Button id="printToPDFButton" fx:id="PrintToPDFButton" layoutX="343.0" layoutY="412.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="130.0" text="Print to PDF " />
-      <Button id="returnHomeButton" fx:id="returnHomeButton" layoutX="343.0" layoutY="448.0" mnemonicParsing="false" onAction="#returnHomeButtonClicked" prefHeight="25.0" prefWidth="130.0" text="Return Home" />
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="171.0" layoutY="30.0" prefHeight="51.0" prefWidth="258.0" text="Quiz Results" textAlignment="CENTER">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#aaacae" height="72.0" layoutX="15.0" layoutY="19.0" stroke="BLACK" strokeType="INSIDE" width="1091.0" />
+      <Button id="printToPDFButton" fx:id="PrintToPDFButton" layoutX="517.0" layoutY="468.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="130.0" text="Print to PDF " />
+      <Button id="returnHomeButton" fx:id="returnHomeButton" layoutX="517.0" layoutY="504.0" mnemonicParsing="false" onAction="#returnHomeButtonClicked" prefHeight="25.0" prefWidth="130.0" text="Return Home" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="453.0" layoutY="30.0" prefHeight="51.0" prefWidth="258.0" text="Quiz Results" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="30.0" />
          </font>
@@ -44,12 +44,12 @@
             </Label>
          </children>
       </VBox>
-      <Label layoutX="696.0" layoutY="453.0" text="Student Report">
+      <Label layoutX="1027.0" layoutY="514.0" text="Student Report">
          <font>
             <Font size="10.0" />
          </font>
       </Label>
-      <BarChart id="barChartStudent" fx:id="barChartStudent" layoutX="235.0" layoutY="107.0" prefHeight="287.0" prefWidth="548.0" title="Results Based on Question Type">
+      <BarChart id="barChartStudent" fx:id="barChartStudent" layoutX="547.0" layoutY="111.0" prefHeight="287.0" prefWidth="548.0" title="Results Based on Question Type">
         <xAxis>
           <CategoryAxis endMargin="15.0" label="Type of Question" side="BOTTOM" startMargin="2.0" tickLength="3.0" fx:id="xAxis" />
         </xAxis>
@@ -57,5 +57,49 @@
           <NumberAxis fx:id="yAxis" label="# Correct" minorTickCount="2" side="LEFT" upperBound="15.0" />
         </yAxis>
       </BarChart>
+      <Pane layoutX="20.0" layoutY="212.0" prefHeight="321.0" prefWidth="475.0">
+         <children>
+            <VBox fx:id="answersVBox" prefHeight="321.0" prefWidth="237.5">
+               <children>
+                  <Label fx:id="question1" text="Label" />
+                  <Label fx:id="question2" text="Label" />
+                  <Label fx:id="question3" text="Label" />
+                  <Label fx:id="question4" text="Label" />
+                  <Label fx:id="question5" text="Label" />
+                  <Label fx:id="question6" text="Label" />
+                  <Label fx:id="question7" text="Label" />
+                  <Label fx:id="question8" text="Label" />
+                  <Label fx:id="question9" text="Label" />
+                  <Label fx:id="question10" text="Label" />
+                  <Label fx:id="question11" text="Label" />
+                  <Label fx:id="question12" text="Label" />
+                  <Label fx:id="question13" text="Label" />
+                  <Label fx:id="question15" text="Label" />
+                  <Label fx:id="question16" text="Label" />
+               </children>
+            </VBox>
+            <VBox fx:id="answersVBox1" layoutX="238.0" prefHeight="321.0" prefWidth="237.5">
+               <children>
+                  <Label fx:id="question17" text="Label" />
+                  <Label fx:id="question18" text="Label" />
+                  <Label text="Label" />
+                  <Label text="Label" />
+                  <Label text="Label" />
+                  <Label text="Label" />
+                  <Label text="Label" />
+                  <Label text="Label" />
+                  <Label text="Label" />
+                  <Label text="Label" />
+                  <Label text="Label" />
+                  <Label text="Label" />
+                  <Label text="Label" />
+                  <Label text="Label" />
+                  <Label text="Label" />
+                  <Label text="Label" />
+                  <Label text="Label" />
+               </children>
+            </VBox>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

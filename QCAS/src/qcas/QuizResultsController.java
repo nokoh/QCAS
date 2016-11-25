@@ -64,7 +64,8 @@ public class QuizResultsController implements Initializable {
     @FXML
     private NumberAxis yAxis;
 
-    
+    @FXML
+    private Label question1, question2, question17, question18;
     private ObservableList<String> difficultyNames = FXCollections.observableArrayList();
 
     
@@ -261,6 +262,12 @@ public class QuizResultsController implements Initializable {
            series3.getData().add(new XYChart.Data(inCorrect, difficultyInCorrectScores[2]));
 
            barChartStudent.getData().addAll(series1, series2, series3);
-
+           
+           
+            question1.setText(this.correctQuestions.get(0).description);
+            question2.setText(this.correctQuestions.get(1).description);
+            question17.setText(this.incorrectQuestions.get(0).description);
+            question18.setText(this.incorrectQuestions.get(1).description);
+           
         }
 }

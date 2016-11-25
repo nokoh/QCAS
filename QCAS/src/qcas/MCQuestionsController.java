@@ -39,6 +39,7 @@ public class MCQuestionsController implements Initializable {
     Scene scene;
     String userId;
     int userScore;
+    int currentQuestion;
     int numOfQuestions;
     int numCorrect = 0;
     int numIncorrect = 0;
@@ -99,7 +100,8 @@ public class MCQuestionsController implements Initializable {
         this.multipleAnswerQuestions = multipleAnswerQuestions;
         this.trueFalseQuestions = trueFalseQuestions;
         this.fillInTheBlanksQuestions = fillInTheBlanksQuestions;
-
+        
+        
         
         if(size != 0){
         this.multipleChoiceQuestions = multipleChoiceQuestions;
@@ -109,6 +111,7 @@ public class MCQuestionsController implements Initializable {
         MCOptionC.setText(multipleChoiceQuestions.get(size-1).answer3);
         MCOptionD.setText(multipleChoiceQuestions.get(size-1).answer4);
         
+              
         
         AButton.setOnAction(e -> {
             if(multipleChoiceQuestions.get(size-1).correct1.equals("correct")){
@@ -148,7 +151,6 @@ public class MCQuestionsController implements Initializable {
             } catch (SQLException ex) {
                 Logger.getLogger(MCQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
         });
         
         CButton.setOnAction(e -> {
@@ -210,12 +212,4 @@ public class MCQuestionsController implements Initializable {
             stage.show();
         }
     }
-    /*
-        FXMLLoader f = new FXMLLoader(getClass().getResource("scene10.fxml"));
-        root = f.load();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();   */
-    
-    
 }
