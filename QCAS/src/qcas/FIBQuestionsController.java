@@ -52,8 +52,7 @@ public class FIBQuestionsController implements Initializable {
     int numOfQuestions;
     Connection connection;
 
-    @FXML
-    private Pagination pagination;
+   
     @FXML
     private Button nextButton;
     @FXML

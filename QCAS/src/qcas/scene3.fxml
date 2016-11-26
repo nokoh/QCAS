@@ -14,15 +14,29 @@
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: maroon;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qcas.Scene3Controller">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f5f5f5" height="325.0" layoutX="21.0" layoutY="58.0" stroke="BLACK" strokeType="INSIDE" width="559.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#949697" height="94.0" layoutX="21.0" layoutY="18.0" stroke="BLACK" strokeType="INSIDE" width="559.0" />
-      <Button id="importFileButton" fx:id="importFileButton" layoutX="226.0" layoutY="175.0" mnemonicParsing="false" onAction="#uploadFile" prefHeight="25.0" prefWidth="149.0" text="Import File" />
-      <Button id="viewReportsButton" fx:id="viewReportsButton" layoutX="226.0" layoutY="233.0" mnemonicParsing="false" onAction="#viewReportsButtonClicked" prefHeight="25.0" prefWidth="149.0" text="View Reports" />
-      <Label layoutX="205.0" layoutY="43.0" text="Select Option">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#941919" height="94.0" layoutX="21.0" layoutY="18.0" stroke="BLACK" strokeType="INSIDE" width="559.0" />
+      <Button id="importFileButton" fx:id="importFileButton" layoutX="226.0" layoutY="175.0" mnemonicParsing="false" onAction="#uploadFile" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: maroon;" text="Import File" textFill="WHITE">
+         <effect>
+            <InnerShadow />
+         </effect></Button>
+      <Button id="viewReportsButton" fx:id="viewReportsButton" layoutX="226.0" layoutY="221.0" mnemonicParsing="false" onAction="#viewReportsButtonClicked" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: maroon;" text="View Reports" textFill="#f8f6f6">
+         <effect>
+            <InnerShadow />
+         </effect></Button>
+      <Label layoutX="177.0" layoutY="40.0" text="Login Successful" textFill="#fcfafa">
          <font>
-            <Font name="System Bold" size="30.0" />
+            <Font name="Segoe UI Semilight" size="35.0" />
          </font>
       </Label>
-      <Button id="returnHomeButton" fx:id="returnHomeButton" layoutX="226.0" layoutY="294.0" mnemonicParsing="false" onAction="#returnHomeButtonClicked" prefHeight="25.0" prefWidth="149.0" text="Return Home" />
+      <Button id="returnHomeButton" fx:id="returnHomeButton" layoutX="226.0" layoutY="265.0" mnemonicParsing="false" onAction="#returnHomeButtonClicked" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: maroon;" text="Return Home" textFill="#f5f3f3">
+         <effect>
+            <InnerShadow />
+         </effect></Button>
+      <Label layoutX="215.0" layoutY="327.0" text="Select a Desired Function Above">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font>
+      </Label>
    </children>
    <effect>
       <InnerShadow />
