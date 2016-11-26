@@ -61,6 +61,7 @@ public class QuizResultsController implements Initializable {
     ArrayList <Question> incorrectQuestions = new ArrayList();
     ArrayList <Question> allAnsweredQuestions = new ArrayList();
     ArrayList <String> userAnswers = new ArrayList();
+    ArrayList <String> userAnswerCheck = new ArrayList();
     Connection connection;
     Date currentDate;
     int examNumber;
@@ -158,6 +159,10 @@ public class QuizResultsController implements Initializable {
     
     public void setUserAnswers(ArrayList<String> userAnswers) {
         this.userAnswers = userAnswers;
+    }
+    
+    public void setUserAnswerCheck(ArrayList <String> userAnswerCheck) {
+        this.userAnswerCheck = userAnswerCheck;
     }
 
     /**
@@ -359,12 +364,14 @@ public class QuizResultsController implements Initializable {
         
             long time = System.currentTimeMillis();
             String s = convertTime(time);
-            String storeInDB = "INSERT INTO UserDB.ExamTable (examID, studentid, question, answerchoice, status, questionNo, examDate)"
-                + "VALUES (?, ?, ?, ?, ?, ?, ?)";
+            String storeInDB = "INSERT INTO UserDB.ExamTable (examID, studentid, question, answerchoice, status, questionNo, examDate, correctAnswer, answercheck)"
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement storeDBExecute = this.connection.prepareStatement(storeInDB);
         connection.prepareStatement("SET foreign_key_checks = 0").executeUpdate();
         
         for (int t = 0;t < this.allAnsweredQuestions.size(); t++) {
+            if(this.allAnsweredQuestions.get(t).getClass() == mc.getClass()){
+            mc = (MultipleChoice)this.allAnsweredQuestions.get(t);
             storeDBExecute.setInt(1, examNumber);
             storeDBExecute.setInt(2, Integer.parseInt(userId));
             storeDBExecute.setString(3, this.allAnsweredQuestions.get(t).description);
@@ -372,11 +379,10 @@ public class QuizResultsController implements Initializable {
             storeDBExecute.setString(5, this.allAnsweredQuestions.get(t).difficulty);
             storeDBExecute.setInt(6, this.allAnsweredQuestions.get(t).number);
             storeDBExecute.setString(7,s);
-            storeDBExecute.executeUpdate();
-        
+            storeDBExecute.setString(8, mc.correct1);
+//            storeDBExecute.executeUpdate();
             }
-        
-        System.out.println(this.numOfQuestions);
+        }
         
         if(this.allAnsweredQuestions.size() == 8){
             UA1.setText(this.userAnswers.get(0));

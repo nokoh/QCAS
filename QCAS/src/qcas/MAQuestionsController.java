@@ -42,6 +42,7 @@ public class MAQuestionsController implements Initializable {
     ArrayList <Question> correctQuestions = new ArrayList();
     ArrayList <Question> incorrectQuestions = new ArrayList();
     ArrayList <String> userAnswers = new ArrayList();
+    ArrayList <String> userAnswerCheck = new ArrayList();
 
     
     Scene scene;
@@ -125,12 +126,16 @@ public class MAQuestionsController implements Initializable {
         return incorrectQuestions;
     }
 
-    public void setIncorrectQuestions(ArrayList<Question> incorrectQuestions) {
+    public void setIncorrectQuestions(ArrayList <Question> incorrectQuestions) {
         this.incorrectQuestions = incorrectQuestions;
     }
     
-    public void setUserAnswers(ArrayList<String> userAnswers) {
+    public void setUserAnswers(ArrayList <String> userAnswers) {
         this.userAnswers = userAnswers;
+    }
+    
+    public void setUserAnswerCheck(ArrayList <String> userAnswerCheck) {
+        this.userAnswerCheck = userAnswerCheck;
     }
     
     
@@ -150,6 +155,7 @@ public class MAQuestionsController implements Initializable {
         this.multipleChoiceQuestions = multipleChoiceQuestions;
         this.trueFalseQuestions = trueFalseQuestions;
         this.fillInTheBlanksQuestions = fillInTheBlanksQuestions;
+        
        // Stage stage = (Stage) AButton.getScene().getWindow();
         if(size != 0){
             this.multipleAnswerQuestions = multipleAnswerQuestions;
@@ -158,6 +164,19 @@ public class MAQuestionsController implements Initializable {
             MAOptionBLabel.setText(multipleAnswerQuestions.get(size-1).answer2);
             MAOptionCLabel.setText(multipleAnswerQuestions.get(size-1).answer3);
             MAOptionDLabel.setText(multipleAnswerQuestions.get(size-1).answer4);
+            
+            if(multipleAnswerQuestions.get(size-1).correct1.equals("correct")){
+                this.userAnswerCheck.add(multipleAnswerQuestions.get(size - 1).answer1);
+            }
+            if(multipleAnswerQuestions.get(size-1).correct2.equals("correct")){
+                this.userAnswerCheck.add(multipleAnswerQuestions.get(size - 1).answer2);
+            }
+            if(multipleAnswerQuestions.get(size-1).correct3.equals("correct")){
+                this.userAnswerCheck.add(multipleAnswerQuestions.get(size - 1).answer3);
+            }
+            if(multipleAnswerQuestions.get(size-1).correct4.equals("correct")){
+                this.userAnswerCheck.add(multipleAnswerQuestions.get(size - 1).answer4);
+            }
             
             AButton.setOnAction(e -> {
             if(multipleAnswerQuestions.get(size-1).correct1.equals("correct")){
@@ -229,6 +248,7 @@ public class MAQuestionsController implements Initializable {
                 this.numCorrect++;
                 this.correctQuestions.add(multipleAnswerQuestions.get(size-1));
                 this.userAnswers.add(multipleAnswerQuestions.get(size-1).answer4);
+                
             }
             else{
                 this.numIncorrect++;
@@ -255,13 +275,13 @@ public class MAQuestionsController implements Initializable {
                     this.fillInTheBlanksQuestions, this.multipleAnswerQuestions.size());
             sc.initID(this.userId);
             sc.setNumOfQuestions(this.numOfQuestions);
+            sc.setUserAnswerCheck(this.userAnswerCheck);
             sc.setCorrect(this.numCorrect);
             sc.setIncorrect(this.numIncorrect);
             sc.setCorrectQuestions(this.correctQuestions);
             sc.setIncorrectQuestions(this.incorrectQuestions);
             sc.setUserAnswers(this.userAnswers);
-            System.out.println("MA "+this.userAnswers.get(0));
-            System.out.println("MA " + this.userAnswers.get(1));
+
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();

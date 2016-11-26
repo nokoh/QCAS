@@ -40,6 +40,7 @@ public class MCQuestionsController implements Initializable {
     ArrayList <Question> correctQuestions = new ArrayList();
     ArrayList <Question> incorrectQuestions = new ArrayList();
     ArrayList <String> userAnswers = new ArrayList();
+    ArrayList <String> userAnswerCheck = new ArrayList();
     
     Scene scene;
     String userId;
@@ -134,6 +135,19 @@ public class MCQuestionsController implements Initializable {
         MCOptionC.setText(multipleChoiceQuestions.get(size-1).answer3);
         MCOptionD.setText(multipleChoiceQuestions.get(size-1).answer4);
         
+            if(multipleChoiceQuestions.get(size-1).correct1.equals("correct")){
+                this.userAnswerCheck.add(multipleChoiceQuestions.get(size - 1).answer1);
+            }
+            else if(multipleChoiceQuestions.get(size-1).correct2.equals("correct")){
+                this.userAnswerCheck.add(multipleChoiceQuestions.get(size - 1).answer2);
+            }
+            else if(multipleChoiceQuestions.get(size-1).correct3.equals("correct")){
+                this.userAnswerCheck.add(multipleChoiceQuestions.get(size - 1).answer3);
+            }
+            else if(multipleChoiceQuestions.get(size-1).correct4.equals("correct")){
+                this.userAnswerCheck.add(multipleChoiceQuestions.get(size - 1).answer4);
+            }
+        
         AButton.setOnAction(e -> {
             if(multipleChoiceQuestions.get(size-1).correct1.equals("correct")){
                 this.numCorrect++;
@@ -160,12 +174,12 @@ public class MCQuestionsController implements Initializable {
             if(multipleChoiceQuestions.get(size-1).correct2.equals("correct")){
                 this.numCorrect++;
                 this.correctQuestions.add(multipleChoiceQuestions.get(size-1));
-                this.userAnswers.add(multipleChoiceQuestions.get(size-1).answer1);
+                this.userAnswers.add(multipleChoiceQuestions.get(size-1).answer2);
             }
             else{
                 this.numIncorrect++;
                 this.incorrectQuestions.add(multipleChoiceQuestions.get(size-1));
-                this.userAnswers.add(multipleChoiceQuestions.get(size-1).answer1);
+                this.userAnswers.add(multipleChoiceQuestions.get(size-1).answer2);
             }
             int m = size - 1;
             try {
@@ -182,12 +196,12 @@ public class MCQuestionsController implements Initializable {
             if(multipleChoiceQuestions.get(size-1).correct3.equals("correct")){
                 this.numCorrect++;
                 this.correctQuestions.add(multipleChoiceQuestions.get(size-1));
-                this.userAnswers.add(multipleChoiceQuestions.get(size-1).answer1);
+                this.userAnswers.add(multipleChoiceQuestions.get(size-1).answer3);
             }
             else{
                 this.numIncorrect++;
                 this.incorrectQuestions.add(multipleChoiceQuestions.get(size-1));
-                this.userAnswers.add(multipleChoiceQuestions.get(size-1).answer1);
+                this.userAnswers.add(multipleChoiceQuestions.get(size-1).answer3);
             }
             int m = size - 1;
             try {
@@ -204,12 +218,12 @@ public class MCQuestionsController implements Initializable {
             if(multipleChoiceQuestions.get(size-1).correct4.equals("correct")){
                 this.numCorrect++;
                 this.correctQuestions.add(multipleChoiceQuestions.get(size-1));
-                this.userAnswers.add(multipleChoiceQuestions.get(size-1).answer1);
+                this.userAnswers.add(multipleChoiceQuestions.get(size-1).answer4);
             }
             else{
                 this.numIncorrect++;
                 this.incorrectQuestions.add(multipleChoiceQuestions.get(size-1));
-                this.userAnswers.add(multipleChoiceQuestions.get(size-1).answer1);
+                this.userAnswers.add(multipleChoiceQuestions.get(size-1).answer4);
             }
             int m = size - 1;
             try {
@@ -230,15 +244,14 @@ public class MCQuestionsController implements Initializable {
             sc.launchMA(this.multipleChoiceQuestions, this.multipleAnswerQuestions, this.trueFalseQuestions, 
                     this.fillInTheBlanksQuestions, this.multipleAnswerQuestions.size());
             sc.initID(this.userId);
-            
+            sc.setUserAnswerCheck(this.userAnswerCheck);
             sc.setNumOfQuestions(this.numOfQuestions);
             sc.setCorrect(this.numCorrect);
             sc.setIncorrect(this.numIncorrect);
             sc.setCorrectQuestions(this.correctQuestions);
             sc.setIncorrectQuestions(this.incorrectQuestions);
             sc.setUserAnswers(this.userAnswers);
-            System.out.println("MC "+this.userAnswers.get(0));
-            System.out.println("MC "+this.userAnswers.get(1));
+
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();

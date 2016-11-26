@@ -38,7 +38,7 @@ public class StudentProfileSceneController implements Initializable {
     String currentUserName;
     String userId;
     Connection connection;
-    int examID;
+    int examNumber;
     
     @FXML
     private Button takeQuizButton;      
@@ -72,6 +72,13 @@ public class StudentProfileSceneController implements Initializable {
             if (rset.next()) {
                 studentNameLabel.setText(rset.getString("firstname") + " " + rset.getString("lastname"));
             }
+            
+        ResultSet maxexamid = connection.createStatement().executeQuery("SELECT MAX(examID) FROM UserDB.ExamTable");
+        if (maxexamid.next()) {
+            examNumber = maxexamid.getInt(1) + 1;
+
+        }
+    
     }
     
     public void startQuiz(){
