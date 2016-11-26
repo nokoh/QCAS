@@ -109,8 +109,18 @@ public class QuizResultsController implements Initializable {
 
     
     
-    public void initID(String ID){ 
+    public void initID(String ID) throws SQLException{ 
         userId = ID;
+        userIDLabel.setText(ID);
+        connectToDatabase();
+        
+        String dbQuery = "Select firstname, lastname, userid from Users WHERE userid = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(dbQuery);
+            preparedStatement.setString(1, userId);
+            ResultSet rset = preparedStatement.executeQuery();
+            if (rset.next()) {
+                studentNameLabel.setText(rset.getString("firstname") + " " + rset.getString("lastname"));
+            }
     }
     
     public void setScore(int num){ 

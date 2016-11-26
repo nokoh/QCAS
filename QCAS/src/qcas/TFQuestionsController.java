@@ -51,8 +51,6 @@ public class TFQuestionsController implements Initializable {
     private Button falseButton;
     @FXML
     private Label TFStatementLabel;
-    @FXML
-    private Button nextButton;
     
     @FXML
     private Label studentNameLabel;
@@ -183,7 +181,7 @@ public class TFQuestionsController implements Initializable {
             
         }
         else{
-            Stage stage = (Stage) nextButton.getScene().getWindow();
+            Stage stage = (Stage) trueButton.getScene().getWindow();
             FXMLLoader f = new FXMLLoader(getClass().getResource("QuizResults.fxml"));
             root = f.load();
             QuizResultsController sc = f.<QuizResultsController>getController();
