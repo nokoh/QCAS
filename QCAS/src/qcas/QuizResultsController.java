@@ -63,6 +63,7 @@ public class QuizResultsController implements Initializable {
     ArrayList <String> userAnswers = new ArrayList();
     Connection connection;
     Date currentDate;
+    int examNumber;
 
     @FXML
     private Label studentNameLabel;
@@ -349,6 +350,13 @@ public class QuizResultsController implements Initializable {
                 barChartStudent.setTitle("Reports for Student: " + rset.getString("firstname") + " " + 
                         rset.getString("firstname") + " " + rset.getString("userid"));
             }
+            
+        ResultSet maxexamid = connection.createStatement().executeQuery("SELECT MAX(examID) FROM UserDB.ExamTable");
+        if (maxexamid.next()) {
+            examNumber = maxexamid.getInt(1) + 1;
+            System.out.println(examNumber);
+        }
+        
             long time = System.currentTimeMillis();
             String s = convertTime(time);
             String storeInDB = "INSERT INTO UserDB.ExamTable (examID, studentid, question, answerchoice, status, questionNo, examDate)"
@@ -357,7 +365,7 @@ public class QuizResultsController implements Initializable {
         connection.prepareStatement("SET foreign_key_checks = 0").executeUpdate();
         
         for (int t = 0;t < this.allAnsweredQuestions.size(); t++) {
-            storeDBExecute.setInt(1, t + 1);
+            storeDBExecute.setInt(1, examNumber);
             storeDBExecute.setInt(2, Integer.parseInt(userId));
             storeDBExecute.setString(3, this.allAnsweredQuestions.get(t).description);
             storeDBExecute.setString(4, this.userAnswers.get(t));
