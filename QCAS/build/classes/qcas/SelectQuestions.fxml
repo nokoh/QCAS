@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
@@ -8,17 +11,67 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="qcas.SelectQuestionsController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: maroon;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qcas.SelectQuestionsController">
     <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b4b4b5" height="89.0" layoutX="19.0" layoutY="15.0" stroke="BLACK" strokeType="INSIDE" width="560.0" />
-      <Button id="eightQuestionsButton" fx:id="eightQuestionsButton" layoutX="219.0" layoutY="153.0" mnemonicParsing="false" onAction="#getNumberOfQuestions" prefHeight="25.0" prefWidth="163.0" text="8 Questions" />
-      <Button id="sixteenQuestionsButton" fx:id="sixteenQuestionsButton" layoutX="219.0" layoutY="200.0" mnemonicParsing="false" onAction="#getNumberOfQuestions" prefHeight="25.0" prefWidth="163.0" text="16 Questions" />
-      <Button id="twentyfourQuestionsButton" fx:id="twentyfourQuestionsButton" layoutX="219.0" layoutY="247.0" mnemonicParsing="false" onAction="#getNumberOfQuestions" prefHeight="25.0" prefWidth="163.0" text="24 Questions" />
-      <Button id="thirtytwoQuestionsButton" fx:id="thirtytwoQuestionsButton" layoutX="219.0" layoutY="291.0" mnemonicParsing="false" onAction="#getNumberOfQuestions" prefHeight="25.0" prefWidth="163.0" text="32 Questions" />
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="25.0" layoutY="37.0" prefHeight="45.0" prefWidth="552.0" text="Select the Desired # of Quiz Questions" textAlignment="CENTER">
+      <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true">
+         <image>
+            <Image url="@../../../CMU%20Plaid.jpg" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fff9f9" height="325.0" layoutX="14.0" layoutY="63.0" stroke="BLACK" strokeType="INSIDE" width="569.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="89.0" layoutX="14.0" layoutY="16.0" stroke="BLACK" strokeType="INSIDE" width="569.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.20476190476190476">
+               <stops>
+                  <Stop color="#941a16" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill></Rectangle>
+      <Button id="eightQuestionsButton" fx:id="eightQuestionsButton" layoutX="219.0" layoutY="153.0" mnemonicParsing="false" onAction="#getNumberOfQuestions" prefHeight="25.0" prefWidth="163.0" style="-fx-background-color: maroon;" text="8 Questions" textFill="#fcf9f9">
+         <effect>
+            <InnerShadow />
+         </effect></Button>
+      <Button id="sixteenQuestionsButton" fx:id="sixteenQuestionsButton" layoutX="219.0" layoutY="200.0" mnemonicParsing="false" onAction="#getNumberOfQuestions" prefHeight="25.0" prefWidth="163.0" style="-fx-background-color: maroon;" text="16 Questions" textFill="#fffefe">
+         <effect>
+            <InnerShadow />
+         </effect></Button>
+      <Button id="twentyfourQuestionsButton" fx:id="twentyfourQuestionsButton" layoutX="219.0" layoutY="247.0" mnemonicParsing="false" onAction="#getNumberOfQuestions" prefHeight="25.0" prefWidth="163.0" style="-fx-background-color: maroon;" text="24 Questions" textFill="#f8f7f7">
+         <effect>
+            <InnerShadow />
+         </effect></Button>
+      <Button id="thirtytwoQuestionsButton" fx:id="thirtytwoQuestionsButton" layoutX="219.0" layoutY="291.0" mnemonicParsing="false" onAction="#getNumberOfQuestions" prefHeight="25.0" prefWidth="163.0" style="-fx-background-color: maroon;" text="32 Questions" textFill="#fffdfd">
+         <effect>
+            <InnerShadow />
+         </effect></Button>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="25.0" layoutY="29.0" prefHeight="45.0" prefWidth="552.0" text="Quiz Questions Options" textAlignment="CENTER" textFill="#f8f6f6">
          <font>
-            <Font name="System Bold" size="30.0" />
+            <Font name="Segoe UI Semilight" size="30.0" />
+         </font>
+      </Label>
+      <Label layoutX="32.0" layoutY="115.0" text="Student:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="33.0" layoutY="139.0" text="User ID:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <VBox layoutX="83.0" layoutY="107.0" prefHeight="64.0" prefWidth="136.0">
+         <children>
+            <Label fx:id="studentNameLabel" prefHeight="28.0" prefWidth="136.0" text="studentNameLabel" />
+            <Label fx:id="userIDLabel" prefHeight="24.0" prefWidth="139.0" text="userIDLabel" />
+         </children>
+      </VBox>
+      <Label layoutX="182.0" layoutY="345.0" text="Select the Number of Quiz Questions Desired">
+         <font>
+            <Font name="System Italic" size="12.0" />
          </font>
       </Label>
    </children>
+   <effect>
+      <InnerShadow />
+   </effect>
 </AnchorPane>

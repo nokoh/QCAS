@@ -9,13 +9,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="qcas.LoginScreenController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: lightblue;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qcas.Scene13Controller">
 <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8ac1f5" height="72.0" layoutX="14.0" layoutY="123.0" stroke="BLACK" strokeType="INSIDE" width="212.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#aaacae" height="78.0" layoutX="34.0" layoutY="19.0" stroke="BLACK" strokeType="INSIDE" width="527.0" />
-      <Button id="printToPDFButton" fx:id="PrintToPDFButton" layoutX="233.0" layoutY="320.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="130.0" text="Print to PDF " />
-      <Button id="returnHomeButton" fx:id="returnHomeButton" layoutX="235.0" layoutY="354.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="130.0" text="Return Home" />
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="171.0" layoutY="33.0" prefHeight="51.0" prefWidth="258.0" text="Quiz Results" textAlignment="CENTER">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f4f4f5" height="72.0" layoutX="17.0" layoutY="123.0" stroke="BLACK" strokeType="INSIDE" width="209.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#aaacae" height="72.0" layoutX="15.0" layoutY="19.0" stroke="BLACK" strokeType="INSIDE" width="567.0" />
+      <Button id="printToPDFButton" fx:id="PrintToPDFButton" layoutX="235.0" layoutY="304.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="130.0" text="Print to PDF " />
+      <Button id="returnHomeButton" fx:id="returnHomeButton" layoutX="235.0" layoutY="347.0" mnemonicParsing="false" onAction="#returnHomeButtonClicked" prefHeight="25.0" prefWidth="130.0" text="Return Home" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="171.0" layoutY="30.0" prefHeight="51.0" prefWidth="258.0" text="Quiz Results" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="30.0" />
          </font>
@@ -30,14 +30,14 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <VBox layoutX="91.0" layoutY="120.0" prefHeight="78.0" prefWidth="152.0">
+      <VBox layoutX="91.0" layoutY="126.0" prefHeight="72.0" prefWidth="152.0">
          <children>
-            <Label id="numberCorrectLabel" fx:id="numberCorrectLabel" prefHeight="38.0" prefWidth="121.0" text="numberCorrectLabel">
+            <Label id="numberCorrectLabel" fx:id="numberCorrectLabel" prefHeight="36.0" prefWidth="121.0" text="numberCorrectLabel">
                <font>
                   <Font size="11.0" />
                </font>
             </Label>
-            <Label id="numberIncorrectLabel" fx:id="numberIncorrectLabel" prefHeight="34.0" prefWidth="131.0" text="numberIncorrectLabel">
+            <Label id="numberIncorrectLabel" fx:id="numberIncorrectLabel" prefHeight="27.0" prefWidth="131.0" text="numberIncorrectLabel">
                <font>
                   <Font size="11.0" />
                </font>

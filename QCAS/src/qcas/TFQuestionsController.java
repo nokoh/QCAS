@@ -7,6 +7,10 @@ package qcas;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -64,6 +68,7 @@ public class TFQuestionsController implements Initializable {
     int numOfQuestions;
     int numCorrect;
     int numIncorrect;
+    Connection connection;
 
     /**
      * Initializes the controller class.
@@ -73,8 +78,18 @@ public class TFQuestionsController implements Initializable {
         // TODO
     }
 
-    public void initID(String ID){ 
+    public void initID(String ID) throws SQLException{ 
         userId = ID;
+        userIDLabel.setText(ID);
+        connectToDatabase();
+        
+        String dbQuery = "Select firstname, lastname, userid from Users WHERE userid = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(dbQuery);
+            preparedStatement.setString(1, userId);
+            ResultSet rset = preparedStatement.executeQuery();
+            if (rset.next()) {
+                studentNameLabel.setText(rset.getString("firstname") + " " + rset.getString("lastname"));
+            }
     }
     
     public void setScore(int num){ 
@@ -170,7 +185,7 @@ public class TFQuestionsController implements Initializable {
             
         }
         else{
-            Stage stage = (Stage) nextButton.getScene().getWindow();
+            Stage stage = (Stage) trueButton.getScene().getWindow();
             FXMLLoader f = new FXMLLoader(getClass().getResource("QuizResults.fxml"));
             root = f.load();
             QuizResultsController sc = f.<QuizResultsController>getController();
@@ -189,5 +204,22 @@ public class TFQuestionsController implements Initializable {
         
         
     }
+    
+    public void connectToDatabase() throws SQLException{
+        
+        String url = "jdbc:mysql://adelaide-mysql-qcas1.caswkasqdmel.ap-southeast-2.rds.amazonaws.com:3306/UserDB"; //creates network connection to database for application   
+        String username = "qcastest";//username for accessing database
+        String password = "qcastest";//password for accessing database
+
+        try {
+            this.connection = DriverManager.getConnection(url, username, password);
+            if (this.connection != null) {
+                System.out.println("Conencted");
+            }
+        } catch (SQLException e) {
+            System.out.println("SQLException: " + e);
+            this.connection.close();//closes connection resource
+        } // end of try-with-resourc
+        }
     
 }

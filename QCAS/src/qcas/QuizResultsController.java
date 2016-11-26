@@ -8,10 +8,14 @@ package qcas;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.ResourceBundle;
@@ -58,6 +62,7 @@ public class QuizResultsController implements Initializable {
     ArrayList <Question> allAnsweredQuestions = new ArrayList();
     ArrayList <String> userAnswers = new ArrayList();
     Connection connection;
+    Date currentDate;
 
     @FXML
     private Label studentNameLabel;
@@ -104,8 +109,18 @@ public class QuizResultsController implements Initializable {
 
     
     
-    public void initID(String ID){ 
+    public void initID(String ID) throws SQLException{ 
         userId = ID;
+        userIDLabel.setText(ID);
+        connectToDatabase();
+        
+        String dbQuery = "Select firstname, lastname, userid from Users WHERE userid = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(dbQuery);
+            preparedStatement.setString(1, userId);
+            ResultSet rset = preparedStatement.executeQuery();
+            if (rset.next()) {
+                studentNameLabel.setText(rset.getString("firstname") + " " + rset.getString("lastname"));
+            }
     }
     
     public void setScore(int num){ 
@@ -203,10 +218,15 @@ public class QuizResultsController implements Initializable {
         } // end of try-with-resourc
         }
         
-        public void launchQuizResults(ArrayList<Question>correctQuestions, ArrayList<Question>incorrectQuestions) throws IOException, SQLException{
+    public void launchQuizResults(ArrayList<Question>correctQuestions, ArrayList<Question>incorrectQuestions) throws IOException, SQLException{
         Parent root;
         this.correctQuestions = correctQuestions;
         this.incorrectQuestions = incorrectQuestions;
+        
+        System.out.println(this.correctQuestions.size());
+        System.out.println(this.incorrectQuestions.size());
+        System.out.println(this.userAnswers.size());
+        
         
         String questionDifficulty;
         int [] difficultyCorrectScores = new int[3];
@@ -324,6 +344,10 @@ public class QuizResultsController implements Initializable {
                 this.allAnsweredQuestions.add(this.incorrectQuestions.get(t));
             }
             
+            for(int t = 0; t < this.allAnsweredQuestions.size(); t++){
+                System.out.println(this.allAnsweredQuestions.get(t).description);
+            }
+            
             connectToDatabase();
             String dbQuery = "Select firstname, lastname, userid from Users WHERE userid = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(dbQuery);
@@ -333,21 +357,33 @@ public class QuizResultsController implements Initializable {
                 barChartStudent.setTitle("Reports for Student: " + rset.getString("firstname") + " " + 
                         rset.getString("firstname") + " " + rset.getString("userid"));
             }
-            String storeInDB = "INSERT INTO UserDB.ExamTable (examID, studentid, question, anwerchoice, status, questionNo)" +
-                        "VALUES (?, ?, ?, ?, ?);";
-            PreparedStatement storeDBExecute = this.connection.prepareStatement(storeInDB);
-            
-            for(int i = 0; i < this.numOfQuestions; i++){
-            storeDBExecute.setInt(1, 1);
+            long time = System.currentTimeMillis();
+            String s = convertTime(time);
+            System.out.println(s);
+            String storeInDB = "INSERT INTO UserDB.ExamTable (examID, studentid, question, answerchoice, status, questionNo, examDate)"
+                + "VALUES (?, ?, ?, ?, ?, ?, ?)";
+        PreparedStatement storeDBExecute = this.connection.prepareStatement(storeInDB);
+        connection.prepareStatement("SET foreign_key_checks = 0").executeUpdate();
+        
+        for (int t = 0;t < this.allAnsweredQuestions.size(); t++) {
+            storeDBExecute.setInt(1, t + 1);
             storeDBExecute.setInt(2, Integer.parseInt(userId));
-            storeDBExecute.setString(3, this.allAnsweredQuestions.get(i).description);
-            storeDBExecute.setString(4, this.userAnswers.get(i));
-            storeDBExecute.setString(5, this.allAnsweredQuestions.get(i).difficulty);
-            storeDBExecute.setInt(6, this.allAnsweredQuestions.get(i).number);
-            storeDBExecute.executeQuery();
+            storeDBExecute.setString(3, this.allAnsweredQuestions.get(t).description);
+            storeDBExecute.setString(4, this.userAnswers.get(t));
+            storeDBExecute.setString(5, this.allAnsweredQuestions.get(t).difficulty);
+            storeDBExecute.setInt(6, this.allAnsweredQuestions.get(t).number);
+            storeDBExecute.setString(7,s);
+            storeDBExecute.executeUpdate();
+        
             }
-            
-            
+//
             
         }
+        
+        public String convertTime(long time){
+        
+        Date date = new Date(time);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy MM dd HH:mm:ss"); 
+        return sdf.format(date);
+}
 }
