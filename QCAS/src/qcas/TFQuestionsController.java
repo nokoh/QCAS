@@ -39,6 +39,7 @@ public class TFQuestionsController implements Initializable {
     ArrayList<FillInTheBlanks>fillInTheBlanksQuestions = new ArrayList();
     ArrayList <Question> correctQuestions = new ArrayList();
     ArrayList <Question> incorrectQuestions = new ArrayList();
+    ArrayList <String> userAnswers = new ArrayList();
 
     @FXML
     private Button trueButton;
@@ -106,6 +107,10 @@ public class TFQuestionsController implements Initializable {
         this.incorrectQuestions = incorrectQuestions;
     }
     
+    public void setUserAnswers(ArrayList<String> userAnswers) {
+        this.userAnswers = userAnswers;
+    }
+    
     public void launchTF(ArrayList<MultipleChoice>multipleChoiceQuestions, ArrayList<MultipleAnswer>multipleAnswerQuestions, 
             ArrayList<TrueFalse>trueFalseQuestions, ArrayList<FillInTheBlanks>fillInTheBlanksQuestions,int size) throws IOException, SQLException{
         Parent root;
@@ -121,10 +126,12 @@ public class TFQuestionsController implements Initializable {
                 if(trueFalseQuestions.get(size-1).correctAnswer.equals("true")){
                     this.numCorrect++;
                     this.correctQuestions.add(trueFalseQuestions.get(size-1));
+                    this.userAnswers.add(trueFalseQuestions.get(size-1).correctAnswer);
                 }
                 else{
                     this.numIncorrect++;
                     this.incorrectQuestions.add(trueFalseQuestions.get(size-1));
+                    this.userAnswers.add(trueFalseQuestions.get(size-1).correctAnswer);
                 }
                 int m = size - 1;
             try {
@@ -141,10 +148,12 @@ public class TFQuestionsController implements Initializable {
                 if(trueFalseQuestions.get(size-1).correctAnswer.equals("false")){
                     this.numCorrect++;
                     this.correctQuestions.add(trueFalseQuestions.get(size-1));
+                    this.userAnswers.add(trueFalseQuestions.get(size-1).correctAnswer);
                 }
                 else{
                     this.numIncorrect++;
                     this.incorrectQuestions.add(trueFalseQuestions.get(size-1));
+                    this.userAnswers.add(trueFalseQuestions.get(size-1).correctAnswer);
                 }
                 int m = size - 1;
             try {
@@ -164,6 +173,7 @@ public class TFQuestionsController implements Initializable {
             root = f.load();
             QuizResultsController sc = f.<QuizResultsController>getController();
             sc.initID(this.userId);
+            sc.setUserAnswers(this.userAnswers);
             sc.launchQuizResults(this.correctQuestions, this.incorrectQuestions);
             sc.setNumOfQuestions(this.numOfQuestions);
             sc.setCorrect(this.numCorrect);

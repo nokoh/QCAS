@@ -35,6 +35,7 @@ public class MCQuestionsController implements Initializable {
     ArrayList <FillInTheBlanks> fillInTheBlanksQuestions = new ArrayList();
     ArrayList <Question> correctQuestions = new ArrayList();
     ArrayList <Question> incorrectQuestions = new ArrayList();
+    ArrayList <String> userAnswers = new ArrayList();
     
     Scene scene;
     String userId;
@@ -89,6 +90,10 @@ public class MCQuestionsController implements Initializable {
     public void setIncorrect(int num){ 
         numIncorrect = num;
     }
+    
+    public void setUserAnswers(ArrayList<String> userAnswers) {
+        this.userAnswers = userAnswers;
+    }
 
     /**
      * Initializes the controller class.
@@ -122,10 +127,12 @@ public class MCQuestionsController implements Initializable {
             if(multipleChoiceQuestions.get(size-1).correct1.equals("correct")){
                 this.numCorrect++;
                 this.correctQuestions.add(multipleChoiceQuestions.get(size-1));
+                this.userAnswers.add(multipleChoiceQuestions.get(size-1).answer1);
             }
             else{
                 this.numIncorrect++;
                 this.incorrectQuestions.add(multipleChoiceQuestions.get(size-1));
+                this.userAnswers.add(multipleChoiceQuestions.get(size-1).answer1);
             }
             int m = size - 1;
             try {
@@ -142,10 +149,12 @@ public class MCQuestionsController implements Initializable {
             if(multipleChoiceQuestions.get(size-1).correct2.equals("correct")){
                 this.numCorrect++;
                 this.correctQuestions.add(multipleChoiceQuestions.get(size-1));
+                this.userAnswers.add(multipleChoiceQuestions.get(size-1).answer1);
             }
             else{
                 this.numIncorrect++;
                 this.incorrectQuestions.add(multipleChoiceQuestions.get(size-1));
+                this.userAnswers.add(multipleChoiceQuestions.get(size-1).answer1);
             }
             int m = size - 1;
             try {
@@ -162,10 +171,12 @@ public class MCQuestionsController implements Initializable {
             if(multipleChoiceQuestions.get(size-1).correct3.equals("correct")){
                 this.numCorrect++;
                 this.correctQuestions.add(multipleChoiceQuestions.get(size-1));
+                this.userAnswers.add(multipleChoiceQuestions.get(size-1).answer1);
             }
             else{
                 this.numIncorrect++;
                 this.incorrectQuestions.add(multipleChoiceQuestions.get(size-1));
+                this.userAnswers.add(multipleChoiceQuestions.get(size-1).answer1);
             }
             int m = size - 1;
             try {
@@ -182,10 +193,12 @@ public class MCQuestionsController implements Initializable {
             if(multipleChoiceQuestions.get(size-1).correct4.equals("correct")){
                 this.numCorrect++;
                 this.correctQuestions.add(multipleChoiceQuestions.get(size-1));
+                this.userAnswers.add(multipleChoiceQuestions.get(size-1).answer1);
             }
             else{
                 this.numIncorrect++;
                 this.incorrectQuestions.add(multipleChoiceQuestions.get(size-1));
+                this.userAnswers.add(multipleChoiceQuestions.get(size-1).answer1);
             }
             int m = size - 1;
             try {
@@ -206,11 +219,15 @@ public class MCQuestionsController implements Initializable {
             sc.launchMA(this.multipleChoiceQuestions, this.multipleAnswerQuestions, this.trueFalseQuestions, 
                     this.fillInTheBlanksQuestions, this.multipleAnswerQuestions.size());
             sc.initID(this.userId);
+            
             sc.setNumOfQuestions(this.numOfQuestions);
             sc.setCorrect(this.numCorrect);
             sc.setIncorrect(this.numIncorrect);
             sc.setCorrectQuestions(this.correctQuestions);
             sc.setIncorrectQuestions(this.incorrectQuestions);
+            sc.setUserAnswers(this.userAnswers);
+            System.out.println("MC "+this.userAnswers.get(0));
+            System.out.println("MC "+this.userAnswers.get(1));
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();

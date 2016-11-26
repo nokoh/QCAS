@@ -56,6 +56,7 @@ public class QuizResultsController implements Initializable {
     ArrayList <Question> correctQuestions = new ArrayList();
     ArrayList <Question> incorrectQuestions = new ArrayList();
     ArrayList <Question> allAnsweredQuestions = new ArrayList();
+    ArrayList <String> userAnswers = new ArrayList();
     Connection connection;
 
     @FXML
@@ -84,7 +85,7 @@ public class QuizResultsController implements Initializable {
     private NumberAxis yAxis;
 
     @FXML
-    private Label question1, question2, question17, question18;
+    private Label question1, question2, question3, question4, question17, question18;
     private ObservableList<String> difficultyNames = FXCollections.observableArrayList();
 
     
@@ -126,6 +127,10 @@ public class QuizResultsController implements Initializable {
     public void setIncorrectQuestions(ArrayList<Question> incorrectQuestions) {
         this.incorrectQuestions = incorrectQuestions;
     }
+    
+    public void setUserAnswers(ArrayList<String> userAnswers) {
+        this.userAnswers = userAnswers;
+    }
 
     /**
      * Initializes the controller class.
@@ -140,7 +145,7 @@ public class QuizResultsController implements Initializable {
         * 
      * @throws java.io.IOException
         **/
-            @FXML
+    @FXML
         public void returnHome() throws IOException{
             returnHomeButton.setOnAction(h ->{
                 
@@ -149,15 +154,15 @@ public class QuizResultsController implements Initializable {
                 } catch (IOException ex) {
                     Logger.getLogger(Scene13Controller.class.getName()).log(Level.SEVERE, null, ex);
                 }                 
-            } ); {
-         }       
+            } ); 
+                
         }
      /**
      * 
      * @throws java.io.IOException
       */
-            @FXML
-        public void returnHomeButtonClicked() throws IOException{
+    @FXML
+    public void returnHomeButtonClicked() throws IOException{
             FXMLLoader f = new FXMLLoader(getClass().getResource("LoginScreen.fxml"));
                 Parent scene13 = f.load();
                 LoginScreenController ls = f.<LoginScreenController>getController();
@@ -215,6 +220,7 @@ public class QuizResultsController implements Initializable {
            else if(this.correctQuestions.get(i).getClass() == tf.getClass()){
                tf = (TrueFalse)this.correctQuestions.get(i);
                questionDifficulty = tf.difficulty;
+               int num = tf.number;
            }
            else if(this.correctQuestions.get(i).getClass() == fib.getClass()){
                fib = (FillInTheBlanks)this.correctQuestions.get(i);
@@ -274,8 +280,6 @@ public class QuizResultsController implements Initializable {
            String correct = "Correct";
            String inCorrect = "Incorrect";
   
-        
-           
            xAxis.setLabel("Difficulty Levels");       
            yAxis.setLabel("Number");
             
@@ -300,10 +304,6 @@ public class QuizResultsController implements Initializable {
            barChartStudent.getData().addAll(series1, series2, series3);
            
            
-            question1.setText(this.correctQuestions.get(0).description);
-            question2.setText(this.correctQuestions.get(1).description);
-            question17.setText(this.incorrectQuestions.get(0).description);
-            question18.setText(this.incorrectQuestions.get(1).description);
             
             for(int t = 0; t < this.correctQuestions.size(); t++){
                 this.allAnsweredQuestions.add(this.correctQuestions.get(t));
@@ -321,7 +321,7 @@ public class QuizResultsController implements Initializable {
                 barChartStudent.setTitle("Reports for Student: " + rset.getString("firstname") + " " + 
                         rset.getString("firstname") + " " + rset.getString("userid"));
             }
-            String storeInDB = "INSERT INTO UserDB.ExamTable (examID, studentid, question, anwerchoice, status)" +
+            String storeInDB = "INSERT INTO UserDB.ExamTable (examID, studentid, question, anwerchoice, status, questionNo)" +
                         "VALUES (?, ?, ?, ?, ?);";
             PreparedStatement storeDBExecute = this.connection.prepareStatement(storeInDB);
             
@@ -329,8 +329,9 @@ public class QuizResultsController implements Initializable {
             storeDBExecute.setInt(1, 1);
             storeDBExecute.setInt(2, Integer.parseInt(userId));
             storeDBExecute.setString(3, this.allAnsweredQuestions.get(i).description);
-            storeDBExecute.setString(4, this.allAnsweredQuestions.get(i).description);
+            storeDBExecute.setString(4, this.userAnswers.get(i));
             storeDBExecute.setString(5, this.allAnsweredQuestions.get(i).difficulty);
+            storeDBExecute.setInt(6, this.allAnsweredQuestions.get(i).number);
             storeDBExecute.executeQuery();
             }
             
