@@ -60,6 +60,12 @@ public class QuizResultsController implements Initializable {
     Connection connection;
 
     @FXML
+    private Label studentNameLabel;
+    @FXML 
+    private Label userIDLabel;
+    
+    
+    @FXML
     private Button PrintToPDFButton;
     @FXML
     private Button returnHomeButton;
@@ -71,8 +77,14 @@ public class QuizResultsController implements Initializable {
     private Label quizScoreLabel;
     @FXML
     private Label letterGradeLabel;
-            
-    
+    @FXML
+    private Label UA1,UA2,UA3,UA4,UA5,UA6,UA7,UA8,UA9,UA10,UA11,UA12,UA13,UA14,UA15,UA16;
+    @FXML
+    private Label UA17,UA18,UA19,UA20,UA21,UA22,UA23,UA24,UA25,UA26,UA27,UA28,UA29,UA30,UA31,UA32;        
+    @FXML
+    private Label CA1,CA2,CA3,CA4,CA5,CA6,CA7,CA8,CA9,CA10,CA11,CA12,CA13,CA14,CA15,CA16;
+    @FXML
+    private Label CA17,CA18,CA19,CA20,CA21,CA22,CA23,CA24,CA25,CA26,CA27,CA28,CA29,CA30,CA31,CA32;  
     
     
     
