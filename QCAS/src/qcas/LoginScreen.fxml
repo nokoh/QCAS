@@ -26,15 +26,7 @@
          </image>
       </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f7f7f7" height="325.0" layoutX="15.0" layoutY="56.0" stroke="BLACK" strokeType="INSIDE" width="570.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="88.0" layoutX="15.0" layoutY="15.0" stroke="BLACK" strokeType="INSIDE" width="570.0">
-         <fill>
-            <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.2761904761904762">
-               <stops>
-                  <Stop color="#800f0f" />
-                  <Stop color="WHITE" offset="1.0" />
-               </stops>
-            </LinearGradient>
-         </fill></Rectangle>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#941b1b" height="88.0" layoutX="15.0" layoutY="15.0" stroke="BLACK" strokeType="INSIDE" width="570.0" />
       <Button id="login" fx:id="login" layoutX="377.0" layoutY="205.0" mnemonicParsing="false" onAction="#loginVerify" prefHeight="25.0" prefWidth="141.0" style="-fx-background-color: maroon;" text="Login" textFill="#f8f5f5">
          <effect>
             <InnerShadow />

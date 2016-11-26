@@ -19,22 +19,26 @@
          </image>
       </ImageView>
       <Rectangle arcHeight="5.0" fill="#fafdff" height="336.0" layoutX="18.0" layoutY="48.0" stroke="BLACK" strokeType="INSIDE" width="563.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="76.0" layoutX="18.0" layoutY="19.0" stroke="BLACK" strokeType="INSIDE" width="563.0">
-         <fill>
-            <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.24761904761904763">
-               <stops>
-                  <Stop color="#801e1e" />
-                  <Stop color="WHITE" offset="1.0" />
-               </stops>
-            </LinearGradient>
-         </fill></Rectangle>
-      <Button id="easyButton" fx:id="easyButton" layoutX="241.0" layoutY="157.0" mnemonicParsing="false" onAction="#startQuiz" prefHeight="25.0" prefWidth="122.0" style="-fx-background-color: maroon;" text="Easy" textFill="#fcf9f9" />
-      <Button id="mediumButton" fx:id="mediumButton" layoutX="241.0" layoutY="200.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="122.0" style="-fx-background-color: maroon;" text="Medium" textFill="#f8f5f5" />
-      <Button id="hardButton" fx:id="hardButton" layoutX="241.0" layoutY="244.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="122.0" style="-fx-background-color: maroon;" text="Hard" textFill="#f8f3f3" />
-      <Button id="mixedButton" fx:id="mixedButton" layoutX="241.0" layoutY="289.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="122.0" style="-fx-background-color: maroon;" text="Mixed" textFill="#fcfafa" />
-      <Label layoutX="166.0" layoutY="35.0" text="Question Difficulty" textFill="#fcfcfc">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#831414" height="73.0" layoutX="18.0" layoutY="19.0" stroke="BLACK" strokeType="INSIDE" width="563.0" />
+      <Button id="easyButton" fx:id="easyButton" layoutX="241.0" layoutY="157.0" mnemonicParsing="false" onAction="#startQuiz" prefHeight="25.0" prefWidth="122.0" style="-fx-background-color: maroon;" text="Easy" textFill="#fcf9f9">
+         <effect>
+            <InnerShadow />
+         </effect></Button>
+      <Button id="mediumButton" fx:id="mediumButton" layoutX="241.0" layoutY="200.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="122.0" style="-fx-background-color: maroon;" text="Medium" textFill="#f8f5f5">
+         <effect>
+            <InnerShadow />
+         </effect></Button>
+      <Button id="hardButton" fx:id="hardButton" layoutX="241.0" layoutY="244.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="122.0" style="-fx-background-color: maroon;" text="Hard" textFill="#f8f3f3">
+         <effect>
+            <InnerShadow />
+         </effect></Button>
+      <Button id="mixedButton" fx:id="mixedButton" layoutX="241.0" layoutY="289.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="122.0" style="-fx-background-color: maroon;" text="Mixed" textFill="#fcfafa">
+         <effect>
+            <InnerShadow />
+         </effect></Button>
+      <Label layoutX="161.0" layoutY="30.0" text="Question Difficulty" textFill="#fcfcfc">
          <font>
-            <Font name="Segoe UI Semilight" size="30.0" />
+            <Font name="Segoe UI Semilight" size="35.0" />
          </font>
       </Label>
       <Label layoutX="30.0" layoutY="105.0" text="Student:">

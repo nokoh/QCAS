@@ -19,18 +19,10 @@
          </image>
       </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="284.0" layoutX="18.0" layoutY="98.0" stroke="BLACK" strokeType="INSIDE" width="561.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="94.0" layoutX="18.0" layoutY="22.0" stroke="BLACK" strokeType="INSIDE" width="561.0">
-         <fill>
-            <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.4523809523809524">
-               <stops>
-                  <Stop color="#751c12" />
-                  <Stop color="WHITE" offset="1.0" />
-               </stops>
-            </LinearGradient>
-         </fill></Rectangle>
-      <Label layoutX="85.0" layoutY="22.0" prefHeight="85.0" prefWidth="405.0" text="Type Answer That Best Completes the Sentence" textAlignment="CENTER" textFill="#fcf8f8" wrapText="true">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a1515" height="94.0" layoutX="18.0" layoutY="22.0" stroke="BLACK" strokeType="INSIDE" width="561.0" />
+      <Label layoutX="93.0" layoutY="25.0" prefHeight="88.0" prefWidth="420.0" text="Type Answer That Best Completes the Sentence" textAlignment="CENTER" textFill="#fcf8f8" wrapText="true">
          <font>
-            <Font name="Segoe UI Semilight" size="28.0" />
+            <Font name="Segoe UI Semilight" size="29.0" />
          </font>
       </Label>
       <Button id="nextButton" fx:id="nextButton" layoutX="228.0" layoutY="302.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: maroon;" text="Next" textFill="#f8f6f6">

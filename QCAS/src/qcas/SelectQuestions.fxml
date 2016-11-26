@@ -19,15 +19,7 @@
          </image>
       </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fff9f9" height="325.0" layoutX="14.0" layoutY="63.0" stroke="BLACK" strokeType="INSIDE" width="569.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="89.0" layoutX="14.0" layoutY="16.0" stroke="BLACK" strokeType="INSIDE" width="569.0">
-         <fill>
-            <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.20476190476190476">
-               <stops>
-                  <Stop color="#941a16" />
-                  <Stop color="WHITE" offset="1.0" />
-               </stops>
-            </LinearGradient>
-         </fill></Rectangle>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#831010" height="82.0" layoutX="14.0" layoutY="16.0" stroke="BLACK" strokeType="INSIDE" width="569.0" />
       <Button id="eightQuestionsButton" fx:id="eightQuestionsButton" layoutX="219.0" layoutY="153.0" mnemonicParsing="false" onAction="#getNumberOfQuestions" prefHeight="25.0" prefWidth="163.0" style="-fx-background-color: maroon;" text="8 Questions" textFill="#fcf9f9">
          <effect>
             <InnerShadow />
@@ -46,7 +38,7 @@
          </effect></Button>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="25.0" layoutY="29.0" prefHeight="45.0" prefWidth="552.0" text="Quiz Questions Options" textAlignment="CENTER" textFill="#f8f6f6">
          <font>
-            <Font name="Segoe UI Semilight" size="30.0" />
+            <Font name="Segoe UI Semilight" size="35.0" />
          </font>
       </Label>
       <Label layoutX="32.0" layoutY="115.0" text="Student:">

@@ -19,18 +19,10 @@
          </image>
       </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="349.0" layoutX="21.0" layoutY="30.0" stroke="BLACK" strokeType="INSIDE" width="557.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="77.0" layoutX="21.0" layoutY="18.0" stroke="BLACK" strokeType="INSIDE" width="557.0">
-         <fill>
-            <LinearGradient endX="0.9857142857142858" endY="1.0" startX="0.9857142857142858" startY="0.3714285714285714">
-               <stops>
-                  <Stop color="#8a1414" />
-                  <Stop color="WHITE" offset="1.0" />
-               </stops>
-            </LinearGradient>
-         </fill></Rectangle>
-      <Label layoutX="183.0" layoutY="18.0" prefHeight="60.0" prefWidth="273.0" text="Login Successful" textFill="#f2eded">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a1616" height="77.0" layoutX="21.0" layoutY="18.0" stroke="BLACK" strokeType="INSIDE" width="557.0" />
+      <Label layoutX="182.0" layoutY="27.0" prefHeight="60.0" prefWidth="258.0" text="Login Successful" textFill="#f2eded">
          <font>
-            <Font name="Segoe UI Light" size="35.0" />
+            <Font name="Segoe UI Semilight" size="35.0" />
          </font>
       </Label>
       <Label layoutX="37.0" layoutY="110.0" text="Student:">
