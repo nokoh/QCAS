@@ -19,15 +19,23 @@
          </image>
       </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="349.0" layoutX="21.0" layoutY="30.0" stroke="BLACK" strokeType="INSIDE" width="557.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a1616" height="77.0" layoutX="21.0" layoutY="18.0" stroke="BLACK" strokeType="INSIDE" width="557.0" />
-      <Label layoutX="182.0" layoutY="27.0" prefHeight="60.0" prefWidth="258.0" text="Login Successful" textFill="#f2eded">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="77.0" layoutX="21.0" layoutY="18.0" stroke="BLACK" strokeType="INSIDE" width="557.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.3142857142857143">
+               <stops>
+                  <Stop color="#831212" />
+                  <Stop color="#390e0e" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill></Rectangle>
+      <Label layoutX="143.0" layoutY="27.0" prefHeight="60.0" prefWidth="324.0" text="Student Login Successful" textFill="#f2eded">
          <font>
-            <Font name="Segoe UI Semilight" size="35.0" />
+            <Font name="Segoe UI Semilight" size="30.0" />
          </font>
       </Label>
       <Label layoutX="37.0" layoutY="110.0" text="Student:">
          <font>
-            <Font name="System Bold" size="14.0" />
+            <Font name="Arial Bold" size="14.0" />
          </font>
       </Label>
       <Button id="takeQuizButton" fx:id="takeQuizButton" layoutX="242.0" layoutY="200.0" mnemonicParsing="false" onAction="#startQuiz" prefHeight="25.0" prefWidth="124.0" style="-fx-background-color: maroon;" text="Take Quiz" textFill="#fcfcfc">
@@ -38,11 +46,11 @@
          <effect>
             <InnerShadow />
          </effect></Button>
-      <Label fx:id="UserIDLabel" layoutX="101.0" layoutY="130.0" prefHeight="17.0" prefWidth="192.0" text="userIDLabel">
+      <Label fx:id="UserIDLabel" layoutX="100.0" layoutY="130.0" prefHeight="20.0" prefWidth="193.0" text="userIDLabel">
          <font>
             <Font size="14.0" />
          </font></Label>
-      <Label fx:id="studentNameLabel" layoutX="101.0" layoutY="110.0" prefHeight="20.0" prefWidth="192.0" text="studentNameLabel">
+      <Label fx:id="studentNameLabel" layoutX="100.0" layoutY="108.0" prefHeight="20.0" prefWidth="187.0" text="studentNameLabel">
          <font>
             <Font size="14.0" />
          </font>
@@ -52,9 +60,9 @@
             <Font name="System Italic" size="12.0" />
          </font>
       </Label>
-      <Label layoutX="39.0" layoutY="130.0" prefHeight="20.0" prefWidth="56.0" text="User ID:">
+      <Label layoutX="36.0" layoutY="130.0" prefHeight="20.0" prefWidth="59.0" text="User ID:">
          <font>
-            <Font name="System Bold" size="14.0" />
+            <Font name="Arial Bold" size="14.0" />
          </font>
       </Label>
    </children>

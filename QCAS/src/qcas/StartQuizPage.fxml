@@ -19,7 +19,15 @@
          </image>
       </ImageView>
       <Rectangle arcHeight="5.0" fill="#fafdff" height="336.0" layoutX="18.0" layoutY="48.0" stroke="BLACK" strokeType="INSIDE" width="563.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#831414" height="73.0" layoutX="18.0" layoutY="19.0" stroke="BLACK" strokeType="INSIDE" width="563.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="73.0" layoutX="18.0" layoutY="19.0" stroke="BLACK" strokeType="INSIDE" width="563.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.3142857142857143">
+               <stops>
+                  <Stop color="#680e0e" />
+                  <Stop color="#320b0b" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill></Rectangle>
       <Button id="easyButton" fx:id="easyButton" layoutX="241.0" layoutY="157.0" mnemonicParsing="false" onAction="#startQuiz" prefHeight="25.0" prefWidth="122.0" style="-fx-background-color: maroon;" text="Easy" textFill="#fcf9f9">
          <effect>
             <InnerShadow />
@@ -52,10 +60,10 @@
          </font>
       </Label>
       <Label layoutX="108.0" layoutY="105.0" />
-      <VBox layoutX="87.0" layoutY="107.0" prefHeight="39.0" prefWidth="100.0">
+      <VBox layoutX="87.0" layoutY="102.0" prefHeight="63.0" prefWidth="100.0">
          <children>
-            <Label fx:id="studentNameLabel" prefHeight="16.0" prefWidth="100.0" text="studentName" />
-            <Label fx:id="userIDLabel" prefHeight="20.0" prefWidth="90.0" text="userID" />
+            <Label fx:id="studentNameLabel" prefHeight="20.0" prefWidth="100.0" text="studentName" />
+            <Label fx:id="userIDLabel" prefHeight="25.0" prefWidth="90.0" text="userID" />
          </children>
       </VBox>
       <Label layoutX="164.0" layoutY="343.0" text="Select the Desired Difficulty Level for Quiz Questions">

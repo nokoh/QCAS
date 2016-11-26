@@ -20,7 +20,15 @@
          </image>
       </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f6f9fc" height="332.0" layoutX="20.0" layoutY="48.0" stroke="BLACK" strokeType="INSIDE" width="559.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#7c0707" height="78.0" layoutX="20.0" layoutY="19.0" stroke="BLACK" strokeType="INSIDE" width="559.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="78.0" layoutX="20.0" layoutY="19.0" stroke="BLACK" strokeType="INSIDE" width="559.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.28095238095238095">
+               <stops>
+                  <Stop color="#801313" />
+                  <Stop color="#430c0c" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill></Rectangle>
       <Label contentDisplay="CENTER" graphicTextGap="3.0" layoutX="80.0" layoutY="23.0" prefHeight="70.0" prefWidth="440.0" text="Select Answer to Question Below" textAlignment="CENTER" textFill="#fcfcfc" wrapText="true">
          <font>
             <Font name="Segoe UI Semilight" size="30.0" />
@@ -81,7 +89,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="questionNumberLabel" layoutX="105.0" layoutY="354.0" text="questionNumberLabel" />
+      <Label fx:id="questionNumberLabel" layoutX="91.0" layoutY="354.0" text="questionNumberLabel" />
    </children>
    <effect>
       <InnerShadow />
