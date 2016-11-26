@@ -38,6 +38,10 @@ import javafx.stage.Stage;
  * FXML Controller class
  *
  * @author Nnamdi
+ * 
+ * 
+ * 
+ * 
  */
 public class QuizResultsController implements Initializable {
     
@@ -62,6 +66,15 @@ public class QuizResultsController implements Initializable {
     private Label numberCorrectLabel;
     @FXML
     private Label numberIncorrectLabel;
+    @FXML 
+    private Label quizScoreLabel;
+    @FXML
+    private Label letterGradeLabel;
+            
+    
+    
+    
+    
     @FXML
     private BarChart<String, Integer> barChartStudent;
     @FXML

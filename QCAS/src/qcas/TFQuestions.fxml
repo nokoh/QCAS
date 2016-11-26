@@ -9,30 +9,45 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qcas.TFQuestionsController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: maroon;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="qcas.TFQuestionsController">
     <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fcfcfc" height="326.0" layoutX="22.0" layoutY="54.0" stroke="BLACK" strokeType="INSIDE" width="557.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bdc0c3" height="87.0" layoutX="22.0" layoutY="22.0" stroke="BLACK" strokeType="INSIDE" width="557.0" />
-      <Button id="trueButton" fx:id="trueButton" layoutX="237.0" layoutY="189.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="129.0" text="True" />
-      <Button id="falseButton" fx:id="falseButton" layoutX="237.0" layoutY="236.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="129.0" text="False" />
+      <Button id="trueButton" fx:id="trueButton" layoutX="236.0" layoutY="217.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="129.0" text="True" />
+      <Button id="falseButton" fx:id="falseButton" layoutX="237.0" layoutY="250.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="129.0" text="False" />
       <Label contentDisplay="CENTER" layoutX="120.0" layoutY="43.0" prefHeight="45.0" prefWidth="385.0" text="Select Either True or False" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="30.0" />
          </font>
       </Label>
-      <Label layoutX="68.0" layoutY="135.0" prefHeight="35.0" prefWidth="85.0" text="Statement:">
+      <Label layoutX="78.0" layoutY="153.0" prefHeight="35.0" prefWidth="85.0" text="Statement:">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label id="TFStatementLabel" fx:id="TFStatementLabel" layoutX="142.0" layoutY="116.0" prefHeight="73.0" prefWidth="444.0" text="TFStatementLabel" />
+      <Label id="TFStatementLabel" fx:id="TFStatementLabel" layoutX="156.0" layoutY="134.0" prefHeight="73.0" prefWidth="416.0" text="TFStatementLabel" />
       <Label layoutX="512.0" layoutY="354.0" text="True / False">
          <font>
             <Font size="10.0" />
          </font>
       </Label>
-      <Button id="nextButton" fx:id="nextButton" layoutX="236.0" layoutY="299.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="129.0" text="Next" />
-      <Pagination id="pagination" fx:id="pagination" layoutX="202.0" layoutY="332.0" prefHeight="34.0" prefWidth="200.0" />
+      <Button id="nextButton" fx:id="nextButton" layoutX="236.0" layoutY="316.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="129.0" text="Next" />
+      <Label layoutX="40.0" layoutY="117.0" text="Student:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="43.0" layoutY="134.0" text="User ID:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <VBox layoutX="92.0" layoutY="112.0" prefHeight="45.0" prefWidth="110.0">
+         <children>
+            <Label fx:id="studentNameLabel" prefHeight="22.0" prefWidth="109.0" text="studentName" />
+            <Label fx:id="userIDLabel" prefHeight="16.0" prefWidth="107.0" text="userID" />
+         </children>
+      </VBox>
    </children>
    <effect>
       <InnerShadow />

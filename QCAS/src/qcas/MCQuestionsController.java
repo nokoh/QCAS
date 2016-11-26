@@ -64,6 +64,11 @@ public class MCQuestionsController implements Initializable {
     private Button DButton;
     @FXML
     private Label MCQuestionDescriptionLabel;
+    @FXML 
+    private Label studentNameLabel;
+    @FXML
+    private Label userID;
+    
     
     public void initID(String ID){ 
         userId = ID;

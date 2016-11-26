@@ -9,25 +9,43 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qcas.FIBQuestionsController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: maroon;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="qcas.FIBQuestionsController">
     <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="284.0" layoutX="18.0" layoutY="98.0" stroke="BLACK" strokeType="INSIDE" width="561.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a9aaab" height="94.0" layoutX="18.0" layoutY="22.0" stroke="BLACK" strokeType="INSIDE" width="561.0" />
-      <Label layoutX="69.0" layoutY="22.0" prefHeight="94.0" prefWidth="468.0" text="Type the Answer That Best Completes the Sentence" textAlignment="CENTER" wrapText="true">
+      <Label layoutX="69.0" layoutY="22.0" prefHeight="94.0" prefWidth="468.0" text="Type Answer That Best Completes the Sentence" textAlignment="CENTER" wrapText="true">
          <font>
             <Font name="System Bold" size="30.0" />
          </font>
       </Label>
-      <Pagination id="pagination" fx:id="pagination" layoutX="200.0" layoutY="332.0" prefHeight="32.0" prefWidth="200.0" />
-      <Button id="nextButton" fx:id="nextButton" layoutX="226.0" layoutY="286.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" text="Next" />
-      <TextField id="userAnswerField" fx:id="userAnswerField" layoutX="228.0" layoutY="228.0" promptText="Your Answer" />
-      <Label layoutX="56.0" layoutY="143.0" text="Question:">
+      <Button id="nextButton" fx:id="nextButton" layoutX="228.0" layoutY="302.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" text="Next" />
+      <TextField id="userAnswerField" fx:id="userAnswerField" layoutX="228.0" layoutY="240.0" promptText="Your Answer" />
+      <Label layoutX="69.0" layoutY="190.0" text="Statement:">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
       <Label layoutX="489.0" layoutY="360.0" text="Fill in the Blank" />
-      <Label id="FIBQuestionDescriptionLabel" fx:id="FIBQuestionDescriptionLabel" layoutX="118.0" layoutY="143.0" prefHeight="73.0" prefWidth="468.0" text="FIBQuestionDescriptionLabel" />
+      <Label id="FIBQuestionDescriptionLabel" fx:id="FIBQuestionDescriptionLabel" layoutX="157.0" layoutY="167.0" prefHeight="66.0" prefWidth="412.0" text="FIBQuestionDescriptionLabel">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font></Label>
+      <Label layoutX="41.0" layoutY="124.0" text="Student:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="41.0" layoutY="146.0" text="User ID:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <VBox layoutX="95.0" layoutY="123.0" prefHeight="47.0" prefWidth="124.0">
+         <children>
+            <Label fx:id="studentNameLabel" prefHeight="22.0" prefWidth="124.0" text="studentNameLabel" />
+            <Label fx:id="userIDLabel" prefHeight="17.0" prefWidth="112.0" text="userIDLabel" />
+         </children>
+      </VBox>
    </children>
    <effect>
       <InnerShadow />

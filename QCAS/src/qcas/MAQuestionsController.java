@@ -55,7 +55,10 @@ public class MAQuestionsController implements Initializable {
     private Button CButton;
     @FXML 
     private Button DButton;
-
+    @FXML
+    private Label studentNameLabel;
+    @FXML
+    private Label userIDLabel;
     
     @FXML 
     private Label MAQuestionDescriptionLabel; 

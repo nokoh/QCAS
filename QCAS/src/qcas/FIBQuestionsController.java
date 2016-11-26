@@ -54,9 +54,17 @@ public class FIBQuestionsController implements Initializable {
     private TextField userAnswerField;
     @FXML
     private Label FIBQuestionDescriptionLabel;
+    @FXML
+    private Label studentNameLabel;
+    @FXML
+    private Label userIDLabel;
+    
+    
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {

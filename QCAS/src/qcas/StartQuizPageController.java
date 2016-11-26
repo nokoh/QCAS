@@ -20,6 +20,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 /**
@@ -47,9 +48,18 @@ public class StartQuizPageController implements Initializable {
     private Button hardButton;
     @FXML
     private Button mixedButton;
+    @FXML 
+    private Label studentNameLabel;
+    @FXML
+    private Label userIDLabel;
+    
+    
+    
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {

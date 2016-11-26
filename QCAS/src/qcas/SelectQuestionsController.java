@@ -14,18 +14,32 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 /**
  * FXML Controller class
  *
  * @author Nnamdi
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
  */
 public class SelectQuestionsController implements Initializable {
     
     int numOfQuestions;
     Scene scene;
     String userId;
+    
+    @FXML
+    private Label studentNameLabel;
+    @FXML
+    private Label userIDLabel;
+    
+    
     
     public void initID(String ID){ 
         userId = ID;

@@ -35,12 +35,12 @@ public class StudentProfileSceneController implements Initializable {
     
     @FXML
     private Button takeQuizButton;      
-    
     @FXML 
     private Button viewReportButton;
- 
     @FXML
     private Label UserIDLabel;
+    @FXML
+    private Label studentNameLabel;
     
     /**
      * Initializes the controller class.

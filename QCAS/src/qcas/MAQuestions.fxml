@@ -9,11 +9,10 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="qcas.MAQuestionsController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: maroon;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qcas.MAQuestionsController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fcfcfc" height="351.0" layoutX="22.0" layoutY="33.0" stroke="BLACK" strokeType="INSIDE" width="557.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bbbdbf" height="86.0" layoutX="22.0" layoutY="20.0" stroke="BLACK" strokeType="INSIDE" width="557.0" />
-      <Pagination id="pagination" fx:id="pagination" layoutX="209.0" layoutY="331.0" maxPageIndicatorCount="32" prefHeight="34.0" prefWidth="200.0" />
       <Label layoutX="492.0" layoutY="362.0" text="Multiple Answer">
          <font>
             <Font size="10.0" />
@@ -24,12 +23,12 @@
             <Font name="System Bold" size="30.0" />
          </font>
       </Label>
-      <Label layoutX="52.0" layoutY="117.0" text="Question:">
+      <Label layoutX="93.0" layoutY="161.0" text="Question:">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <VBox layoutX="168.0" layoutY="159.0" prefHeight="177.0" prefWidth="418.0">
+      <VBox layoutX="166.0" layoutY="178.0" prefHeight="177.0" prefWidth="418.0">
          <children>
             <Label id="MAOptionALabel" fx:id="MAOptionALabel" prefHeight="40.0" prefWidth="435.0" text="MAOptionA" wrapText="true" />
             <Label id="MAOptionBLabel" fx:id="MAOptionBLabel" prefHeight="43.0" prefWidth="434.0" text="MAOptionB" wrapText="true" />
@@ -37,11 +36,30 @@
             <Label id="MAOptionDLabel" fx:id="MAOptionDLabel" prefHeight="48.0" prefWidth="439.0" text="MAOptionD" wrapText="true" />
          </children>
       </VBox>
-      <Label id="MAQuestionDescriptionLabel" fx:id="MAQuestionDescriptionLabel" layoutX="128.0" layoutY="110.0" prefHeight="45.0" prefWidth="436.0" text="MAQuestionDescription" wrapText="true" />
-      <Button id="AButton" fx:id="AButton" layoutX="67.0" layoutY="165.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="99.0" text="A" />
-      <Button id="BButton" fx:id="BButton" layoutX="67.0" layoutY="211.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="99.0" text="B" />
-      <Button id="CButton" fx:id="CButton" layoutX="67.0" layoutY="254.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="99.0" text="C" />
-      <Button id="DButton" fx:id="DButton" layoutX="67.0" layoutY="300.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="99.0" text="D" />
+      <Label id="MAQuestionDescriptionLabel" fx:id="MAQuestionDescriptionLabel" layoutX="168.0" layoutY="148.0" prefHeight="45.0" prefWidth="403.0" text="MAQuestionDescription" wrapText="true">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font></Label>
+      <Button id="AButton" fx:id="AButton" layoutX="60.0" layoutY="188.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="99.0" text="A" />
+      <Button id="BButton" fx:id="BButton" layoutX="60.0" layoutY="228.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="99.0" text="B" />
+      <Button id="CButton" fx:id="CButton" layoutX="60.0" layoutY="273.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="99.0" text="C" />
+      <Button id="DButton" fx:id="DButton" layoutX="60.0" layoutY="315.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="99.0" text="D" />
+      <Label layoutX="39.0" layoutY="106.0" text="Student:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="39.0" layoutY="129.0" text="User ID:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <VBox layoutX="93.0" layoutY="107.0" prefHeight="40.0" prefWidth="129.0">
+         <children>
+            <Label fx:id="studentNameLabel" prefHeight="16.0" prefWidth="129.0" text="studentNameLabel" />
+            <Label fx:id="userIDLabel" prefHeight="24.0" prefWidth="129.0" text="userIDLabel" />
+         </children>
+      </VBox>
    </children>
    <effect>
       <InnerShadow />

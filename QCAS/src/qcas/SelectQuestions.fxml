@@ -17,9 +17,30 @@
       <Button id="sixteenQuestionsButton" fx:id="sixteenQuestionsButton" layoutX="219.0" layoutY="200.0" mnemonicParsing="false" onAction="#getNumberOfQuestions" prefHeight="25.0" prefWidth="163.0" text="16 Questions" />
       <Button id="twentyfourQuestionsButton" fx:id="twentyfourQuestionsButton" layoutX="219.0" layoutY="247.0" mnemonicParsing="false" onAction="#getNumberOfQuestions" prefHeight="25.0" prefWidth="163.0" text="24 Questions" />
       <Button id="thirtytwoQuestionsButton" fx:id="thirtytwoQuestionsButton" layoutX="219.0" layoutY="291.0" mnemonicParsing="false" onAction="#getNumberOfQuestions" prefHeight="25.0" prefWidth="163.0" text="32 Questions" />
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="25.0" layoutY="37.0" prefHeight="45.0" prefWidth="552.0" text="Select Desired # of Quiz Questions" textAlignment="CENTER">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="25.0" layoutY="37.0" prefHeight="45.0" prefWidth="552.0" text="Quiz Questions Options" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
+      <Label layoutX="32.0" layoutY="115.0" text="Student:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="33.0" layoutY="139.0" text="User ID:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <VBox layoutX="83.0" layoutY="107.0" prefHeight="64.0" prefWidth="136.0">
+         <children>
+            <Label fx:id="studentNameLabel" prefHeight="28.0" prefWidth="136.0" text="studentNameLabel" />
+            <Label fx:id="userIDLabel" prefHeight="24.0" prefWidth="139.0" text="userIDLabel" />
+         </children>
+      </VBox>
+      <Label layoutX="182.0" layoutY="345.0" text="Select the Number of Quiz Questions Desired">
+         <font>
+            <Font name="System Italic" size="12.0" />
          </font>
       </Label>
    </children>

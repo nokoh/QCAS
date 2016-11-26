@@ -27,6 +27,9 @@ import javafx.stage.Stage;
  * FXML Controller class
  *
  * @author Nnamdi
+ * 
+ * 
+ * 
  */
 public class TFQuestionsController implements Initializable {
     
@@ -47,6 +50,10 @@ public class TFQuestionsController implements Initializable {
     private Button nextButton;
     @FXML
     private Pagination pagination;
+    @FXML
+    private Label studentNameLabel;
+    @FXML 
+    private Label userIDLabel;        
     
     Scene scene;
     String userId;

@@ -51,7 +51,10 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="157.0" layoutY="317.0" text="Please Enter Your User ID and Password, Then Click 'Login'" />
+      <Label layoutX="157.0" layoutY="317.0" text="Please Enter Your User ID and Password, Then Click 'Login'">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font></Label>
       <TextField fx:id="userIDField" layoutX="133.0" layoutY="172.0" prefHeight="24.0" prefWidth="135.0" promptText="UserID" />
       <Text fx:id="loginMessage" fill="#eb3e3e" layoutX="122.0" layoutY="295.0" opacity="0.99" strokeType="OUTSIDE" strokeWidth="0.0" />
     </children>

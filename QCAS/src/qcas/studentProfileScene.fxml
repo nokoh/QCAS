@@ -18,17 +18,24 @@
             <Font name="System Bold" size="30.0" />
          </font>
       </Label>
-      <Label layoutX="247.0" layoutY="115.0" text="Welcome">
+      <Label layoutX="163.0" layoutY="130.0" text="Welcome:">
          <font>
-            <Font name="System Bold" size="26.0" />
+            <Font name="System Bold" size="14.0" />
          </font>
       </Label>
       <Button id="takeQuizButton" fx:id="takeQuizButton" layoutX="242.0" layoutY="200.0" mnemonicParsing="false" onAction="#startQuiz" prefHeight="25.0" prefWidth="124.0" text="Take Quiz" />
       <Button id="viewReportButton" fx:id="viewReportButton" layoutX="242.0" layoutY="251.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="124.0" text="View Report" />
-      <Label fx:id="UserIDLabel" layoutX="68.0" layoutY="120.0" text="Hello">
+      <Label fx:id="UserIDLabel" layoutX="233.0" layoutY="158.0" prefHeight="17.0" prefWidth="192.0" text="userIDLabel" />
+      <Label fx:id="studentNameLabel" layoutX="233.0" layoutY="130.0" prefHeight="20.0" prefWidth="192.0" text="studentNameLabel">
          <font>
-            <Font size="18.0" />
-         </font></Label>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="237.0" layoutY="310.0" text="Select Option From Above">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font>
+      </Label>
    </children>
    <effect>
       <InnerShadow />
