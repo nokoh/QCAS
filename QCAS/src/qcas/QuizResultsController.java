@@ -7,6 +7,10 @@ package qcas;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -47,6 +51,8 @@ public class QuizResultsController implements Initializable {
     int numIncorrect;
     ArrayList <Question> correctQuestions = new ArrayList();
     ArrayList <Question> incorrectQuestions = new ArrayList();
+    ArrayList <Question> allAnsweredQuestions = new ArrayList();
+    Connection connection;
 
     @FXML
     private Button PrintToPDFButton;
@@ -150,11 +156,28 @@ public class QuizResultsController implements Initializable {
                 homeStage.show();
     }
         
+        public void connectToDatabase() throws SQLException{
+        
+        String url = "jdbc:mysql://adelaide-mysql-qcas1.caswkasqdmel.ap-southeast-2.rds.amazonaws.com:3306/UserDB"; //creates network connection to database for application   
+        String username = "qcastest";//username for accessing database
+        String password = "qcastest";//password for accessing database
+
+        try {
+            this.connection = DriverManager.getConnection(url, username, password);
+            if (this.connection != null) {
+                System.out.println("Conencted");
+            }
+        } catch (SQLException e) {
+            System.out.println("SQLException: " + e);
+            this.connection.close();//closes connection resource
+        } // end of try-with-resourc
+        }
+        
         public void launchQuizResults(ArrayList<Question>correctQuestions, ArrayList<Question>incorrectQuestions) throws IOException, SQLException{
         Parent root;
         this.correctQuestions = correctQuestions;
         this.incorrectQuestions = incorrectQuestions;
-        System.out.println("USerID" + userId);
+        
         String questionDifficulty;
         int [] difficultyCorrectScores = new int[3];
         int [] difficultyInCorrectScores = new int[3];
@@ -239,7 +262,7 @@ public class QuizResultsController implements Initializable {
            String inCorrect = "Incorrect";
   
         
-           barChartStudent.setTitle("Reports for Student ID: " + userId);
+           
            xAxis.setLabel("Difficulty Levels");       
            yAxis.setLabel("Number");
             
@@ -268,6 +291,37 @@ public class QuizResultsController implements Initializable {
             question2.setText(this.correctQuestions.get(1).description);
             question17.setText(this.incorrectQuestions.get(0).description);
             question18.setText(this.incorrectQuestions.get(1).description);
-           
+            
+            for(int t = 0; t < this.correctQuestions.size(); t++){
+                this.allAnsweredQuestions.add(this.correctQuestions.get(t));
+            }
+            for(int t = 0; t < this.incorrectQuestions.size(); t++){
+                this.allAnsweredQuestions.add(this.incorrectQuestions.get(t));
+            }
+            
+            connectToDatabase();
+            String dbQuery = "Select firstname, lastname, userid from Users WHERE userid = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(dbQuery);
+            preparedStatement.setString(1, userId);
+            ResultSet rset = preparedStatement.executeQuery();
+            if (rset.next()) {
+                barChartStudent.setTitle("Reports for Student: " + rset.getString("firstname") + " " + 
+                        rset.getString("firstname") + " " + rset.getString("userid"));
+            }
+            String storeInDB = "INSERT INTO UserDB.ExamTable (examID, studentid, question, anwerchoice, status)" +
+                        "VALUES (?, ?, ?, ?, ?);";
+            PreparedStatement storeDBExecute = this.connection.prepareStatement(storeInDB);
+            
+            for(int i = 0; i < this.numOfQuestions; i++){
+            storeDBExecute.setInt(1, 1);
+            storeDBExecute.setInt(2, Integer.parseInt(userId));
+            storeDBExecute.setString(3, this.allAnsweredQuestions.get(i).description);
+            storeDBExecute.setString(4, this.allAnsweredQuestions.get(i).description);
+            storeDBExecute.setString(5, this.allAnsweredQuestions.get(i).difficulty);
+            storeDBExecute.executeQuery();
+            }
+            
+            
+            
         }
 }

@@ -125,7 +125,6 @@ public class MAQuestionsController implements Initializable {
         this.multipleChoiceQuestions = multipleChoiceQuestions;
         this.trueFalseQuestions = trueFalseQuestions;
         this.fillInTheBlanksQuestions = fillInTheBlanksQuestions;
-        System.out.println(multipleAnswerQuestions.get(0).description);
        // Stage stage = (Stage) AButton.getScene().getWindow();
         if(size != 0){
             this.multipleAnswerQuestions = multipleAnswerQuestions;
@@ -222,7 +221,6 @@ public class MAQuestionsController implements Initializable {
             sc.launchFIB(this.multipleChoiceQuestions, this.multipleAnswerQuestions, this.trueFalseQuestions, 
                     this.fillInTheBlanksQuestions, this.multipleAnswerQuestions.size());
             sc.initID(this.userId);
-            System.out.println(userId);
             sc.setNumOfQuestions(this.numOfQuestions);
             sc.setCorrect(this.numCorrect);
             sc.setIncorrect(this.numIncorrect);

@@ -116,7 +116,6 @@ public class StartQuizPageController implements Initializable {
                 sc.launchMCQ(this.multipleAnswerQuestions,   this.multipleChoiceQuestions, 
                         this.trueFalseQuestions, this.fillInTheBlanksQuestions , this.numberOfQuestions/4);
                 sc.initID(this.userId);
-                System.out.println(userId);
                 sc.setNumOfQuestions(this.numberOfQuestions);
                 scene = new Scene(root);
                 stage.setScene(scene);
