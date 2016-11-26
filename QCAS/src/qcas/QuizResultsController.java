@@ -218,10 +218,15 @@ public class QuizResultsController implements Initializable {
         } // end of try-with-resourc
         }
         
-        public void launchQuizResults(ArrayList<Question>correctQuestions, ArrayList<Question>incorrectQuestions) throws IOException, SQLException{
+    public void launchQuizResults(ArrayList<Question>correctQuestions, ArrayList<Question>incorrectQuestions) throws IOException, SQLException{
         Parent root;
         this.correctQuestions = correctQuestions;
         this.incorrectQuestions = incorrectQuestions;
+        
+        System.out.println(this.correctQuestions.size());
+        System.out.println(this.incorrectQuestions.size());
+        System.out.println(this.userAnswers.size());
+        
         
         String questionDifficulty;
         int [] difficultyCorrectScores = new int[3];
@@ -355,7 +360,7 @@ public class QuizResultsController implements Initializable {
             String storeInDB = "INSERT INTO UserDB.ExamTable (examID, studentid, question, anwerchoice, status, questionNo)" +
                         "VALUES (?, ?, ?, ?, ?);";
             PreparedStatement storeDBExecute = this.connection.prepareStatement(storeInDB);
-            
+            System.out.println(this.allAnsweredQuestions.size());
             for(int i = 0; i < this.numOfQuestions; i++){
             storeDBExecute.setInt(1, 1);
             storeDBExecute.setInt(2, Integer.parseInt(userId));
