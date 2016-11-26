@@ -12,8 +12,8 @@
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: maroon;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qcas.StudentProfileSceneController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="349.0" layoutX="21.0" layoutY="30.0" stroke="BLACK" strokeType="INSIDE" width="557.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#999a9a" height="77.0" layoutX="21.0" layoutY="18.0" stroke="BLACK" strokeType="INSIDE" width="557.0" />
-      <Label layoutX="169.0" layoutY="39.0" text="Student Logged In">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9d9e9e" height="77.0" layoutX="21.0" layoutY="18.0" stroke="BLACK" strokeType="INSIDE" width="557.0" />
+      <Label layoutX="184.0" layoutY="34.0" text="Login Successful">
          <font>
             <Font name="System Bold" size="30.0" />
          </font>
