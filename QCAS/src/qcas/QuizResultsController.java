@@ -361,6 +361,13 @@ public class QuizResultsController implements Initializable {
             examNumber = maxexamid.getInt(1) + 1;
             System.out.println(examNumber);
         }
+        for(int i = 0; i < this.userAnswers.size(); i++){
+            System.out.println(this.userAnswers.get(i));
+        }
+        for(int i = 0; i < this.userAnswerCheck.size(); i++){
+            System.out.println(this.userAnswerCheck.get(i));
+        }
+        
         System.out.println(this.correctQuestions.size());
         System.out.println(this.allAnsweredQuestions.size());
         
@@ -382,7 +389,61 @@ public class QuizResultsController implements Initializable {
             storeDBExecute.setString(3, mc.description);
             storeDBExecute.setString(4, this.userAnswers.get(t));
             storeDBExecute.setString(5, mc.difficulty);
-            storeDBExecute.setInt(6, this.allAnsweredQuestions.get(t).number);
+            storeDBExecute.setInt(6, mc.number);
+            storeDBExecute.setString(7, s);
+            storeDBExecute.setString(8, this.userAnswerCheck.get(t));
+            if(this.userAnswers.get(t).equals(this.userAnswerCheck.get(t))){
+                storeDBExecute.setString(9, "correct");
+            }
+            else{
+                storeDBExecute.setString(9, "incorrect");
+            }
+            storeDBExecute.executeUpdate();
+            }
+            else if(this.allAnsweredQuestions.get(t).getClass() == ma.getClass()){
+            ma = (MultipleAnswer)this.allAnsweredQuestions.get(t);
+            storeDBExecute.setInt(1, examNumber);
+            storeDBExecute.setInt(2, Integer.parseInt(userId));
+            storeDBExecute.setString(3, ma.description);
+            storeDBExecute.setString(4, this.userAnswers.get(t));
+            storeDBExecute.setString(5, ma.difficulty);
+            storeDBExecute.setInt(6, ma.number);
+            storeDBExecute.setString(7, s);
+            storeDBExecute.setString(8, this.userAnswerCheck.get(t));
+            if(this.userAnswers.get(t).equals(this.userAnswerCheck.get(t))){
+                storeDBExecute.setString(9, "correct");
+            }
+            else{
+                storeDBExecute.setString(9, "incorrect");
+            }
+            storeDBExecute.executeUpdate();
+            }
+            else if(this.allAnsweredQuestions.get(t).getClass() == fib.getClass()){
+            fib = (FillInTheBlanks)this.allAnsweredQuestions.get(t);
+            storeDBExecute.setInt(1, examNumber);
+            storeDBExecute.setInt(2, Integer.parseInt(userId));
+            storeDBExecute.setString(3, fib.description);
+            storeDBExecute.setString(4, this.userAnswers.get(t));
+            storeDBExecute.setString(5, fib.difficulty);
+            storeDBExecute.setInt(6, fib.number);
+            storeDBExecute.setString(7, s);
+            storeDBExecute.setString(8, this.userAnswerCheck.get(t));
+            if(this.userAnswers.get(t).equals(this.userAnswerCheck.get(t))){
+                storeDBExecute.setString(9, "correct");
+            }
+            else{
+                storeDBExecute.setString(9, "incorrect");
+            }
+            storeDBExecute.executeUpdate();
+            }
+            else if(this.allAnsweredQuestions.get(t).getClass() == tf.getClass()){
+            tf = (TrueFalse)this.allAnsweredQuestions.get(t);
+            storeDBExecute.setInt(1, examNumber);
+            storeDBExecute.setInt(2, Integer.parseInt(userId));
+            storeDBExecute.setString(3, tf.description);
+            storeDBExecute.setString(4, this.userAnswers.get(t));
+            storeDBExecute.setString(5, tf.difficulty);
+            storeDBExecute.setInt(6, tf.number);
             storeDBExecute.setString(7, s);
             storeDBExecute.setString(8, this.userAnswerCheck.get(t));
             if(this.userAnswers.get(t).equals(this.userAnswerCheck.get(t))){

@@ -164,18 +164,19 @@ public class FIBQuestionsController implements Initializable {
                     if(answer.equalsIgnoreCase(fillInTheBlanksQuestions.get(size-1).correctAnswer)){
                         this.numCorrect++;
                         this.correctQuestions.add(fillInTheBlanksQuestions.get(size-1));
-                        this.userAnswers.add(fillInTheBlanksQuestions.get(size-1).correctAnswer);
+                        this.userAnswers.add(answer);
                         
                     }
                     else {
                         this.numIncorrect++;
                         this.incorrectQuestions.add(fillInTheBlanksQuestions.get(size-1));
-                        this.userAnswers.add(fillInTheBlanksQuestions.get(size-1).correctAnswer);
+                        this.userAnswers.add(answer);
                     }
                     userAnswerField.setText(null);
                 }
                 int m = size - 1;
                 this.userAnswerCheck.add(this.fillInTheBlanksQuestions.get(m).correctAnswer);
+                System.out.println(this.fillInTheBlanksQuestions.get(m).correctAnswer);
                 this.allAnsweredQuestions.add(this.fillInTheBlanksQuestions.get(m));
                 
             try {

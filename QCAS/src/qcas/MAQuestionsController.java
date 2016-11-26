@@ -173,18 +173,20 @@ public class MAQuestionsController implements Initializable {
             MAOptionDLabel.setText(multipleAnswerQuestions.get(size-1).answer4);
             this.allAnsweredQuestions.add(multipleAnswerQuestions.get(size-1));
             System.out.println("MA "+this.allAnsweredQuestions.size());
+            
             if(multipleAnswerQuestions.get(size-1).correct1.equals("correct")){
-                this.userAnswerCheck.add(multipleAnswerQuestions.get(size - 1).answer1);
+                this.userAnswerCheck.add(this.multipleAnswerQuestions.get(size- 1).answer1);
             }
-            if(multipleAnswerQuestions.get(size-1).correct2.equals("correct")){
-                this.userAnswerCheck.add(multipleAnswerQuestions.get(size - 1).answer2);
+            else if(multipleAnswerQuestions.get(size-1).correct2.equals("correct")){
+                this.userAnswerCheck.add(this.multipleAnswerQuestions.get(size - 1).answer2);
             }
-            if(multipleAnswerQuestions.get(size-1).correct3.equals("correct")){
-                this.userAnswerCheck.add(multipleAnswerQuestions.get(size - 1).answer3);
+            else if(multipleAnswerQuestions.get(size-1).correct3.equals("correct")){
+                this.userAnswerCheck.add(this.multipleAnswerQuestions.get(size - 1).answer3);
             }
-            if(multipleAnswerQuestions.get(size-1).correct4.equals("correct")){
-                this.userAnswerCheck.add(multipleAnswerQuestions.get(size - 1).answer4);
+            else if(multipleAnswerQuestions.get(size-1).correct4.equals("correct")){
+                this.userAnswerCheck.add(this.multipleAnswerQuestions.get(size - 1).answer4);
             }
+            
             
             AButton.setOnAction(e -> {
             if(multipleAnswerQuestions.get(size-1).correct1.equals("correct")){
@@ -264,6 +266,7 @@ public class MAQuestionsController implements Initializable {
                 this.userAnswers.add(multipleAnswerQuestions.get(size-1).answer4);
             }
             int m = size - 1;
+
             try {
                 launchMA(this.multipleChoiceQuestions, this.multipleAnswerQuestions, 
                         this.trueFalseQuestions, this.fillInTheBlanksQuestions , m);
