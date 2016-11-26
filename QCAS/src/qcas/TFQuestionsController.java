@@ -48,8 +48,7 @@ public class TFQuestionsController implements Initializable {
     private Label TFStatementLabel;
     @FXML
     private Button nextButton;
-    @FXML
-    private Pagination pagination;
+    
     @FXML
     private Label studentNameLabel;
     @FXML 
