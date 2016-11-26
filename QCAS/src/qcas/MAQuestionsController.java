@@ -43,6 +43,7 @@ public class MAQuestionsController implements Initializable {
     ArrayList <Question> incorrectQuestions = new ArrayList();
     ArrayList <String> userAnswers = new ArrayList();
     ArrayList <String> userAnswerCheck = new ArrayList();
+    ArrayList <Question> allAnsweredQuestions = new ArrayList();
 
     
     Scene scene;
@@ -137,6 +138,12 @@ public class MAQuestionsController implements Initializable {
     public void setUserAnswerCheck(ArrayList <String> userAnswerCheck) {
         this.userAnswerCheck = userAnswerCheck;
     }
+
+    public void setAllAnsweredQuestions(ArrayList<Question> allAnsweredQuestions) {
+        this.allAnsweredQuestions = allAnsweredQuestions;
+    }
+    
+    
     
     
 
@@ -164,7 +171,8 @@ public class MAQuestionsController implements Initializable {
             MAOptionBLabel.setText(multipleAnswerQuestions.get(size-1).answer2);
             MAOptionCLabel.setText(multipleAnswerQuestions.get(size-1).answer3);
             MAOptionDLabel.setText(multipleAnswerQuestions.get(size-1).answer4);
-            
+            this.allAnsweredQuestions.add(multipleAnswerQuestions.get(size-1));
+            System.out.println("MA "+this.allAnsweredQuestions.size());
             if(multipleAnswerQuestions.get(size-1).correct1.equals("correct")){
                 this.userAnswerCheck.add(multipleAnswerQuestions.get(size - 1).answer1);
             }
@@ -271,8 +279,6 @@ public class MAQuestionsController implements Initializable {
             FXMLLoader f = new FXMLLoader(getClass().getResource("FIBQuestions.fxml"));
             root = f.load();
             FIBQuestionsController sc = f.<FIBQuestionsController>getController();
-            sc.launchFIB(this.multipleChoiceQuestions, this.multipleAnswerQuestions, this.trueFalseQuestions, 
-                    this.fillInTheBlanksQuestions, this.multipleAnswerQuestions.size());
             sc.initID(this.userId);
             sc.setNumOfQuestions(this.numOfQuestions);
             sc.setUserAnswerCheck(this.userAnswerCheck);
@@ -281,6 +287,10 @@ public class MAQuestionsController implements Initializable {
             sc.setCorrectQuestions(this.correctQuestions);
             sc.setIncorrectQuestions(this.incorrectQuestions);
             sc.setUserAnswers(this.userAnswers);
+            sc.setAllAnsweredQuestions(this.allAnsweredQuestions);
+            sc.launchFIB(this.multipleChoiceQuestions, this.multipleAnswerQuestions, this.trueFalseQuestions, 
+                    this.fillInTheBlanksQuestions, this.multipleAnswerQuestions.size());
+            
 
             scene = new Scene(root);
             stage.setScene(scene);

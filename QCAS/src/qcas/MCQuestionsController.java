@@ -41,6 +41,7 @@ public class MCQuestionsController implements Initializable {
     ArrayList <Question> incorrectQuestions = new ArrayList();
     ArrayList <String> userAnswers = new ArrayList();
     ArrayList <String> userAnswerCheck = new ArrayList();
+    ArrayList <Question> allAnsweredQuestions = new ArrayList();
     
     Scene scene;
     String userId;
@@ -75,6 +76,7 @@ public class MCQuestionsController implements Initializable {
     private Label studentNameLabel;
     @FXML
     private Label userIDLabel;
+
     
     
     public void initID(String ID) throws SQLException{ 
@@ -89,6 +91,7 @@ public class MCQuestionsController implements Initializable {
             if (rset.next()) {
                 studentNameLabel.setText(rset.getString("firstname") + " " + rset.getString("lastname"));
             }
+            
     }
     
     public void setScore(int num){ 
@@ -109,6 +112,10 @@ public class MCQuestionsController implements Initializable {
     
     public void setUserAnswers(ArrayList<String> userAnswers) {
         this.userAnswers = userAnswers;
+    }
+
+    public void setAllAnsweredQuestions(ArrayList<Question> allAnsweredQuestions) {
+        this.allAnsweredQuestions = allAnsweredQuestions;
     }
 
     /**
@@ -134,7 +141,8 @@ public class MCQuestionsController implements Initializable {
         MCOptionB.setText(multipleChoiceQuestions.get(size-1).answer2);
         MCOptionC.setText(multipleChoiceQuestions.get(size-1).answer3);
         MCOptionD.setText(multipleChoiceQuestions.get(size-1).answer4);
-        
+        this.allAnsweredQuestions.add(multipleChoiceQuestions.get(size-1));
+        System.out.println("MC "+this.allAnsweredQuestions.size());
             if(multipleChoiceQuestions.get(size-1).correct1.equals("correct")){
                 this.userAnswerCheck.add(multipleChoiceQuestions.get(size - 1).answer1);
             }
@@ -147,6 +155,8 @@ public class MCQuestionsController implements Initializable {
             else if(multipleChoiceQuestions.get(size-1).correct4.equals("correct")){
                 this.userAnswerCheck.add(multipleChoiceQuestions.get(size - 1).answer4);
             }
+            
+            
         
         AButton.setOnAction(e -> {
             if(multipleChoiceQuestions.get(size-1).correct1.equals("correct")){
@@ -241,8 +251,7 @@ public class MCQuestionsController implements Initializable {
             FXMLLoader f = new FXMLLoader(getClass().getResource("MAQuestions.fxml"));
             root = f.load();
             MAQuestionsController sc = f.<MAQuestionsController>getController();
-            sc.launchMA(this.multipleChoiceQuestions, this.multipleAnswerQuestions, this.trueFalseQuestions, 
-                    this.fillInTheBlanksQuestions, this.multipleAnswerQuestions.size());
+            
             sc.initID(this.userId);
             sc.setUserAnswerCheck(this.userAnswerCheck);
             sc.setNumOfQuestions(this.numOfQuestions);
@@ -251,7 +260,9 @@ public class MCQuestionsController implements Initializable {
             sc.setCorrectQuestions(this.correctQuestions);
             sc.setIncorrectQuestions(this.incorrectQuestions);
             sc.setUserAnswers(this.userAnswers);
-
+            sc.setAllAnsweredQuestions(this.allAnsweredQuestions);
+            sc.launchMA(this.multipleChoiceQuestions, this.multipleAnswerQuestions, this.trueFalseQuestions, 
+                    this.fillInTheBlanksQuestions, this.multipleAnswerQuestions.size());
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();

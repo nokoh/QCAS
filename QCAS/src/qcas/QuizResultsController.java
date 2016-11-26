@@ -65,6 +65,7 @@ public class QuizResultsController implements Initializable {
     Connection connection;
     Date currentDate;
     int examNumber;
+    double examScore;
 
     @FXML
     private Label studentNameLabel;
@@ -164,6 +165,12 @@ public class QuizResultsController implements Initializable {
     public void setUserAnswerCheck(ArrayList <String> userAnswerCheck) {
         this.userAnswerCheck = userAnswerCheck;
     }
+
+    public void setAllAnsweredQuestions(ArrayList<Question> allAnsweredQuestions) {
+        this.allAnsweredQuestions = allAnsweredQuestions;
+    }
+    
+    
 
     /**
      * Initializes the controller class.
@@ -335,15 +342,6 @@ public class QuizResultsController implements Initializable {
            series3.getData().add(new XYChart.Data(inCorrect, difficultyInCorrectScores[2]));
 
            barChartStudent.getData().addAll(series1, series2, series3);
-           
-           
-            
-            for(int t = 0; t < this.correctQuestions.size(); t++){
-                this.allAnsweredQuestions.add(this.correctQuestions.get(t));
-            }
-            for(int t = 0; t < this.incorrectQuestions.size(); t++){
-                this.allAnsweredQuestions.add(this.incorrectQuestions.get(t));
-            }
             
             
             connectToDatabase();
@@ -361,6 +359,11 @@ public class QuizResultsController implements Initializable {
             examNumber = maxexamid.getInt(1) + 1;
             System.out.println(examNumber);
         }
+        System.out.println(this.correctQuestions.size());
+        System.out.println(this.allAnsweredQuestions.size());
+        
+        this.examScore = (double) this.correctQuestions.size()/ (double)this.allAnsweredQuestions.size()*100;
+
         
             long time = System.currentTimeMillis();
             String s = convertTime(time);
@@ -374,13 +377,19 @@ public class QuizResultsController implements Initializable {
             mc = (MultipleChoice)this.allAnsweredQuestions.get(t);
             storeDBExecute.setInt(1, examNumber);
             storeDBExecute.setInt(2, Integer.parseInt(userId));
-            storeDBExecute.setString(3, this.allAnsweredQuestions.get(t).description);
+            storeDBExecute.setString(3, mc.description);
             storeDBExecute.setString(4, this.userAnswers.get(t));
-            storeDBExecute.setString(5, this.allAnsweredQuestions.get(t).difficulty);
+            storeDBExecute.setString(5, mc.difficulty);
             storeDBExecute.setInt(6, this.allAnsweredQuestions.get(t).number);
-            storeDBExecute.setString(7,s);
-            storeDBExecute.setString(8, mc.correct1);
-//            storeDBExecute.executeUpdate();
+            storeDBExecute.setString(7, s);
+            storeDBExecute.setString(8, this.userAnswerCheck.get(t));
+            if(this.userAnswers.get(t).equals(this.userAnswerCheck.get(t))){
+                storeDBExecute.setString(9, "correct");
+            }
+            else{
+                storeDBExecute.setString(9, "incorrect");
+            }
+            storeDBExecute.executeUpdate();
             }
         }
         

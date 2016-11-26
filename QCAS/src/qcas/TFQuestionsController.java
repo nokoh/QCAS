@@ -45,6 +45,7 @@ public class TFQuestionsController implements Initializable {
     ArrayList <Question> incorrectQuestions = new ArrayList();
     ArrayList <String> userAnswers = new ArrayList();
     ArrayList <String> userAnswerCheck = new ArrayList();
+    ArrayList <Question> allAnsweredQuestions = new ArrayList();
 
     @FXML
     private Button trueButton;
@@ -132,6 +133,12 @@ public class TFQuestionsController implements Initializable {
     public void setUserAnswerCheck(ArrayList <String> userAnswerCheck) {
         this.userAnswerCheck = userAnswerCheck;
     }
+
+    public void setAllAnsweredQuestions(ArrayList<Question> allAnsweredQuestions) {
+        this.allAnsweredQuestions = allAnsweredQuestions;
+    }
+    
+    
     
     public void launchTF(ArrayList<MultipleChoice>multipleChoiceQuestions, ArrayList<MultipleAnswer>multipleAnswerQuestions, 
             ArrayList<TrueFalse>trueFalseQuestions, ArrayList<FillInTheBlanks>fillInTheBlanksQuestions,int size) throws IOException, SQLException{
@@ -140,17 +147,16 @@ public class TFQuestionsController implements Initializable {
         this.multipleChoiceQuestions = multipleChoiceQuestions;
         this.fillInTheBlanksQuestions = fillInTheBlanksQuestions;
         
-        for(int i = 0; i < this.userAnswerCheck.size(); i++){
-            System.out.println("TF + " + this.userAnswerCheck.get(i));
-        }
-        
+        System.out.println("TF "+this.allAnsweredQuestions.size());
        // Stage stage = (Stage) AButton.getScene().getWindow();
         if(size != 0){
             
 
             this.trueFalseQuestions = trueFalseQuestions;
+            this.allAnsweredQuestions.add(this.trueFalseQuestions.get(size - 1));
             TFStatementLabel.setText(trueFalseQuestions.get(size-1).description);
             this.userAnswerCheck.add(trueFalseQuestions.get(size-1).correctAnswer);
+            
             
             trueButton.setOnAction(e -> {
                 if(trueFalseQuestions.get(size-1).correctAnswer.equals("true")){
@@ -187,6 +193,7 @@ public class TFQuestionsController implements Initializable {
                 }
                 int m = size - 1;
                 this.userAnswerCheck.add(this.trueFalseQuestions.get(m).correctAnswer);
+                
             try {
                 launchTF(this.multipleChoiceQuestions, this.multipleAnswerQuestions, 
                         this.trueFalseQuestions, this.fillInTheBlanksQuestions, m);
@@ -206,12 +213,13 @@ public class TFQuestionsController implements Initializable {
             sc.initID(this.userId);
             sc.setUserAnswerCheck(this.userAnswerCheck);
             sc.setUserAnswers(this.userAnswers);
-            sc.launchQuizResults(this.correctQuestions, this.incorrectQuestions);
             sc.setNumOfQuestions(this.numOfQuestions);
             sc.setCorrect(this.numCorrect);
             sc.setIncorrect(this.numIncorrect);
             sc.setCorrectQuestions(this.correctQuestions);
             sc.setIncorrectQuestions(this.incorrectQuestions);
+            sc.setAllAnsweredQuestions(this.allAnsweredQuestions);
+            sc.launchQuizResults(this.correctQuestions, this.incorrectQuestions);
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();

@@ -43,6 +43,8 @@ public class FIBQuestionsController implements Initializable {
     ArrayList <Question> incorrectQuestions = new ArrayList();
     ArrayList <String> userAnswers = new ArrayList();
     ArrayList <String> userAnswerCheck = new ArrayList();
+    ArrayList <Question> allAnsweredQuestions = new ArrayList();
+    
     
     Scene scene;
     String userId;
@@ -131,6 +133,12 @@ public class FIBQuestionsController implements Initializable {
     public void setUserAnswerCheck(ArrayList <String> userAnswerCheck) {
         this.userAnswerCheck = userAnswerCheck;
     }
+
+    public void setAllAnsweredQuestions(ArrayList<Question> allAnsweredQuestions) {
+        this.allAnsweredQuestions = allAnsweredQuestions;
+    }
+    
+    
     
     
     public void launchFIB(ArrayList<MultipleChoice>multipleChoiceQuestions, ArrayList<MultipleAnswer>multipleAnswerQuestions, 
@@ -139,10 +147,7 @@ public class FIBQuestionsController implements Initializable {
         this.multipleAnswerQuestions = multipleAnswerQuestions;
         this.multipleChoiceQuestions = multipleChoiceQuestions;
         this.trueFalseQuestions = trueFalseQuestions;
-        
-        for(int i = 0; i < this.userAnswerCheck.size(); i++){
-            System.out.println("FIB + " + this.userAnswerCheck.get(i));
-        }
+
        // Stage stage = (Stage) AButton.getScene().getWindow();
         if(size != 0){
             
@@ -171,6 +176,8 @@ public class FIBQuestionsController implements Initializable {
                 }
                 int m = size - 1;
                 this.userAnswerCheck.add(this.fillInTheBlanksQuestions.get(m).correctAnswer);
+                this.allAnsweredQuestions.add(this.fillInTheBlanksQuestions.get(m));
+                
             try {
                 launchFIB(this.multipleChoiceQuestions, this.multipleAnswerQuestions, 
                         this.trueFalseQuestions, this.fillInTheBlanksQuestions, m);
@@ -187,8 +194,7 @@ public class FIBQuestionsController implements Initializable {
             FXMLLoader f = new FXMLLoader(getClass().getResource("TFQuestions.fxml"));
             root = f.load();
             TFQuestionsController sc = f.<TFQuestionsController>getController();
-            sc.launchTF(this.multipleChoiceQuestions, this.multipleAnswerQuestions, this.trueFalseQuestions, 
-                    this.fillInTheBlanksQuestions, this.multipleAnswerQuestions.size());
+            
             
             sc.initID(this.userId);
             sc.setUserAnswerCheck(this.userAnswerCheck);
@@ -198,6 +204,9 @@ public class FIBQuestionsController implements Initializable {
             sc.setCorrectQuestions(this.correctQuestions);
             sc.setIncorrectQuestions(this.incorrectQuestions);
             sc.setUserAnswers(this.userAnswers);
+            sc.setAllAnsweredQuestions(this.allAnsweredQuestions);
+            sc.launchTF(this.multipleChoiceQuestions, this.multipleAnswerQuestions, this.trueFalseQuestions, 
+                    this.fillInTheBlanksQuestions, this.multipleAnswerQuestions.size());
 
             scene = new Scene(root);
             stage.setScene(scene);
