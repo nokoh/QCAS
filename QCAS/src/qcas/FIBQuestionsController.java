@@ -37,6 +37,7 @@ public class FIBQuestionsController implements Initializable {
     ArrayList<FillInTheBlanks>fillInTheBlanksQuestions = new ArrayList();
     ArrayList <Question> correctQuestions = new ArrayList();
     ArrayList <Question> incorrectQuestions = new ArrayList();
+    ArrayList <String> userAnswers = new ArrayList();
     
     Scene scene;
     String userId;
@@ -97,6 +98,12 @@ public class FIBQuestionsController implements Initializable {
     public void setIncorrectQuestions(ArrayList<Question> incorrectQuestions) {
         this.incorrectQuestions = incorrectQuestions;
     }
+
+    public void setUserAnswers(ArrayList<String> userAnswers) {
+        this.userAnswers = userAnswers;
+    }
+    
+    
     
     public void launchFIB(ArrayList<MultipleChoice>multipleChoiceQuestions, ArrayList<MultipleAnswer>multipleAnswerQuestions, 
             ArrayList<TrueFalse>trueFalseQuestions, ArrayList<FillInTheBlanks>fillInTheBlanksQuestions,int size) throws IOException, SQLException{
@@ -119,10 +126,12 @@ public class FIBQuestionsController implements Initializable {
                     if(answer.equalsIgnoreCase(fillInTheBlanksQuestions.get(size-1).correctAnswer)){
                         this.numCorrect++;
                         this.correctQuestions.add(fillInTheBlanksQuestions.get(size-1));
+                        this.userAnswers.add(fillInTheBlanksQuestions.get(size-1).correctAnswer);
                     }
                     else {
                         this.numIncorrect++;
                         this.incorrectQuestions.add(fillInTheBlanksQuestions.get(size-1));
+                        this.userAnswers.add(fillInTheBlanksQuestions.get(size-1).correctAnswer);
                     }
                     userAnswerField.setText(null);
                 }
@@ -146,11 +155,15 @@ public class FIBQuestionsController implements Initializable {
             sc.launchTF(this.multipleChoiceQuestions, this.multipleAnswerQuestions, this.trueFalseQuestions, 
                     this.fillInTheBlanksQuestions, this.multipleAnswerQuestions.size());
             sc.initID(this.userId);
+            
             sc.setNumOfQuestions(this.numOfQuestions);
             sc.setCorrect(this.numCorrect);
             sc.setIncorrect(this.numIncorrect);
             sc.setCorrectQuestions(this.correctQuestions);
             sc.setIncorrectQuestions(this.incorrectQuestions);
+            sc.setUserAnswers(this.userAnswers);
+            System.out.println("FIB "+this.userAnswers.get(0));
+            System.out.println("FIB "+this.userAnswers.get(1));
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();

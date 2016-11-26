@@ -37,6 +37,7 @@ public class MAQuestionsController implements Initializable {
     ArrayList<FillInTheBlanks>fillInTheBlanksQuestions = new ArrayList();
     ArrayList <Question> correctQuestions = new ArrayList();
     ArrayList <Question> incorrectQuestions = new ArrayList();
+    ArrayList <String> userAnswers = new ArrayList();
 
     
     Scene scene;
@@ -108,6 +109,10 @@ public class MAQuestionsController implements Initializable {
         this.incorrectQuestions = incorrectQuestions;
     }
     
+    public void setUserAnswers(ArrayList<String> userAnswers) {
+        this.userAnswers = userAnswers;
+    }
+    
     
 
     /**
@@ -138,9 +143,11 @@ public class MAQuestionsController implements Initializable {
             if(multipleAnswerQuestions.get(size-1).correct1.equals("correct")){
                 this.numCorrect++;
                 this.correctQuestions.add(multipleAnswerQuestions.get(size-1));
+                this.userAnswers.add(multipleAnswerQuestions.get(size-1).answer1);
             }else{
                 this.numIncorrect++;
                 this.incorrectQuestions.add(multipleAnswerQuestions.get(size-1));
+                this.userAnswers.add(multipleAnswerQuestions.get(size-1).answer1);
             }
             int m = size - 1;
             try {
@@ -157,10 +164,12 @@ public class MAQuestionsController implements Initializable {
             if(multipleAnswerQuestions.get(size-1).correct2.equals("correct")){
                 this.numCorrect++;
                 this.correctQuestions.add(multipleAnswerQuestions.get(size-1));
+                this.userAnswers.add(multipleAnswerQuestions.get(size-1).answer2);
             }
             else{
                 this.numIncorrect++;
                 this.incorrectQuestions.add(multipleAnswerQuestions.get(size-1));
+                this.userAnswers.add(multipleAnswerQuestions.get(size-1).answer2);
             }
             int m = size - 1;
             try {
@@ -177,10 +186,12 @@ public class MAQuestionsController implements Initializable {
             if(multipleAnswerQuestions.get(size-1).correct3.equals("correct")){
                 this.numCorrect++;
                 this.correctQuestions.add(multipleAnswerQuestions.get(size-1));
+                this.userAnswers.add(multipleAnswerQuestions.get(size-1).answer3);
             }
             else{
                 this.numIncorrect++;
                 this.incorrectQuestions.add(multipleAnswerQuestions.get(size-1));
+                this.userAnswers.add(multipleAnswerQuestions.get(size-1).answer3);
             }
             int m = size - 1;
             try {
@@ -197,10 +208,12 @@ public class MAQuestionsController implements Initializable {
             if(multipleAnswerQuestions.get(size-1).correct4.equals("correct")){
                 this.numCorrect++;
                 this.correctQuestions.add(multipleAnswerQuestions.get(size-1));
+                this.userAnswers.add(multipleAnswerQuestions.get(size-1).answer4);
             }
             else{
                 this.numIncorrect++;
                 this.incorrectQuestions.add(multipleAnswerQuestions.get(size-1));
+                this.userAnswers.add(multipleAnswerQuestions.get(size-1).answer4);
             }
             int m = size - 1;
             try {
@@ -226,6 +239,9 @@ public class MAQuestionsController implements Initializable {
             sc.setIncorrect(this.numIncorrect);
             sc.setCorrectQuestions(this.correctQuestions);
             sc.setIncorrectQuestions(this.incorrectQuestions);
+            sc.setUserAnswers(this.userAnswers);
+            System.out.println("MA "+this.userAnswers.get(0));
+            System.out.println("MA " + this.userAnswers.get(1));
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
