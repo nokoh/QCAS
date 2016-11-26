@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -30,7 +32,7 @@ import javafx.stage.Stage;
  */
 public class StartQuizPageController implements Initializable {
     Scene scene;
-    Connection con;
+    Connection connection;
     int numberOfQuestions;
     String userId;
     
@@ -70,8 +72,18 @@ public class StartQuizPageController implements Initializable {
         numberOfQuestions = num;
     }
     
-    public void initID(String ID){ 
+    public void initID(String ID) throws SQLException{ 
+        userIDLabel.setText(ID);
         userId = ID;
+        connectToDatabase();
+        
+        String dbQuery = "Select firstname, lastname, userid from Users WHERE userid = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(dbQuery);
+            preparedStatement.setString(1, userId);
+            ResultSet rset = preparedStatement.executeQuery();
+            if (rset.next()) {
+                studentNameLabel.setText(rset.getString("firstname") + " " + rset.getString("lastname"));
+            }
     }
     
     public void startQuiz(){
@@ -343,24 +355,21 @@ public class StartQuizPageController implements Initializable {
         });
     
     }
-    public void connectToLiveDatabase() throws SQLException{
-        String url = "jdbc:mysql://adelaide-mysql-qcas1.caswkasqdmel.ap-southeast-2.rds.amazonaws.com:3306/LiveQuizDB"; //creates network connection to database for application   
+    
+    public void connectToDatabase() throws SQLException{
+        
+        String url = "jdbc:mysql://adelaide-mysql-qcas1.caswkasqdmel.ap-southeast-2.rds.amazonaws.com:3306/UserDB"; //creates network connection to database for application   
         String username = "qcastest";//username for accessing database
         String password = "qcastest";//password for accessing database
-        
+
         try {
-         this.con = DriverManager.getConnection(url, username, password);  
-           if (this.con != null) {
-             //  System.out.println("Conencted");
+            this.connection = DriverManager.getConnection(url, username, password);
+            if (this.connection != null) {
+                System.out.println("Conencted");
             }
-           else{
-               System.out.println("Not Conencted");
-           }
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             System.out.println("SQLException: " + e);
-            this.con.close();//closes connection resource
-        } // end of try-with-resources 
-        
-    }
+            this.connection.close();//closes connection resource
+        } // end of try-with-resourc
+        }
 }

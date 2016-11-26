@@ -8,10 +8,14 @@ package qcas;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.ResourceBundle;
@@ -58,6 +62,7 @@ public class QuizResultsController implements Initializable {
     ArrayList <Question> allAnsweredQuestions = new ArrayList();
     ArrayList <String> userAnswers = new ArrayList();
     Connection connection;
+    Date currentDate;
 
     @FXML
     private Button PrintToPDFButton;
@@ -312,6 +317,10 @@ public class QuizResultsController implements Initializable {
                 this.allAnsweredQuestions.add(this.incorrectQuestions.get(t));
             }
             
+            for(int t = 0; t < this.allAnsweredQuestions.size(); t++){
+                System.out.println(this.allAnsweredQuestions.get(t).description);
+            }
+            
             connectToDatabase();
             String dbQuery = "Select firstname, lastname, userid from Users WHERE userid = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(dbQuery);
@@ -332,10 +341,18 @@ public class QuizResultsController implements Initializable {
             storeDBExecute.setString(4, this.userAnswers.get(i));
             storeDBExecute.setString(5, this.allAnsweredQuestions.get(i).difficulty);
             storeDBExecute.setInt(6, this.allAnsweredQuestions.get(i).number);
-            storeDBExecute.executeQuery();
+        //    storeDBExecute.executeQuery();
             }
-            
-            
-            
+//
+            long time = System.currentTimeMillis();
+            String s = convertTime(time);
+            System.out.println(s);
         }
+        
+        public String convertTime(long time){
+        
+        Date date = new Date(time);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy MM dd HH:mm:ss"); 
+        return sdf.format(date);
+}
 }

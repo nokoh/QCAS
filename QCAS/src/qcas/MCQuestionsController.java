@@ -7,6 +7,10 @@ package qcas;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -44,6 +48,7 @@ public class MCQuestionsController implements Initializable {
     int numOfQuestions;
     int numCorrect = 0;
     int numIncorrect = 0;
+    Connection connection;
 
     @FXML
     private Pagination questionNumber;
@@ -68,11 +73,21 @@ public class MCQuestionsController implements Initializable {
     @FXML 
     private Label studentNameLabel;
     @FXML
-    private Label userID;
+    private Label userIDLabel;
     
     
-    public void initID(String ID){ 
+    public void initID(String ID) throws SQLException{ 
         userId = ID;
+        userIDLabel.setText(ID);
+        connectToDatabase();
+        
+        String dbQuery = "Select firstname, lastname, userid from Users WHERE userid = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(dbQuery);
+            preparedStatement.setString(1, userId);
+            ResultSet rset = preparedStatement.executeQuery();
+            if (rset.next()) {
+                studentNameLabel.setText(rset.getString("firstname") + " " + rset.getString("lastname"));
+            }
     }
     
     public void setScore(int num){ 
@@ -111,8 +126,6 @@ public class MCQuestionsController implements Initializable {
         this.trueFalseQuestions = trueFalseQuestions;
         this.fillInTheBlanksQuestions = fillInTheBlanksQuestions;
         
-        
-        
         if(size != 0){
         this.multipleChoiceQuestions = multipleChoiceQuestions;
         MCQuestionDescriptionLabel.setText(multipleChoiceQuestions.get(size-1).description);
@@ -120,8 +133,6 @@ public class MCQuestionsController implements Initializable {
         MCOptionB.setText(multipleChoiceQuestions.get(size-1).answer2);
         MCOptionC.setText(multipleChoiceQuestions.get(size-1).answer3);
         MCOptionD.setText(multipleChoiceQuestions.get(size-1).answer4);
-        
-              
         
         AButton.setOnAction(e -> {
             if(multipleChoiceQuestions.get(size-1).correct1.equals("correct")){
@@ -233,4 +244,21 @@ public class MCQuestionsController implements Initializable {
             stage.show();
         }
     }
+    
+     public void connectToDatabase() throws SQLException{
+        
+        String url = "jdbc:mysql://adelaide-mysql-qcas1.caswkasqdmel.ap-southeast-2.rds.amazonaws.com:3306/UserDB"; //creates network connection to database for application   
+        String username = "qcastest";//username for accessing database
+        String password = "qcastest";//password for accessing database
+
+        try {
+            this.connection = DriverManager.getConnection(url, username, password);
+            if (this.connection != null) {
+                System.out.println("Conencted");
+            }
+        } catch (SQLException e) {
+            System.out.println("SQLException: " + e);
+            this.connection.close();//closes connection resource
+        } // end of try-with-resourc
+        }
 }
