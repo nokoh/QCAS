@@ -19,7 +19,15 @@
          </image>
       </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fff9f9" height="325.0" layoutX="14.0" layoutY="63.0" stroke="BLACK" strokeType="INSIDE" width="569.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#831010" height="82.0" layoutX="14.0" layoutY="16.0" stroke="BLACK" strokeType="INSIDE" width="569.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="82.0" layoutX="14.0" layoutY="16.0" stroke="BLACK" strokeType="INSIDE" width="569.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.35714285714285715">
+               <stops>
+                  <Stop color="#971212" />
+                  <Stop color="#2f0a0a" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill></Rectangle>
       <Button id="eightQuestionsButton" fx:id="eightQuestionsButton" layoutX="219.0" layoutY="153.0" mnemonicParsing="false" onAction="#getNumberOfQuestions" prefHeight="25.0" prefWidth="163.0" style="-fx-background-color: maroon;" text="8 Questions" textFill="#fcf9f9">
          <effect>
             <InnerShadow />
@@ -41,20 +49,20 @@
             <Font name="Segoe UI Semilight" size="35.0" />
          </font>
       </Label>
-      <Label layoutX="32.0" layoutY="115.0" text="Student:">
+      <Label layoutX="32.0" layoutY="106.0" text="Student:">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label layoutX="33.0" layoutY="139.0" text="User ID:">
+      <Label layoutX="34.0" layoutY="132.0" text="User ID:">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <VBox layoutX="83.0" layoutY="107.0" prefHeight="64.0" prefWidth="136.0">
+      <VBox layoutX="83.0" layoutY="99.0" prefHeight="58.0" prefWidth="136.0">
          <children>
-            <Label fx:id="studentNameLabel" prefHeight="28.0" prefWidth="136.0" text="studentNameLabel" />
-            <Label fx:id="userIDLabel" prefHeight="24.0" prefWidth="139.0" text="userIDLabel" />
+            <Label fx:id="studentNameLabel" prefHeight="32.0" prefWidth="136.0" text="studentNameLabel" />
+            <Label fx:id="userIDLabel" prefHeight="18.0" prefWidth="136.0" text="userIDLabel" />
          </children>
       </VBox>
       <Label layoutX="182.0" layoutY="345.0" text="Select the Number of Quiz Questions Desired">

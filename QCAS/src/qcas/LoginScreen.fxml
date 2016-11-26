@@ -26,14 +26,22 @@
          </image>
       </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f7f7f7" height="325.0" layoutX="15.0" layoutY="56.0" stroke="BLACK" strokeType="INSIDE" width="570.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#941b1b" height="88.0" layoutX="15.0" layoutY="15.0" stroke="BLACK" strokeType="INSIDE" width="570.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="88.0" layoutX="15.0" layoutY="15.0" stroke="BLACK" strokeType="INSIDE" width="570.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.28095238095238095">
+               <stops>
+                  <Stop color="#750e0e" />
+                  <Stop color="#4a0e0e" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill></Rectangle>
       <Button id="login" fx:id="login" layoutX="377.0" layoutY="205.0" mnemonicParsing="false" onAction="#loginVerify" prefHeight="25.0" prefWidth="141.0" style="-fx-background-color: maroon;" text="Login" textFill="#f8f5f5">
          <effect>
             <InnerShadow />
          </effect></Button>
       <Label alignment="CENTER" layoutX="21.0" layoutY="23.0" prefHeight="67.0" prefWidth="558.0" text="Quiz Creation &amp; Assessment System " textAlignment="CENTER" textFill="WHITE">
          <font>
-            <Font name="Segoe UI Light" size="35.0" />
+            <Font name="Segoe UI Semilight" size="33.0" />
          </font>
          <opaqueInsets>
             <Insets top="1.0" />
@@ -60,7 +68,7 @@
       <Text fx:id="loginMessage" fill="#eb3e3e" layoutX="122.0" layoutY="295.0" opacity="0.99" strokeType="OUTSIDE" strokeWidth="0.0" />
       <ImageView fitHeight="126.0" fitWidth="170.0" layoutX="118.0" layoutY="156.0" pickOnBounds="true">
          <image>
-            <Image url="@../../../cmu-tartan-Logo2.png" />
+            <Image url="@../cmu-tartan-Logo2.png" />
          </image>
       </ImageView>
       <TextField fx:id="userIDField" layoutX="133.0" layoutY="172.0" prefHeight="24.0" prefWidth="135.0" promptText="UserID" />

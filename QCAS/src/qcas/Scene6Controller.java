@@ -11,6 +11,7 @@ import javafx.print.PrinterJob;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 /**
@@ -28,6 +29,24 @@ public class Scene6Controller implements Initializable {
     private Button printToPDFButton;
     @FXML 
     private Button returnHomeButton; 
+    @FXML
+    private Label numPassLMLabel, numPassLQLabel, numPassLYLabel;
+    @FXML
+    private Label numFailLMLabel, numFailLQLabel, numFailLYLabel;
+    @FXML 
+    private Label NumTestsLMLabel, NumTestsLQLabel, NumTestsLYLabel;
+    @FXML
+    private Label AvgOverallLMLabel, AvgOverallLQLabel, AvgOverallLYLabel;
+    @FXML
+    private Label AvgEasyLMLabel, AvgEasyLQLabel, AvgEasyLYLabel;
+    @FXML
+    private Label AvgMediumLMLabel, AvgMediumLQLabel, AvgMediumLYLabel;
+    @FXML
+    private Label AvgHardLMLabel, AvgHardLQLabel, AvgHardLYLabel;
+    @FXML
+    private Label AvgMixedLMLabel, AvgMixedLQLabel, AvgMixedLYLabel;
+    
+    
    
      /**
      * printToPDF() prints a PDF of the Report if the Print To PDF Button is clicked

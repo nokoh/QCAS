@@ -23,8 +23,8 @@
          <fill>
             <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.17619047619047618">
                <stops>
-                  <Stop color="#721111" />
-                  <Stop color="WHITE" offset="1.0" />
+                  <Stop color="#9e1a1a" />
+                  <Stop color="#3c0d0d" offset="1.0" />
                </stops>
             </LinearGradient>
          </fill></Rectangle>
@@ -33,7 +33,7 @@
             <Font size="10.0" />
          </font>
       </Label>
-      <Label layoutX="129.0" layoutY="41.0" text="Select All Correct Answers" textFill="#f8f6f6">
+      <Label layoutX="136.0" layoutY="41.0" text="Select All Correct Answers" textFill="#f8f6f6">
          <font>
             <Font name="Segoe UI Semilight" size="30.0" />
          </font>

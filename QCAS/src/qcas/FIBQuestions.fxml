@@ -19,7 +19,15 @@
          </image>
       </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="284.0" layoutX="18.0" layoutY="98.0" stroke="BLACK" strokeType="INSIDE" width="561.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a1515" height="94.0" layoutX="18.0" layoutY="22.0" stroke="BLACK" strokeType="INSIDE" width="561.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="94.0" layoutX="18.0" layoutY="22.0" stroke="BLACK" strokeType="INSIDE" width="561.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.32857142857142857">
+               <stops>
+                  <Stop color="#831212" />
+                  <Stop color="#400303" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill></Rectangle>
       <Label layoutX="93.0" layoutY="25.0" prefHeight="88.0" prefWidth="420.0" text="Type Answer That Best Completes the Sentence" textAlignment="CENTER" textFill="#fcf8f8" wrapText="true">
          <font>
             <Font name="Segoe UI Semilight" size="29.0" />

@@ -71,6 +71,8 @@ public class QuizResultsController implements Initializable {
     private Label studentNameLabel;
     @FXML 
     private Label userIDLabel;
+    @FXML
+    private Label quizDateLabel;
     
     
     @FXML
@@ -192,7 +194,7 @@ public class QuizResultsController implements Initializable {
                 try {
                     returnHomeButtonClicked();
                 } catch (IOException ex) {
-                    Logger.getLogger(Scene13Controller.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(QuizResultsController.class.getName()).log(Level.SEVERE, null, ex);
                 }                 
             } ); 
                 
