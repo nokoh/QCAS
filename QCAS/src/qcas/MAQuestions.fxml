@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import javafx.scene.paint.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
@@ -11,16 +13,29 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: maroon;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qcas.MAQuestionsController">
    <children>
+      <ImageView fitHeight="404.0" fitWidth="612.0" layoutX="-6.0" pickOnBounds="true">
+         <image>
+            <Image url="@../../../CMU%20Plaid.jpg" />
+         </image>
+      </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fcfcfc" height="351.0" layoutX="22.0" layoutY="33.0" stroke="BLACK" strokeType="INSIDE" width="557.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bbbdbf" height="86.0" layoutX="22.0" layoutY="20.0" stroke="BLACK" strokeType="INSIDE" width="557.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="86.0" layoutX="22.0" layoutY="20.0" stroke="BLACK" strokeType="INSIDE" width="557.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.17619047619047618">
+               <stops>
+                  <Stop color="#721111" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill></Rectangle>
       <Label layoutX="492.0" layoutY="362.0" text="Multiple Answer">
          <font>
             <Font size="10.0" />
          </font>
       </Label>
-      <Label layoutX="116.0" layoutY="41.0" text="Select All Correct Answers">
+      <Label layoutX="129.0" layoutY="41.0" text="Select All Correct Answers" textFill="#f8f6f6">
          <font>
-            <Font name="System Bold" size="30.0" />
+            <Font name="Segoe UI Semilight" size="30.0" />
          </font>
       </Label>
       <Label layoutX="93.0" layoutY="161.0" text="Question:">
@@ -40,10 +55,25 @@
          <font>
             <Font name="System Italic" size="12.0" />
          </font></Label>
-      <Button id="AButton" fx:id="AButton" layoutX="60.0" layoutY="188.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="99.0" text="A" />
-      <Button id="BButton" fx:id="BButton" layoutX="60.0" layoutY="228.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="99.0" text="B" />
-      <Button id="CButton" fx:id="CButton" layoutX="60.0" layoutY="273.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="99.0" text="C" />
-      <Button id="DButton" fx:id="DButton" layoutX="60.0" layoutY="315.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="99.0" text="D" />
+      <Button id="AButton" fx:id="AButton" layoutX="60.0" layoutY="188.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="99.0" style="-fx-background-color: maroon;" text="A" textFill="#fcfafa">
+         <cursor>
+            <Cursor fx:constant="S_RESIZE" />
+         </cursor>
+         <effect>
+            <InnerShadow />
+         </effect></Button>
+      <Button id="BButton" fx:id="BButton" layoutX="60.0" layoutY="228.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="99.0" style="-fx-background-color: maroon;" text="B" textFill="#fcf9f9">
+         <effect>
+            <InnerShadow />
+         </effect></Button>
+      <Button id="CButton" fx:id="CButton" layoutX="60.0" layoutY="273.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="99.0" style="-fx-background-color: maroon;" text="C" textFill="#f5f2f2">
+         <effect>
+            <InnerShadow />
+         </effect></Button>
+      <Button id="DButton" fx:id="DButton" layoutX="60.0" layoutY="315.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="99.0" style="-fx-background-color: maroon;" text="D" textFill="#f8f6f6">
+         <effect>
+            <InnerShadow />
+         </effect></Button>
       <Label layoutX="39.0" layoutY="106.0" text="Student:">
          <font>
             <Font name="System Bold" size="12.0" />
@@ -60,6 +90,12 @@
             <Label fx:id="userIDLabel" prefHeight="24.0" prefWidth="129.0" text="userIDLabel" />
          </children>
       </VBox>
+      <Label layoutX="39.0" layoutY="361.0" text="Question:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="questionNumberLabel" layoutX="99.0" layoutY="361.0" text="questionNumberLabel" />
    </children>
    <effect>
       <InnerShadow />

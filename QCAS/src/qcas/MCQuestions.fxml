@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import javafx.scene.paint.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
@@ -12,11 +14,24 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: maroon;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qcas.MCQuestionsController">
     <children>
+      <ImageView fitHeight="406.0" fitWidth="600.0" layoutY="-3.0" pickOnBounds="true">
+         <image>
+            <Image url="@../../../CMU%20Plaid.jpg" />
+         </image>
+      </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f6f9fc" height="332.0" layoutX="20.0" layoutY="48.0" stroke="BLACK" strokeType="INSIDE" width="559.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b7b9bc" height="78.0" layoutX="20.0" layoutY="19.0" stroke="BLACK" strokeType="INSIDE" width="559.0" />
-      <Label contentDisplay="CENTER" graphicTextGap="3.0" layoutX="64.0" layoutY="23.0" prefHeight="70.0" prefWidth="473.0" text="Select Answer to Question Below" textAlignment="CENTER" wrapText="true">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="78.0" layoutX="20.0" layoutY="19.0" stroke="BLACK" strokeType="INSIDE" width="559.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.11428571428571428">
+               <stops>
+                  <Stop color="#80120e" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill></Rectangle>
+      <Label contentDisplay="CENTER" graphicTextGap="3.0" layoutX="80.0" layoutY="23.0" prefHeight="70.0" prefWidth="440.0" text="Select Answer to Question Below" textAlignment="CENTER" textFill="#fcfcfc" wrapText="true">
          <font>
-            <Font name="System Bold" size="30.0" />
+            <Font name="Segoe UI Semilight" size="30.0" />
          </font>
       </Label>
       <VBox layoutX="205.0" layoutY="166.0" prefHeight="171.0" prefWidth="365.0" style="-fx-background-insets: 4;">
@@ -31,10 +46,22 @@
             <Font size="10.0" />
          </font>
       </Label>
-      <Button id="AButton" fx:id="AButton" layoutX="120.0" layoutY="181.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" text="A" />
-      <Button id="BButton" fx:id="BButton" layoutX="120.0" layoutY="220.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" text="B" />
-      <Button id="CButton" fx:id="CButton" layoutX="120.0" layoutY="261.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" text="C" />
-      <Button id="DButton" fx:id="DButton" layoutX="119.0" layoutY="301.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" text="D" />
+      <Button id="AButton" fx:id="AButton" layoutX="120.0" layoutY="181.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" style="-fx-background-color: maroon;" text="A" textFill="#fffdfd">
+         <effect>
+            <InnerShadow />
+         </effect></Button>
+      <Button id="BButton" fx:id="BButton" layoutX="120.0" layoutY="220.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" style="-fx-background-color: maroon;" text="B" textFill="#fcf9f9">
+         <effect>
+            <InnerShadow />
+         </effect></Button>
+      <Button id="CButton" fx:id="CButton" layoutX="120.0" layoutY="261.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" style="-fx-background-color: maroon;" text="C" textFill="#fffefe">
+         <effect>
+            <InnerShadow />
+         </effect></Button>
+      <Button id="DButton" fx:id="DButton" layoutX="119.0" layoutY="301.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" style="-fx-background-color: maroon;" text="D" textFill="#f8f5f5">
+         <effect>
+            <InnerShadow />
+         </effect></Button>
       <Label layoutX="132.0" layoutY="143.0" text="Question:">
          <font>
             <Font name="System Bold" size="12.0" />
@@ -57,6 +84,12 @@
             <Label fx:id="userIDLabel" text="userIDLabel" />
          </children>
       </VBox>
+      <Label layoutX="31.0" layoutY="354.0" text="Question:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="questionNumberLabel" layoutX="105.0" layoutY="354.0" text="questionNumberLabel" />
    </children>
    <effect>
       <InnerShadow />

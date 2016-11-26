@@ -46,7 +46,7 @@ public class MCQuestionsController implements Initializable {
     int numIncorrect = 0;
 
     @FXML
-    private Pagination questionNumber;
+    private Label questionNumberLabel;
     @FXML
     private Label MCOptionA;
     @FXML

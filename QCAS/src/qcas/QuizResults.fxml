@@ -16,9 +16,9 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f4f4f5" height="102.0" layoutX="214.0" layoutY="112.0" stroke="BLACK" strokeType="INSIDE" width="223.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="72.0" layoutX="15.0" layoutY="19.0" stroke="BLACK" strokeType="INSIDE" width="1091.0">
          <fill>
-            <LinearGradient cycleMethod="REPEAT" endX="1.0" endY="1.0" startX="1.0">
+            <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.28095238095238095">
                <stops>
-                  <Stop color="#ae1e17" />
+                  <Stop color="#8d1410" />
                   <Stop color="WHITE" offset="1.0" />
                </stops>
             </LinearGradient>
@@ -27,7 +27,7 @@
       <Button id="returnHomeButton" fx:id="returnHomeButton" layoutX="517.0" layoutY="649.0" mnemonicParsing="false" onAction="#returnHomeButtonClicked" prefHeight="25.0" prefWidth="130.0" text="Return Home" />
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="432.0" layoutY="30.0" prefHeight="51.0" prefWidth="258.0" text="Quiz Report" textAlignment="CENTER" textFill="#f5f3f3">
          <font>
-            <Font name="Segoe UI Light" size="35.0" />
+            <Font name="Segoe UI Semilight" size="35.0" />
          </font>
       </Label>
       <VBox layoutX="294.0" layoutY="115.0" prefHeight="110.0" prefWidth="138.0">

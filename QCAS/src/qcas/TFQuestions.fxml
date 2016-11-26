@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import javafx.scene.paint.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
@@ -11,13 +13,32 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: maroon;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qcas.TFQuestionsController">
     <children>
+      <ImageView fitHeight="400.0" fitWidth="614.0" pickOnBounds="true">
+         <image>
+            <Image url="@../../../CMU%20Plaid.jpg" />
+         </image>
+      </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fcfcfc" height="326.0" layoutX="22.0" layoutY="54.0" stroke="BLACK" strokeType="INSIDE" width="557.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bdc0c3" height="87.0" layoutX="22.0" layoutY="22.0" stroke="BLACK" strokeType="INSIDE" width="557.0" />
-      <Button id="trueButton" fx:id="trueButton" layoutX="236.0" layoutY="235.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="129.0" text="True" />
-      <Button id="falseButton" fx:id="falseButton" layoutX="236.0" layoutY="281.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="129.0" text="False" />
-      <Label contentDisplay="CENTER" layoutX="120.0" layoutY="43.0" prefHeight="45.0" prefWidth="385.0" text="Select Either True or False" textAlignment="CENTER">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="87.0" layoutX="22.0" layoutY="22.0" stroke="BLACK" strokeType="INSIDE" width="557.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.29523809523809524">
+               <stops>
+                  <Stop color="#9a1919" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill></Rectangle>
+      <Button id="trueButton" fx:id="trueButton" layoutX="236.0" layoutY="235.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="129.0" style="-fx-background-color: maroon;" text="True" textFill="#fcf6f6">
+         <effect>
+            <InnerShadow />
+         </effect></Button>
+      <Button id="falseButton" fx:id="falseButton" layoutX="236.0" layoutY="281.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="129.0" style="-fx-background-color: maroon;" text="False" textFill="#fcfafa">
+         <effect>
+            <InnerShadow />
+         </effect></Button>
+      <Label contentDisplay="CENTER" layoutX="126.0" layoutY="32.0" prefHeight="56.0" prefWidth="350.0" text="Select Either True or False" textAlignment="CENTER" textFill="#fffefe">
          <font>
-            <Font name="System Bold" size="30.0" />
+            <Font name="Segoe UI Semilight" size="30.0" />
          </font>
       </Label>
       <Label layoutX="78.0" layoutY="165.0" prefHeight="35.0" prefWidth="85.0" text="Statement:">
@@ -47,6 +68,12 @@
             <Label fx:id="userIDLabel" prefHeight="16.0" prefWidth="107.0" text="userID" />
          </children>
       </VBox>
+      <Label layoutX="33.0" layoutY="353.0" text="Question:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="questionNumberLabel" layoutX="93.0" layoutY="353.0" prefHeight="17.0" prefWidth="129.0" text="questionNumberLabel" />
    </children>
    <effect>
       <InnerShadow />

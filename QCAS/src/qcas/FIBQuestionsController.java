@@ -59,6 +59,8 @@ public class FIBQuestionsController implements Initializable {
     private Label studentNameLabel;
     @FXML
     private Label userIDLabel;
+    @FXML
+    private Label questionNumberLabel;
     
     
 

@@ -63,6 +63,8 @@ public class MAQuestionsController implements Initializable {
     
     @FXML 
     private Label MAQuestionDescriptionLabel; 
+    @FXML
+    private Label questionNumberLabel;
     
     @FXML 
     private Label MAOptionALabel; 

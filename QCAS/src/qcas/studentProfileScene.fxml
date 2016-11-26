@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.shape.*?>
@@ -12,12 +13,17 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: maroon;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qcas.StudentProfileSceneController">
    <children>
+      <ImageView fitHeight="400.0" fitWidth="600.0" layoutY="-1.0" pickOnBounds="true">
+         <image>
+            <Image url="@../../../CMU%20Plaid.jpg" />
+         </image>
+      </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="349.0" layoutX="21.0" layoutY="30.0" stroke="BLACK" strokeType="INSIDE" width="557.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="77.0" layoutX="21.0" layoutY="18.0" stroke="BLACK" strokeType="INSIDE" width="557.0">
          <fill>
-            <LinearGradient endX="0.9857142857142858" endY="1.0" startX="0.9857142857142858" startY="0.15714285714285714">
+            <LinearGradient endX="0.9857142857142858" endY="1.0" startX="0.9857142857142858" startY="0.3714285714285714">
                <stops>
-                  <Stop color="#d05b5b" />
+                  <Stop color="#8a1414" />
                   <Stop color="WHITE" offset="1.0" />
                </stops>
             </LinearGradient>
@@ -32,8 +38,14 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Button id="takeQuizButton" fx:id="takeQuizButton" layoutX="242.0" layoutY="200.0" mnemonicParsing="false" onAction="#startQuiz" prefHeight="25.0" prefWidth="124.0" text="Take Quiz" />
-      <Button id="viewReportButton" fx:id="viewReportButton" layoutX="242.0" layoutY="251.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="124.0" text="View Report" />
+      <Button id="takeQuizButton" fx:id="takeQuizButton" layoutX="242.0" layoutY="200.0" mnemonicParsing="false" onAction="#startQuiz" prefHeight="25.0" prefWidth="124.0" style="-fx-background-color: maroon;" text="Take Quiz" textFill="#fcfcfc">
+         <effect>
+            <InnerShadow />
+         </effect></Button>
+      <Button id="viewReportButton" fx:id="viewReportButton" layoutX="242.0" layoutY="251.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="124.0" style="-fx-background-color: maroon;" text="View Report" textFill="#f8f6f6">
+         <effect>
+            <InnerShadow />
+         </effect></Button>
       <Label fx:id="UserIDLabel" layoutX="101.0" layoutY="130.0" prefHeight="17.0" prefWidth="192.0" text="userIDLabel">
          <font>
             <Font size="14.0" />

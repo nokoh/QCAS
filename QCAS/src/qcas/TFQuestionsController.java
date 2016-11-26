@@ -49,6 +49,8 @@ public class TFQuestionsController implements Initializable {
     private Label TFStatementLabel;
     @FXML
     private Button nextButton;
+    @FXML
+    private Label questionNumberLabel;
     
     @FXML
     private Label studentNameLabel;
