@@ -26,15 +26,7 @@
          </image>
       </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f7f7f7" height="325.0" layoutX="15.0" layoutY="56.0" stroke="BLACK" strokeType="INSIDE" width="570.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="88.0" layoutX="15.0" layoutY="15.0" stroke="BLACK" strokeType="INSIDE" width="570.0">
-         <fill>
-            <LinearGradient endX="1.0" endY="1.0" startX="1.0">
-               <stops>
-                  <Stop color="#800f0f" />
-                  <Stop color="WHITE" offset="1.0" />
-               </stops>
-            </LinearGradient>
-         </fill></Rectangle>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#941b1b" height="88.0" layoutX="15.0" layoutY="15.0" stroke="BLACK" strokeType="INSIDE" width="570.0" />
       <Button id="login" fx:id="login" layoutX="377.0" layoutY="205.0" mnemonicParsing="false" onAction="#loginVerify" prefHeight="25.0" prefWidth="141.0" style="-fx-background-color: maroon;" text="Login" textFill="#f8f5f5">
          <effect>
             <InnerShadow />
@@ -47,7 +39,6 @@
             <Insets top="1.0" />
          </opaqueInsets>
       </Label>
-      <PasswordField fx:id="passwordField" layoutX="133.0" layoutY="239.0" prefHeight="24.0" prefWidth="135.0" promptText="Password" />
       <Separator layoutX="292.0" layoutY="137.0" orientation="VERTICAL" prefHeight="162.0" prefWidth="38.0" style="-fx-background-insets: darkred;" styleClass="thick">
          <effect>
             <Glow />
@@ -66,8 +57,14 @@
          <font>
             <Font name="System Italic" size="12.0" />
          </font></Label>
-      <TextField fx:id="userIDField" layoutX="133.0" layoutY="172.0" prefHeight="24.0" prefWidth="135.0" promptText="UserID" />
       <Text fx:id="loginMessage" fill="#eb3e3e" layoutX="122.0" layoutY="295.0" opacity="0.99" strokeType="OUTSIDE" strokeWidth="0.0" />
+      <ImageView fitHeight="126.0" fitWidth="170.0" layoutX="118.0" layoutY="156.0" pickOnBounds="true">
+         <image>
+            <Image url="@../../../cmu-tartan-Logo2.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="userIDField" layoutX="133.0" layoutY="172.0" prefHeight="24.0" prefWidth="135.0" promptText="UserID" />
+      <PasswordField fx:id="passwordField" layoutX="133.0" layoutY="239.0" prefHeight="24.0" prefWidth="135.0" promptText="Password" />
     </children>
    <effect>
       <InnerShadow />
