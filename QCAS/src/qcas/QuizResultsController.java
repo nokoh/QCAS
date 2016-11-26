@@ -223,11 +223,6 @@ public class QuizResultsController implements Initializable {
         this.correctQuestions = correctQuestions;
         this.incorrectQuestions = incorrectQuestions;
         
-        System.out.println(this.correctQuestions.size());
-        System.out.println(this.incorrectQuestions.size());
-        System.out.println(this.userAnswers.size());
-        
-        
         String questionDifficulty;
         int [] difficultyCorrectScores = new int[3];
         int [] difficultyInCorrectScores = new int[3];
@@ -344,9 +339,6 @@ public class QuizResultsController implements Initializable {
                 this.allAnsweredQuestions.add(this.incorrectQuestions.get(t));
             }
             
-            for(int t = 0; t < this.allAnsweredQuestions.size(); t++){
-                System.out.println(this.allAnsweredQuestions.get(t).description);
-            }
             
             connectToDatabase();
             String dbQuery = "Select firstname, lastname, userid from Users WHERE userid = ?";
@@ -359,7 +351,6 @@ public class QuizResultsController implements Initializable {
             }
             long time = System.currentTimeMillis();
             String s = convertTime(time);
-            System.out.println(s);
             String storeInDB = "INSERT INTO UserDB.ExamTable (examID, studentid, question, answerchoice, status, questionNo, examDate)"
                 + "VALUES (?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement storeDBExecute = this.connection.prepareStatement(storeInDB);
@@ -376,7 +367,27 @@ public class QuizResultsController implements Initializable {
             storeDBExecute.executeUpdate();
         
             }
-//
+        
+        System.out.println(this.numOfQuestions);
+        
+        if(this.allAnsweredQuestions.size() == 8){
+            UA1.setText(this.userAnswers.get(0));
+            CA1.setText(this.allAnsweredQuestions.get(0).description);
+            UA2.setText(this.userAnswers.get(1));
+            CA1.setText(this.allAnsweredQuestions.get(1).description);
+            UA3.setText(this.userAnswers.get(2));
+            CA1.setText(this.allAnsweredQuestions.get(2).description);
+            UA4.setText(this.userAnswers.get(3));
+            CA1.setText(this.allAnsweredQuestions.get(3).description);
+            UA5.setText(this.userAnswers.get(4));
+            CA1.setText(this.allAnsweredQuestions.get(4).description);
+            UA6.setText(this.userAnswers.get(5));
+            CA1.setText(this.allAnsweredQuestions.get(5).description);
+            UA7.setText(this.userAnswers.get(6));
+            CA1.setText(this.allAnsweredQuestions.get(6).description);
+            UA8.setText(this.userAnswers.get(7));
+            CA1.setText(this.allAnsweredQuestions.get(7).description);
+        }
             
         }
         
