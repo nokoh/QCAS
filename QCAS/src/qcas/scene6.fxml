@@ -75,7 +75,7 @@
       <Label fx:id="NumFailLQLabel" alignment="CENTER" layoutX="316.0" layoutY="127.0" prefHeight="17.0" prefWidth="123.0" text="NumFailLQLabel" />
       <Label fx:id="NumPassLYLabel" alignment="CENTER" layoutX="462.0" layoutY="110.0" prefHeight="17.0" prefWidth="96.0" text="NumPassLYLabel" />
       <Label fx:id="NumFailLYLabel" alignment="CENTER" layoutX="459.0" layoutY="127.0" prefHeight="17.0" prefWidth="104.0" text="NumFailLYLabel" />
-      <Label fx:id="NumTestsLMLabel" alignment="CENTER" layoutX="193.0" layoutY="174.0" prefHeight="17.0" prefWidth="104.0" text="NumTestsLMLabel" />
+      <Label fx:id="NumTestsLMLabel" alignment="CENTER" layoutX="193.0" layoutY="174.0" prefHeight="17.0" prefWidth="111.0" text="NumTestsLMLabel" />
       <Label fx:id="NumTestsLQLabel" alignment="CENTER" layoutX="337.0" layoutY="174.0" prefHeight="17.0" prefWidth="98.0" text="NumTestsLQLabel" />
       <Label fx:id="NumTestsLYLabel" layoutX="462.0" layoutY="174.0" text="NumTestsLYLabel" />
       <Label layoutX="157.0" layoutY="505.0" text="Easy ">
