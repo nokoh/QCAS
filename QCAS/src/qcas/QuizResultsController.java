@@ -357,23 +357,27 @@ public class QuizResultsController implements Initializable {
                 barChartStudent.setTitle("Reports for Student: " + rset.getString("firstname") + " " + 
                         rset.getString("firstname") + " " + rset.getString("userid"));
             }
-            String storeInDB = "INSERT INTO UserDB.ExamTable (examID, studentid, question, anwerchoice, status, questionNo)" +
-                        "VALUES (?, ?, ?, ?, ?);";
-            PreparedStatement storeDBExecute = this.connection.prepareStatement(storeInDB);
-            System.out.println(this.allAnsweredQuestions.size());
-            for(int i = 0; i < this.numOfQuestions; i++){
-            storeDBExecute.setInt(1, 1);
-            storeDBExecute.setInt(2, Integer.parseInt(userId));
-            storeDBExecute.setString(3, this.allAnsweredQuestions.get(i).description);
-            storeDBExecute.setString(4, this.userAnswers.get(i));
-            storeDBExecute.setString(5, this.allAnsweredQuestions.get(i).difficulty);
-            storeDBExecute.setInt(6, this.allAnsweredQuestions.get(i).number);
-        //    storeDBExecute.executeQuery();
-            }
-//
             long time = System.currentTimeMillis();
             String s = convertTime(time);
             System.out.println(s);
+            String storeInDB = "INSERT INTO UserDB.ExamTable (examID, studentid, question, answerchoice, status, questionNo, examDate)"
+                + "VALUES (?, ?, ?, ?, ?, ?, ?)";
+        PreparedStatement storeDBExecute = this.connection.prepareStatement(storeInDB);
+        connection.prepareStatement("SET foreign_key_checks = 0").executeUpdate();
+        
+        for (int t = 0;t < this.allAnsweredQuestions.size(); t++) {
+            storeDBExecute.setInt(1, t + 1);
+            storeDBExecute.setInt(2, Integer.parseInt(userId));
+            storeDBExecute.setString(3, this.allAnsweredQuestions.get(t).description);
+            storeDBExecute.setString(4, this.userAnswers.get(t));
+            storeDBExecute.setString(5, this.allAnsweredQuestions.get(t).difficulty);
+            storeDBExecute.setInt(6, this.allAnsweredQuestions.get(t).number);
+            storeDBExecute.setString(7,s);
+            storeDBExecute.executeUpdate();
+        
+            }
+//
+            
         }
         
         public String convertTime(long time){
