@@ -52,7 +52,6 @@ public class QuizResultsController implements Initializable {
     Scene scene; 
     Stage homeStage;
     String userId;
-    Pane question = new Pane();
     int userScore;
     int numOfQuestions;
     int numCorrect;
@@ -66,6 +65,7 @@ public class QuizResultsController implements Initializable {
     Date currentDate;
     int examNumber;
     double examScore;
+   
 
     @FXML
     private Label studentNameLabel;
@@ -105,11 +105,6 @@ public class QuizResultsController implements Initializable {
     
     @FXML
     private NumberAxis yAxis;
-
-    @FXML
-    private Label question1, question2, question3, question4, question17, question18;
-    private ObservableList<String> difficultyNames = FXCollections.observableArrayList();
-
     
 
     
@@ -225,7 +220,7 @@ public class QuizResultsController implements Initializable {
         try {
             this.connection = DriverManager.getConnection(url, username, password);
             if (this.connection != null) {
-                System.out.println("Conencted");
+            //    System.out.println("Conencted");
             }
         } catch (SQLException e) {
             System.out.println("SQLException: " + e);
@@ -237,15 +232,14 @@ public class QuizResultsController implements Initializable {
         Parent root;
         this.correctQuestions = correctQuestions;
         this.incorrectQuestions = incorrectQuestions;
-        
+      
         String questionDifficulty;
-        int [] difficultyCorrectScores = new int[3];
-        int [] difficultyInCorrectScores = new int[3];
+        
        // Stage stage = (Stage) AButton.getScene().getWindow();
-       MultipleChoice mc = new MultipleChoice("");
-       MultipleAnswer ma = new MultipleAnswer("");
-       TrueFalse tf = new TrueFalse("");
-       FillInTheBlanks fib = new FillInTheBlanks("");
+       MultipleChoice mc = new MultipleChoice(0);
+       MultipleAnswer ma = new MultipleAnswer(0);
+       TrueFalse tf = new TrueFalse(0);
+       FillInTheBlanks fib = new FillInTheBlanks(0);
        
        numberCorrectLabel.setText(this.correctQuestions.size()+"");
        numberIncorrectLabel.setText(this.incorrectQuestions.size()+"");
@@ -283,69 +277,12 @@ public class QuizResultsController implements Initializable {
                fib = (FillInTheBlanks)this.incorrectQuestions.get(i);
            }
        }
-           for(Question question:this.correctQuestions){
-           if(question.difficulty.equals("E")){
-               difficultyCorrectScores[0]++;        
-            }
-           }
+       
            
-           for(Question question:this.correctQuestions){
-           if(question.difficulty.equals("M")){
-               difficultyCorrectScores[1]++;        
-            }
-           }
+          plotResultsGraph();
            
-           for(Question question:this.correctQuestions){
-           if(question.difficulty.equals("H")){
-               difficultyCorrectScores[2]++;        
-            }
-           }
-           
-           for(Question question:this.incorrectQuestions){
-           if(question.difficulty.equals("E")){
-               difficultyInCorrectScores[0]++;        
-            }
-           }
-           
-           for(Question question:this.incorrectQuestions){
-           if(question.difficulty.equals("M")){
-               difficultyInCorrectScores[1]++;        
-            }
-           }
-           
-           for(Question question:this.incorrectQuestions){
-           if(question.difficulty.equals("H")){
-               difficultyInCorrectScores[2]++;        
-            }
-           }
-                      
-           String correct = "Correct";
-           String inCorrect = "Incorrect";
-  
-           xAxis.setLabel("Difficulty Levels");       
-           yAxis.setLabel("Number");
             
-           /* Easy questions correct and incorrect */
-           XYChart.Series series1 = new XYChart.Series();
-           series1.setName("Easy");       
-           series1.getData().add(new XYChart.Data(correct, difficultyCorrectScores[0]));
-           series1.getData().add(new XYChart.Data(inCorrect, difficultyInCorrectScores[0]));
-           
-           /* Medium questions correct and incorrect */
-           XYChart.Series series2 = new XYChart.Series();
-           series2.setName("Medium");       
-           series2.getData().add(new XYChart.Data(correct, difficultyCorrectScores[1]));
-           series2.getData().add(new XYChart.Data(inCorrect, difficultyInCorrectScores[1]));
-           
-           /* Hard questions correct and incorrect */
-           XYChart.Series series3 = new XYChart.Series();
-           series3.setName("Hard");       
-           series3.getData().add(new XYChart.Data(correct, difficultyCorrectScores[2]));
-           series3.getData().add(new XYChart.Data(inCorrect, difficultyInCorrectScores[2]));
-
-           barChartStudent.getData().addAll(series1, series2, series3);
-            
-            
+        
             connectToDatabase();
             String dbQuery = "Select firstname, lastname, userid from Users WHERE userid = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(dbQuery);
@@ -359,23 +296,56 @@ public class QuizResultsController implements Initializable {
         ResultSet maxexamid = connection.createStatement().executeQuery("SELECT MAX(examID) FROM UserDB.ExamTable");
         if (maxexamid.next()) {
             examNumber = maxexamid.getInt(1) + 1;
-            System.out.println(examNumber);
         }
-        for(int i = 0; i < this.userAnswers.size(); i++){
-            System.out.println(this.userAnswers.get(i));
-        }
-        for(int i = 0; i < this.userAnswerCheck.size(); i++){
-            System.out.println(this.userAnswerCheck.get(i));
-        }
-        
-        System.out.println(this.correctQuestions.size());
-        System.out.println(this.allAnsweredQuestions.size());
         
         this.examScore = (double) this.correctQuestions.size()/ (double)this.allAnsweredQuestions.size()*100;
-
+        quizScoreLabel.setText(this.examScore + "%");
+        String grade = "";
         
+        if(this.examScore >= 97){
+            grade = "A+";
+        }
+        else if(this.examScore >= 93 && this.examScore <= 96){
+            grade = "A";
+        }
+        else if(this.examScore >= 90 && this.examScore <= 92){
+            grade = "A-";
+        }
+        else if(this.examScore >= 87 && this.examScore <= 89){
+            grade = "B+";
+        }
+        else if(this.examScore >= 83 && this.examScore <= 86){
+            grade = "B";
+        }
+        else if(this.examScore >= 80 && this.examScore <= 82){
+            grade = "B-";
+        }
+        else if(this.examScore >= 77 && this.examScore <= 79){
+            grade = "C+";
+        }
+        else if(this.examScore >= 73 && this.examScore <= 76){
+            grade = "C";
+        }
+        else if(this.examScore >= 70 && this.examScore <= 72){
+            grade = "C-";
+        }
+        else if(this.examScore >= 67 && this.examScore <= 69){
+            grade = "D+";
+        }
+        else if(this.examScore >= 63 && this.examScore <= 66){
+            grade = "D";
+        }
+        else if(this.examScore >= 60 && this.examScore <= 62){
+            grade = "D-";
+        }
+        else if(this.examScore >=0 && this.examScore <= 59){
+            grade = "F";
+        }
+        
+        letterGradeLabel.setText(grade);
             long time = System.currentTimeMillis();
             String s = convertTime(time);
+            quizDateLabel.setText(s);
             String storeInDB = "INSERT INTO UserDB.ExamTable (examID, studentid, question, answerchoice, status, questionNo, examDate, correctAnswer, answercheck)"
                 + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement storeDBExecute = this.connection.prepareStatement(storeInDB);
@@ -455,26 +425,7 @@ public class QuizResultsController implements Initializable {
             storeDBExecute.executeUpdate();
             }
         }
-        
-        if(this.allAnsweredQuestions.size() == 8){
-            UA1.setText(this.userAnswers.get(0));
-            CA1.setText(this.allAnsweredQuestions.get(0).description);
-            UA2.setText(this.userAnswers.get(1));
-            CA1.setText(this.allAnsweredQuestions.get(1).description);
-            UA3.setText(this.userAnswers.get(2));
-            CA1.setText(this.allAnsweredQuestions.get(2).description);
-            UA4.setText(this.userAnswers.get(3));
-            CA1.setText(this.allAnsweredQuestions.get(3).description);
-            UA5.setText(this.userAnswers.get(4));
-            CA1.setText(this.allAnsweredQuestions.get(4).description);
-            UA6.setText(this.userAnswers.get(5));
-            CA1.setText(this.allAnsweredQuestions.get(5).description);
-            UA7.setText(this.userAnswers.get(6));
-            CA1.setText(this.allAnsweredQuestions.get(6).description);
-            UA8.setText(this.userAnswers.get(7));
-            CA1.setText(this.allAnsweredQuestions.get(7).description);
-        }
-            
+           
         }
         
         public String convertTime(long time){
@@ -482,5 +433,58 @@ public class QuizResultsController implements Initializable {
         Date date = new Date(time);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy MM dd HH:mm:ss"); 
         return sdf.format(date);
+}
+    public void plotResultsGraph(){
+        int [] difficultyCorrectScores = new int[3];
+        int [] difficultyInCorrectScores = new int[3];
+        for(Question question:this.correctQuestions){
+           if(question.difficulty.equals("E")){
+               difficultyCorrectScores[0]++;        
+            }
+           else if(question.difficulty.equals("M")){
+               difficultyCorrectScores[1]++;        
+            }
+           else if(question.difficulty.equals("H")){
+               difficultyCorrectScores[2]++;        
+            }
+           }
+          
+           for(Question question:this.incorrectQuestions){
+           if(question.difficulty.equals("E")){
+               difficultyInCorrectScores[0]++;        
+            }
+           else if(question.difficulty.equals("M")){
+               difficultyInCorrectScores[1]++;        
+            }
+           else if(question.difficulty.equals("H")){
+               difficultyInCorrectScores[2]++;        
+            }
+           }
+           
+        String correct = "Correct";
+           String inCorrect = "Incorrect";
+  
+           xAxis.setLabel("Difficulty Levels");       
+           yAxis.setLabel("Number");
+            
+           /* Easy questions correct and incorrect */
+           XYChart.Series series1 = new XYChart.Series();
+           series1.setName("Easy");       
+           series1.getData().add(new XYChart.Data(correct, difficultyCorrectScores[0]));
+           series1.getData().add(new XYChart.Data(inCorrect, difficultyInCorrectScores[0]));
+           
+           /* Medium questions correct and incorrect */
+           XYChart.Series series2 = new XYChart.Series();
+           series2.setName("Medium");       
+           series2.getData().add(new XYChart.Data(correct, difficultyCorrectScores[1]));
+           series2.getData().add(new XYChart.Data(inCorrect, difficultyInCorrectScores[1]));
+           
+           /* Hard questions correct and incorrect */
+           XYChart.Series series3 = new XYChart.Series();
+           series3.setName("Hard");       
+           series3.getData().add(new XYChart.Data(correct, difficultyCorrectScores[2]));
+           series3.getData().add(new XYChart.Data(inCorrect, difficultyInCorrectScores[2]));
+
+           barChartStudent.getData().addAll(series1, series2, series3);
 }
 }

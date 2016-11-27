@@ -71,6 +71,7 @@ public class TFQuestionsController implements Initializable {
     int numCorrect;
     int numIncorrect;
     Connection connection;
+    int pageNumber;
 
     /**
      * Initializes the controller class.
@@ -137,6 +138,12 @@ public class TFQuestionsController implements Initializable {
     public void setAllAnsweredQuestions(ArrayList<Question> allAnsweredQuestions) {
         this.allAnsweredQuestions = allAnsweredQuestions;
     }
+
+    public void setPageNumber(int pageNumber) {
+        this.pageNumber = pageNumber;
+    }
+    
+    
     
     
     
@@ -147,7 +154,7 @@ public class TFQuestionsController implements Initializable {
         this.multipleChoiceQuestions = multipleChoiceQuestions;
         this.fillInTheBlanksQuestions = fillInTheBlanksQuestions;
         
-        System.out.println("TF "+this.allAnsweredQuestions.size());
+    //    System.out.println("TF "+this.allAnsweredQuestions.size());
        // Stage stage = (Stage) AButton.getScene().getWindow();
         if(size != 0){
             
@@ -237,7 +244,7 @@ public class TFQuestionsController implements Initializable {
         try {
             this.connection = DriverManager.getConnection(url, username, password);
             if (this.connection != null) {
-                System.out.println("Conencted");
+              //  System.out.println("Conencted");
             }
         } catch (SQLException e) {
             System.out.println("SQLException: " + e);

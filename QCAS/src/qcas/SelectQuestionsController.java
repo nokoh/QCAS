@@ -103,7 +103,6 @@ public class SelectQuestionsController implements Initializable {
                 StartQuizPageController sc = f.<StartQuizPageController>getController();
                 sc.numberOfQuestions = 8;
                 sc.initID(userId);
-                System.out.println(userId);
                 scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
@@ -124,11 +123,14 @@ public class SelectQuestionsController implements Initializable {
                 root = f.load();
                 StartQuizPageController sc = f.<StartQuizPageController>getController();
                 sc.numberOfQuestions = 16;
+                sc.initID(userId);
                 scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
             } catch (IOException ex) {
              //   Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(SelectQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
             }  
         });
         twentyfourQuestionsButton.setOnAction(e -> {
@@ -142,11 +144,14 @@ public class SelectQuestionsController implements Initializable {
                 root = f.load();
                 StartQuizPageController sc = f.<StartQuizPageController>getController();
                 sc.numberOfQuestions = 24;
+                sc.initID(userId);
                 scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
             } catch (IOException ex) {
              //   Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(SelectQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
             }  
         });
         thirtytwoQuestionsButton.setOnAction(e -> {
@@ -160,11 +165,14 @@ public class SelectQuestionsController implements Initializable {
                 root = f.load();
                 StartQuizPageController sc = f.<StartQuizPageController>getController();
                 sc.numberOfQuestions = 32;
+                sc.initID(userId);
                 scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
             } catch (IOException ex) {
              //   Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(SelectQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
             }  
         });
         

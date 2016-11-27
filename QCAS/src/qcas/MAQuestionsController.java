@@ -54,6 +54,7 @@ public class MAQuestionsController implements Initializable {
     int numIncorrect;
     int numOfQuestions;
     Connection connection;
+    int pageNumber;
    
     @FXML 
     private Button AButton;
@@ -142,6 +143,11 @@ public class MAQuestionsController implements Initializable {
     public void setAllAnsweredQuestions(ArrayList<Question> allAnsweredQuestions) {
         this.allAnsweredQuestions = allAnsweredQuestions;
     }
+
+    public void setPageNumber(int pageNumber) {
+        this.pageNumber = pageNumber;
+    }
+    
     
     
     
@@ -172,7 +178,6 @@ public class MAQuestionsController implements Initializable {
             MAOptionCLabel.setText(multipleAnswerQuestions.get(size-1).answer3);
             MAOptionDLabel.setText(multipleAnswerQuestions.get(size-1).answer4);
             this.allAnsweredQuestions.add(multipleAnswerQuestions.get(size-1));
-            System.out.println("MA "+this.allAnsweredQuestions.size());
             
             if(multipleAnswerQuestions.get(size-1).correct1.equals("correct")){
                 this.userAnswerCheck.add(this.multipleAnswerQuestions.get(size- 1).answer1);
@@ -310,7 +315,7 @@ public class MAQuestionsController implements Initializable {
         try {
             this.connection = DriverManager.getConnection(url, username, password);
             if (this.connection != null) {
-                System.out.println("Conencted");
+           //     System.out.println("Conencted");
             }
         } catch (SQLException e) {
             System.out.println("SQLException: " + e);

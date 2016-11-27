@@ -51,6 +51,7 @@ public class MCQuestionsController implements Initializable {
     int numCorrect = 0;
     int numIncorrect = 0;
     Connection connection;
+    int pageNumber;
 
     @FXML
     private Label questionNumberLabel;
@@ -118,6 +119,12 @@ public class MCQuestionsController implements Initializable {
         this.allAnsweredQuestions = allAnsweredQuestions;
     }
 
+    public void setPageNumber(int pageNumber) {
+        this.pageNumber = pageNumber;
+    }
+    
+    
+
     /**
      * Initializes the controller class.
      */
@@ -130,7 +137,7 @@ public class MCQuestionsController implements Initializable {
     public void launchMCQ(ArrayList<MultipleAnswer>multipleAnswerQuestions, ArrayList<MultipleChoice>multipleChoiceQuestions, 
             ArrayList<TrueFalse>trueFalseQuestions, ArrayList<FillInTheBlanks>fillInTheBlanksQuestions, int size) throws IOException, SQLException{
         Parent root;
-        System.out.println("This is sizw: " + size);
+    //    System.out.println("This is sizw: " + size);
         this.multipleAnswerQuestions = multipleAnswerQuestions;
         this.trueFalseQuestions = trueFalseQuestions;
         this.fillInTheBlanksQuestions = fillInTheBlanksQuestions;
@@ -143,7 +150,7 @@ public class MCQuestionsController implements Initializable {
         MCOptionC.setText(multipleChoiceQuestions.get(size-1).answer3);
         MCOptionD.setText(multipleChoiceQuestions.get(size-1).answer4);
         this.allAnsweredQuestions.add(multipleChoiceQuestions.get(size-1));
-        System.out.println("MC "+this.allAnsweredQuestions.size());
+//        System.out.println("MC "+this.allAnsweredQuestions.size());
             if(multipleChoiceQuestions.get(size-1).correct1.equals("correct")){
                 this.userAnswerCheck.add(multipleChoiceQuestions.get(size - 1).answer1);
             }
@@ -156,7 +163,8 @@ public class MCQuestionsController implements Initializable {
             else if(multipleChoiceQuestions.get(size-1).correct4.equals("correct")){
                 this.userAnswerCheck.add(multipleChoiceQuestions.get(size - 1).answer4);
             }
-                 
+        pageNumber+=1;
+        questionNumberLabel.setText(pageNumber + "/" + this.numOfQuestions + "");
         
         AButton.setOnAction(e -> {
             if(multipleChoiceQuestions.get(size-1).correct1.equals("correct")){
@@ -279,7 +287,7 @@ public class MCQuestionsController implements Initializable {
         try {
             this.connection = DriverManager.getConnection(url, username, password);
             if (this.connection != null) {
-                System.out.println("Conencted");
+          //      System.out.println("Conencted");
             }
         } catch (SQLException e) {
             System.out.println("SQLException: " + e);

@@ -94,7 +94,6 @@ public class StartQuizPageController implements Initializable {
             try {
                 MultipleChoice mcq = new MultipleChoice("E");
                 this.multipleChoiceQuestions.add(mcq);
-              //  System.out.println(this.multipleChoiceQuestions.get(i).description);
             } catch (SQLException ex) {
                 Logger.getLogger(StartQuizPageController.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -103,7 +102,6 @@ public class StartQuizPageController implements Initializable {
             try {
                 MultipleAnswer ma = new MultipleAnswer("E");
                 this.multipleAnswerQuestions.add(ma);
-               // System.out.println(this.multipleAnswerQuestions.get(i).description);
             } catch (SQLException ex) {
                 Logger.getLogger(StartQuizPageController.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -112,7 +110,6 @@ public class StartQuizPageController implements Initializable {
             try {
                 TrueFalse tf = new TrueFalse("E");
                 this.trueFalseQuestions.add(tf);
-               // System.out.println(this.trueFalseQuestions.get(i).description);
             } catch (SQLException ex) {
                 Logger.getLogger(StartQuizPageController.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -121,7 +118,6 @@ public class StartQuizPageController implements Initializable {
             try {
                 FillInTheBlanks fib = new FillInTheBlanks("E");
                 this.fillInTheBlanksQuestions.add(fib);
-              //  System.out.println(this.fillInTheBlanksQuestions.get(i).description);
             } catch (SQLException ex) {
                 Logger.getLogger(StartQuizPageController.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -130,17 +126,13 @@ public class StartQuizPageController implements Initializable {
             Parent root;
             stage = (Stage)easyButton.getScene().getWindow();
             try {
-             //   connectToLiveDatabase();
                 //load up OTHER FXML document
                 FXMLLoader f = new FXMLLoader(getClass().getResource("MCQuestions.fxml"));
                 root = f.load();
                 MCQuestionsController sc = f.<MCQuestionsController>getController();
-                for(int i = 0; i < this.multipleChoiceQuestions.size(); i++){
-                    System.out.println(this.multipleChoiceQuestions.get(i).description);
-                    System.out.println(this.multipleChoiceQuestions.get(i).difficulty);
-                }
                 sc.initID(this.userId);
                 sc.setNumOfQuestions(this.numberOfQuestions);
+                sc.setPageNumber(0);
                 sc.launchMCQ(this.multipleAnswerQuestions,   this.multipleChoiceQuestions, 
                         this.trueFalseQuestions, this.fillInTheBlanksQuestions , this.numberOfQuestions/4);
                 scene = new Scene(root);
@@ -196,10 +188,11 @@ public class StartQuizPageController implements Initializable {
                 FXMLLoader f = new FXMLLoader(getClass().getResource("MCQuestions.fxml"));
                 root = f.load();
                 MCQuestionsController sc = f.<MCQuestionsController>getController();
-                sc.launchMCQ(this.multipleAnswerQuestions,   this.multipleChoiceQuestions, 
-                        this.trueFalseQuestions, this.fillInTheBlanksQuestions , this.numberOfQuestions/4);
                 sc.initID(userId);
                 sc.setNumOfQuestions(this.numberOfQuestions);
+                sc.setPageNumber(0);
+                sc.launchMCQ(this.multipleAnswerQuestions,   this.multipleChoiceQuestions, 
+                        this.trueFalseQuestions, this.fillInTheBlanksQuestions , this.numberOfQuestions/4);
                 scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
@@ -253,10 +246,11 @@ public class StartQuizPageController implements Initializable {
                 root = f.load();
                 MCQuestionsController sc = f.<MCQuestionsController>getController();
                 sc.multipleAnswerQuestions = this.multipleAnswerQuestions;
-                sc.launchMCQ(this.multipleAnswerQuestions, this.multipleChoiceQuestions, 
-                        this.trueFalseQuestions, this.fillInTheBlanksQuestions, this.numberOfQuestions/4);
                 sc.initID(userId);
                 sc.setNumOfQuestions(this.numberOfQuestions);
+                sc.setPageNumber(0);
+                sc.launchMCQ(this.multipleAnswerQuestions, this.multipleChoiceQuestions, 
+                        this.trueFalseQuestions, this.fillInTheBlanksQuestions, this.numberOfQuestions/4);
                 scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
@@ -342,12 +336,12 @@ public class StartQuizPageController implements Initializable {
                 FXMLLoader f = new FXMLLoader(getClass().getResource("MCQuestions.fxml"));
                 root = f.load();
                 MCQuestionsController sc = f.<MCQuestionsController>getController();
-                sc.multipleAnswerQuestions = this.multipleAnswerQuestions;
-                sc.launchMCQ(this.multipleAnswerQuestions, this.multipleChoiceQuestions, 
-                        this.trueFalseQuestions, this.fillInTheBlanksQuestions, this.numberOfQuestions/4);
-                
+                sc.multipleAnswerQuestions = this.multipleAnswerQuestions;                
                 sc.initID(userId);
                 sc.setNumOfQuestions(this.numberOfQuestions);
+                sc.setPageNumber(0);
+                sc.launchMCQ(this.multipleAnswerQuestions, this.multipleChoiceQuestions, 
+                        this.trueFalseQuestions, this.fillInTheBlanksQuestions, this.numberOfQuestions/4);
                 scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
@@ -370,7 +364,7 @@ public class StartQuizPageController implements Initializable {
         try {
             this.connection = DriverManager.getConnection(url, username, password);
             if (this.connection != null) {
-                System.out.println("Conencted");
+              //  System.out.println("Conencted");
             }
         } catch (SQLException e) {
             System.out.println("SQLException: " + e);

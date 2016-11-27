@@ -132,6 +132,10 @@ class MultipleChoice extends Question {
         }        
       }
       
+      public MultipleChoice(int dummy){
+      
+      }
+      
       @Override
       public void createQuestion() throws SQLException{
         
@@ -199,6 +203,10 @@ class MultipleAnswer extends Question {
         }
     }
     
+    public MultipleAnswer(int dummy){
+      
+      }
+    
     
 }
 
@@ -252,6 +260,10 @@ class TrueFalse extends Question {
           
        
     }
+    
+    public TrueFalse(int dummy){
+      
+      }
 }
 
 class FillInTheBlanks extends Question {
@@ -303,6 +315,9 @@ class FillInTheBlanks extends Question {
         }
           
     }
+    public FillInTheBlanks(int dummy){
+      
+      }
 }
     
 

@@ -54,6 +54,7 @@ public class FIBQuestionsController implements Initializable {
     int numIncorrect;
     int numOfQuestions;
     Connection connection;
+    int pageNumber;
 
    
     @FXML
@@ -137,6 +138,11 @@ public class FIBQuestionsController implements Initializable {
     public void setAllAnsweredQuestions(ArrayList<Question> allAnsweredQuestions) {
         this.allAnsweredQuestions = allAnsweredQuestions;
     }
+
+    public void setPageNumber(int pageNumber) {
+        this.pageNumber = pageNumber;
+    }
+    
     
     
     
@@ -147,6 +153,7 @@ public class FIBQuestionsController implements Initializable {
         this.multipleAnswerQuestions = multipleAnswerQuestions;
         this.multipleChoiceQuestions = multipleChoiceQuestions;
         this.trueFalseQuestions = trueFalseQuestions;
+        
 
        // Stage stage = (Stage) AButton.getScene().getWindow();
         if(size != 0){
@@ -176,7 +183,6 @@ public class FIBQuestionsController implements Initializable {
                 }
                 int m = size - 1;
                 this.userAnswerCheck.add(this.fillInTheBlanksQuestions.get(m).correctAnswer);
-                System.out.println(this.fillInTheBlanksQuestions.get(m).correctAnswer);
                 this.allAnsweredQuestions.add(this.fillInTheBlanksQuestions.get(m));
                 
             try {
@@ -226,7 +232,7 @@ public class FIBQuestionsController implements Initializable {
         try {
             this.connection = DriverManager.getConnection(url, username, password);
             if (this.connection != null) {
-                System.out.println("Conencted");
+           //     System.out.println("Conencted");
             }
         } catch (SQLException e) {
             System.out.println("SQLException: " + e);
