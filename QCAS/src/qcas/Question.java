@@ -33,7 +33,7 @@ public void createQuestion() throws SQLException{
      * @throws SQLException
      */
     public void connectToDatabase() throws SQLException{
-        String url = "jdbc:mysql://adelaide-mysql-qcas1.caswkasqdmel.ap-southeast-2.rds.amazonaws.com:3306/QuizDB"; //creates network connection to database for application   
+        String url = "jdbc:mysql://adelaide-mysql-qcas1.caswkasqdmel.ap-southeast-2.rds.amazonaws.com:3306/UserDB"; //creates network connection to database for application   
         String username = "qcastest";//username for accessing database
         String password = "qcastest";//password for accessing database
         
@@ -88,7 +88,7 @@ class MultipleChoice extends Question {
           connectToDatabase();
         try {     
             Random random = new Random();
-            String tableCount = "SELECT COUNT(?) FROM QuizDB.MCQTable";
+            String tableCount = "SELECT COUNT(?) FROM UserDB.MCQTable";
             PreparedStatement stmt = this.con.prepareStatement(tableCount);
             stmt.setString(1, "*"); //applies random variable to select statement.
             ResultSet countRS = stmt.executeQuery();//executes statement and returns value to resultset variable
@@ -97,50 +97,35 @@ class MultipleChoice extends Question {
             count = countRS.getInt(1);
             }
             int selector = random.nextInt(count - 1 + 1) + 1;//random variable used to generate random number
-
-            String select = "SELECT * FROM QuizDB.MCQTable WHERE difficulty = ? AND questionNumber = ?";//statement to select question from database.
+            String select = "SELECT * FROM UserDB.MCQTable WHERE questionNumber = ?";//statement to select question from database.
             PreparedStatement stmt2 = this.con.prepareStatement(select);
-            stmt2.setString(1, difficulty); //applies random variable to select statement.
-            stmt2.setInt(2, 70);
-            ResultSet rs = stmt2.executeQuery();//executes statement and returns value to resultset variable.
-            
+         //   stmt2.setString(1, difficulty); //applies random variable to select statement.
+            stmt2.setInt(1, selector);
+            ResultSet rs = stmt2.executeQuery();//executes statement and returns value to resultset variable
             /* Assigns each variable from column values to the different variables*/
             while (rs.next()) {
+            if(rs.getString("difficulty").equalsIgnoreCase(difficulty) == true){
             int num = rs.getInt("questionNumber");
             this.number = num;
             this.difficulty = rs.getString("difficulty");
             this.description = rs.getString("description");
             this.answer1 = rs.getString("choice1");
-            this.correct1 = rs.getString("anwer1");
+            this.correct1 = rs.getString("answer1");
             this.answer2 = rs.getString("choice2");
-            this.correct2 = rs.getString("anwer2");
+            this.correct2 = rs.getString("answer2");
             this.answer3 = rs.getString("choice3");
-            this.correct3 = rs.getString("anwer3");
+            this.correct3 = rs.getString("answer3");
             this.answer4 = rs.getString("choice4");
-            this.correct4 = rs.getString("anwer4"); 
-            /*
-            connectToLiveDatabase();
-            //String delete = "DELETE FROM LiveQuizDB.MCQTable";//delete statement to delete current values in database
-           // Statement deleteDB = this.con.createStatement();
-           // stmt.execute(delete); //execution of delete statement.
-            String set = "INSERT INTO LiveQuizDB.MCQTable VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";//insert statement to add the updated valuse in the database.
-            PreparedStatement insertDB = this.con.prepareStatement(set);
-            
-                        insertDB.setString(1, this.difficulty);
-                        insertDB.setString(2, this.description);
-                        insertDB.setString(3, this.answer1);
-                        insertDB.setString(4, this.correct1);
-                        insertDB.setString(5, this.answer2);
-                        insertDB.setString(6, this.correct2);
-                        insertDB.setString(7, this.answer3);
-                        insertDB.setString(8, this.correct3);
-                        insertDB.setString(9, this.answer4);
-                        insertDB.setString(10, this.correct4);
-                        insertDB.setInt(11, this.number);
-                       
-                        
-                        insertDB.executeUpdate();*/
-        }
+            this.correct4 = rs.getString("answer4");
+                }
+            else{
+            selector = random.nextInt(count - 1 + 1) + 1;//random variable used to generate random number
+            select = "SELECT * FROM UserDB.MCQTable WHERE questionNumber = ?";//statement to select question from database.
+            stmt2 = this.con.prepareStatement(select);
+            stmt2.setInt(1, selector);
+            rs = stmt2.executeQuery();//executes statement and returns value to resultset variable
+            }
+            }
         rs.close(); //closes resultset resource.
         } catch (SQLException e) {
             System.out.println("SQLException: " + e);
@@ -168,7 +153,7 @@ class MultipleAnswer extends Question {
                  try {     
             ArrayList <String> listOfQuestions = new ArrayList<>();
             Random random = new Random();
-            String tableCount = "SELECT COUNT(?) FROM QuizDB.MATable";
+            String tableCount = "SELECT COUNT(?) FROM UserDB.MATable";
             PreparedStatement stmt = this.con.prepareStatement(tableCount);
             stmt.setString(1, "*"); //applies random variable to select statement.
             ResultSet countRS = stmt.executeQuery();//executes statement and returns value to resultset variable
@@ -178,14 +163,15 @@ class MultipleAnswer extends Question {
           }
             int selector = random.nextInt(count - 1 + 1) + 1;//random variable used to generate random number
 
-            String select = "SELECT * FROM QuizDB.MATable WHERE difficulty = ? AND questionNumber = ?";//statement to select question from database.
+            String select = "SELECT * FROM UserDB.MATable WHERE questionNumber = ?";//statement to select question from database.
             PreparedStatement stmt2 = this.con.prepareStatement(select);
-            stmt2.setString(1, difficulty); //applies random variable to select statement.
-            stmt2.setInt(2, 70);
+          //  stmt2.setString(1, difficulty); //applies random variable to select statement.
+            stmt2.setInt(1, selector);
             ResultSet rs = stmt2.executeQuery();//executes statement and returns value to resultset variable.
             
             /* Assigns each variable from column values to the different variables*/
             while (rs.next()) {
+            if(rs.getString("difficulty").equalsIgnoreCase(difficulty) == true){
             int num = rs.getInt("questionNumber");
             this.number = num;
             this.difficulty = rs.getString("difficulty");
@@ -198,28 +184,14 @@ class MultipleAnswer extends Question {
             this.correct3 = rs.getString("answer3");
             this.answer4 = rs.getString("choice4");
             this.correct4 = rs.getString("answer4");
-            /*
-            connectToLiveDatabase();
-            //String delete = "DELETE FROM LiveQuizDB.MCQTable";//delete statement to delete current values in database
-           // Statement deleteDB = this.con.createStatement();
-           // stmt.execute(delete); //execution of delete statement.
-            String set = "INSERT INTO LiveQuizDB.MATable VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";//insert statement to add the updated valuse in the database.
-            PreparedStatement insertDB = this.con.prepareStatement(set);
-            
-                        insertDB.setString(1, this.difficulty);
-                        insertDB.setString(2, this.description);
-                        insertDB.setString(3, this.answer1);
-                        insertDB.setString(4, this.correct1);
-                        insertDB.setString(5, this.answer2);
-                        insertDB.setString(6, this.correct2);
-                        insertDB.setString(7, this.answer3);
-                        insertDB.setString(8, this.correct3);
-                        insertDB.setString(9, this.answer4);
-                        insertDB.setString(10, this.correct4);
-                        insertDB.setInt(11, this.number);
-                        
-                        insertDB.executeUpdate();
-                       */
+            }
+            else{
+            selector = random.nextInt(count - 1 + 1) + 1;//random variable used to generate random number
+            select = "SELECT * FROM UserDB.MATable WHERE questionNumber = ?";//statement to select question from database.
+            stmt2 = this.con.prepareStatement(select);
+            stmt2.setInt(1, selector);
+            rs = stmt2.executeQuery();//executes statement and returns value to resultset variable
+            }
         }
         rs.close(); //closes resultset resource.
         } catch (SQLException e) {
@@ -238,7 +210,7 @@ class TrueFalse extends Question {
         try {     
            // ArrayList <String> listOfQuestions = new ArrayList<>();
             Random random = new Random();
-            String tableCount = "SELECT COUNT(?) FROM QuizDB.TFTable";
+            String tableCount = "SELECT COUNT(?) FROM UserDB.TFTable";
             PreparedStatement stmt = this.con.prepareStatement(tableCount);
             stmt.setString(1, "*"); //applies random variable to select statement.
             ResultSet countRS = stmt.executeQuery();//executes statement and returns value to resultset variable
@@ -248,35 +220,30 @@ class TrueFalse extends Question {
           }
             int selector = random.nextInt(count - 1 + 1) + 1;//random variable used to generate random number
 
-            String select = "SELECT * FROM QuizDB.TFTable WHERE difficulty = ? AND questionNumber = ?";//statement to select question from database.
+            String select = "SELECT * FROM UserDB.TFTable WHERE questionNumber = ?";//statement to select question from database.
             PreparedStatement stmt2 = this.con.prepareStatement(select);
-            stmt2.setString(1, difficulty); //applies random variable to select statement.
-            //stmt2.setInt(2, selector); //applies random variable to select statement.
-            stmt2.setInt(2, 70); //applies random variable to select statement.
+        //    stmt2.setString(1, difficulty); //applies random variable to select statement.
+            stmt2.setInt(1, selector); //applies random variable to select statement.
+          //  stmt2.setInt(2, count); //applies random variable to select statement.
             ResultSet rs = stmt2.executeQuery();//executes statement and returns value to resultset variable.
             
             /* Assigns each variable from column values to the different variables*/
             while (rs.next()) {
+            if(rs.getString("difficulty").equalsIgnoreCase(difficulty) == true){
             int num = rs.getInt("questionNumber");
             this.number = num;
             this.difficulty = rs.getString("difficulty");
             this.description = rs.getString("description");
             this.correctAnswer = rs.getString("answer"); 
-            /*
-            connectToLiveDatabase();
-            //String delete = "DELETE FROM LiveQuizDB.MCQTable";//delete statement to delete current values in database
-           // Statement deleteDB = this.con.createStatement();
-           // stmt.execute(delete); //execution of delete statement.
-            String set = "INSERT INTO LiveQuizDB.TFTable VALUES(?, ?, ?, ?)";//insert statement to add the updated valuse in the database.
-            PreparedStatement insertDB = this.con.prepareStatement(set);
-            
-                        insertDB.setString(1, this.difficulty);
-                        insertDB.setString(2, this.description);
-                        insertDB.setString(3, this.correctAnswer);
-                        insertDB.setInt(4, this.number);  
-                        
-                        insertDB.executeUpdate();
-*/        }
+            }
+            else{
+            selector = random.nextInt(count - 1 + 1) + 1;//random variable used to generate random number
+            select = "SELECT * FROM UserDB.TFTable WHERE questionNumber = ?";//statement to select question from database.
+            stmt2 = this.con.prepareStatement(select);
+            stmt2.setInt(1, selector);
+            rs = stmt2.executeQuery();//executes statement and returns value to resultset variable
+            }
+            }
             
         rs.close(); //closes resultset resource.
         } catch (SQLException e) {
@@ -295,7 +262,7 @@ class FillInTheBlanks extends Question {
         try {     
            // ArrayList <String> listOfQuestions = new ArrayList<>();
             Random random = new Random();
-            String tableCount = "SELECT COUNT(?) FROM QuizDB.FIBTable";
+            String tableCount = "SELECT COUNT(?) FROM UserDB.FIBTable";
             PreparedStatement stmt = this.con.prepareStatement(tableCount);
             stmt.setString(1, "*"); //applies random variable to select statement.
             ResultSet countRS = stmt.executeQuery();//executes statement and returns value to resultset variable
@@ -305,34 +272,29 @@ class FillInTheBlanks extends Question {
           }
             int selector = random.nextInt(count - 1 + 1) + 1;//random variable used to generate random number
 
-            String select = "SELECT * FROM QuizDB.FIBTable WHERE difficulty = ? AND questionNumber = ?";//statement to select question from database.
+            String select = "SELECT * FROM UserDB.FIBTable WHERE questionNumber = ?";//statement to select question from database.
             PreparedStatement stmt2 = this.con.prepareStatement(select);
-            stmt2.setString(1, difficulty); //applies random variable to select statement.
-          //  stmt2.setInt(2, selector); //applies random variable to select statement.
-            stmt2.setInt(2, 70); //applies random variable to select statement.
+         //   stmt2.setString(1, difficulty); //applies random variable to select statement.
+            stmt2.setInt(1, selector); //applies random variable to select statement.
+        //    stmt2.setInt(2, count); //applies random variable to select statement.
             ResultSet rs = stmt2.executeQuery();//executes statement and returns value to resultset variable.
             
             /* Assigns each variable from column values to the different variables*/
             while (rs.next()) {
+            if(rs.getString("difficulty").equalsIgnoreCase(difficulty) == true){
             int num = rs.getInt("questionNumber");
             this.number = num;
             this.difficulty = rs.getString("difficulty");
             this.description = rs.getString("description");
             this.correctAnswer = rs.getString("answer");
-            /*
-            connectToLiveDatabase();
-            //String delete = "DELETE FROM LiveQuizDB.MCQTable";//delete statement to delete current values in database
-           // Statement deleteDB = this.con.createStatement();
-           // stmt.execute(delete); //execution of delete statement.
-            String set = "INSERT INTO LiveQuizDB.FIBTable VALUES(?, ?, ?, ?)";//insert statement to add the updated valuse in the database.
-            PreparedStatement insertDB = this.con.prepareStatement(set);
-            
-                        insertDB.setString(1, this.difficulty);
-                        insertDB.setString(2, this.description);
-                        insertDB.setString(3, this.correctAnswer);
-                        insertDB.setInt(4, this.number);  
-            
-                        insertDB.executeUpdate();*/
+            }
+            else{
+            selector = random.nextInt(count - 1 + 1) + 1;//random variable used to generate random number
+            select = "SELECT * FROM UserDB.FIBTable WHERE questionNumber = ?";//statement to select question from database.
+            stmt2 = this.con.prepareStatement(select);
+            stmt2.setInt(1, selector);
+            rs = stmt2.executeQuery();//executes statement and returns value to resultset variable
+            }
             
         }
         rs.close(); //closes resultset resource.

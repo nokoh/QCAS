@@ -32,15 +32,15 @@
          <effect>
             <InnerShadow />
          </effect></Button>
-      <Button id="mediumButton" fx:id="mediumButton" layoutX="241.0" layoutY="200.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="122.0" style="-fx-background-color: maroon;" text="Medium" textFill="#f8f5f5">
+      <Button id="mediumButton" fx:id="mediumButton" layoutX="241.0" layoutY="200.0" mnemonicParsing="false" onAction="#startQuiz" prefHeight="25.0" prefWidth="122.0" style="-fx-background-color: maroon;" text="Medium" textFill="#f8f5f5">
          <effect>
             <InnerShadow />
          </effect></Button>
-      <Button id="hardButton" fx:id="hardButton" layoutX="241.0" layoutY="244.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="122.0" style="-fx-background-color: maroon;" text="Hard" textFill="#f8f3f3">
+      <Button id="hardButton" fx:id="hardButton" layoutX="241.0" layoutY="244.0" mnemonicParsing="false" onAction="#startQuiz" prefHeight="25.0" prefWidth="122.0" style="-fx-background-color: maroon;" text="Hard" textFill="#f8f3f3">
          <effect>
             <InnerShadow />
          </effect></Button>
-      <Button id="mixedButton" fx:id="mixedButton" layoutX="241.0" layoutY="289.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="122.0" style="-fx-background-color: maroon;" text="Mixed" textFill="#fcfafa">
+      <Button id="mixedButton" fx:id="mixedButton" layoutX="241.0" layoutY="289.0" mnemonicParsing="false" onAction="#startQuiz" prefHeight="25.0" prefWidth="122.0" style="-fx-background-color: maroon;" text="Mixed" textFill="#fcfafa">
          <effect>
             <InnerShadow />
          </effect></Button>

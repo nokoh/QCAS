@@ -130,6 +130,7 @@ public class MCQuestionsController implements Initializable {
     public void launchMCQ(ArrayList<MultipleAnswer>multipleAnswerQuestions, ArrayList<MultipleChoice>multipleChoiceQuestions, 
             ArrayList<TrueFalse>trueFalseQuestions, ArrayList<FillInTheBlanks>fillInTheBlanksQuestions, int size) throws IOException, SQLException{
         Parent root;
+        System.out.println("This is sizw: " + size);
         this.multipleAnswerQuestions = multipleAnswerQuestions;
         this.trueFalseQuestions = trueFalseQuestions;
         this.fillInTheBlanksQuestions = fillInTheBlanksQuestions;
@@ -155,8 +156,7 @@ public class MCQuestionsController implements Initializable {
             else if(multipleChoiceQuestions.get(size-1).correct4.equals("correct")){
                 this.userAnswerCheck.add(multipleChoiceQuestions.get(size - 1).answer4);
             }
-            
-            
+                 
         
         AButton.setOnAction(e -> {
             if(multipleChoiceQuestions.get(size-1).correct1.equals("correct")){
@@ -192,6 +192,7 @@ public class MCQuestionsController implements Initializable {
                 this.userAnswers.add(multipleChoiceQuestions.get(size-1).answer2);
             }
             int m = size - 1;
+            
             try {
                 launchMCQ(this.multipleAnswerQuestions,   this.multipleChoiceQuestions, 
                         this.trueFalseQuestions, this.fillInTheBlanksQuestions , m);

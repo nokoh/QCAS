@@ -92,7 +92,7 @@ public class StartQuizPageController implements Initializable {
 
         for(int i = 0; i < this.numberOfQuestions/4; i++){
             try {
-                MultipleChoice mcq = new MultipleChoice("M");
+                MultipleChoice mcq = new MultipleChoice("E");
                 this.multipleChoiceQuestions.add(mcq);
               //  System.out.println(this.multipleChoiceQuestions.get(i).description);
             } catch (SQLException ex) {
@@ -101,7 +101,7 @@ public class StartQuizPageController implements Initializable {
         }
         for(int i = 0; i < this.numberOfQuestions/4; i++){
             try {
-                MultipleAnswer ma = new MultipleAnswer("H");
+                MultipleAnswer ma = new MultipleAnswer("E");
                 this.multipleAnswerQuestions.add(ma);
                // System.out.println(this.multipleAnswerQuestions.get(i).description);
             } catch (SQLException ex) {
@@ -135,10 +135,14 @@ public class StartQuizPageController implements Initializable {
                 FXMLLoader f = new FXMLLoader(getClass().getResource("MCQuestions.fxml"));
                 root = f.load();
                 MCQuestionsController sc = f.<MCQuestionsController>getController();
-                sc.launchMCQ(this.multipleAnswerQuestions,   this.multipleChoiceQuestions, 
-                        this.trueFalseQuestions, this.fillInTheBlanksQuestions , this.numberOfQuestions/4);
+                for(int i = 0; i < this.multipleChoiceQuestions.size(); i++){
+                    System.out.println(this.multipleChoiceQuestions.get(i).description);
+                    System.out.println(this.multipleChoiceQuestions.get(i).difficulty);
+                }
                 sc.initID(this.userId);
                 sc.setNumOfQuestions(this.numberOfQuestions);
+                sc.launchMCQ(this.multipleAnswerQuestions,   this.multipleChoiceQuestions, 
+                        this.trueFalseQuestions, this.fillInTheBlanksQuestions , this.numberOfQuestions/4);
                 scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
@@ -341,6 +345,7 @@ public class StartQuizPageController implements Initializable {
                 sc.multipleAnswerQuestions = this.multipleAnswerQuestions;
                 sc.launchMCQ(this.multipleAnswerQuestions, this.multipleChoiceQuestions, 
                         this.trueFalseQuestions, this.fillInTheBlanksQuestions, this.numberOfQuestions/4);
+                
                 sc.initID(userId);
                 sc.setNumOfQuestions(this.numberOfQuestions);
                 scene = new Scene(root);

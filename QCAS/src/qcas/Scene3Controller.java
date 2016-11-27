@@ -88,7 +88,7 @@ public class Scene3Controller implements Initializable {
     }
     
 public void connectToDatabase() throws SQLException{
-        String url = "jdbc:mysql://adelaide-mysql-qcas1.caswkasqdmel.ap-southeast-2.rds.amazonaws.com:3306/QuizDB"; //creates network connection to database for application   
+        String url = "jdbc:mysql://adelaide-mysql-qcas1.caswkasqdmel.ap-southeast-2.rds.amazonaws.com:3306/UserDB"; //creates network connection to database for application   
         String username = "qcastest";//username for accessing database
         String password = "qcastest";//password for accessing database
         
@@ -111,7 +111,7 @@ private void addToDatabase(String[] questionArray) throws SQLException {
         switch (questionArray[0]) {
             case "MC":
             try {
-            String set = "INSERT INTO QuizDB.MCQTable (difficulty, description, choice1, anwer1, choice2, anwer2, choice3, anwer3, choice4, anwer4)" +
+            String set = "INSERT INTO UserDB.MCQTable (difficulty, description, choice1, answer1, choice2, answer2, choice3, answer3, choice4, answer4)" +
                         "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";//insert statement to add the updated valuse in the database
             PreparedStatement stmt2 = this.con.prepareStatement(set);
             
@@ -146,7 +146,7 @@ private void addToDatabase(String[] questionArray) throws SQLException {
             
             case "MA":
             try {
-            String set = "INSERT INTO QuizDB.MATable (difficulty, description, choice1, answer1, choice2, answer2, choice3, answer3, choice4, answer4)" +
+            String set = "INSERT INTO UserDB.MATable (difficulty, description, choice1, answer1, choice2, answer2, choice3, answer3, choice4, answer4)" +
                         "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";//insert statement to add the updated valuse in the database
             PreparedStatement stmt2 = this.con.prepareStatement(set);
             
@@ -181,7 +181,7 @@ private void addToDatabase(String[] questionArray) throws SQLException {
             
             case "TF":
                 try {
-            String set = "INSERT INTO QuizDB.TFTable (difficulty, description, answer)" +
+            String set = "INSERT INTO UserDB.TFTable (difficulty, description, answer)" +
                         "VALUES (?, ?, ?);";//insert statement to add the updated valuse in the database.
             PreparedStatement stmt2 = this.con.prepareStatement(set);
             /* Loop takes the value of each line in the sailorsList array, 
@@ -205,7 +205,7 @@ private void addToDatabase(String[] questionArray) throws SQLException {
             
             case "FIB":
             try {
-            String set = "INSERT INTO QuizDB.FIBTable (difficulty, description, answer)" +
+            String set = "INSERT INTO UserDB.FIBTable (difficulty, description, answer)" +
                         "VALUES (?, ?, ?);";//insert statement to add the updated valuse in the database.
             PreparedStatement stmt2 = this.con.prepareStatement(set);
 
