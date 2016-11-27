@@ -298,7 +298,7 @@ public class QuizResultsController implements Initializable {
             examNumber = maxexamid.getInt(1) + 1;
         }
         
-        this.examScore = (double) this.correctQuestions.size()/ (double)this.allAnsweredQuestions.size()*100;
+        this.examScore = (double)this.correctQuestions.size() / (double)this.allAnsweredQuestions.size()*100;
         quizScoreLabel.setText(this.examScore + "%");
         String grade = "";
         

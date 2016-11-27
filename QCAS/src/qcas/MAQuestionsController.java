@@ -191,7 +191,8 @@ public class MAQuestionsController implements Initializable {
             else if(multipleAnswerQuestions.get(size-1).correct4.equals("correct")){
                 this.userAnswerCheck.add(this.multipleAnswerQuestions.get(size - 1).answer4);
             }
-            
+            pageNumber+=1;
+            questionNumberLabel.setText(pageNumber + "/" + this.numOfQuestions + "");
             
             AButton.setOnAction(e -> {
             if(multipleAnswerQuestions.get(size-1).correct1.equals("correct")){
@@ -295,6 +296,7 @@ public class MAQuestionsController implements Initializable {
             sc.setCorrectQuestions(this.correctQuestions);
             sc.setIncorrectQuestions(this.incorrectQuestions);
             sc.setUserAnswers(this.userAnswers);
+            sc.setPageNumber(this.pageNumber);
             sc.setAllAnsweredQuestions(this.allAnsweredQuestions);
             sc.launchFIB(this.multipleChoiceQuestions, this.multipleAnswerQuestions, this.trueFalseQuestions, 
                     this.fillInTheBlanksQuestions, this.multipleAnswerQuestions.size());

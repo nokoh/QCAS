@@ -269,6 +269,7 @@ public class MCQuestionsController implements Initializable {
             sc.setCorrectQuestions(this.correctQuestions);
             sc.setIncorrectQuestions(this.incorrectQuestions);
             sc.setUserAnswers(this.userAnswers);
+            sc.setPageNumber(this.pageNumber);
             sc.setAllAnsweredQuestions(this.allAnsweredQuestions);
             sc.launchMA(this.multipleChoiceQuestions, this.multipleAnswerQuestions, this.trueFalseQuestions, 
                     this.fillInTheBlanksQuestions, this.multipleAnswerQuestions.size());

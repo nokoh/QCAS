@@ -153,7 +153,8 @@ public class TFQuestionsController implements Initializable {
         this.multipleAnswerQuestions = multipleAnswerQuestions;
         this.multipleChoiceQuestions = multipleChoiceQuestions;
         this.fillInTheBlanksQuestions = fillInTheBlanksQuestions;
-        
+        pageNumber+=1;
+        questionNumberLabel.setText(pageNumber + "/" + this.numOfQuestions + "");
     //    System.out.println("TF "+this.allAnsweredQuestions.size());
        // Stage stage = (Stage) AButton.getScene().getWindow();
         if(size != 0){

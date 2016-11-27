@@ -154,25 +154,25 @@ public class FIBQuestionsController implements Initializable {
         this.multipleChoiceQuestions = multipleChoiceQuestions;
         this.trueFalseQuestions = trueFalseQuestions;
         
+        
 
        // Stage stage = (Stage) AButton.getScene().getWindow();
         if(size != 0){
-            
+            pageNumber+=1;
+            questionNumberLabel.setText(pageNumber + "/" + this.numOfQuestions + "");   
             this.fillInTheBlanksQuestions = fillInTheBlanksQuestions;
             FIBQuestionDescriptionLabel.setText(fillInTheBlanksQuestions.get(size-1).description);
             
             nextButton.setOnAction(e -> {
-                
-                if(userAnswerField.getText().trim().equals(null)){
-                    String error = "Please enter your answer";
+                if(userAnswerField.getText() == null){
+
                 }
                 else{
                     String answer = userAnswerField.getText().trim();
                     if(answer.equalsIgnoreCase(fillInTheBlanksQuestions.get(size-1).correctAnswer)){
                         this.numCorrect++;
                         this.correctQuestions.add(fillInTheBlanksQuestions.get(size-1));
-                        this.userAnswers.add(answer);
-                        
+                        this.userAnswers.add(answer); 
                     }
                     else {
                         this.numIncorrect++;
@@ -211,6 +211,7 @@ public class FIBQuestionsController implements Initializable {
             sc.setCorrectQuestions(this.correctQuestions);
             sc.setIncorrectQuestions(this.incorrectQuestions);
             sc.setUserAnswers(this.userAnswers);
+            sc.setPageNumber(this.pageNumber);
             sc.setAllAnsweredQuestions(this.allAnsweredQuestions);
             sc.launchTF(this.multipleChoiceQuestions, this.multipleAnswerQuestions, this.trueFalseQuestions, 
                     this.fillInTheBlanksQuestions, this.multipleAnswerQuestions.size());
