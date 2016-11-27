@@ -461,6 +461,7 @@ public class QuizResultsController implements Initializable {
             }
            }
            
+           barChartStudent.getData().clear();
         String correct = "Correct";
            String inCorrect = "Incorrect";
   

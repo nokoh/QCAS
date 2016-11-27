@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.chart.*?>
@@ -11,7 +12,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qcas.Scene6Controller">
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qcas.Scene6Controller">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#edeeee" height="101.0" layoutX="15.0" layoutY="212.0" stroke="BLACK" strokeType="INSIDE" width="572.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f2f0f0" height="45.0" layoutX="14.0" layoutY="160.0" stroke="BLACK" strokeType="INSIDE" width="572.0" />
@@ -113,20 +114,41 @@
             <VBox prefHeight="101.0" prefWidth="133.0" />
          </children>
       </HBox>
-      <VBox layoutX="608.0" layoutY="15.0" prefHeight="649.0" prefWidth="481.0">
+      <VBox layoutX="608.0" layoutY="15.0" prefHeight="671.0" prefWidth="668.0">
          <children>
             <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label text="Number Of Quizzes Attempted:  ">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="totalNumberQuizzes" text="totalNumberQuizzes" textFill="#c63232">
-                     <font>
-                        <Font name="System Bold" size="13.0" />
-                     </font>
-                  </Label>
+                  <VBox prefHeight="82.0" prefWidth="232.0">
+                     <children>
+                        <Label text="Number Of Questions Answered:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Label>
+                        <Label fx:id="totalNumberQuestions" text="totalNumberQuestions" textFill="#c63232">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="82.0" prefWidth="232.0">
+                     <children>
+                        <Label text="Number Of Quizzes Attempted:  ">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="totalNumberQuizzes" text="totalNumberQuizzes" textFill="#c63232">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
                   <VBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="195.0">
                      <children>
                         <Label fx:id="TeacherNameLabel" text="TeacherNameLabel">
@@ -140,19 +162,14 @@
                      </children>
                   </VBox>
                </children></HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+            <HBox alignment="CENTER" prefHeight="235.0" prefWidth="579.0">
                <children>
-                  <TableView prefHeight="100.0" prefWidth="479.0">
-                    <columns>
-                      <TableColumn prefWidth="109.0" text="Difficulty Scores" />
-                      <TableColumn prefWidth="123.0" text="Easy" />
-                        <TableColumn prefWidth="114.0" text="Medium" />
-                        <TableColumn prefWidth="132.0" text="Hard" />
-                    </columns>
-                  </TableView>
+                  <PieChart fx:id="PieChartEasy" prefHeight="206.0" prefWidth="215.0" />
+                  <PieChart fx:id="PieChartMedium" prefHeight="206.0" prefWidth="221.0" />
+                  <PieChart fx:id="PieChartHard" prefHeight="206.0" prefWidth="218.0" />
                </children>
             </HBox>
-            <BarChart fx:id="barChartTeacher">
+            <BarChart fx:id="barChartTeacher" prefHeight="389.0" prefWidth="668.0">
               <xAxis>
                 <CategoryAxis label="Time Period " side="BOTTOM" fx:id="xAxis" />
               </xAxis>
@@ -179,6 +196,6 @@
       <Label fx:id="nonPassingLastQuarter" layoutX="359.0" layoutY="127.0" text="Label" />
       <Label fx:id="passingLastYear" layoutX="498.0" layoutY="110.0" text="Label" />
       <Label fx:id="nonPassingLastYear" layoutX="498.0" layoutY="127.0" text="Label" />
-      <ComboBox fx:id="monthSelector" layoutX="437.0" layoutY="318.0" prefWidth="150.0" />
+      <ComboBox fx:id="monthSelector" layoutX="437.0" layoutY="325.0" prefWidth="150.0" promptText="Select Month" />
    </children>
 </AnchorPane>

@@ -27,6 +27,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.ComboBox;
 
@@ -92,6 +93,19 @@ public class Scene6Controller implements Initializable {
     
     @FXML
     private NumberAxis yAxis;
+    
+    @FXML
+    PieChart PieChartEasy; 
+    
+    @FXML
+    PieChart PieChartMedium; 
+    
+    @FXML
+    PieChart PieChartHard; 
+    
+    @FXML
+    private Label totalNumberQuestions;
+    
     
     
     /* Method To Initialise Teacher Dashboard */
@@ -176,9 +190,10 @@ public class Scene6Controller implements Initializable {
             
     }
     
-    public void drawCharts(String month){
+    public void drawCharts(String month) throws SQLException{
     //defining the axes
         TestsLineChart.getData().clear();
+        TestsLineChart.setTitle("Tests Passed / Failed Since: "+month);
         XYChart.Series series = new XYChart.Series();
         series.setName("Students Passing " + month);
         int size = monthNumberConversion(month);
@@ -192,7 +207,7 @@ public class Scene6Controller implements Initializable {
             series2.getData().add(new XYChart.Data(i+"", i++));
         }
         
-           
+          drawPieChart(); 
         
         monthList.add("Januarary");
         monthList.add("February");
@@ -211,42 +226,88 @@ public class Scene6Controller implements Initializable {
         monthSelector.setOnAction(e -> {
             
         if(monthSelector.getSelectionModel().getSelectedItem().equals("January")){
-            
-            drawCharts("January");
-           
+            try {
+                drawCharts("January");
+            } catch (SQLException ex) {
+                Logger.getLogger(Scene6Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         else if(monthSelector.getSelectionModel().getSelectedItem().equals("February")){
-            drawCharts("February");
+            try {
+                drawCharts("February");
+            } catch (SQLException ex) {
+                Logger.getLogger(Scene6Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         else if(monthSelector.getSelectionModel().getSelectedItem().equals("March")){
-            drawCharts("March");
+            try {
+                drawCharts("March");
+            } catch (SQLException ex) {
+                Logger.getLogger(Scene6Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         else if(monthSelector.getSelectionModel().getSelectedItem().equals("April")){
-            drawCharts("April");
+            try {
+                drawCharts("April");
+            } catch (SQLException ex) {
+                Logger.getLogger(Scene6Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         else if(monthSelector.getSelectionModel().getSelectedItem().equals("May")){
-           drawCharts("May");
+            try {
+                drawCharts("May");
+            } catch (SQLException ex) {
+                Logger.getLogger(Scene6Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         else if(monthSelector.getSelectionModel().getSelectedItem().equals("June")){
-            drawCharts("June");
+            try {
+                drawCharts("June");
+            } catch (SQLException ex) {
+                Logger.getLogger(Scene6Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         else if(monthSelector.getSelectionModel().getSelectedItem().equals("July")){
-            drawCharts("July");
+            try {
+                drawCharts("July");
+            } catch (SQLException ex) {
+                Logger.getLogger(Scene6Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         else if(monthSelector.getSelectionModel().getSelectedItem().equals("August")){
-            drawCharts("August");
+            try {
+                drawCharts("August");
+            } catch (SQLException ex) {
+                Logger.getLogger(Scene6Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         else if(monthSelector.getSelectionModel().getSelectedItem().equals("September")){
-            drawCharts("September");
+            try {
+                drawCharts("September");
+            } catch (SQLException ex) {
+                Logger.getLogger(Scene6Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         else if(monthSelector.getSelectionModel().getSelectedItem().equals("October")){
-            drawCharts("October");
+            try {
+                drawCharts("October");
+            } catch (SQLException ex) {
+                Logger.getLogger(Scene6Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         else if(monthSelector.getSelectionModel().getSelectedItem().equals("November")){
-            drawCharts("November");
+            try {
+                drawCharts("November");
+            } catch (SQLException ex) {
+                Logger.getLogger(Scene6Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         else if(monthSelector.getSelectionModel().getSelectedItem().equals("December")){
-            drawCharts("December");
+            try {
+                drawCharts("December");
+            } catch (SQLException ex) {
+                Logger.getLogger(Scene6Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         });
         
@@ -300,6 +361,67 @@ public class Scene6Controller implements Initializable {
         
     }
     
+    public void drawPieChart() throws SQLException{
+        int totalNumberOfQuestions = 0;
+        int eNumCorrect = 0;
+        int eNumInCorrect = 0;
+        int mNumCorrect = 0;
+        int mNumInCorrect = 0;
+        int hNumCorrect = 0; 
+        int hNumInCorrect = 0;
+        
+        ResultSet pieChartRS = connection.createStatement().executeQuery("SELECT status, answercheck, count(answercheck) as noQuestion FROM UserDB.ExamTable group by status, answercheck");
+            while(pieChartRS.next()){
+                if(pieChartRS.getString(1).equalsIgnoreCase("e") && pieChartRS.getString(2).equalsIgnoreCase("correct")){
+                    totalNumberOfQuestions+= Integer.parseInt(pieChartRS.getString(3));
+                    eNumCorrect = Integer.parseInt(pieChartRS.getString(3));
+                }
+                else if(pieChartRS.getString(1).equalsIgnoreCase("e") && pieChartRS.getString(2).equalsIgnoreCase("incorrect")){
+                    totalNumberOfQuestions+= Integer.parseInt(pieChartRS.getString(3));
+                    eNumInCorrect = Integer.parseInt(pieChartRS.getString(3));
+                }
+                else if(pieChartRS.getString(1).equalsIgnoreCase("m") && pieChartRS.getString(2).equalsIgnoreCase("correct")){
+                    totalNumberOfQuestions+= Integer.parseInt(pieChartRS.getString(3));
+                    mNumCorrect = Integer.parseInt(pieChartRS.getString(3));
+                }
+                else if(pieChartRS.getString(1).equalsIgnoreCase("m") && pieChartRS.getString(2).equalsIgnoreCase("incorrect")){
+                    totalNumberOfQuestions+= Integer.parseInt(pieChartRS.getString(3));
+                    mNumInCorrect = Integer.parseInt(pieChartRS.getString(3));
+                }
+                else if(pieChartRS.getString(1).equalsIgnoreCase("h") && pieChartRS.getString(2).equalsIgnoreCase("correct")){
+                    totalNumberOfQuestions+= Integer.parseInt(pieChartRS.getString(3));
+                    hNumCorrect = Integer.parseInt(pieChartRS.getString(3));
+                }
+                else if(pieChartRS.getString(1).equalsIgnoreCase("h") && pieChartRS.getString(2).equalsIgnoreCase("incorrect")){
+                    totalNumberOfQuestions+= Integer.parseInt(pieChartRS.getString(3));
+                    hNumInCorrect = Integer.parseInt(pieChartRS.getString(3));
+                }
+            }
+        totalNumberQuestions.setText(totalNumberOfQuestions+"");
+    ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
+            new PieChart.Data("Correct", eNumCorrect),
+            new PieChart.Data("Incorrect", eNumInCorrect));
+    
+        PieChartEasy.setTitle("Easy Questions");
+        PieChartEasy.setData(pieChartData);
+        
+    ObservableList<PieChart.Data> pieChartData2 = FXCollections.observableArrayList(
+            new PieChart.Data("Correct", mNumCorrect),
+            new PieChart.Data("Incorrect", mNumInCorrect));
+    
+        PieChartMedium.setTitle("Medium Questions");
+        PieChartMedium.setData(pieChartData2);
+        
+    ObservableList<PieChart.Data> pieChartData3 = FXCollections.observableArrayList(
+            new PieChart.Data("Correct", hNumCorrect),
+            new PieChart.Data("Incorrect", hNumInCorrect));
+    
+        PieChartHard.setTitle("Hard Questions");
+        PieChartHard.setData(pieChartData3);
+        
+        
+
+    }
     
     public int getNumberofDaysInMonth(int Month){
         int iYear = 2016;

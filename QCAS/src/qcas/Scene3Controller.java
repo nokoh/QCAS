@@ -47,6 +47,7 @@ public class Scene3Controller implements Initializable {
     String fileName;
     Stage homeStage;
     String teacherID;
+    String teacher;
     
     @FXML
     private Button importFileButton;   
@@ -54,6 +55,8 @@ public class Scene3Controller implements Initializable {
     private Button viewReportsButton;
     @FXML 
     private Button returnHomeButton;
+    @FXML
+    private Label teacherName;
     
     
     
@@ -397,8 +400,17 @@ private void addToDatabase(String[] questionArray) throws SQLException {
        
     }
         
-        public void setTeacherDetails(String ID){
+        public void setTeacherDetails(String ID) throws SQLException{
            this.teacherID = ID;
+           connectToDatabase();
+           String dbQuery = "Select firstname, lastname, userid from Users WHERE userid = ?";
+            PreparedStatement preparedStatement = this.con.prepareStatement(dbQuery);
+            preparedStatement.setString(1, ID);
+            ResultSet rset = preparedStatement.executeQuery();
+            if (rset.next()) {
+                teacherName.setText(rset.getString("firstname").toUpperCase() + " " + rset.getString("lastname").toUpperCase());
+            }
+           //teacherName.setText(this.teacher);
         }
 
 
