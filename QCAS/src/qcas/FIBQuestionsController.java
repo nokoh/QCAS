@@ -165,7 +165,10 @@ public class FIBQuestionsController implements Initializable {
             
             nextButton.setOnAction(e -> {
                 if(userAnswerField.getText() == null){
-
+                    String answer = "  ";
+                    this.numIncorrect++;
+                        this.incorrectQuestions.add(fillInTheBlanksQuestions.get(size-1));
+                        this.userAnswers.add(answer);
                 }
                 else{
                     String answer = userAnswerField.getText().trim();
