@@ -319,11 +319,24 @@ private void addToDatabase(String[] questionArray) throws SQLException {
  * The Teacher Report Scene is **Scene Number 6**
      * @throws java.io.IOException
  */         
-            @FXML
         public void viewReports() throws IOException{
             viewReportsButton.setOnAction(r ->{
                 try {
-                    viewReportsButtonClicked();
+                    Stage stage;
+                    Parent root;
+                    stage = (Stage)viewReportsButton.getScene().getWindow();
+                    FXMLLoader ff = new FXMLLoader(getClass().getResource("scene6.fxml"));
+                    root = ff.load();
+                    Scene6Controller s6 = ff.<Scene6Controller>getController();
+//                    s6.launchReports();
+                    scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();
+                    try {
+                        viewReportsButtonClicked();
+                    } catch (IOException ex) {
+                        Logger.getLogger(Scene3Controller.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 } catch (IOException ex) {
                     Logger.getLogger(Scene3Controller.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -335,7 +348,6 @@ private void addToDatabase(String[] questionArray) throws SQLException {
         * 
      * @throws java.io.IOException
         **/
-            @FXML
         public void returnHome() throws IOException{
             returnHomeButton.setOnAction(h ->{
                 
@@ -352,18 +364,18 @@ private void addToDatabase(String[] questionArray) throws SQLException {
          * 
      * @throws java.io.IOException
          */
-            @FXML
+
+    @FXML
         public void viewReportsButtonClicked() throws IOException {
-     
+            Parent scene3;
+            Stage stage = (Stage) viewReportsButton.getScene().getWindow();
             FXMLLoader ff = new FXMLLoader(getClass().getResource("scene6.fxml"));
-                Parent scene3 = ff.load();
+                scene3 = ff.load();
                 Scene6Controller s6 = ff.<Scene6Controller>getController();
-                
-                Scene teacherChoose = new Scene(scene3);
-                homeStage = (Stage) viewReportsButton.getScene().getWindow();
-                homeStage.hide();
-                homeStage.setScene(teacherChoose);
-                homeStage.show();
+                s6.launchReports();
+                scene = new Scene(scene3);
+                stage.setScene(scene);
+                stage.show();
     }
      /**
      * 

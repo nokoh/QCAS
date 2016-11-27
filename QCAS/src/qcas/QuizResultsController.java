@@ -64,7 +64,7 @@ public class QuizResultsController implements Initializable {
     Connection connection;
     Date currentDate;
     int examNumber;
-    double examScore;
+    Double examScore;
    
 
     @FXML
@@ -299,7 +299,8 @@ public class QuizResultsController implements Initializable {
         }
         
         this.examScore = (double)this.correctQuestions.size() / (double)this.allAnsweredQuestions.size()*100;
-        quizScoreLabel.setText(this.examScore + "%");
+        int finalScore = this.examScore.intValue();
+        quizScoreLabel.setText(finalScore + "%");
         String grade = "";
         
         if(this.examScore >= 97){
@@ -431,7 +432,7 @@ public class QuizResultsController implements Initializable {
         public String convertTime(long time){
         
         Date date = new Date(time);
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy MM dd HH:mm:ss"); 
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy MM dd"); 
         return sdf.format(date);
 }
     public void plotResultsGraph(){

@@ -237,7 +237,7 @@ public class StartQuizPageController implements Initializable {
                 Logger.getLogger(StartQuizPageController.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        Stage stage;
+            Stage stage;
             Parent root;
             stage = (Stage)easyButton.getScene().getWindow();
             try {

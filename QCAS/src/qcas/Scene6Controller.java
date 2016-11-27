@@ -47,6 +47,16 @@ public class Scene6Controller implements Initializable {
     private Label AvgMixedLMLabel, AvgMixedLQLabel, AvgMixedLYLabel;
     
     
+    /* Method To Initialise Teacher Dashboard */
+    public void launchReports(){
+//        numFailLMLabel.setText(0+"");
+//        numFailLQLabel.setText(0+"");
+//        numFailLYLabel.setText(0+"");
+//        numPassLMLabel.setText(0+"");
+//        numPassLQLabel.setText(0+"");
+//        numPassLYLabel.setText(0+"");
+    }
+    
    
      /**
      * printToPDF() prints a PDF of the Report if the Print To PDF Button is clicked
