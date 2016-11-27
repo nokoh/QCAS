@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -45,6 +46,7 @@ public class Scene3Controller implements Initializable {
     Connection con;
     String fileName;
     Stage homeStage;
+    String teacherID;
     
     @FXML
     private Button importFileButton;   
@@ -318,9 +320,10 @@ private void addToDatabase(String[] questionArray) throws SQLException {
  * The viewReports() method switches the scene to the Teacher Report Scene 
  * The Teacher Report Scene is **Scene Number 6**
      * @throws java.io.IOException
- */         
+ */         @FXML
         public void viewReports() throws IOException{
-            viewReportsButton.setOnAction(r ->{
+            viewReportsButton.setOnAction(e ->{
+
                 try {
                     Stage stage;
                     Parent root;
@@ -328,21 +331,20 @@ private void addToDatabase(String[] questionArray) throws SQLException {
                     FXMLLoader ff = new FXMLLoader(getClass().getResource("scene6.fxml"));
                     root = ff.load();
                     Scene6Controller s6 = ff.<Scene6Controller>getController();
-//                    s6.launchReports();
+                    s6.launchReports(this.teacherID);
                     scene = new Scene(root);
                     stage.setScene(scene);
                     stage.show();
-                    try {
-                        viewReportsButtonClicked();
-                    } catch (IOException ex) {
-                        Logger.getLogger(Scene3Controller.class.getName()).log(Level.SEVERE, null, ex);
-                    }
                 } catch (IOException ex) {
                     Logger.getLogger(Scene3Controller.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Scene3Controller.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            }); {
+                
+                
+            }); 
         }         
-        }
+    
       /**
         *  The returnHome() method switches back to the login screen.
         * 
@@ -364,7 +366,7 @@ private void addToDatabase(String[] questionArray) throws SQLException {
          * 
      * @throws java.io.IOException
          */
-
+/*
     @FXML
         public void viewReportsButtonClicked() throws IOException {
             Parent scene3;
@@ -372,11 +374,11 @@ private void addToDatabase(String[] questionArray) throws SQLException {
             FXMLLoader ff = new FXMLLoader(getClass().getResource("scene6.fxml"));
                 scene3 = ff.load();
                 Scene6Controller s6 = ff.<Scene6Controller>getController();
-                s6.launchReports();
+   //             s6.launchReports();
                 scene = new Scene(scene3);
                 stage.setScene(scene);
                 stage.show();
-    }
+    }*/
      /**
      * 
      * @throws java.io.IOException
@@ -394,6 +396,10 @@ private void addToDatabase(String[] questionArray) throws SQLException {
                 homeStage.show();
        
     }
+        
+        public void setTeacherDetails(String ID){
+           this.teacherID = ID;
+        }
 
 
 }

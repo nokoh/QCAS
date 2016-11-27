@@ -11,7 +11,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="681.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qcas.Scene6Controller">
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qcas.Scene6Controller">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#edeeee" height="101.0" layoutX="15.0" layoutY="212.0" stroke="BLACK" strokeType="INSIDE" width="572.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f2f0f0" height="45.0" layoutX="14.0" layoutY="160.0" stroke="BLACK" strokeType="INSIDE" width="572.0" />
@@ -35,7 +35,7 @@
             <Font size="10.0" />
          </font>
       </Label>
-      <Button id="printToPDFButton" fx:id="printToPDFButton" layoutX="169.0" layoutY="626.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="117.0" style="-fx-background-color: maroon;" text="Print to PDF" textFill="#fcf8f8">
+      <Button id="printToPDFButton" fx:id="printToPDFButton" layoutX="182.0" layoutY="664.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="117.0" style="-fx-background-color: maroon;" text="Print to PDF" textFill="#fcf8f8">
          <effect>
             <InnerShadow />
          </effect></Button>
@@ -69,43 +69,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="NumPassLMLabel" alignment="CENTER" layoutX="195.0" layoutY="110.0" prefHeight="17.0" prefWidth="104.0" text="NumPassLMLabel" />
-      <Label fx:id="NumFailLMLabel" alignment="CENTER" layoutX="199.0" layoutY="127.0" prefHeight="17.0" prefWidth="98.0" text="NumFailLMLabel" />
-      <Label fx:id="NumPassLQLabel" alignment="CENTER" layoutX="327.0" layoutY="110.0" prefHeight="17.0" prefWidth="104.0" text="NumPassLQLabel" />
-      <Label fx:id="NumFailLQLabel" alignment="CENTER" layoutX="316.0" layoutY="127.0" prefHeight="17.0" prefWidth="123.0" text="NumFailLQLabel" />
-      <Label fx:id="NumPassLYLabel" alignment="CENTER" layoutX="462.0" layoutY="110.0" prefHeight="17.0" prefWidth="96.0" text="NumPassLYLabel" />
-      <Label fx:id="NumFailLYLabel" alignment="CENTER" layoutX="459.0" layoutY="127.0" prefHeight="17.0" prefWidth="104.0" text="NumFailLYLabel" />
-      <Label fx:id="NumTestsLMLabel" alignment="CENTER" layoutX="193.0" layoutY="174.0" prefHeight="17.0" prefWidth="111.0" text="NumTestsLMLabel" />
-      <Label fx:id="NumTestsLQLabel" alignment="CENTER" layoutX="337.0" layoutY="174.0" prefHeight="17.0" prefWidth="98.0" text="NumTestsLQLabel" />
-      <Label fx:id="NumTestsLYLabel" layoutX="462.0" layoutY="174.0" text="NumTestsLYLabel" />
-      <Label layoutX="157.0" layoutY="505.0" text="Easy ">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <Label layoutX="292.0" layoutY="505.0" text="Medium ">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <Label layoutX="446.0" layoutY="505.0" text="Hard ">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <StackedBarChart alternativeColumnFillVisible="true" layoutX="8.0" layoutY="326.0" prefHeight="291.0" prefWidth="572.0">
-        <xAxis>
-          <CategoryAxis label="Question Difficulties" prefHeight="52.0" prefWidth="488.0" side="BOTTOM">
-               <tickLabelFont>
-                  <Font name="System Bold Italic" size="8.0" />
-               </tickLabelFont>
-            </CategoryAxis>
-        </xAxis>
-        <yAxis>
-          <NumberAxis label="# Correct &amp; Incorrect" side="LEFT" upperBound="50.0" />
-        </yAxis>
-      </StackedBarChart>
-      <Button id="returnHomeButton" fx:id="returnHomeButton" layoutX="306.0" layoutY="626.0" mnemonicParsing="false" onAction="#returnHomeButtonClicked" prefHeight="25.0" prefWidth="117.0" style="-fx-background-color: maroon;" text="Return Home" textFill="#fffefe">
+      <Button id="returnHomeButton" fx:id="returnHomeButton" layoutX="358.0" layoutY="664.0" mnemonicParsing="false" onAction="#returnHomeButtonClicked" prefHeight="25.0" prefWidth="117.0" style="-fx-background-color: maroon;" text="Logout" textFill="#fffefe">
          <effect>
             <InnerShadow />
          </effect></Button>
@@ -140,38 +104,81 @@
       </VBox>
       <HBox layoutX="185.0" layoutY="219.0" prefHeight="93.0" prefWidth="393.0">
          <children>
-            <VBox prefHeight="88.0" prefWidth="133.0">
-               <children>
-                  <Label fx:id="AvgOverallLMLabel" alignment="CENTER" prefHeight="20.0" prefWidth="133.0" text="AvgOverallLMLabel" />
-                  <Label fx:id="AvgEasyLMLabel" alignment="CENTER" prefHeight="6.0" prefWidth="133.0" text="AvgEasyLMLabel" />
-                  <Label fx:id="AvgMediumLMLabel" alignment="CENTER" prefHeight="17.0" prefWidth="146.0" text="AvgMediumLMLabel" />
-                  <Label fx:id="AvgHardLMLabel" alignment="CENTER" prefHeight="17.0" prefWidth="140.0" text="AvgHardLMLabel" />
-                  <Label fx:id="AvgMixedLMLabel" alignment="CENTER" prefHeight="17.0" prefWidth="147.0" text="AvgMixedLMLabel" />
-               </children>
-            </VBox>
+            <VBox prefHeight="88.0" prefWidth="133.0" />
             <VBox prefHeight="101.0" prefWidth="123.0">
                <children>
-                  <VBox prefHeight="101.0" prefWidth="135.0">
-                     <children>
-                        <Label fx:id="AvgOverallLQLabel" alignment="CENTER" prefHeight="20.0" prefWidth="133.0" text="AvgOverallLQLabel" />
-                        <Label fx:id="AvgEasyLQLabel" alignment="CENTER" prefHeight="6.0" prefWidth="133.0" text="AvgEasyLQLabel" />
-                        <Label fx:id="AvgMediumLQLabel" alignment="CENTER" prefHeight="17.0" prefWidth="146.0" text="AvgMediumLQLabel" />
-                        <Label fx:id="AvgHardLQLabel" alignment="CENTER" prefHeight="17.0" prefWidth="140.0" text="AvgHardLQLabel" />
-                        <Label fx:id="AvgMixedLQLabel" alignment="CENTER" prefHeight="17.0" prefWidth="147.0" text="AvgMixedLQLabel" />
-                     </children>
-                  </VBox>
+                  <VBox prefHeight="101.0" prefWidth="135.0" />
                </children>
             </VBox>
-            <VBox prefHeight="101.0" prefWidth="133.0">
-               <children>
-                  <Label fx:id="AvgOverallLYLabel" alignment="CENTER" prefHeight="20.0" prefWidth="164.0" text="AvgOverallLYLabel" />
-                  <Label fx:id="AvgEasyLYLabel" alignment="CENTER" prefHeight="17.0" prefWidth="155.0" text="AvgEasyLYLabel" />
-                  <Label fx:id="AvgMediumLYLabel" alignment="CENTER" prefHeight="17.0" prefWidth="146.0" text="AvgMediumLYLabel" />
-                  <Label fx:id="AvgHardLYLabel" alignment="CENTER" prefHeight="17.0" prefWidth="170.0" text="AvgHardLYLabel" />
-                  <Label fx:id="AvgMixedLYLabel" alignment="CENTER" prefHeight="17.0" prefWidth="147.0" text="AvgMixedLYLabel" />
-               </children>
-            </VBox>
+            <VBox prefHeight="101.0" prefWidth="133.0" />
          </children>
       </HBox>
+      <VBox layoutX="608.0" layoutY="15.0" prefHeight="649.0" prefWidth="481.0">
+         <children>
+            <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="Number Of Quizzes Attempted:  ">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="totalNumberQuizzes" text="totalNumberQuizzes" textFill="#c63232">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <VBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="195.0">
+                     <children>
+                        <Label fx:id="TeacherNameLabel" text="TeacherNameLabel">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font></Label>
+                        <Label fx:id="TeacherIDLabel" text="TeacherIDLabel" textFill="#727272">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Label>
+                     </children>
+                  </VBox>
+               </children></HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <TableView prefHeight="100.0" prefWidth="479.0">
+                    <columns>
+                      <TableColumn prefWidth="109.0" text="Difficulty Scores" />
+                      <TableColumn prefWidth="123.0" text="Easy" />
+                        <TableColumn prefWidth="114.0" text="Medium" />
+                        <TableColumn prefWidth="132.0" text="Hard" />
+                    </columns>
+                  </TableView>
+               </children>
+            </HBox>
+            <BarChart fx:id="barChartTeacher">
+              <xAxis>
+                <CategoryAxis label="Time Period " side="BOTTOM" fx:id="xAxis" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis fx:id="yAxis" label="Number Of Tests" side="LEFT" />
+              </yAxis>
+            </BarChart>
+         </children>
+      </VBox>
+      <LineChart fx:id="TestsLineChart" layoutX="19.0" layoutY="351.0" prefHeight="291.0" prefWidth="572.0" title="Tests Passed / Failed Since November">
+        <xAxis>
+          <CategoryAxis fx:id="timePeriod" label="Time Period " side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis fx:id="numberOfTests" label="Number Passed / Number Failed" side="LEFT" />
+        </yAxis>
+      </LineChart>
+      <Label fx:id="testTakenLastMonth" layoutX="240.0" layoutY="174.0" text="Label" />
+      <Label fx:id="testTakenLastQuarter" layoutX="359.0" layoutY="174.0" text="Label" />
+      <Label fx:id="testTakenLastYear" layoutX="498.0" layoutY="175.0" text="Label" />
+      <Label fx:id="passingLastMonth" layoutX="226.0" layoutY="110.0" text="Label" />
+      <Label fx:id="nonPassingLastMonth" layoutX="226.0" layoutY="127.0" text="Label" />
+      <Label fx:id="passingLastQuarter" layoutX="359.0" layoutY="110.0" text="Label" />
+      <Label fx:id="nonPassingLastQuarter" layoutX="359.0" layoutY="127.0" text="Label" />
+      <Label fx:id="passingLastYear" layoutX="498.0" layoutY="110.0" text="Label" />
+      <Label fx:id="nonPassingLastYear" layoutX="498.0" layoutY="127.0" text="Label" />
+      <ComboBox fx:id="monthSelector" layoutX="437.0" layoutY="318.0" prefWidth="150.0" />
    </children>
 </AnchorPane>

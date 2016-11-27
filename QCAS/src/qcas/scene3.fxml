@@ -33,7 +33,7 @@
          <effect>
             <InnerShadow />
          </effect></Button>
-      <Button id="viewReportsButton" fx:id="viewReportsButton" layoutX="226.0" layoutY="221.0" mnemonicParsing="false" onAction="#viewReportsButtonClicked" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: maroon;" text="View Reports" textFill="#f8f6f6">
+      <Button id="viewReportsButton" fx:id="viewReportsButton" layoutX="226.0" layoutY="221.0" mnemonicParsing="false" onAction="#viewReports" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: maroon;" text="View Reports" textFill="#f8f6f6">
          <effect>
             <InnerShadow />
          </effect></Button>

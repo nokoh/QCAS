@@ -102,7 +102,6 @@ public class QuizResultsController implements Initializable {
     private BarChart<String, Integer> barChartStudent;
     @FXML
     private CategoryAxis xAxis;
-    
     @FXML
     private NumberAxis yAxis;
     
