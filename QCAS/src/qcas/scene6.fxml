@@ -147,6 +147,19 @@
                               <Font name="System Bold" size="13.0" />
                            </font>
                         </Label>
+                        <Label text="Number Of Quizzes Month:  ">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label fx:id="totalNumberQuizzesMonth" text="totalNumberQuizzesMonth" textFill="#c63232">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
                      </children>
                   </VBox>
                   <VBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="195.0">

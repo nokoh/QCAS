@@ -82,6 +82,7 @@ public class Scene6Controller implements Initializable {
     @FXML
     private ComboBox monthSelector;
     
+    
     @FXML
     private ObservableList monthList = FXCollections.observableArrayList();
     
@@ -105,14 +106,13 @@ public class Scene6Controller implements Initializable {
     
     @FXML
     private Label totalNumberQuestions;
+    @FXML
+    private Label totalNumberQuizzesMonth;
     
     
     
     /* Method To Initialise Teacher Dashboard */
     public void launchReports(String ID) throws SQLException{
-        
-        
-        
         
         TeacherIDLabel.setText(ID);
         connectToDatabase();
@@ -124,92 +124,7 @@ public class Scene6Controller implements Initializable {
                 TeacherNameLabel.setText(rset.getString("firstname").toUpperCase() + " " + rset.getString("lastname").toUpperCase());
             }
             int count = 0;
-            drawCharts("November");
-            ResultSet dbQuery2 = connection.createStatement().executeQuery("SELECT examDate, count(examID), sum(score), sum(score)/count(examID) FROM UserDB.vw_examResult group by examDate;");
-            while(dbQuery2.next()){
-                count += (Integer.parseInt(dbQuery2.getString(2)));
-            }
-            ResultSet dbQuery3 = connection.createStatement().executeQuery("SELECT examDate, count(examID), sum(score), sum(score)/count(examID) FROM UserDB.vw_examResult group by examDate;");
-            ArrayList <String> averageDateScore = new ArrayList();
-            while(dbQuery3.next()){
-                averageDateScore.add(dbQuery3.getString(4));
-            }
-            ResultSet passMonthNum = connection.createStatement().executeQuery("SELECT substring(examDate,6,2) as month, count(examID) as totalpass  FROM UserDB.vw_examResult where (score >= 59) and (substring(examDate,6,2) = 10);");
-            while(passMonthNum.next()){
-                passingLastMonth.setText(passMonthNum.getString(2));
-            }
-            ResultSet failMonthNum = connection.createStatement().executeQuery("SELECT substring(examDate,6,2) as month, count(examID) as totalfail  FROM UserDB.vw_examResult where (score < 59) and (substring(examDate,6,2) = 10);");
-            while(failMonthNum.next()){
-                nonPassingLastMonth.setText(failMonthNum.getString(2));
-            }
-            ResultSet passQuarterNum = connection.createStatement().executeQuery("SELECT substring(examDate,6,2) as month, count(examID) as totalpass  FROM UserDB.vw_examResult where (score >= 59) and (substring(examDate,6,2) between 7 and 9);");
-            while(passQuarterNum.next()){
-                passingLastQuarter.setText(passQuarterNum.getString(2));
-            }
-            ResultSet failQuarterNum = connection.createStatement().executeQuery("SELECT substring(examDate,6,2) as month, count(examID) as totalfail  FROM UserDB.vw_examResult where (score < 59) and (substring(examDate,6,2) between 7 and 9);");
-            while(failQuarterNum.next()){
-                nonPassingLastQuarter.setText(failQuarterNum.getString(2));
-            }
-            ResultSet passYearNum = connection.createStatement().executeQuery("SELECT substring(examDate,6,2) as month, count(examID) as totalpass  FROM UserDB.vw_examResult where (score >= 59) and (substring(examDate,1,4) = 2015);");
-            while(passYearNum.next()){
-                passingLastYear.setText(passYearNum.getString(2));
-            }
-            ResultSet failYearNum = connection.createStatement().executeQuery("SELECT substring(examDate,6,2) as month, count(examID) as totalfail  FROM UserDB.vw_examResult where (score < 59) and (substring(examDate,1,4) = 2015);");
-            while(failYearNum.next()){
-                nonPassingLastYear.setText(failYearNum.getString(2));
-            }
-            String correct = "Correct";
-           String inCorrect = "Incorrect";
-  
-           xAxis.setLabel("Questions Difficulty");       
-           yAxis.setLabel("Average Score");
-            XYChart.Series series1 = new XYChart.Series();
-            XYChart.Series series2 = new XYChart.Series();
-            XYChart.Series series3 = new XYChart.Series();
-            barChartTeacher.setTitle("Average Student Scores Per Question Difficulty");
-            
-            ResultSet levelOfDifficulty = connection.createStatement().executeQuery("select * from UserDB.vw_scoreStatus");
-            while(levelOfDifficulty.next()){
-                if(levelOfDifficulty.getString(1).equalsIgnoreCase("e")){
-                    series1.getData().add(new XYChart.Data("Easy Questions", Double.parseDouble(levelOfDifficulty.getString(2))));
-                    series1.setName("Easy");
-                }
-                else if(levelOfDifficulty.getString(1).equalsIgnoreCase("m")){
-                    series2.getData().add(new XYChart.Data("Medium Questions", Double.parseDouble(levelOfDifficulty.getString(2))));
-                    series2.setName("Medium");
-                }
-                else if(levelOfDifficulty.getString(1).equalsIgnoreCase("h")){
-                    series3.getData().add(new XYChart.Data("Hard Questions", Double.parseDouble(levelOfDifficulty.getString(2))));
-                    series3.setName("Hard");
-                }
-            }
-
-           barChartTeacher.getData().addAll(series1, series2, series3);
-            
-           totalNumberQuizzes.setText(count+"");
-            
-    }
-    
-    public void drawCharts(String month) throws SQLException{
-    //defining the axes
-        TestsLineChart.getData().clear();
-        TestsLineChart.setTitle("Tests Passed / Failed Since: "+month);
-        XYChart.Series series = new XYChart.Series();
-        series.setName("Students Passing " + month);
-        int size = monthNumberConversion(month);
-       
-        for(int i = 0; i < size; i++){
-            series.getData().add(new XYChart.Data(i+"", i));
-        }
-        XYChart.Series series2 = new XYChart.Series();
-        series2.setName("Students Failing " + month);
-        for(int i = 0; i < size; i++){
-            series2.getData().add(new XYChart.Data(i+"", i++));
-        }
-        
-          drawPieChart(); 
-        
-        monthList.add("Januarary");
+            monthList.add("Januarary");
         monthList.add("February");
         monthList.add("March");
         monthList.add("April");
@@ -221,6 +136,25 @@ public class Scene6Controller implements Initializable {
         monthList.add("October");
         monthList.add("November");
         monthList.add("December");
+        
+        displayTableData();
+        drawCharts("November");
+        countNumberOfQuizzes("November");
+    }
+    
+    
+    
+    /* Draws all charts in dashboard for a given month */
+    public void drawCharts(String month) throws SQLException{
+    //defining the axes
+        
+        
+          drawPieChart(month);
+          drawBarChart(month);
+          drawLineChart(month);
+          countNumberOfQuizzes(month);
+          
+        
         
         monthSelector.setItems(monthList);
         monthSelector.setOnAction(e -> {
@@ -357,11 +291,38 @@ public class Scene6Controller implements Initializable {
         series2.getData().add(new XYChart.Data("19", 43));
         series2.getData().add(new XYChart.Data("20", 17));
         */
-        TestsLineChart.getData().addAll(series, series2);
-        
+         
+    }
+    public void drawLineChart(String month){
+        TestsLineChart.getData().clear();
+        TestsLineChart.setTitle("Tests Passed / Failed Since: "+month);
+        XYChart.Series series = new XYChart.Series();
+        series.setName("Students Passing " + month);
+        int size = monthNumberConversion(month);
+       
+        for(int i = 0; i < size; i++){
+            series.getData().add(new XYChart.Data(i+"", i));
+        }
+        XYChart.Series series2 = new XYChart.Series();
+        series2.setName("Students Failing " + month);
+        for(int i = 0; i < size; i++){
+            series2.getData().add(new XYChart.Data(i+"", i++));
+        }
+        TestsLineChart.getData().addAll(series, series2);  
     }
     
-    public void drawPieChart() throws SQLException{
+    
+    
+    
+    /*Dashboard draw pie charts
+      Checks difficulty of returned results and sums total number of correct and incorrect answers
+    */
+    public void drawPieChart(String month) throws SQLException{
+        PieChartEasy.getData().clear();
+        PieChartMedium.getData().clear();
+        PieChartHard.getData().clear();
+        int monthNum = monthNumberConversion(month);
+        
         int totalNumberOfQuestions = 0;
         int eNumCorrect = 0;
         int eNumInCorrect = 0;
@@ -369,8 +330,11 @@ public class Scene6Controller implements Initializable {
         int mNumInCorrect = 0;
         int hNumCorrect = 0; 
         int hNumInCorrect = 0;
-        
-        ResultSet pieChartRS = connection.createStatement().executeQuery("SELECT status, answercheck, count(answercheck) as noQuestion FROM UserDB.ExamTable group by status, answercheck");
+        String tableCount = "SELECT status, answercheck, count(answercheck) as noQuestion FROM UserDB.ExamTable WHERE substring(examDate,6,2) = ? group by status, answercheck";
+        PreparedStatement stmt = this.connection.prepareStatement(tableCount);
+        stmt.setInt(1, monthNum); //applies random variable to select statement.
+        ResultSet pieChartRS = stmt.executeQuery();//executes statement and returns value to resultset variable
+//        ResultSet pieChartRS = connection.createStatement().executeQuery("SELECT status, answercheck, count(answercheck) as noQuestion FROM UserDB.ExamTable WHERE substring(examDate,6,2) = 11 group by status, answercheck");
             while(pieChartRS.next()){
                 if(pieChartRS.getString(1).equalsIgnoreCase("e") && pieChartRS.getString(2).equalsIgnoreCase("correct")){
                     totalNumberOfQuestions+= Integer.parseInt(pieChartRS.getString(3));
@@ -423,6 +387,19 @@ public class Scene6Controller implements Initializable {
 
     }
     
+    public void countNoOfQuizzes() throws SQLException{
+        int totalNumberOfQuestions = 0;
+        ResultSet pieChartRS = connection.createStatement().executeQuery("SELECT status, answercheck, count(answercheck) as noQuestion FROM UserDB.ExamTable WHERE group by status, answercheck");
+            while(pieChartRS.next()){
+                    totalNumberOfQuestions+= Integer.parseInt(pieChartRS.getString(3));
+                }
+            
+        totalNumberQuestions.setText(totalNumberOfQuestions+"");
+    }
+    
+    
+    
+    /* Get number of days in a month */
     public int getNumberofDaysInMonth(int Month){
         int iYear = 2016;
         int iMonth = Month; // 1 (months begin with 0)
@@ -437,6 +414,11 @@ public class Scene6Controller implements Initializable {
         return daysInMonth;
     }
     
+    
+    
+    
+    
+    /* Takes month as string and returns integer */
     public int monthNumberConversion(String monthName){
         int monthValue = 0;
         if(monthName.equalsIgnoreCase("January")){
@@ -467,23 +449,105 @@ public class Scene6Controller implements Initializable {
         return monthValue;
     }
     
-   
-     /**
-     * printToPDF() prints a PDF of the Report if the Print To PDF Button is clicked
-     * 
-     */
-//    
-//    
-//        @FXML
-//    public  void printToPDF(){
-//        PrinterJob printToPDF = PrinterJob.createPrinterJob();
-//             if(printToPDF != null){
-//                printToPDF.showPrintDialog(scene.getWindow()); // Window must be your main Stage
-//                printToPDF.printPage(homeStage);
-//                printToPDF.endJob();
- 
-
+    
+    public void countNumberOfQuizzes(String month) throws SQLException{
+        int monthNum = monthNumberConversion(month);
+        int count = 0;
+        int count2 = 0;
+            String tableCount = "SELECT examDate, count(examID), sum(score), sum(score)/count(examID) FROM UserDB.vw_examResult WHERE substring(examDate,6,2) = ? group by examDate;";
+            PreparedStatement stmt = this.connection.prepareStatement(tableCount);
+            stmt.setInt(1, monthNum); //applies random variable to select statement.
+            ResultSet dbQuery1 = stmt.executeQuery();
+            ResultSet dbQuery2 = connection.createStatement().executeQuery("SELECT examDate, count(examID), sum(score), sum(score)/count(examID) FROM UserDB.vw_examResult group by examDate;");
+            while(dbQuery1.next()){
+                count2 += (Integer.parseInt(dbQuery1.getString(2)));
+            }
+/*            while(dbQuery2.next()){
+                count += (Integer.parseInt(dbQuery1.getString(2)));
+            }
+  */          
+            totalNumberQuizzes.setText(count+"");
+            totalNumberQuizzesMonth.setText(count2+"");
+            
+    }
+    
+    
+    
+    
+    /* Draws Bar chart for given month*/
+    public void drawBarChart(String month) throws SQLException{
         
+        int monthNum = monthNumberConversion(month);
+        barChartTeacher.getData().clear();
+        /*
+        SELECT examDate, count(examID), sum(score), sum(score)/count(examID)  
+        FROM UserDB.vw_examResult WHERE substring(examDate,6,2) = 11
+        group by examDate;
+        */         
+            
+            ResultSet dbQuery3 = connection.createStatement().executeQuery("SELECT examDate, count(examID), sum(score), sum(score)/count(examID) FROM UserDB.vw_examResult group by examDate;");
+            ArrayList <String> averageDateScore = new ArrayList();
+            while(dbQuery3.next()){
+                averageDateScore.add(dbQuery3.getString(4));
+            }
+            String correct = "Correct";
+           String inCorrect = "Incorrect";
+  
+           xAxis.setLabel("Questions Difficulty");       
+           yAxis.setLabel("Average Score");
+            XYChart.Series series1 = new XYChart.Series();
+            XYChart.Series series2 = new XYChart.Series();
+            XYChart.Series series3 = new XYChart.Series();
+            barChartTeacher.setTitle("Average Student Scores Per Question Difficulty");
+            
+            ResultSet levelOfDifficulty = connection.createStatement().executeQuery("select * from UserDB.vw_scoreStatus");
+            while(levelOfDifficulty.next()){
+                if(levelOfDifficulty.getString(1).equalsIgnoreCase("e")){
+                    series1.getData().add(new XYChart.Data("Easy Questions", Double.parseDouble(levelOfDifficulty.getString(2))));
+                    series1.setName("Easy");
+                }
+                else if(levelOfDifficulty.getString(1).equalsIgnoreCase("m")){
+                    series2.getData().add(new XYChart.Data("Medium Questions", Double.parseDouble(levelOfDifficulty.getString(2))));
+                    series2.setName("Medium");
+                }
+                else if(levelOfDifficulty.getString(1).equalsIgnoreCase("h")){
+                    series3.getData().add(new XYChart.Data("Hard Questions", Double.parseDouble(levelOfDifficulty.getString(2))));
+                    series3.setName("Hard");
+                }
+            }
+
+           barChartTeacher.getData().addAll(series1, series2, series3);
+            
+    }
+    
+    
+   /* Displays data for tables in Report */ 
+   public void displayTableData() throws SQLException{
+   ResultSet passMonthNum = connection.createStatement().executeQuery("SELECT substring(examDate,6,2) as month, count(examID) as totalpass  FROM UserDB.vw_examResult where (score >= 59) and (substring(examDate,6,2) = 10);");
+            while(passMonthNum.next()){
+                passingLastMonth.setText(passMonthNum.getString(2));
+            }
+            ResultSet failMonthNum = connection.createStatement().executeQuery("SELECT substring(examDate,6,2) as month, count(examID) as totalfail  FROM UserDB.vw_examResult where (score < 59) and (substring(examDate,6,2) = 10);");
+            while(failMonthNum.next()){
+                nonPassingLastMonth.setText(failMonthNum.getString(2));
+            }
+            ResultSet passQuarterNum = connection.createStatement().executeQuery("SELECT substring(examDate,6,2) as month, count(examID) as totalpass  FROM UserDB.vw_examResult where (score >= 59) and (substring(examDate,6,2) between 7 and 9);");
+            while(passQuarterNum.next()){
+                passingLastQuarter.setText(passQuarterNum.getString(2));
+            }
+            ResultSet failQuarterNum = connection.createStatement().executeQuery("SELECT substring(examDate,6,2) as month, count(examID) as totalfail  FROM UserDB.vw_examResult where (score < 59) and (substring(examDate,6,2) between 7 and 9);");
+            while(failQuarterNum.next()){
+                nonPassingLastQuarter.setText(failQuarterNum.getString(2));
+            }
+            ResultSet passYearNum = connection.createStatement().executeQuery("SELECT substring(examDate,6,2) as month, count(examID) as totalpass  FROM UserDB.vw_examResult where (score >= 59) and (substring(examDate,1,4) = 2015);");
+            while(passYearNum.next()){
+                passingLastYear.setText(passYearNum.getString(2));
+            }
+            ResultSet failYearNum = connection.createStatement().executeQuery("SELECT substring(examDate,6,2) as month, count(examID) as totalfail  FROM UserDB.vw_examResult where (score < 59) and (substring(examDate,1,4) = 2015);");
+            while(failYearNum.next()){
+                nonPassingLastYear.setText(failYearNum.getString(2));
+            }
+   }
     
     /**
         *  The returnHome() method switches back to the login screen.
