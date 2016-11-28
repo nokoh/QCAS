@@ -29,8 +29,12 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 
 /**
@@ -57,6 +61,8 @@ public class LoginScreenController implements Initializable {
 
     @FXML
     private PasswordField passwordField;
+    @FXML
+    private WebView webView;
 
     @FXML
     private Text loginMessage = new Text();
@@ -144,5 +150,5 @@ public class LoginScreenController implements Initializable {
             userIDField.clear();
             passwordField.clear();
         }
-
-    }}
+    
+    }}     
