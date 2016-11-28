@@ -25,8 +25,11 @@
          <image>
             <Image url="@../CMU%20Plaid.jpg" />
          </image>
+         <effect>
+            <ColorAdjust contrast="0.09" saturation="0.7" />
+         </effect>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f7f7f7" height="476.0" layoutX="16.0" layoutY="57.0" stroke="BLACK" strokeType="INSIDE" width="719.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f7f7f7" height="473.0" layoutX="16.0" layoutY="57.0" stroke="BLACK" strokeType="INSIDE" width="719.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="87.0" layoutX="15.0" layoutY="15.0" stroke="BLACK" strokeType="INSIDE" width="719.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.28095238095238095">
@@ -36,45 +39,48 @@
                </stops>
             </LinearGradient>
          </fill></Rectangle>
-      <Button id="login" fx:id="login" layoutX="425.0" layoutY="271.0" mnemonicParsing="false" onAction="#loginVerify" prefHeight="25.0" prefWidth="141.0" style="-fx-background-color: maroon;" text="Login" textFill="#f8f5f5">
-         <effect>
-            <InnerShadow />
-         </effect></Button>
-      <Label alignment="CENTER" layoutX="97.0" layoutY="24.0" prefHeight="67.0" prefWidth="558.0" text="Quiz Creation &amp; Assessment System " textAlignment="CENTER" textFill="WHITE">
+      <Label alignment="CENTER" layoutX="85.0" layoutY="26.0" prefHeight="66.0" prefWidth="596.0" text="Quiz Creation &amp; Assessment System " textAlignment="CENTER" textFill="WHITE">
          <font>
-            <Font name="Segoe UI Semilight" size="33.0" />
+            <Font name="Segoe UI Light" size="36.0" />
          </font>
          <opaqueInsets>
             <Insets top="1.0" />
          </opaqueInsets>
       </Label>
-      <Separator layoutX="387.0" layoutY="170.0" orientation="VERTICAL" prefHeight="227.0" prefWidth="38.0" style="-fx-background-insets: darkred;" styleClass="thicker">
+      <Separator layoutX="426.0" layoutY="171.0" orientation="VERTICAL" prefHeight="227.0" prefWidth="38.0" style="-fx-background-insets: darkred;" styleClass="thicker">
          <effect>
             <Glow />
          </effect></Separator>
-      <Label layoutX="91.0" layoutY="301.0" prefHeight="20.0" prefWidth="80.0" text="Password:">
+      <Label layoutX="151.0" layoutY="301.0" prefHeight="20.0" prefWidth="80.0" text="Password:">
          <font>
             <Font name="Segoe UI Semibold" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="97.0" layoutY="243.0" prefHeight="20.0" prefWidth="67.0" text="  User ID:">
+      <Label layoutX="158.0" layoutY="243.0" prefHeight="20.0" prefWidth="67.0" text="  User ID:">
          <font>
             <Font name="Segoe UI Semibold" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="197.0" layoutY="411.0" text="Please Enter Your User ID and Password, Then Click 'Login'">
+      <Label layoutX="205.0" layoutY="416.0" text="Please Enter Your User ID and Password, Then Click 'Login'">
          <font>
             <Font name="System Italic" size="14.0" />
          </font></Label>
       <Text fx:id="loginMessage" fill="#eb3e3e" layoutX="122.0" layoutY="295.0" opacity="0.99" strokeType="OUTSIDE" strokeWidth="0.0" />
-      <ImageView fitHeight="130.0" fitWidth="211.0" layoutX="171.0" layoutY="219.0" pickOnBounds="true">
+      <ImageView fitHeight="122.0" fitWidth="187.0" layoutX="239.0" layoutY="221.0" pickOnBounds="true">
          <image>
             <Image url="@../cmu-tartan-Logo2.png" />
          </image>
+         <effect>
+            <InnerShadow />
+         </effect>
       </ImageView>
-      <TextField fx:id="userIDField" layoutX="196.0" layoutY="241.0" prefHeight="25.0" prefWidth="159.0" promptText="UserID" />
-      <PasswordField fx:id="passwordField" layoutX="197.0" layoutY="299.0" prefHeight="25.0" prefWidth="159.0" promptText="Password" />
-      <ImageView fitHeight="20.0" fitWidth="17.0" layoutX="628.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
+      <Button id="login" fx:id="login" layoutX="458.0" layoutY="272.0" mnemonicParsing="false" onAction="#loginVerify" prefHeight="25.0" prefWidth="141.0" style="-fx-background-color: maroon;" text="Login" textFill="#f8f5f5">
+         <effect>
+            <InnerShadow />
+         </effect></Button>
+      <TextField fx:id="userIDField" layoutX="260.0" layoutY="241.0" prefHeight="21.0" prefWidth="141.0" promptText="UserID" />
+      <PasswordField fx:id="passwordField" layoutX="260.0" layoutY="299.0" prefHeight="25.0" prefWidth="141.0" promptText="Password" />
+      <ImageView fitHeight="16.0" fitWidth="13.0" layoutX="649.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Copyright_white.svg.png" />
          </image>
