@@ -15,7 +15,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: maroon;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qcas.MCQuestionsController">
     <children>
-      <ImageView fitHeight="550.0" fitWidth="750.0" layoutY="-3.0" pickOnBounds="true">
+      <ImageView fitHeight="550.0" fitWidth="750.0" layoutX="1.0" layoutY="-1.0" pickOnBounds="true">
          <image>
             <Image url="@../CMU%20Plaid.jpg" />
          </image>
@@ -111,16 +111,21 @@
          </font>
       </Label>
       <Label fx:id="questionNumberLabel" layoutX="91.0" layoutY="497.0" text="questionNumberLabel" />
-      <TextArea fx:id="outputTextArea" blendMode="MULTIPLY" editable="false" layoutX="597.0" layoutY="138.0" prefHeight="46.0" prefWidth="92.0">
+      <TextArea fx:id="outputTextArea" blendMode="MULTIPLY" editable="false" layoutX="577.0" layoutY="128.0" prefHeight="70.0" prefWidth="147.0">
          <font>
-            <Font size="21.0" />
+            <Font name="System Bold" size="33.0" />
          </font>
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
          <effect>
-            <Blend mode="OVERLAY" />
+            <Blend mode="SCREEN" />
          </effect></TextArea>
+      <ImageView fitHeight="165.0" fitWidth="231.0" layoutX="511.0" layoutY="74.0" pickOnBounds="true">
+         <image>
+            <Image url="@../11501757.png" />
+         </image>
+      </ImageView>
    </children>
    <effect>
       <InnerShadow />
