@@ -56,9 +56,6 @@
             <Font name="System Italic" size="12.0" />
          </font></Label>
       <Button id="AButton" fx:id="AButton" layoutX="60.0" layoutY="188.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="99.0" style="-fx-background-color: maroon;" text="A" textFill="#fcfafa">
-         <cursor>
-            <Cursor fx:constant="S_RESIZE" />
-         </cursor>
          <effect>
             <InnerShadow />
          </effect></Button>
@@ -96,6 +93,7 @@
          </font>
       </Label>
       <Label fx:id="questionNumberLabel" layoutX="99.0" layoutY="361.0" text="questionNumberLabel" />
+      <TextArea fx:id="outputTextArea" editable="false" layoutX="382.0" layoutY="98.0" prefHeight="41.0" prefWidth="200.0" />
    </children>
    <effect>
       <InnerShadow />

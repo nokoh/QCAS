@@ -140,6 +140,7 @@ public class Scene6Controller implements Initializable {
         displayTableData();
         drawCharts("November");
         countNumberOfQuizzes("November");
+        countNoOfQuizzes();
     }
     
     
@@ -361,7 +362,7 @@ public class Scene6Controller implements Initializable {
                     hNumInCorrect = Integer.parseInt(pieChartRS.getString(3));
                 }
             }
-        totalNumberQuestions.setText(totalNumberOfQuestions+"");
+        
     ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
             new PieChart.Data("Correct", eNumCorrect),
             new PieChart.Data("Incorrect", eNumInCorrect));
@@ -389,7 +390,7 @@ public class Scene6Controller implements Initializable {
     
     public void countNoOfQuizzes() throws SQLException{
         int totalNumberOfQuestions = 0;
-        ResultSet pieChartRS = connection.createStatement().executeQuery("SELECT status, answercheck, count(answercheck) as noQuestion FROM UserDB.ExamTable WHERE group by status, answercheck");
+        ResultSet pieChartRS = connection.createStatement().executeQuery("SELECT status, answercheck, count(answercheck) FROM UserDB.ExamTable group by status, answercheck");
             while(pieChartRS.next()){
                     totalNumberOfQuestions+= Integer.parseInt(pieChartRS.getString(3));
                 }
@@ -462,13 +463,12 @@ public class Scene6Controller implements Initializable {
             while(dbQuery1.next()){
                 count2 += (Integer.parseInt(dbQuery1.getString(2)));
             }
-/*            while(dbQuery2.next()){
-                count += (Integer.parseInt(dbQuery1.getString(2)));
+            while(dbQuery2.next()){
+                count += (Integer.parseInt(dbQuery2.getString(2)));
             }
-  */          
-            totalNumberQuizzes.setText(count+"");
-            totalNumberQuizzesMonth.setText(count2+"");
             
+            totalNumberQuizzes.setText(count+"");
+            totalNumberQuizzesMonth.setText(count2+"");  
     }
     
     
@@ -483,15 +483,19 @@ public class Scene6Controller implements Initializable {
         SELECT examDate, count(examID), sum(score), sum(score)/count(examID)  
         FROM UserDB.vw_examResult WHERE substring(examDate,6,2) = 11
         group by examDate;
-        */         
+        */      
+        
+            String tableCount = "SELECT examDate, count(examID), sum(score), sum(score)/count(examID) FROM UserDB.vw_examResult WHERE substring(examDate,6,2) = ? group by examDate;";
+            PreparedStatement stmt = this.connection.prepareStatement(tableCount);
+            stmt.setInt(1, monthNum); //applies random variable to select statement.
+            ResultSet dbQuery1 = stmt.executeQuery();
             
-            ResultSet dbQuery3 = connection.createStatement().executeQuery("SELECT examDate, count(examID), sum(score), sum(score)/count(examID) FROM UserDB.vw_examResult group by examDate;");
+  //          ResultSet dbQuery3 = connection.createStatement().executeQuery("SELECT examDate, count(examID), sum(score), sum(score)/count(examID) FROM UserDB.vw_examResult group by examDate;");
             ArrayList <String> averageDateScore = new ArrayList();
-            while(dbQuery3.next()){
-                averageDateScore.add(dbQuery3.getString(4));
+            while(dbQuery1.next()){
+                averageDateScore.add(dbQuery1.getString(4));
             }
-            String correct = "Correct";
-           String inCorrect = "Incorrect";
+
   
            xAxis.setLabel("Questions Difficulty");       
            yAxis.setLabel("Average Score");

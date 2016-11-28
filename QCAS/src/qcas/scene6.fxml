@@ -120,7 +120,7 @@
                <children>
                   <VBox prefHeight="82.0" prefWidth="232.0">
                      <children>
-                        <Label text="Number Of Questions Answered:">
+                        <Label text="Total Questions Answered:">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
@@ -133,11 +133,24 @@
                               <Font name="System Bold" size="13.0" />
                            </font>
                         </Label>
+                        <Label text="Questions Answered Month:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label fx:id="totalNumberQuestionsMonth" text="totalNumberQuestions" textFill="#c63232">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
                      </children>
                   </VBox>
                   <VBox prefHeight="82.0" prefWidth="232.0">
                      <children>
-                        <Label text="Number Of Quizzes Attempted:  ">
+                        <Label text="Total Quizzes Attempted:  ">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
@@ -147,7 +160,7 @@
                               <Font name="System Bold" size="13.0" />
                            </font>
                         </Label>
-                        <Label text="Number Of Quizzes Month:  ">
+                        <Label text="Quizzes Attempted Month:  ">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>

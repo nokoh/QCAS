@@ -14,6 +14,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.fxml.FXML;
@@ -24,8 +27,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Pagination;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import static qcas.SelectQuestionsController.secs;
 
 /**
  * FXML Controller class
@@ -61,7 +66,9 @@ public class TFQuestionsController implements Initializable {
     @FXML
     private Label studentNameLabel;
     @FXML 
-    private Label userIDLabel;        
+    private Label userIDLabel;
+    @FXML
+    private TextArea outputTextArea;
     
     Scene scene;
     String userId;
@@ -234,6 +241,27 @@ public class TFQuestionsController implements Initializable {
         }
         
         
+    }
+    
+    public void startTimer(){
+        secs=((24)*5);
+    final ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
+    service.scheduleWithFixedDelay(new Runnable()
+      {
+        @Override
+        public void run()
+        {
+            secs--;
+            
+          outputTextArea.setText((Integer.toString(secs/60))+ " : " +Integer.toString(secs%60));
+        
+          if(secs==0){
+            outputTextArea.setText("Time Up!!");
+              service.shutdownNow();
+          }
+        
+        }
+      }, 0, 1, TimeUnit.SECONDS);
     }
     
     public void connectToDatabase() throws SQLException{
