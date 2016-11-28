@@ -18,7 +18,7 @@
             <Image url="@../CMU%20Plaid.jpg" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fff9f9" height="468.0" layoutX="20.0" layoutY="63.0" stroke="BLACK" strokeType="INSIDE" width="710.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="468.0" layoutX="20.0" layoutY="63.0" stroke="BLACK" strokeType="INSIDE" width="710.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="82.0" layoutX="20.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="710.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.35714285714285715">
@@ -49,23 +49,29 @@
             <Font name="Segoe UI Light" size="36.0" />
          </font>
       </Label>
-      <Label layoutX="41.0" layoutY="117.0" prefHeight="25.0" prefWidth="48.0" text="Student:">
+      <ImageView fitHeight="75.0" fitWidth="196.0" layoutX="39.0" layoutY="113.0" pickOnBounds="true">
+         <image>
+            <Image url="@../cmu-tartan-Logo2.png" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="62.0" layoutX="47.0" layoutY="119.0" stroke="BLACK" strokeType="INSIDE" width="179.0" />
+      <Label layoutX="53.0" layoutY="125.0" prefHeight="25.0" prefWidth="48.0" text="Student:">
          <font>
             <Font size="13.0" />
          </font>
       </Label>
-      <Label layoutX="42.0" layoutY="142.0" prefHeight="25.0" prefWidth="45.0" text="User ID:">
+      <Label layoutX="54.0" layoutY="150.0" prefHeight="25.0" prefWidth="45.0" text="User ID:">
          <font>
             <Font size="13.0" />
          </font>
       </Label>
-      <VBox layoutX="93.0" layoutY="113.0" prefHeight="58.0" prefWidth="136.0">
+      <VBox layoutX="104.0" layoutY="124.0" prefHeight="53.0" prefWidth="125.0">
          <children>
-            <Label fx:id="studentNameLabel" prefHeight="32.0" prefWidth="136.0" text="studentNameLabel">
+            <Label fx:id="studentNameLabel" prefHeight="27.0" prefWidth="136.0" text="studentNameLabel">
                <font>
                   <Font size="13.0" />
                </font></Label>
-            <Label fx:id="userIDLabel" prefHeight="18.0" prefWidth="136.0" text="userIDLabel">
+            <Label fx:id="userIDLabel" prefHeight="20.0" prefWidth="126.0" text="userIDLabel">
                <font>
                   <Font size="13.0" />
                </font></Label>

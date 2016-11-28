@@ -18,7 +18,7 @@
             <Image url="@../CMU%20Plaid.jpg" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="5.0" fill="#fafdff" height="485.0" layoutX="18.0" layoutY="51.0" stroke="BLACK" strokeType="INSIDE" width="713.0" />
+      <Rectangle arcHeight="5.0" fill="WHITE" height="485.0" layoutX="18.0" layoutY="51.0" stroke="BLACK" strokeType="INSIDE" width="713.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="85.0" layoutX="18.0" layoutY="19.0" stroke="BLACK" strokeType="INSIDE" width="713.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.3142857142857143">

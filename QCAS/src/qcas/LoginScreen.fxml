@@ -29,7 +29,7 @@
             <ColorAdjust contrast="0.09" saturation="0.7" />
          </effect>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f7f7f7" height="473.0" layoutX="16.0" layoutY="57.0" stroke="BLACK" strokeType="INSIDE" width="719.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="473.0" layoutX="15.0" layoutY="61.0" stroke="BLACK" strokeType="INSIDE" width="719.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="87.0" layoutX="15.0" layoutY="15.0" stroke="BLACK" strokeType="INSIDE" width="719.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.28095238095238095">
@@ -65,7 +65,7 @@
          <font>
             <Font name="System Italic" size="14.0" />
          </font></Label>
-      <Text fx:id="loginMessage" fill="#eb3e3e" layoutX="122.0" layoutY="295.0" opacity="0.99" strokeType="OUTSIDE" strokeWidth="0.0" />
+      <Text fx:id="loginMessage" fill="#eb3e3e" layoutX="248.0" layoutY="402.0" opacity="0.99" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="170.0" />
       <ImageView fitHeight="122.0" fitWidth="187.0" layoutX="239.0" layoutY="221.0" pickOnBounds="true">
          <image>
             <Image url="@../cmu-tartan-Logo2.png" />

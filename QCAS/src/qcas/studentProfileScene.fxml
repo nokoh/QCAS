@@ -45,7 +45,7 @@
             <Image url="@../cmu-tartan-Logo2.png" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fafbfc" height="60.0" layoutX="43.0" layoutY="111.0" stroke="BLACK" strokeType="INSIDE" width="184.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="60.0" layoutX="43.0" layoutY="111.0" stroke="BLACK" strokeType="INSIDE" width="184.0" />
       <Label layoutX="45.0" layoutY="118.0" prefHeight="20.0" prefWidth="59.0" text="Student:">
          <font>
             <Font name="Arial" size="13.0" />
