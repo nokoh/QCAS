@@ -102,7 +102,6 @@ public class QuizResultsController implements Initializable {
     private BarChart<String, Integer> barChartStudent;
     @FXML
     private CategoryAxis xAxis;
-    
     @FXML
     private NumberAxis yAxis;
     
@@ -232,6 +231,7 @@ public class QuizResultsController implements Initializable {
         Parent root;
         this.correctQuestions = correctQuestions;
         this.incorrectQuestions = incorrectQuestions;
+        displayAnswers();
       
         String questionDifficulty;
         
@@ -462,6 +462,7 @@ public class QuizResultsController implements Initializable {
             }
            }
            
+           barChartStudent.getData().clear();
         String correct = "Correct";
            String inCorrect = "Incorrect";
   
@@ -488,4 +489,76 @@ public class QuizResultsController implements Initializable {
 
            barChartStudent.getData().addAll(series1, series2, series3);
 }
+    
+    public void displayAnswers(){
+        
+    /*
+    private LabelUA1,UA2,UA3,UA4,UA5,UA6,UA7,UA8,UA9,UA10,UA11,UA12,UA13,UA14,UA15,UA16;
+    @FXML
+    private Label UA17,UA18,UA19,UA20,UA21,UA22,UA23,UA24,UA25,UA26,UA27,UA28,UA29,UA30,UA31,UA32;        
+    @FXML
+    private Label CA1,CA2,CA3,CA4,CA5,CA6,CA7,CA8,CA9,CA10,CA11,CA12,CA13,CA14,CA15,CA16;
+    @FXML
+    private Label CA17,CA18,CA19,CA20,CA21,CA22,CA23,CA24,CA25,CA26,CA27,CA28,CA29,CA30,CA31,CA32;  
+    */
+    
+    if(this.numOfQuestions == 8){
+        CA9.setVisible(false);
+        CA10.setVisible(false);
+        CA11.setVisible(false);
+        CA12.setVisible(false);
+        CA13.setVisible(false);
+        CA14.setVisible(false);
+        CA15.setVisible(false);
+        CA16.setVisible(false);
+        CA17.setVisible(false);
+        CA18.setVisible(false);
+        CA19.setVisible(false);
+        CA20.setVisible(false);
+        CA21.setVisible(false);
+        CA22.setVisible(false);
+        CA23.setVisible(false);
+        CA24.setVisible(false);
+        CA25.setVisible(false);
+        CA26.setVisible(false);
+        CA27.setVisible(false);
+        CA28.setVisible(false);
+        CA29.setVisible(false);
+        CA30.setVisible(false);
+        CA31.setVisible(false);
+        CA32.setVisible(false);
+        UA9.setVisible(false);
+        UA10.setVisible(false);
+        UA11.setVisible(false);
+        UA12.setVisible(false);
+        UA13.setVisible(false);
+        UA14.setVisible(false);
+        UA15.setVisible(false);
+        UA16.setVisible(false);
+        UA17.setVisible(false);
+        UA18.setVisible(false);
+        UA19.setVisible(false);
+        UA20.setVisible(false);
+        UA21.setVisible(false);
+        UA22.setVisible(false);
+        UA23.setVisible(false);
+        UA24.setVisible(false);
+        UA25.setVisible(false);
+        UA26.setVisible(false);
+        UA27.setVisible(false);
+        UA28.setVisible(false);
+        UA29.setVisible(false);
+        UA30.setVisible(false);
+        UA31.setVisible(false);
+        UA32.setVisible(false);
+        
+        
+        
+        
+//                ,CA10,CA11,CA12,CA13,CA14,CA15,CA16;
+//    @FXML
+//    private Label CA17,CA18,CA19,CA20,CA21,CA22,CA23,CA24,CA25,CA26,CA27,CA28,CA29,CA30,CA31,CA32;
+    }
+    
+    }
 }

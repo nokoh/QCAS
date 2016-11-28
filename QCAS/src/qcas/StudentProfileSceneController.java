@@ -48,6 +48,7 @@ public class StudentProfileSceneController implements Initializable {
     private Label UserIDLabel;
     @FXML
     private Label studentNameLabel;
+
     
     /**
      * Initializes the controller class.

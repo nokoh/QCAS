@@ -135,7 +135,10 @@ public class LoginScreenController implements Initializable {
                 homeStage.show();
 
             } else {
-                Parent teacherHomePage = FXMLLoader.load(getClass().getResource("scene3.fxml"));
+                FXMLLoader f2 = new FXMLLoader(getClass().getResource("scene3.fxml"));
+                Parent teacherHomePage = f2.load();
+                Scene3Controller sc3 = f2.<Scene3Controller>getController();
+                sc3.setTeacherDetails(rset.getString("userID"));
                 Scene teacherHomeScene = new Scene(teacherHomePage);
                 homeStage = (Stage) login.getScene().getWindow();
                 homeStage.hide();

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.paint.*?>
@@ -33,7 +34,7 @@
          <effect>
             <InnerShadow />
          </effect></Button>
-      <Button id="viewReportsButton" fx:id="viewReportsButton" layoutX="226.0" layoutY="221.0" mnemonicParsing="false" onAction="#viewReportsButtonClicked" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: maroon;" text="View Reports" textFill="#f8f6f6">
+      <Button id="viewReportsButton" fx:id="viewReportsButton" layoutX="226.0" layoutY="221.0" mnemonicParsing="false" onAction="#viewReports" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: maroon;" text="View Reports" textFill="#f8f6f6">
          <effect>
             <InnerShadow />
          </effect></Button>
@@ -48,9 +49,30 @@
          </effect></Button>
       <Label layoutX="215.0" layoutY="327.0" text="Select Desired Function Above">
          <font>
-            <Font name="System Italic" size="12.0" />
+            <Font name="System Italic" size="14.0" />
          </font>
       </Label>
+      <VBox layoutX="21.0" layoutY="102.0" prefHeight="200.0" prefWidth="201.0">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="Welcome   ">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="teacherName" text="Label" textFill="#9e4444">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="30.0" top="20.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
    </children>
    <effect>
       <InnerShadow />

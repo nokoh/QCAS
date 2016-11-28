@@ -13,6 +13,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.fxml.FXML;
@@ -22,7 +25,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
+import static qcas.SelectQuestionsController.secs;
 
 /**
  * FXML Controller class
@@ -41,11 +46,15 @@ public class SelectQuestionsController implements Initializable {
     Scene scene;
     String userId;
     Connection connection;
+            public static int secs;
+    public static int maxTime;
     
     @FXML
     private Label studentNameLabel;
     @FXML
     private Label userIDLabel;
+    @FXML
+    private TextArea outputTextArea;
     
     
     
