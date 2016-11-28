@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.effect.*?>
@@ -29,7 +30,7 @@
                </stops>
             </LinearGradient>
          </fill></Rectangle>
-      <Label contentDisplay="CENTER" graphicTextGap="3.0" layoutX="136.0" layoutY="25.0" prefHeight="70.0" prefWidth="534.0" text="Select Answer to Question Below" textAlignment="CENTER" textFill="#fcfcfc" wrapText="true">
+      <Label contentDisplay="CENTER" graphicTextGap="3.0" layoutX="125.0" layoutY="25.0" prefHeight="70.0" prefWidth="500.0" text="Select Answer to Question Below" textAlignment="CENTER" textFill="#fcfcfc" wrapText="true">
          <font>
             <Font name="Segoe UI Light" size="36.0" />
          </font>
@@ -67,7 +68,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Label id="MCQuestionDescriptionLabel" fx:id="MCQuestionDescriptionLabel" layoutX="251.0" layoutY="192.0" prefHeight="70.0" prefWidth="469.0" text="MCQuestionDescription" wrapText="true">
+      <Label id="MCQuestionDescriptionLabel" fx:id="MCQuestionDescriptionLabel" layoutX="251.0" layoutY="200.0" prefHeight="62.0" prefWidth="469.0" text="MCQuestionDescription" wrapText="true">
          <font>
             <Font size="14.0" />
          </font></Label>
@@ -110,10 +111,16 @@
          </font>
       </Label>
       <Label fx:id="questionNumberLabel" layoutX="91.0" layoutY="497.0" text="questionNumberLabel" />
-      <TextArea fx:id="outputTextArea" editable="false" layoutX="599.0" layoutY="138.0" prefHeight="26.0" prefWidth="78.0">
+      <TextArea fx:id="outputTextArea" blendMode="MULTIPLY" editable="false" layoutX="597.0" layoutY="138.0" prefHeight="46.0" prefWidth="92.0">
          <font>
-            <Font size="15.0" />
-         </font></TextArea>
+            <Font size="21.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <effect>
+            <Blend mode="OVERLAY" />
+         </effect></TextArea>
    </children>
    <effect>
       <InnerShadow />
