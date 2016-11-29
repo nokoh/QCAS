@@ -13,13 +13,13 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: maroon;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qcas.TFQuestionsController">
     <children>
-      <ImageView fitHeight="400.0" fitWidth="614.0" pickOnBounds="true">
+      <ImageView fitHeight="550.0" fitWidth="750.0" pickOnBounds="true">
          <image>
-            <Image url="@../../../CMU%20Plaid.jpg" />
+            <Image url="@../CMU%20Plaid.jpg" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fcfcfc" height="326.0" layoutX="22.0" layoutY="54.0" stroke="BLACK" strokeType="INSIDE" width="557.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="73.0" layoutX="22.0" layoutY="22.0" stroke="BLACK" strokeType="INSIDE" width="557.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="475.0" layoutX="22.0" layoutY="54.0" stroke="BLACK" strokeType="INSIDE" width="705.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="81.0" layoutX="22.0" layoutY="22.0" stroke="BLACK" strokeType="INSIDE" width="705.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.3380952380952381">
                <stops>
@@ -28,47 +28,62 @@
                </stops>
             </LinearGradient>
          </fill></Rectangle>
-      <Button id="trueButton" fx:id="trueButton" layoutX="236.0" layoutY="235.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="129.0" style="-fx-background-color: maroon;" text="True" textFill="#fcf6f6">
+      <Button id="trueButton" fx:id="trueButton" layoutX="310.0" layoutY="351.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="129.0" style="-fx-background-color: maroon;" text="True" textFill="#fcf6f6">
          <effect>
             <InnerShadow />
          </effect></Button>
-      <Button id="falseButton" fx:id="falseButton" layoutX="236.0" layoutY="281.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="129.0" style="-fx-background-color: maroon;" text="False" textFill="#fcfafa">
+      <Button id="falseButton" fx:id="falseButton" layoutX="311.0" layoutY="401.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="129.0" style="-fx-background-color: maroon;" text="False" textFill="#fcfafa">
          <effect>
             <InnerShadow />
          </effect></Button>
-      <Label contentDisplay="CENTER" layoutX="139.0" layoutY="31.0" prefHeight="56.0" prefWidth="323.0" text="Select Either True || False" textAlignment="CENTER" textFill="#fffefe">
+      <ImageView fitHeight="75.0" fitWidth="196.0" layoutX="38.0" layoutY="115.0" pickOnBounds="true">
+         <image>
+            <Image url="@../cmu-tartan-Logo2.png" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="60.0" layoutX="44.0" layoutY="123.0" stroke="BLACK" strokeType="INSIDE" width="184.0" />
+      <Label contentDisplay="CENTER" layoutX="180.0" layoutY="35.0" prefHeight="56.0" prefWidth="416.0" text="Select Either True || False" textAlignment="CENTER" textFill="WHITE">
          <font>
-            <Font name="Segoe UI Semilight" size="30.0" />
+            <Font name="Segoe UI Light" size="36.0" />
          </font>
       </Label>
-      <Label layoutX="78.0" layoutY="165.0" prefHeight="35.0" prefWidth="85.0" text="Statement:">
+      <Label layoutX="112.0" layoutY="265.0" prefHeight="35.0" prefWidth="85.0" text="Statement:">
          <font>
-            <Font name="System Bold" size="14.0" />
+            <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Label id="TFStatementLabel" fx:id="TFStatementLabel" layoutX="157.0" layoutY="146.0" prefHeight="73.0" prefWidth="416.0" text="TFStatementLabel" />
-      <Label layoutX="512.0" layoutY="354.0" text="True / False">
+      <Label id="TFStatementLabel" fx:id="TFStatementLabel" layoutX="212.0" layoutY="238.0" prefHeight="89.0" prefWidth="480.0" text="TFStatementLabel">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Label layoutX="656.0" layoutY="500.0" text="True / False">
          <font>
             <Font size="10.0" />
          </font>
       </Label>
-      <Label layoutX="42.0" layoutY="112.0" text="Student:">
+      <Label layoutX="52.0" layoutY="127.0" prefHeight="26.0" prefWidth="48.0" text="Student:">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font size="13.0" />
          </font>
       </Label>
-      <Label layoutX="43.0" layoutY="134.0" text="User ID:">
+      <Label layoutX="53.0" layoutY="153.0" prefHeight="25.0" prefWidth="45.0" text="User ID:">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font size="13.0" />
          </font>
       </Label>
-      <VBox layoutX="93.0" layoutY="107.0" prefHeight="62.0" prefWidth="110.0">
+      <VBox layoutX="104.0" layoutY="125.0" prefHeight="56.0" prefWidth="115.0">
          <children>
-            <Label fx:id="studentNameLabel" prefHeight="26.0" prefWidth="109.0" text="studentName" />
-            <Label fx:id="userIDLabel" prefHeight="16.0" prefWidth="107.0" text="userID" />
+            <Label fx:id="studentNameLabel" prefHeight="30.0" prefWidth="122.0" text="studentName">
+               <font>
+                  <Font size="13.0" />
+               </font></Label>
+            <Label fx:id="userIDLabel" prefHeight="21.0" prefWidth="115.0" text="userID">
+               <font>
+                  <Font size="13.0" />
+               </font></Label>
          </children>
       </VBox>
-      <Label layoutX="33.0" layoutY="353.0" text="Question:">
+      <Label layoutX="38.0" layoutY="499.0" text="Question:">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>

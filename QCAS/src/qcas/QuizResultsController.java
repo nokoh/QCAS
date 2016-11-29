@@ -36,6 +36,7 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
@@ -104,6 +105,87 @@ public class QuizResultsController implements Initializable {
     private CategoryAxis xAxis;
     @FXML
     private NumberAxis yAxis;
+    @FXML
+    private VBox answersVBox1;
+    @FXML
+    private Label correct;
+    @FXML
+    private VBox answersVBox;
+    @FXML
+    private Label question1;
+    @FXML
+    private Label question2;
+    @FXML
+    private Label question3;
+    @FXML
+    private Label question4;
+    @FXML
+    private Label question5;
+    @FXML
+    private Label question6;
+    @FXML
+    private Label question7;
+    @FXML
+    private Label question8;
+    @FXML
+    private Label question9;
+    @FXML
+    private Label question10;
+    @FXML
+    private Label question11;
+    @FXML
+    private Label question12;
+    @FXML
+    private Label question13;
+    @FXML
+    private Label question14;
+    @FXML
+    private Label question15;
+    @FXML
+    private Label question16;
+    @FXML
+    private VBox answersVBox3;
+    @FXML
+    private Label question17;
+    @FXML
+    private Label question18;
+    @FXML
+    private Label question19;
+    @FXML
+    private Label question20;
+    @FXML
+    private Label question21;
+    @FXML
+    private Label question22;
+    @FXML
+    private Label question23;
+    @FXML
+    private Label question24;
+    @FXML
+    private Label question25;
+    @FXML
+    private Label question26;
+    @FXML
+    private Label question27;
+    @FXML
+    private Label question28;
+    @FXML
+    private Label question29;
+    @FXML
+    private Label question30;
+    @FXML
+    private Label question31;
+    @FXML
+    private Label question32;
+    @FXML
+    private VBox answersVBox11;
+    @FXML
+    private Label question171;
+    @FXML
+    private Label questionLabel2;
+    @FXML
+    private Label questionLabel;
+    
     
 
     
@@ -181,7 +263,6 @@ public class QuizResultsController implements Initializable {
         * 
      * @throws java.io.IOException
         **/
-    @FXML
         public void returnHome() throws IOException{
             returnHomeButton.setOnAction(h ->{
                 
@@ -428,13 +509,18 @@ public class QuizResultsController implements Initializable {
         }
            
         }
-        
+  
+    
+    
         public String convertTime(long time){
         
         Date date = new Date(time);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy MM dd"); 
         return sdf.format(date);
 }
+        
+        
+        
     public void plotResultsGraph(){
         int [] difficultyCorrectScores = new int[3];
         int [] difficultyInCorrectScores = new int[3];
@@ -492,17 +578,31 @@ public class QuizResultsController implements Initializable {
     
     public void displayAnswers(){
         
-    /*
-    private LabelUA1,UA2,UA3,UA4,UA5,UA6,UA7,UA8,UA9,UA10,UA11,UA12,UA13,UA14,UA15,UA16;
-    @FXML
-    private Label UA17,UA18,UA19,UA20,UA21,UA22,UA23,UA24,UA25,UA26,UA27,UA28,UA29,UA30,UA31,UA32;        
-    @FXML
-    private Label CA1,CA2,CA3,CA4,CA5,CA6,CA7,CA8,CA9,CA10,CA11,CA12,CA13,CA14,CA15,CA16;
-    @FXML
-    private Label CA17,CA18,CA19,CA20,CA21,CA22,CA23,CA24,CA25,CA26,CA27,CA28,CA29,CA30,CA31,CA32;  
-    */
-    
     if(this.numOfQuestions == 8){
+  questionLabel2.setVisible(false);
+  question9.setVisible(false);
+  question10.setVisible(false);
+  question11.setVisible(false);
+  question12.setVisible(false);
+  question13.setVisible(false);
+  question15.setVisible(false);
+  question16.setVisible(false);
+  question17.setVisible(false);
+  question18.setVisible(false);
+  question19.setVisible(false);
+  question20.setVisible(false);
+  question21.setVisible(false);
+  question22.setVisible(false);
+  question23.setVisible(false);
+  question24.setVisible(false);
+  question25.setVisible(false);
+  question26.setVisible(false);
+  question27.setVisible(false);
+  question28.setVisible(false);
+  question29.setVisible(false);
+  question30.setVisible(false);
+  question31.setVisible(false);
+  question32.setVisible(false);
         CA9.setVisible(false);
         CA10.setVisible(false);
         CA11.setVisible(false);
@@ -551,13 +651,83 @@ public class QuizResultsController implements Initializable {
         UA30.setVisible(false);
         UA31.setVisible(false);
         UA32.setVisible(false);
-        
-        
-        
-        
-//                ,CA10,CA11,CA12,CA13,CA14,CA15,CA16;
-//    @FXML
-//    private Label CA17,CA18,CA19,CA20,CA21,CA22,CA23,CA24,CA25,CA26,CA27,CA28,CA29,CA30,CA31,CA32;
+    }
+    else if(this.numOfQuestions == 16){
+        questionLabel2.setVisible(false);
+        CA17.setVisible(false);
+        CA18.setVisible(false);
+        CA19.setVisible(false);
+        CA20.setVisible(false);
+        CA21.setVisible(false);
+        CA22.setVisible(false);
+        CA23.setVisible(false);
+        CA24.setVisible(false);
+        CA25.setVisible(false);
+        CA26.setVisible(false);
+        CA27.setVisible(false);
+        CA28.setVisible(false);
+        CA29.setVisible(false);
+        CA30.setVisible(false);
+        CA31.setVisible(false);
+        CA32.setVisible(false);
+        UA17.setVisible(false);
+        UA18.setVisible(false);
+        UA19.setVisible(false);
+        UA20.setVisible(false);
+        UA21.setVisible(false);
+        UA22.setVisible(false);
+        UA23.setVisible(false);
+        UA24.setVisible(false);
+        UA25.setVisible(false);
+        UA26.setVisible(false);
+        UA27.setVisible(false);
+        UA28.setVisible(false);
+        UA29.setVisible(false);
+        UA30.setVisible(false);
+        UA31.setVisible(false);
+        UA32.setVisible(false);
+        question17.setVisible(false);
+  question18.setVisible(false);
+  question19.setVisible(false);
+  question20.setVisible(false);
+  question21.setVisible(false);
+  question22.setVisible(false);
+  question23.setVisible(false);
+  question24.setVisible(false);
+  question25.setVisible(false);
+  question26.setVisible(false);
+  question27.setVisible(false);
+  question28.setVisible(false);
+  question29.setVisible(false);
+  question30.setVisible(false);
+  question31.setVisible(false);
+  question32.setVisible(false);
+    }
+    else if(this.numOfQuestions == 24){
+        question25.setVisible(false);
+  question26.setVisible(false);
+  question27.setVisible(false);
+  question28.setVisible(false);
+  question29.setVisible(false);
+  question30.setVisible(false);
+  question31.setVisible(false);
+  question32.setVisible(false);
+        CA25.setVisible(false);
+        CA26.setVisible(false);
+        CA27.setVisible(false);
+        CA28.setVisible(false);
+        CA29.setVisible(false);
+        CA30.setVisible(false);
+        CA31.setVisible(false);
+        CA32.setVisible(false);
+        UA25.setVisible(false);
+        UA26.setVisible(false);
+        UA27.setVisible(false);
+        UA28.setVisible(false);
+        UA29.setVisible(false);
+        UA30.setVisible(false);
+        UA31.setVisible(false);
+        UA32.setVisible(false);
     }
     
     }

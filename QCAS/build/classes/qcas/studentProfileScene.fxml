@@ -13,48 +13,65 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: maroon;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qcas.StudentProfileSceneController">
    <children>
-      <ImageView fitHeight="400.0" fitWidth="600.0" layoutY="-1.0" pickOnBounds="true">
+      <ImageView fitHeight="550.0" fitWidth="750.0" layoutY="-1.0" pickOnBounds="true">
          <image>
-            <Image url="@../../../CMU%20Plaid.jpg" />
+            <Image url="@../CMU%20Plaid.jpg" />
+         </image>
+         <effect>
+            <ColorAdjust contrast="0.09" />
+         </effect>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="500.0" layoutX="21.0" layoutY="30.0" stroke="BLACK" strokeType="INSIDE" width="709.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="73.0" layoutX="21.0" layoutY="18.0" stroke="BLACK" strokeType="INSIDE" width="709.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.3142857142857143">
+               <stops>
+                  <Stop color="#831212" />
+                  <Stop color="#390e0e" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill></Rectangle>
+      <Label layoutX="183.0" layoutY="25.0" prefHeight="60.0" prefWidth="385.0" text="Student Login Successful" textFill="#f2eded">
+         <font>
+            <Font name="Segoe UI Light" size="36.0" />
+         </font>
+      </Label>
+      <Button id="takeQuizButton" fx:id="takeQuizButton" layoutX="319.0" layoutY="255.0" mnemonicParsing="false" onAction="#startQuiz" prefHeight="25.0" prefWidth="124.0" style="-fx-background-color: maroon;" text="Take Quiz" textFill="#fcfcfc">
+         <effect>
+            <InnerShadow />
+         </effect></Button>
+      <ImageView fitHeight="73.0" fitWidth="198.0" layoutX="37.0" layoutY="104.0" pickOnBounds="true">
+         <image>
+            <Image url="@../cmu-tartan-Logo2.png" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="349.0" layoutX="21.0" layoutY="30.0" stroke="BLACK" strokeType="INSIDE" width="557.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a1616" height="77.0" layoutX="21.0" layoutY="18.0" stroke="BLACK" strokeType="INSIDE" width="557.0" />
-      <Label layoutX="182.0" layoutY="27.0" prefHeight="60.0" prefWidth="258.0" text="Login Successful" textFill="#f2eded">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="60.0" layoutX="43.0" layoutY="111.0" stroke="BLACK" strokeType="INSIDE" width="184.0" />
+      <Label layoutX="45.0" layoutY="118.0" prefHeight="20.0" prefWidth="59.0" text="Student:">
          <font>
-            <Font name="Segoe UI Semilight" size="35.0" />
+            <Font name="Arial" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="37.0" layoutY="110.0" text="Student:">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Label>
-      <Button id="takeQuizButton" fx:id="takeQuizButton" layoutX="242.0" layoutY="200.0" mnemonicParsing="false" onAction="#startQuiz" prefHeight="25.0" prefWidth="124.0" style="-fx-background-color: maroon;" text="Take Quiz" textFill="#fcfcfc">
+      <Button id="viewReportButton" fx:id="viewReportButton" layoutX="319.0" layoutY="314.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="124.0" style="-fx-background-color: maroon;" text="View Report" textFill="#f8f6f6">
          <effect>
             <InnerShadow />
          </effect></Button>
-      <Button id="viewReportButton" fx:id="viewReportButton" layoutX="242.0" layoutY="251.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="124.0" style="-fx-background-color: maroon;" text="View Report" textFill="#f8f6f6">
-         <effect>
-            <InnerShadow />
-         </effect></Button>
-      <Label fx:id="UserIDLabel" layoutX="101.0" layoutY="130.0" prefHeight="17.0" prefWidth="192.0" text="userIDLabel">
+      <Label fx:id="UserIDLabel" layoutX="98.0" layoutY="140.0" prefHeight="25.0" prefWidth="124.0" text="userIDLabel">
          <font>
-            <Font size="14.0" />
+            <Font size="13.0" />
          </font></Label>
-      <Label fx:id="studentNameLabel" layoutX="101.0" layoutY="110.0" prefHeight="20.0" prefWidth="192.0" text="studentNameLabel">
+      <Label fx:id="studentNameLabel" layoutX="98.0" layoutY="116.0" prefHeight="25.0" prefWidth="124.0" text="studentNameLabel">
          <font>
-            <Font size="14.0" />
+            <Font size="13.0" />
          </font>
       </Label>
-      <Label layoutX="237.0" layoutY="310.0" text="Select Option From Above">
+      <Label layoutX="314.0" layoutY="409.0" text="Select Option From Above">
          <font>
             <Font name="System Italic" size="12.0" />
          </font>
       </Label>
-      <Label layoutX="39.0" layoutY="130.0" prefHeight="20.0" prefWidth="56.0" text="User ID:">
+      <Label layoutX="45.0" layoutY="140.0" prefHeight="25.0" prefWidth="59.0" text="User ID:">
          <font>
-            <Font name="System Bold" size="14.0" />
+            <Font name="Arial" size="13.0" />
          </font>
       </Label>
    </children>
