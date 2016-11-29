@@ -30,6 +30,26 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.ComboBox;
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Font.FontFamily;
+import com.itextpdf.text.Image;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.SnapshotParameters;
+import javafx.scene.image.WritableImage;
+import javafx.scene.layout.AnchorPane;
+import javax.imageio.ImageIO;
 
 /**
  * FXML Controller class
@@ -81,10 +101,13 @@ public class Scene6Controller implements Initializable {
     private Label nonPassingLastYear;
     @FXML
     private ComboBox monthSelector;
+    @FXML 
+    private AnchorPane teacherDashboardPane;
     
     
-    @FXML
+    
     private ObservableList monthList = FXCollections.observableArrayList();
+    private ObservableList yearList = FXCollections.observableArrayList();
     
     @FXML
     private BarChart<String, Integer> barChartTeacher;
@@ -108,6 +131,10 @@ public class Scene6Controller implements Initializable {
     private Label totalNumberQuestions;
     @FXML
     private Label totalNumberQuizzesMonth;
+    @FXML
+    private Label totalNumberQuestionsMonth;
+    @FXML
+    private ComboBox yearSelector;
     
     
     
@@ -124,7 +151,7 @@ public class Scene6Controller implements Initializable {
                 TeacherNameLabel.setText(rset.getString("firstname").toUpperCase() + " " + rset.getString("lastname").toUpperCase());
             }
             int count = 0;
-            monthList.add("Januarary");
+            monthList.add("January");
         monthList.add("February");
         monthList.add("March");
         monthList.add("April");
@@ -136,9 +163,12 @@ public class Scene6Controller implements Initializable {
         monthList.add("October");
         monthList.add("November");
         monthList.add("December");
+        yearList.add("2015");
+        yearList.add("2016");
         
         displayTableData();
         drawCharts("November");
+        drawLineChart("2016");
         countNumberOfQuizzes("November");
         countNoOfQuizzes();
     }
@@ -152,14 +182,30 @@ public class Scene6Controller implements Initializable {
         
           drawPieChart(month);
           drawBarChart(month);
-          drawLineChart(month);
+  
           countNumberOfQuizzes(month);
           
-        
+        yearSelector.setItems(yearList);
+        yearSelector.setOnAction(e-> {
+            if(yearSelector.getSelectionModel().getSelectedItem().equals("2015")){
+                try {
+                    drawLineChart("2015");
+                } catch (SQLException ex) {
+                    Logger.getLogger(Scene6Controller.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            else if (yearSelector.getSelectionModel().getSelectedItem().equals("2016")){
+                try {
+                    drawLineChart("2016");
+                } catch (SQLException ex) {
+                    Logger.getLogger(Scene6Controller.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
         
         monthSelector.setItems(monthList);
         monthSelector.setOnAction(e -> {
-            
+        
         if(monthSelector.getSelectionModel().getSelectedItem().equals("January")){
             try {
                 drawCharts("January");
@@ -246,68 +292,68 @@ public class Scene6Controller implements Initializable {
         }
         });
         
-        
-  /*      series.getData().add(new XYChart.Data("1", 23));
-        series.getData().add(new XYChart.Data("2", 14));
-        series.getData().add(new XYChart.Data("3", 15));
-        series.getData().add(new XYChart.Data("4", 24));
-        series.getData().add(new XYChart.Data("5", 34));
-        series.getData().add(new XYChart.Data("6", 36));
-        series.getData().add(new XYChart.Data("7", 22));
-        series.getData().add(new XYChart.Data("8", 45));
-        series.getData().add(new XYChart.Data("9", 43));
-        series.getData().add(new XYChart.Data("10", 17));
-        series.getData().add(new XYChart.Data("11", 23));
-        series.getData().add(new XYChart.Data("12", 14));
-        series.getData().add(new XYChart.Data("13", 15));
-        series.getData().add(new XYChart.Data("14", 24));
-        series.getData().add(new XYChart.Data("15", 34));
-        series.getData().add(new XYChart.Data("16", 36));
-        series.getData().add(new XYChart.Data("17", 22));
-        series.getData().add(new XYChart.Data("18", 45));
-        series.getData().add(new XYChart.Data("19", 43));
-        series.getData().add(new XYChart.Data("20", 17));
-        
-        XYChart.Series series2 = new XYChart.Series();
-        series2.setName("Students Failing" + month);
-           
-        series2.getData().add(new XYChart.Data("1", 13));
-        series2.getData().add(new XYChart.Data("2", 20));
-        series2.getData().add(new XYChart.Data("3", 1));
-        series2.getData().add(new XYChart.Data("4", 12));
-        series2.getData().add(new XYChart.Data("5", 4));
-        series2.getData().add(new XYChart.Data("6", 20));
-        series2.getData().add(new XYChart.Data("7", 56));
-        series2.getData().add(new XYChart.Data("8", 10));
-        series2.getData().add(new XYChart.Data("9", 10));
-        series2.getData().add(new XYChart.Data("10", 5));
-        series2.getData().add(new XYChart.Data("11", 9));
-        series2.getData().add(new XYChart.Data("12", 20));
-        series2.getData().add(new XYChart.Data("13", 30));
-        series2.getData().add(new XYChart.Data("14", 2));
-        series2.getData().add(new XYChart.Data("15", 13));
-        series2.getData().add(new XYChart.Data("16", 0));
-        series2.getData().add(new XYChart.Data("17", 22));
-        series2.getData().add(new XYChart.Data("18", 45));
-        series2.getData().add(new XYChart.Data("19", 43));
-        series2.getData().add(new XYChart.Data("20", 17));
-        */
          
     }
-    public void drawLineChart(String month){
-        TestsLineChart.getData().clear();
-        TestsLineChart.setTitle("Tests Passed / Failed Since: "+month);
-        XYChart.Series series = new XYChart.Series();
-        series.setName("Students Passing " + month);
-        int size = monthNumberConversion(month);
-       
-        for(int i = 0; i < size; i++){
-            series.getData().add(new XYChart.Data(i+"", i));
+    public String setYear(int year){
+        String yearName = "";
+        if (year == 1){
+            yearName = "January";
+        
+        }else if(year == 2){
+            yearName = "February";
         }
+        else if(year == 3){
+            yearName = "March";
+        }
+        else if(year == 4){
+            yearName = "April";
+        }
+        else if(year == 5){
+        yearName = "May";
+        }
+        else if(year == 6){
+        yearName = "June";
+        }
+        else if(year == 7){
+        yearName = "July";
+        }
+        else if(year == 8){
+        yearName = "August";
+        }
+        else if(year == 9){
+        yearName = "September";
+        }
+        else if(year == 10){
+        yearName = "October";
+        }
+        else if(year == 11){
+        yearName = "November";
+        }
+        else if(year == 12){
+        yearName = "December";
+        }
+        
+        return yearName;
+    }
+    public void drawLineChart(String year) throws SQLException{
+        
+        int yearNum = Integer.parseInt(year);
+        
+        TestsLineChart.getData().clear();
+        TestsLineChart.setTitle("Total Tests Passed / Failed Since: "+year);
+        XYChart.Series series = new XYChart.Series();
+        series.setName("Students Failing " + year);
         XYChart.Series series2 = new XYChart.Series();
-        series2.setName("Students Failing " + month);
-        for(int i = 0; i < size; i++){
-            series2.getData().add(new XYChart.Data(i+"", i++));
+        series2.setName("Students Passing " + year);
+        int size = 12;
+        
+        String tableCount = "select substring(examDate,1,4), substring(examDate,6,2) as month, count(case when score >= 59 then score else NULL end) as pass, count(case when  score < 59 then score else NULL end) as fail from UserDB.vw_examResult where substring(examDate,1,4) = ? group by substring(examDate,1,4), substring(examDate,6,2)";
+        PreparedStatement stmt = this.connection.prepareStatement(tableCount);
+        stmt.setInt(1, yearNum); //applies random variable to select statement.
+        ResultSet lineChartRS = stmt.executeQuery();//executes statement and returns value to resultset variable
+        while(lineChartRS.next()){
+            series2.getData().add(new XYChart.Data(setYear(Integer.parseInt(lineChartRS.getString(2))), Integer.parseInt(lineChartRS.getString(3))));
+            series.getData().add(new XYChart.Data(setYear(Integer.parseInt(lineChartRS.getString(2))), Integer.parseInt(lineChartRS.getString(4))));
         }
         TestsLineChart.getData().addAll(series, series2);  
     }
@@ -478,24 +524,12 @@ public class Scene6Controller implements Initializable {
     public void drawBarChart(String month) throws SQLException{
         
         int monthNum = monthNumberConversion(month);
-        barChartTeacher.getData().clear();
-        /*
-        SELECT examDate, count(examID), sum(score), sum(score)/count(examID)  
-        FROM UserDB.vw_examResult WHERE substring(examDate,6,2) = 11
-        group by examDate;
-        */      
+        barChartTeacher.getData().clear();   
         
             String tableCount = "SELECT examDate, count(examID), sum(score), sum(score)/count(examID) FROM UserDB.vw_examResult WHERE substring(examDate,6,2) = ? group by examDate;";
             PreparedStatement stmt = this.connection.prepareStatement(tableCount);
             stmt.setInt(1, monthNum); //applies random variable to select statement.
             ResultSet dbQuery1 = stmt.executeQuery();
-            
-  //          ResultSet dbQuery3 = connection.createStatement().executeQuery("SELECT examDate, count(examID), sum(score), sum(score)/count(examID) FROM UserDB.vw_examResult group by examDate;");
-            ArrayList <String> averageDateScore = new ArrayList();
-            while(dbQuery1.next()){
-                averageDateScore.add(dbQuery1.getString(4));
-            }
-
   
            xAxis.setLabel("Questions Difficulty");       
            yAxis.setLabel("Average Score");
@@ -503,8 +537,13 @@ public class Scene6Controller implements Initializable {
             XYChart.Series series2 = new XYChart.Series();
             XYChart.Series series3 = new XYChart.Series();
             barChartTeacher.setTitle("Average Student Scores Per Question Difficulty");
+            String tableCount2 = "select status, month, score from UserDB.vw_scoreStatus where month = ?";
+            PreparedStatement stmt2 = this.connection.prepareStatement(tableCount2);
+            stmt2.setInt(1, monthNum); //applies random variable to select statement.
+            ResultSet levelOfDifficulty = stmt2.executeQuery();
             
-            ResultSet levelOfDifficulty = connection.createStatement().executeQuery("select * from UserDB.vw_scoreStatus");
+            
+   //         ResultSet levelOfDifficulty = connection.createStatement().executeQuery("select * from UserDB.vw_scoreStatus");
             while(levelOfDifficulty.next()){
                 if(levelOfDifficulty.getString(1).equalsIgnoreCase("e")){
                     series1.getData().add(new XYChart.Data("Easy Questions", Double.parseDouble(levelOfDifficulty.getString(2))));
@@ -558,7 +597,6 @@ public class Scene6Controller implements Initializable {
         * 
      * @throws java.io.IOException
         **/
-            @FXML
         public void returnHome() throws IOException{
             returnHomeButton.setOnAction(h ->{
                 
@@ -602,6 +640,41 @@ public class Scene6Controller implements Initializable {
             this.connection.close();//closes connection resource
         } // end of try-with-resourc
         }
+        
+
+    public void exportToPdf() throws IOException, DocumentException {
+        WritableImage image = teacherDashboardPane.snapshot(new SnapshotParameters(), null);
+        //  WritableImage image2 = buttonchart2.snapshot(new SnapshotParameters(), null);
+        File file = new File("Dashboard Report.png");
+
+        ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", file);
+        // ImageIO.write(SwingFXUtils.fromFXImage(image2, null), "png", file); 
+
+        Document document = new Document();
+        String input = "Dashboard Report.png"; // .gif and .jpg are ok too!
+        String output = "Dashboard Report.pdf";
+        try {
+            FileOutputStream fos = new FileOutputStream(output);
+            PdfWriter writer = PdfWriter.getInstance(document, fos);
+            writer.open();
+            document.open();
+        ByteArrayOutputStream  byteOutput = new ByteArrayOutputStream();
+
+        ImageIO.write( SwingFXUtils.fromFXImage( image, null ), "png", byteOutput );
+
+        com.itextpdf.text.Image  graph;
+        graph = com.itextpdf.text.Image.getInstance( byteOutput.toByteArray() );
+        graph.scaleToFit(500,500);
+        
+            document.add((com.itextpdf.text.Element) graph);
+            document.close();
+            writer.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        teacherDashboardPane.setVisible(true);
+
+    }
 
     /**
      * Initializes the controller class.

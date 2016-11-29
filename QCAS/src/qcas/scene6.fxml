@@ -12,8 +12,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qcas.Scene6Controller">
-   <children>
+<AnchorPane id="AnchorPane" fx:id="teacherDashboardPane" prefHeight="700.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qcas.Scene6Controller">
+    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#edeeee" height="101.0" layoutX="15.0" layoutY="212.0" stroke="BLACK" strokeType="INSIDE" width="572.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f2f0f0" height="45.0" layoutX="14.0" layoutY="160.0" stroke="BLACK" strokeType="INSIDE" width="572.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e9eaeb" height="53.0" layoutX="14.0" layoutY="101.0" stroke="BLACK" strokeType="INSIDE" width="572.0" />
@@ -36,10 +36,11 @@
             <Font size="10.0" />
          </font>
       </Label>
-      <Button id="printToPDFButton" fx:id="printToPDFButton" layoutX="182.0" layoutY="664.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="117.0" style="-fx-background-color: maroon;" text="Print to PDF" textFill="#fcf8f8">
+      <Button id="printToPDFButton" fx:id="printToPDFButton" layoutX="132.0" layoutY="647.0" mnemonicParsing="false" onAction="#exportToPdf" prefHeight="25.0" prefWidth="117.0" style="-fx-background-color: maroon;" text="Print to PDF" textFill="#fcf8f8">
          <effect>
             <InnerShadow />
-         </effect></Button>
+         </effect>
+      </Button>
       <Label layoutX="218.0" layoutY="75.0" prefHeight="25.0" prefWidth="72.0" text="Last Month">
          <font>
             <Font name="System Bold" size="12.0" />
@@ -70,10 +71,11 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Button id="returnHomeButton" fx:id="returnHomeButton" layoutX="358.0" layoutY="664.0" mnemonicParsing="false" onAction="#returnHomeButtonClicked" prefHeight="25.0" prefWidth="117.0" style="-fx-background-color: maroon;" text="Logout" textFill="#fffefe">
+      <Button id="returnHomeButton" fx:id="returnHomeButton" layoutX="308.0" layoutY="647.0" mnemonicParsing="false" onAction="#returnHomeButtonClicked" prefHeight="25.0" prefWidth="117.0" style="-fx-background-color: maroon;" text="Logout" textFill="#fffefe">
          <effect>
             <InnerShadow />
-         </effect></Button>
+         </effect>
+      </Button>
       <VBox layoutX="17.0" layoutY="220.0" prefHeight="123.0" prefWidth="168.0">
          <children>
             <Label prefHeight="17.0" prefWidth="188.0" text="Average Overall Quiz Score:">
@@ -188,31 +190,55 @@
                      </children>
                   </VBox>
                </children></HBox>
-            <HBox alignment="CENTER" prefHeight="235.0" prefWidth="579.0">
+            <HBox alignment="TOP_RIGHT" prefHeight="27.0" prefWidth="668.0">
+               <children>
+                  <ComboBox fx:id="monthSelector" prefWidth="150.0" promptText="Select Month">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </ComboBox>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="168.0" prefWidth="668.0">
                <children>
                   <PieChart fx:id="PieChartEasy" prefHeight="206.0" prefWidth="215.0" />
                   <PieChart fx:id="PieChartMedium" prefHeight="206.0" prefWidth="221.0" />
                   <PieChart fx:id="PieChartHard" prefHeight="206.0" prefWidth="218.0" />
                </children>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
             </HBox>
-            <BarChart fx:id="barChartTeacher" prefHeight="389.0" prefWidth="668.0">
+            <BarChart fx:id="barChartTeacher" prefHeight="313.0" prefWidth="668.0">
               <xAxis>
                 <CategoryAxis label="Time Period " side="BOTTOM" fx:id="xAxis" />
               </xAxis>
               <yAxis>
                 <NumberAxis fx:id="yAxis" label="Number Of Tests" side="LEFT" />
               </yAxis>
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
             </BarChart>
          </children>
       </VBox>
-      <LineChart fx:id="TestsLineChart" layoutX="19.0" layoutY="351.0" prefHeight="291.0" prefWidth="572.0" title="Tests Passed / Failed Since November">
-        <xAxis>
-          <CategoryAxis fx:id="timePeriod" label="Time Period " side="BOTTOM" />
-        </xAxis>
-        <yAxis>
-          <NumberAxis fx:id="numberOfTests" label="Number Passed / Number Failed" side="LEFT" />
-        </yAxis>
-      </LineChart>
+      <VBox layoutX="19.0" layoutY="314.0" prefHeight="313.0" prefWidth="572.0">
+         <children>
+            <ComboBox fx:id="yearSelector" prefWidth="150.0" promptText="Select Year" visibleRowCount="4">
+               <VBox.margin>
+                  <Insets bottom="15.0" top="10.0" />
+               </VBox.margin>
+            </ComboBox>
+            <LineChart fx:id="TestsLineChart" prefHeight="276.0" prefWidth="572.0" title="Tests Passed / Failed Since November">
+              <xAxis>
+                <CategoryAxis fx:id="timePeriod" label="Time Period " side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis fx:id="numberOfTests" label="Number Passed / Number Failed" side="LEFT" />
+              </yAxis>
+            </LineChart>
+         </children>
+      </VBox>
       <Label fx:id="testTakenLastMonth" layoutX="240.0" layoutY="174.0" text="Label" />
       <Label fx:id="testTakenLastQuarter" layoutX="359.0" layoutY="174.0" text="Label" />
       <Label fx:id="testTakenLastYear" layoutX="498.0" layoutY="175.0" text="Label" />
@@ -222,6 +248,6 @@
       <Label fx:id="nonPassingLastQuarter" layoutX="359.0" layoutY="127.0" text="Label" />
       <Label fx:id="passingLastYear" layoutX="498.0" layoutY="110.0" text="Label" />
       <Label fx:id="nonPassingLastYear" layoutX="498.0" layoutY="127.0" text="Label" />
-      <ComboBox fx:id="monthSelector" layoutX="437.0" layoutY="325.0" prefWidth="150.0" promptText="Select Month" />
    </children>
+
 </AnchorPane>

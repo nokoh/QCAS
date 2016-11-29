@@ -5,6 +5,17 @@
  */
 package qcas;
 
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Font.FontFamily;
+import com.itextpdf.text.Image;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -23,21 +34,27 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.SnapshotParameters;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.image.WritableImage;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javax.imageio.ImageIO;
 
 /**
  * FXML Controller class
@@ -89,13 +106,7 @@ public class QuizResultsController implements Initializable {
     @FXML
     private Label letterGradeLabel;
     @FXML
-    private Label UA1,UA2,UA3,UA4,UA5,UA6,UA7,UA8,UA9,UA10,UA11,UA12,UA13,UA14,UA15,UA16;
-    @FXML
-    private Label UA17,UA18,UA19,UA20,UA21,UA22,UA23,UA24,UA25,UA26,UA27,UA28,UA29,UA30,UA31,UA32;        
-    @FXML
-    private Label CA1,CA2,CA3,CA4,CA5,CA6,CA7,CA8,CA9,CA10,CA11,CA12,CA13,CA14,CA15,CA16;
-    @FXML
-    private Label CA17,CA18,CA19,CA20,CA21,CA22,CA23,CA24,CA25,CA26,CA27,CA28,CA29,CA30,CA31,CA32;  
+    private AnchorPane QuizResultsDashboardPane;
     
     
     
@@ -106,93 +117,7 @@ public class QuizResultsController implements Initializable {
     @FXML
     private NumberAxis yAxis;
     @FXML
-    private VBox answersVBox1;
-    @FXML
-    private Label correct;
-    @FXML
-    private VBox answersVBox;
-    @FXML
-    private Label question1;
-    @FXML
-    private Label question2;
-    @FXML
-    private Label question3;
-    @FXML
-    private Label question4;
-    @FXML
-    private Label question5;
-    @FXML
-    private Label question6;
-    @FXML
-    private Label question7;
-    @FXML
-    private Label question8;
-    @FXML
-    private Label question9;
-    @FXML
-    private Label question10;
-    @FXML
-    private Label question11;
-    @FXML
-    private Label question12;
-    @FXML
-    private Label question13;
-    @FXML
-    private Label question14;
-    @FXML
-    private Label question15;
-    @FXML
-    private Label question16;
-    @FXML
-    private VBox answersVBox3;
-    @FXML
-    private Label question17;
-    @FXML
-    private Label question18;
-    @FXML
-    private Label question19;
-    @FXML
-    private Label question20;
-    @FXML
-    private Label question21;
-    @FXML
-    private Label question22;
-    @FXML
-    private Label question23;
-    @FXML
-    private Label question24;
-    @FXML
-    private Label question25;
-    @FXML
-    private Label question26;
-    @FXML
-    private Label question27;
-    @FXML
-    private Label question28;
-    @FXML
-    private Label question29;
-    @FXML
-    private Label question30;
-    @FXML
-    private Label question31;
-    @FXML
-    private Label question32;
-    @FXML
-    private VBox answersVBox11;
-    @FXML
-    private Label questionLabel2;
-    @FXML
-    private Label questionLabel;
-    @FXML
-    private Label answerLabel;
-    @FXML
-    private Label userLabel2;
-    @FXML
-    private Label answerLabel3;
-    @FXML
-    private Label correctLabel2;
-    @FXML
-    private Label answerLabel4;
+    private TextArea questionsDisplay;
     
     
 
@@ -316,7 +241,7 @@ public class QuizResultsController implements Initializable {
         } // end of try-with-resourc
         }
         
-    public void launchQuizResults(ArrayList<Question>correctQuestions, ArrayList<Question>incorrectQuestions) throws IOException, SQLException{
+    public void launchQuizResults(ArrayList<Question>correctQuestions, ArrayList<Question>incorrectQuestions) throws IOException, SQLException, DocumentException{
         Parent root;
         this.correctQuestions = correctQuestions;
         this.incorrectQuestions = incorrectQuestions;
@@ -332,7 +257,7 @@ public class QuizResultsController implements Initializable {
        
        numberCorrectLabel.setText(this.correctQuestions.size()+"");
        numberIncorrectLabel.setText(this.incorrectQuestions.size()+"");
-       
+       exportToPdf();
        for(int i = 0; i < this.correctQuestions.size(); i++){
            if(this.correctQuestions.get(i).getClass() == mc.getClass()){
                mc = (MultipleChoice)this.correctQuestions.get(i);
@@ -367,7 +292,7 @@ public class QuizResultsController implements Initializable {
            }
        }
        
-           
+
           plotResultsGraph();
            
             
@@ -520,11 +445,10 @@ public class QuizResultsController implements Initializable {
   
     
     
-        public String convertTime(long time){
-        
-        Date date = new Date(time);
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy MM dd"); 
-        return sdf.format(date);
+public String convertTime(long time){        
+    Date date = new Date(time);
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy MM dd"); 
+    return sdf.format(date);
 }
         
         
@@ -585,179 +509,57 @@ public class QuizResultsController implements Initializable {
 }
     
     public void displayAnswers(){
-        setAnswers(this.numOfQuestions);
-    if(this.numOfQuestions == 8){
-  question9.setVisible(false);
-  question10.setVisible(false);
-  question11.setVisible(false);
-  question12.setVisible(false);
-  question13.setVisible(false);
-  question14.setVisible(false);
-  question15.setVisible(false);
-  question16.setVisible(false);
-  question17.setVisible(false);
-  question18.setVisible(false);
-  question19.setVisible(false);
-  question20.setVisible(false);
-  question21.setVisible(false);
-  question22.setVisible(false);
-  question23.setVisible(false);
-  question24.setVisible(false);
-  question25.setVisible(false);
-  question26.setVisible(false);
-  question27.setVisible(false);
-  question28.setVisible(false);
-  question29.setVisible(false);
-  question30.setVisible(false);
-  question31.setVisible(false);
-  question32.setVisible(false);
-        CA9.setVisible(false);
-        CA10.setVisible(false);
-        CA11.setVisible(false);
-        CA12.setVisible(false);
-        CA13.setVisible(false);
-        CA14.setVisible(false);
-        CA15.setVisible(false);
-        CA16.setVisible(false);
-        CA17.setVisible(false);
-        CA18.setVisible(false);
-        CA19.setVisible(false);
-        CA20.setVisible(false);
-        CA21.setVisible(false);
-        CA22.setVisible(false);
-        CA23.setVisible(false);
-        CA24.setVisible(false);
-        CA25.setVisible(false);
-        CA26.setVisible(false);
-        CA27.setVisible(false);
-        CA28.setVisible(false);
-        CA29.setVisible(false);
-        CA30.setVisible(false);
-        CA31.setVisible(false);
-        CA32.setVisible(false);
-        UA9.setVisible(false);
-        UA10.setVisible(false);
-        UA11.setVisible(false);
-        UA12.setVisible(false);
-        UA13.setVisible(false);
-        UA14.setVisible(false);
-        UA15.setVisible(false);
-        UA16.setVisible(false);
-        UA17.setVisible(false);
-        UA18.setVisible(false);
-        UA19.setVisible(false);
-        UA20.setVisible(false);
-        UA21.setVisible(false);
-        UA22.setVisible(false);
-        UA23.setVisible(false);
-        UA24.setVisible(false);
-        UA25.setVisible(false);
-        UA26.setVisible(false);
-        UA27.setVisible(false);
-        UA28.setVisible(false);
-        UA29.setVisible(false);
-        UA30.setVisible(false);
-        UA31.setVisible(false);
-        UA32.setVisible(false);
-    }
-    else if(this.numOfQuestions == 16){
-        questionLabel2.setVisible(false);
-        CA17.setVisible(false);
-        CA18.setVisible(false);
-        CA19.setVisible(false);
-        CA20.setVisible(false);
-        CA21.setVisible(false);
-        CA22.setVisible(false);
-        CA23.setVisible(false);
-        CA24.setVisible(false);
-        CA25.setVisible(false);
-        CA26.setVisible(false);
-        CA27.setVisible(false);
-        CA28.setVisible(false);
-        CA29.setVisible(false);
-        CA30.setVisible(false);
-        CA31.setVisible(false);
-        CA32.setVisible(false);
-        UA17.setVisible(false);
-        UA18.setVisible(false);
-        UA19.setVisible(false);
-        UA20.setVisible(false);
-        UA21.setVisible(false);
-        UA22.setVisible(false);
-        UA23.setVisible(false);
-        UA24.setVisible(false);
-        UA25.setVisible(false);
-        UA26.setVisible(false);
-        UA27.setVisible(false);
-        UA28.setVisible(false);
-        UA29.setVisible(false);
-        UA30.setVisible(false);
-        UA31.setVisible(false);
-        UA32.setVisible(false);
-        question17.setVisible(false);
-  question18.setVisible(false);
-  question19.setVisible(false);
-  question20.setVisible(false);
-  question21.setVisible(false);
-  question22.setVisible(false);
-  question23.setVisible(false);
-  question24.setVisible(false);
-  question25.setVisible(false);
-  question26.setVisible(false);
-  question27.setVisible(false);
-  question28.setVisible(false);
-  question29.setVisible(false);
-  question30.setVisible(false);
-  question31.setVisible(false);
-  question32.setVisible(false);
-    }
-    else if(this.numOfQuestions == 24){
-        question25.setVisible(false);
-  question26.setVisible(false);
-  question27.setVisible(false);
-  question28.setVisible(false);
-  question29.setVisible(false);
-  question30.setVisible(false);
-  question31.setVisible(false);
-  question32.setVisible(false);
-        CA25.setVisible(false);
-        CA26.setVisible(false);
-        CA27.setVisible(false);
-        CA28.setVisible(false);
-        CA29.setVisible(false);
-        CA30.setVisible(false);
-        CA31.setVisible(false);
-        CA32.setVisible(false);
-        UA25.setVisible(false);
-        UA26.setVisible(false);
-        UA27.setVisible(false);
-        UA28.setVisible(false);
-        UA29.setVisible(false);
-        UA30.setVisible(false);
-        UA31.setVisible(false);
-        UA32.setVisible(false);
-    }
-}
-    public void setAnswers(int num){
-        ArrayList <Label> userAnswerLabels = new ArrayList();
-        ArrayList <Label> answerCheckLabels = new ArrayList();
-        /*UA1,UA2,UA3,UA4,UA5,UA6,UA7,UA8*/
-        if (num == 8){
-            userAnswerLabels.add(UA1);
-            userAnswerLabels.add(UA2);
-            userAnswerLabels.add(UA3);
-            userAnswerLabels.add(UA4);
-            userAnswerLabels.add(UA5);
-            userAnswerLabels.add(UA6);
-            userAnswerLabels.add(UA7);
-            userAnswerLabels.add(UA8);
-        for(int i = 0; i < this.userAnswers.size(); i++){
-            userAnswerLabels.get(i).setText(this.userAnswers.get(i));
+        String s = "";
+         for(int i = 0; i < this.userAnswers.size(); i++){
+             s += "Question ".toUpperCase()+ (i+1)+": " + "\t Your Answer: ".toUpperCase()+ this.userAnswers.get(i) 
+                     + "\t Correct Answer: ".toUpperCase() + this.userAnswerCheck.get(i) + "\n\n";         
         }
+         questionsDisplay.setText(s);
+    }
+    
+    public void exportToPdf() throws IOException, DocumentException {
         
-        for(int i = 0; i < this.userAnswerCheck.size(); i++){
-            answerCheckLabels.get(i).setText(this.userAnswerCheck.get(i));
+        String s = "";
+         for(int i = 0; i < this.userAnswers.size(); i++){
+             s += "Question ".toUpperCase()+ (i+1)+": " + "\t Your Answer: ".toUpperCase()+ this.userAnswers.get(i) 
+                     + "\t Correct Answer: ".toUpperCase() + this.userAnswerCheck.get(i) + "\n\n";         
         }
+
+        WritableImage image = QuizResultsDashboardPane.snapshot(new SnapshotParameters(), null);
+        
+        //  WritableImage image2 = buttonchart2.snapshot(new SnapshotParameters(), null);
+        File file = new File("Dashboard Report.png");
+
+        ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", file);
+        // ImageIO.write(SwingFXUtils.fromFXImage(image2, null), "png", file); 
+
+        Document document = new Document();
+        String input = "Dashboard Report.png"; // .gif and .jpg are ok too!
+        String output = "Dashboard Report.pdf";
+        try {
+            FileOutputStream fos = new FileOutputStream(output);
+            PdfWriter writer = PdfWriter.getInstance(document, fos);
+            writer.open();
+            document.open();
+ByteArrayOutputStream  byteOutput = new ByteArrayOutputStream();
+
+ImageIO.write( SwingFXUtils.fromFXImage( image, null ), "png", byteOutput );
+
+com.itextpdf.text.Image  graph;
+graph = com.itextpdf.text.Image.getInstance( byteOutput.toByteArray() );
+graph.scaleToFit(500,500);
+            document.add((com.itextpdf.text.Element) graph);
+//         Font f = new Font(FontFamily.TIMES_ROMAN, 10.0f, Font.UNDERLINE, BaseColor.BLACK);
+//            Paragraph p = new Paragraph(s, f);
+//            document.add(p);
+
+
+            document.close();
+            writer.close();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+        QuizResultsDashboardPane.setVisible(true);
+
     }
 }

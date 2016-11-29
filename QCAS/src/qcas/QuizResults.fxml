@@ -11,8 +11,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="655.0" prefWidth="1113.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qcas.QuizResultsController">
-    <children>
+<AnchorPane id="AnchorPane" fx:id="QuizResultsDashboardPane" prefHeight="655.0" prefWidth="1113.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qcas.QuizResultsController">
+        <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f8f5f5" height="500.0" layoutX="14.0" layoutY="100.0" stroke="BLACK" strokeType="INSIDE" width="457.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f4f4f5" height="102.0" layoutX="214.0" layoutY="112.0" stroke="BLACK" strokeType="INSIDE" width="223.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="72.0" layoutX="15.0" layoutY="19.0" stroke="BLACK" strokeType="INSIDE" width="1091.0">
@@ -73,142 +73,7 @@
       </BarChart>
       <Pane layoutX="34.0" layoutY="272.0" prefHeight="318.0" prefWidth="426.0">
          <children>
-            <VBox fx:id="answersVBox1" layoutX="146.0" layoutY="2.0" prefHeight="328.0" prefWidth="68.0">
-               <children>
-                  <Label fx:id="correct" alignment="CENTER" prefHeight="17.0" prefWidth="81.0" text="Correct " />
-                  <Label alignment="CENTER" prefHeight="17.0" prefWidth="104.0" text="  Answer  " underline="true" />
-                  <Label fx:id="CA1" alignment="CENTER" prefHeight="17.0" prefWidth="82.0" text="CA1" />
-                  <Label fx:id="CA2" alignment="CENTER" prefHeight="17.0" prefWidth="81.0" text="CA2" />
-                  <Label fx:id="CA3" alignment="CENTER" prefHeight="17.0" prefWidth="94.0" text="CA3" />
-                  <Label fx:id="CA4" alignment="CENTER" prefHeight="17.0" prefWidth="93.0" text="CA4" />
-                  <Label fx:id="CA5" alignment="CENTER" prefHeight="17.0" prefWidth="100.0" text="CA5" />
-                  <Label fx:id="CA6" alignment="CENTER" prefHeight="17.0" prefWidth="91.0" text="CA6" />
-                  <Label fx:id="CA7" alignment="CENTER" prefHeight="17.0" prefWidth="90.0" text="CA7" />
-                  <Label fx:id="CA8" alignment="CENTER" prefHeight="17.0" prefWidth="91.0" text="CA8" />
-                  <Label fx:id="CA9" alignment="CENTER" prefHeight="17.0" prefWidth="89.0" text="CA9" />
-                  <Label fx:id="CA10" alignment="CENTER" prefHeight="17.0" prefWidth="99.0" text="CA10" />
-                  <Label fx:id="CA11" alignment="CENTER" prefHeight="17.0" prefWidth="98.0" text="CA11" />
-                  <Label fx:id="CA12" alignment="CENTER" prefHeight="17.0" prefWidth="93.0" text="CA12" />
-                  <Label fx:id="CA13" alignment="CENTER" prefHeight="17.0" prefWidth="94.0" text="CA13" />
-                  <Label fx:id="CA14" alignment="CENTER" prefHeight="17.0" prefWidth="91.0" text="CA14" />
-                  <Label fx:id="CA15" alignment="CENTER" prefHeight="17.0" prefWidth="96.0" text="CA15" />
-                  <Label fx:id="CA16" alignment="CENTER" prefHeight="17.0" prefWidth="101.0" text="CA16" />
-               </children>
-            </VBox>
-            <VBox layoutX="75.0" layoutY="2.0" prefHeight="318.0" prefWidth="62.0">
-               <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="10.0" prefWidth="68.0" text="User" textAlignment="CENTER" wrapText="true" />
-                  <Label alignment="CENTER" prefHeight="5.0" prefWidth="68.0" text="  Answer  " underline="true" />
-                  <Label fx:id="UA1" alignment="CENTER" prefHeight="17.0" prefWidth="72.0" text="UA1" />
-                  <Label fx:id="UA2" alignment="CENTER" prefHeight="17.0" prefWidth="74.0" text="UA2" />
-                  <Label fx:id="UA3" alignment="CENTER" prefHeight="17.0" prefWidth="82.0" text="UA3" />
-                  <Label fx:id="UA4" alignment="CENTER" prefHeight="17.0" prefWidth="78.0" text="UA4" />
-                  <Label fx:id="UA5" alignment="CENTER" prefHeight="17.0" prefWidth="81.0" text="UA5" />
-                  <Label fx:id="UA6" alignment="CENTER" prefHeight="17.0" prefWidth="85.0" text="UA6" />
-                  <Label fx:id="UA7" alignment="CENTER" prefHeight="17.0" prefWidth="85.0" text="UA7" />
-                  <Label fx:id="UA8" alignment="CENTER" prefHeight="17.0" prefWidth="82.0" text="UA8" />
-                  <Label fx:id="UA9" alignment="CENTER" prefHeight="17.0" prefWidth="84.0" text="UA9" />
-                  <Label fx:id="UA10" alignment="CENTER" prefHeight="17.0" prefWidth="87.0" text="UA10" />
-                  <Label fx:id="UA11" alignment="CENTER" prefHeight="17.0" prefWidth="82.0" text="UA11" />
-                  <Label fx:id="UA12" alignment="CENTER" prefHeight="17.0" prefWidth="80.0" text="UA12" />
-                  <Label fx:id="UA13" alignment="CENTER" prefHeight="17.0" prefWidth="74.0" text="UA13" />
-                  <Label fx:id="UA14" alignment="CENTER" prefHeight="17.0" prefWidth="85.0" text="UA14" />
-                  <Label fx:id="UA15" alignment="CENTER" prefHeight="17.0" prefWidth="80.0" text="UA15" />
-                  <Label fx:id="UA16" alignment="CENTER" prefHeight="17.0" prefWidth="77.0" text="UA16" />
-               </children>
-            </VBox>
-            <Separator layoutX="134.0" layoutY="38.0" orientation="VERTICAL" prefHeight="269.0" prefWidth="13.0" />
-            <Separator layoutX="62.0" layoutY="38.0" orientation="VERTICAL" prefHeight="269.0" prefWidth="13.0" />
-            <VBox fx:id="answersVBox" prefHeight="313.0" prefWidth="68.0">
-               <children>
-                  <Label prefHeight="19.0" prefWidth="68.0" text=" " />
-                  <Label fx:id="questionLabel" alignment="CENTER" prefHeight="17.0" prefWidth="68.0" text="Question #" textAlignment="CENTER" underline="true" />
-                  <Label fx:id="question1" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="62.0" text="  1)" textAlignment="CENTER" />
-                  <Label fx:id="question2" alignment="CENTER" prefHeight="17.0" prefWidth="77.0" text=" 2)" />
-                  <Label fx:id="question3" alignment="CENTER" prefHeight="17.0" prefWidth="73.0" text=" 3)" />
-                  <Label fx:id="question4" alignment="CENTER" prefHeight="17.0" prefWidth="80.0" text=" 4)" />
-                  <Label fx:id="question5" alignment="CENTER" prefHeight="17.0" prefWidth="76.0" text=" 5)" />
-                  <Label fx:id="question6" alignment="CENTER" prefHeight="17.0" prefWidth="102.0" text=" 6)" />
-                  <Label fx:id="question7" alignment="CENTER" prefHeight="17.0" prefWidth="76.0" text=" 7)" />
-                  <Label fx:id="question8" alignment="CENTER" prefHeight="17.0" prefWidth="83.0" text=" 8)" />
-                  <Label fx:id="question9" alignment="CENTER" prefHeight="17.0" prefWidth="76.0" text=" 9)" />
-                  <Label fx:id="question10" alignment="CENTER" prefHeight="17.0" prefWidth="81.0" text="10)" />
-                  <Label fx:id="question11" alignment="CENTER" prefHeight="17.0" prefWidth="81.0" text="11)" />
-                  <Label fx:id="question12" alignment="CENTER" prefHeight="17.0" prefWidth="80.0" text="12)" />
-                  <Label fx:id="question13" alignment="CENTER" prefHeight="17.0" prefWidth="91.0" text="13)" />
-                  <Label fx:id="question14" alignment="CENTER" prefHeight="17.0" prefWidth="85.0" text="14)" />
-                  <Label fx:id="question15" alignment="CENTER" prefHeight="17.0" prefWidth="91.0" text="15)" />
-                  <Label fx:id="question16" alignment="CENTER" prefHeight="17.0" prefWidth="92.0" text="16)" />
-               </children>
-            </VBox>
-            <VBox fx:id="answersVBox3" layoutX="221.0" layoutY="18.0" prefHeight="313.0" prefWidth="62.0">
-               <children>
-                  <Label fx:id="questionLabel2" alignment="CENTER" prefHeight="17.0" prefWidth="68.0" text="Question #" textAlignment="CENTER" underline="true" />
-                  <Label fx:id="question17" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="62.0" text=" 17)" textAlignment="CENTER" />
-                  <Label fx:id="question18" alignment="CENTER" prefHeight="17.0" prefWidth="77.0" text="18)" />
-                  <Label fx:id="question19" alignment="CENTER" prefHeight="17.0" prefWidth="73.0" text="19)" />
-                  <Label fx:id="question20" alignment="CENTER" prefHeight="17.0" prefWidth="80.0" text="20)" />
-                  <Label fx:id="question21" alignment="CENTER" prefHeight="17.0" prefWidth="76.0" text="21)" />
-                  <Label fx:id="question22" alignment="CENTER" prefHeight="17.0" prefWidth="102.0" text="22)" />
-                  <Label fx:id="question23" alignment="CENTER" prefHeight="17.0" prefWidth="76.0" text="23)" />
-                  <Label fx:id="question24" alignment="CENTER" prefHeight="17.0" prefWidth="83.0" text="24)" />
-                  <Label fx:id="question25" alignment="CENTER" prefHeight="17.0" prefWidth="76.0" text="25)" />
-                  <Label fx:id="question26" alignment="CENTER" prefHeight="17.0" prefWidth="81.0" text="26)" />
-                  <Label fx:id="question27" alignment="CENTER" prefHeight="17.0" prefWidth="81.0" text="27)" />
-                  <Label fx:id="question28" alignment="CENTER" prefHeight="17.0" prefWidth="80.0" text="28)" />
-                  <Label fx:id="question29" alignment="CENTER" prefHeight="17.0" prefWidth="91.0" text="29)" />
-                  <Label fx:id="question30" alignment="CENTER" prefHeight="17.0" prefWidth="85.0" text="30)" />
-                  <Label fx:id="question31" alignment="CENTER" prefHeight="17.0" prefWidth="91.0" text="31)" />
-                  <Label fx:id="question32" alignment="CENTER" prefHeight="17.0" prefWidth="92.0" text="32)" />
-               </children>
-            </VBox>
-            <Separator layoutX="214.0" layoutY="38.0" orientation="VERTICAL" prefHeight="269.0" prefWidth="13.0" />
-            <VBox layoutX="290.0" prefHeight="313.0" prefWidth="68.0">
-               <children>
-                  <Label alignment="CENTER" prefHeight="17.0" prefWidth="83.0" text="User" />
-                  <Label alignment="CENTER" prefHeight="19.0" prefWidth="68.0" text="  Answer  " underline="true" />
-                  <Label fx:id="UA17" alignment="CENTER" prefHeight="17.0" prefWidth="72.0" text="UA17" />
-                  <Label fx:id="UA18" alignment="CENTER" prefHeight="17.0" prefWidth="74.0" text="UA18" />
-                  <Label fx:id="UA19" alignment="CENTER" prefHeight="17.0" prefWidth="82.0" text="UA19" />
-                  <Label fx:id="UA20" alignment="CENTER" prefHeight="17.0" prefWidth="78.0" text="UA20" />
-                  <Label fx:id="UA21" alignment="CENTER" prefHeight="17.0" prefWidth="81.0" text="UA21" />
-                  <Label fx:id="UA22" alignment="CENTER" prefHeight="17.0" prefWidth="85.0" text="UA22" />
-                  <Label fx:id="UA23" alignment="CENTER" prefHeight="17.0" prefWidth="85.0" text="UA23" />
-                  <Label fx:id="UA24" alignment="CENTER" prefHeight="17.0" prefWidth="82.0" text="UA24" />
-                  <Label fx:id="UA25" alignment="CENTER" prefHeight="17.0" prefWidth="84.0" text="UA25" />
-                  <Label fx:id="UA26" alignment="CENTER" prefHeight="17.0" prefWidth="87.0" text="UA26" />
-                  <Label fx:id="UA27" alignment="CENTER" prefHeight="17.0" prefWidth="82.0" text="UA27" />
-                  <Label fx:id="UA28" alignment="CENTER" prefHeight="17.0" prefWidth="80.0" text="UA28" />
-                  <Label fx:id="UA29" alignment="CENTER" prefHeight="17.0" prefWidth="74.0" text="UA29" />
-                  <Label fx:id="UA30" alignment="CENTER" prefHeight="17.0" prefWidth="85.0" text="UA30" />
-                  <Label fx:id="UA31" alignment="CENTER" prefHeight="17.0" prefWidth="80.0" text="UA31" />
-                  <Label fx:id="UA32" alignment="CENTER" prefHeight="17.0" prefWidth="77.0" text="UA32" />
-               </children>
-            </VBox>
-            <Separator layoutX="283.0" layoutY="38.0" orientation="VERTICAL" prefHeight="269.0" prefWidth="13.0" />
-            <Separator layoutX="352.0" layoutY="39.0" orientation="VERTICAL" prefHeight="269.0" prefWidth="13.0" />
-            <VBox fx:id="answersVBox11" layoutX="352.0" prefHeight="322.0" prefWidth="86.0">
-               <children>
-                  <Label fx:id="question171" alignment="CENTER" prefHeight="17.0" prefWidth="81.0" text="Correct" />
-                  <Label alignment="CENTER" prefHeight="17.0" prefWidth="89.0" text=" Answer " underline="true" />
-                  <Label fx:id="CA17" alignment="CENTER" prefHeight="17.0" prefWidth="82.0" text="CA17" />
-                  <Label fx:id="CA18" alignment="CENTER" prefHeight="17.0" prefWidth="81.0" text="CA18" />
-                  <Label fx:id="CA19" alignment="CENTER" prefHeight="17.0" prefWidth="94.0" text="CA19" />
-                  <Label fx:id="CA20" alignment="CENTER" prefHeight="17.0" prefWidth="93.0" text="CA20" />
-                  <Label fx:id="CA21" alignment="CENTER" prefHeight="17.0" prefWidth="100.0" text="CA21" />
-                  <Label fx:id="CA22" alignment="CENTER" prefHeight="17.0" prefWidth="91.0" text="CA22" />
-                  <Label fx:id="CA23" alignment="CENTER" prefHeight="17.0" prefWidth="90.0" text="CA23" />
-                  <Label fx:id="CA24" alignment="CENTER" prefHeight="17.0" prefWidth="91.0" text="CA24" />
-                  <Label fx:id="CA25" alignment="CENTER" prefHeight="17.0" prefWidth="89.0" text="CA25" />
-                  <Label fx:id="CA26" alignment="CENTER" prefHeight="17.0" prefWidth="99.0" text="CA26" />
-                  <Label fx:id="CA27" alignment="CENTER" prefHeight="17.0" prefWidth="98.0" text="CA27" />
-                  <Label fx:id="CA28" alignment="CENTER" prefHeight="17.0" prefWidth="93.0" text="CA28" />
-                  <Label fx:id="CA29" alignment="CENTER" prefHeight="17.0" prefWidth="94.0" text="CA29" />
-                  <Label fx:id="CA30" alignment="CENTER" prefHeight="17.0" prefWidth="91.0" text="CA30" />
-                  <Label fx:id="CA31" alignment="CENTER" prefHeight="17.0" prefWidth="96.0" text="CA31" />
-                  <Label fx:id="CA32" alignment="CENTER" prefHeight="17.0" prefWidth="101.0" text="CA32" />
-               </children>
-            </VBox>
+            <TextArea fx:id="questionsDisplay" editable="false" prefHeight="318.0" prefWidth="426.0" />
          </children>
       </Pane>
       <VBox layoutX="217.0" layoutY="115.0" prefHeight="96.0" prefWidth="75.0">
