@@ -180,11 +180,19 @@ public class QuizResultsController implements Initializable {
     @FXML
     private VBox answersVBox11;
     @FXML
-    private Label question171;
-    @FXML
     private Label questionLabel2;
     @FXML
     private Label questionLabel;
+    @FXML
+    private Label answerLabel;
+    @FXML
+    private Label userLabel2;
+    @FXML
+    private Label answerLabel3;
+    @FXML
+    private Label correctLabel2;
+    @FXML
+    private Label answerLabel4;
     
     
 
@@ -577,14 +585,14 @@ public class QuizResultsController implements Initializable {
 }
     
     public void displayAnswers(){
-        
+        setAnswers(this.numOfQuestions);
     if(this.numOfQuestions == 8){
-  questionLabel2.setVisible(false);
   question9.setVisible(false);
   question10.setVisible(false);
   question11.setVisible(false);
   question12.setVisible(false);
   question13.setVisible(false);
+  question14.setVisible(false);
   question15.setVisible(false);
   question16.setVisible(false);
   question17.setVisible(false);
@@ -729,6 +737,27 @@ public class QuizResultsController implements Initializable {
         UA31.setVisible(false);
         UA32.setVisible(false);
     }
-    
+}
+    public void setAnswers(int num){
+        ArrayList <Label> userAnswerLabels = new ArrayList();
+        ArrayList <Label> answerCheckLabels = new ArrayList();
+        /*UA1,UA2,UA3,UA4,UA5,UA6,UA7,UA8*/
+        if (num == 8){
+            userAnswerLabels.add(UA1);
+            userAnswerLabels.add(UA2);
+            userAnswerLabels.add(UA3);
+            userAnswerLabels.add(UA4);
+            userAnswerLabels.add(UA5);
+            userAnswerLabels.add(UA6);
+            userAnswerLabels.add(UA7);
+            userAnswerLabels.add(UA8);
+        for(int i = 0; i < this.userAnswers.size(); i++){
+            userAnswerLabels.get(i).setText(this.userAnswers.get(i));
+        }
+        
+        for(int i = 0; i < this.userAnswerCheck.size(); i++){
+            answerCheckLabels.get(i).setText(this.userAnswerCheck.get(i));
+        }
+        }
     }
 }

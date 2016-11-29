@@ -314,8 +314,8 @@ public class MAQuestionsController implements Initializable {
         }  
     }
     
-    public void startTimer(){
-        secs=((24)*5);
+    public void startTimer(int remaining){
+        secs=(remaining);
     final ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
     service.scheduleWithFixedDelay(new Runnable()
       {

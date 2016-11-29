@@ -46,8 +46,9 @@ public class SelectQuestionsController implements Initializable {
     Scene scene;
     String userId;
     Connection connection;
-            public static int secs;
+    public static int secs;
     public static int maxTime;
+    
     
     @FXML
     private Label studentNameLabel;

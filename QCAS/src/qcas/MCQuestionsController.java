@@ -57,6 +57,7 @@ public class MCQuestionsController implements Initializable {
     int numIncorrect = 0;
     Connection connection;
     int pageNumber;
+    int remSecs;
 
     @FXML
     private Label questionNumberLabel;
@@ -100,7 +101,7 @@ public class MCQuestionsController implements Initializable {
                 studentNameLabel.setText(rset.getString("firstname") + " " + rset.getString("lastname"));
             }
             
-            startTimer();
+            
             
     }
     
@@ -145,6 +146,7 @@ public class MCQuestionsController implements Initializable {
 
     public void launchMCQ(ArrayList<MultipleAnswer>multipleAnswerQuestions, ArrayList<MultipleChoice>multipleChoiceQuestions, 
             ArrayList<TrueFalse>trueFalseQuestions, ArrayList<FillInTheBlanks>fillInTheBlanksQuestions, int size) throws IOException, SQLException{
+        startTimer(this.numOfQuestions);
         Parent root;
     //    System.out.println("This is sizw: " + size);
         this.multipleAnswerQuestions = multipleAnswerQuestions;
@@ -195,7 +197,7 @@ public class MCQuestionsController implements Initializable {
             } catch (SQLException ex) {
                 Logger.getLogger(MCQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
             }
-            startTimer();
+            
         });
         
         BButton.setOnAction(e -> {
@@ -219,7 +221,7 @@ public class MCQuestionsController implements Initializable {
             } catch (SQLException ex) {
                 Logger.getLogger(MCQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
             }
-            startTimer();
+            
         });
         
         CButton.setOnAction(e -> {
@@ -242,7 +244,7 @@ public class MCQuestionsController implements Initializable {
             } catch (SQLException ex) {
                 Logger.getLogger(MCQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
             }
-            startTimer();
+            
         });
         
         DButton.setOnAction(e -> {
@@ -265,7 +267,6 @@ public class MCQuestionsController implements Initializable {
             } catch (SQLException ex) {
                 Logger.getLogger(MCQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
             }
-            startTimer();
         });
     }
         else{
@@ -283,6 +284,7 @@ public class MCQuestionsController implements Initializable {
             sc.setIncorrectQuestions(this.incorrectQuestions);
             sc.setUserAnswers(this.userAnswers);
             sc.setPageNumber(this.pageNumber);
+            sc.startTimer(secs);
             sc.setAllAnsweredQuestions(this.allAnsweredQuestions);
             sc.launchMA(this.multipleChoiceQuestions, this.multipleAnswerQuestions, this.trueFalseQuestions, 
                     this.fillInTheBlanksQuestions, this.multipleAnswerQuestions.size());
@@ -292,8 +294,9 @@ public class MCQuestionsController implements Initializable {
         }
     }
     
-    public void startTimer(){
-        secs=((24)*5);
+    public void startTimer(int num){
+    
+    secs = ((num)*60);
     final ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
     service.scheduleWithFixedDelay(new Runnable()
       {
@@ -301,7 +304,6 @@ public class MCQuestionsController implements Initializable {
         public void run()
         {
             secs--;
-            
           outputTextArea.setText((Integer.toString(secs/60))+ " : " +Integer.toString(secs%60));
         
           if(secs==0){
