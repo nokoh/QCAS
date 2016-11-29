@@ -12,8 +12,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" fx:id="teacherDashboardPane" prefHeight="700.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qcas.Scene6Controller">
-        <children>
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1300.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+          <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#edeeee" height="101.0" layoutX="15.0" layoutY="212.0" stroke="BLACK" strokeType="INSIDE" width="572.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f2f0f0" height="45.0" layoutX="14.0" layoutY="160.0" stroke="BLACK" strokeType="INSIDE" width="572.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e9eaeb" height="53.0" layoutX="14.0" layoutY="101.0" stroke="BLACK" strokeType="INSIDE" width="572.0" />

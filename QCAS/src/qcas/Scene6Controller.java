@@ -135,6 +135,30 @@ public class Scene6Controller implements Initializable {
     private Label totalNumberQuestionsMonth;
     @FXML
     private ComboBox yearSelector;
+    @FXML
+    private Label avgQuizScoreLM;
+    @FXML
+    private Label avgEasyScoreLM;
+    @FXML
+    private Label avgMediumScoreLM;
+    @FXML
+    private Label avgHardScoreLM;
+    @FXML
+    private Label avgQuizScoreLQ;
+    @FXML
+    private Label avgEasyScoreLQ;
+    @FXML
+    private Label avgMediumScoreLQ;
+    @FXML
+    private Label avgHardScoreLQ;
+    @FXML
+    private Label avgQuizScoreLY;
+    @FXML
+    private Label avgEasyScoreLY;
+    @FXML
+    private Label avgMediumScoreLY;
+    @FXML
+    private Label avgHardScoreLY;
     
     
     
@@ -171,6 +195,8 @@ public class Scene6Controller implements Initializable {
         drawLineChart("2016");
         countNumberOfQuizzes("November");
         countNoOfQuizzes();
+        displayTables();
+        
     }
     
     
@@ -501,6 +527,7 @@ public class Scene6Controller implements Initializable {
         int monthNum = monthNumberConversion(month);
         int count = 0;
         int count2 = 0;
+        int count3 = 0;
             String tableCount = "SELECT examDate, count(examID), sum(score), sum(score)/count(examID) FROM UserDB.vw_examResult WHERE substring(examDate,6,2) = ? group by examDate;";
             PreparedStatement stmt = this.connection.prepareStatement(tableCount);
             stmt.setInt(1, monthNum); //applies random variable to select statement.
@@ -512,7 +539,15 @@ public class Scene6Controller implements Initializable {
             while(dbQuery2.next()){
                 count += (Integer.parseInt(dbQuery2.getString(2)));
             }
+            String tableCount2 = "select substring(examDate,6,2) as month, count(question) from UserDB.ExamTable WHERE substring(examDate,1,4) = 2016 and substring(examDate,6,2) = ? group by substring(examDate,6,2);";
+            PreparedStatement stmt2 = this.connection.prepareStatement(tableCount2);
+            stmt2.setInt(1, monthNum); //applies random variable to select statement.
+            ResultSet dbQuery3 = stmt2.executeQuery();
+            while(dbQuery3.next()){
+                count3 = (Integer.parseInt(dbQuery3.getString(2)));
+            }
             
+            totalNumberQuestionsMonth.setText(count3+"");
             totalNumberQuizzes.setText(count+"");
             totalNumberQuizzesMonth.setText(count2+"");  
     }
@@ -640,8 +675,71 @@ public class Scene6Controller implements Initializable {
             this.connection.close();//closes connection resource
         } // end of try-with-resourc
         }
+    
+    public void displayTables() throws SQLException{
+        String avgScoreLM = "";
+        String avgScoreLQ = "";
+        String avgScoreLY = "";
+        String testTakenLM = "";
+        String testTakenLQ = "";
+        String testTakenLY = "";
         
+        ResultSet averages = connection.createStatement().executeQuery("select count(examID) as lastmonthcount from UserDB.vw_examResult where substring(examDate,6,2) = substring(current_date,6,2)-1 and substring(examDate,1,4) = substring(current_date,1,4);");
+            while(averages.next()){
+                    testTakenLM = averages.getString(1);
+                }
+        ResultSet averages2 = connection.createStatement().executeQuery("select count(examID) as lastquartercount from UserDB.vw_examResult where substring(examDate,6,2) in ('07','08','09') and substring(examDate,1,4) = substring(current_date,1,4);");
+            while(averages2.next()){
+                    testTakenLQ = averages2.getString(1);
+                }
+        ResultSet averages3 = connection.createStatement().executeQuery("select count(examID) as lastyearcount from UserDB.vw_examResult where substring(examDate,1,4) = substring(current_date,1,4)-1;");
+            while(averages3.next()){
+                    testTakenLY = averages3.getString(1);
+                }
+        ResultSet averages4 = connection.createStatement().executeQuery("select AVG(score) as lastmonthavg from UserDB.vw_examResult where substring(examDate,6,2) = substring(current_date,6,2)-1 and substring(examDate,1,4) = substring(current_date,1,4);");
+            while(averages4.next()){
+                    avgScoreLM = averages4.getString(1);
+                }
+        ResultSet averages5 = connection.createStatement().executeQuery("select AVG(score) as lastquarteravg from UserDB.vw_examResult where substring(examDate,6,2) in ('07','08','09') and substring(examDate,1,4) = substring(current_date,1,4);");
+            while(averages5.next()){
+                    avgScoreLQ = averages5.getString(1);
+                }
+        ResultSet averages6 = connection.createStatement().executeQuery("select AVG(score) as lastyearavg from UserDB.vw_examResult where substring(examDate,1,4) = substring(current_date,1,4)-1;");
+            while(averages6.next()){
+                    avgScoreLY = averages6.getString(1);
+                }
+            
+            /*select AVG(score) as lastmonthavg from UserDB.vw_examResult
+where substring(examDate,6,2) = substring(current_date,6,2)-1
+and substring(examDate,1,4) = substring(current_date,1,4);
 
+
+select AVG(score) as lastquarteravg from UserDB.vw_examResult
+where substring(examDate,6,2) in ('07','08','09')
+and substring(examDate,1,4) = substring(current_date,1,4);
+
+
+select AVG(score) as lastyearavg from UserDB.vw_examResult
+where substring(examDate,1,4) = substring(current_date,1,4)-1;*/
+    testTakenLastMonth.setText(testTakenLM);
+    testTakenLastQuarter.setText(testTakenLQ);
+    testTakenLastYear.setText(testTakenLY);
+    avgQuizScoreLM.setText(avgScoreLM);
+    avgEasyScoreLM.setText("0");
+    avgMediumScoreLM.setText("0");
+    avgHardScoreLM.setText("0");
+    avgQuizScoreLQ.setText(avgScoreLQ);
+    avgEasyScoreLQ.setText("0");
+    avgMediumScoreLQ.setText("0");
+    avgHardScoreLQ.setText("0");
+    avgQuizScoreLY.setText(avgScoreLY);
+    avgEasyScoreLY.setText("0");
+    avgMediumScoreLY.setText("0");
+    avgHardScoreLY.setText("0");
+    
+    }
+
+    @FXML
     public void exportToPdf() throws IOException, DocumentException {
         WritableImage image = teacherDashboardPane.snapshot(new SnapshotParameters(), null);
         //  WritableImage image2 = buttonchart2.snapshot(new SnapshotParameters(), null);
