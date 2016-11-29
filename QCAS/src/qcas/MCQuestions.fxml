@@ -121,6 +121,11 @@
          <effect>
             <Blend mode="SCREEN" />
          </effect></TextArea>
+      <ImageView fitHeight="38.0" fitWidth="25.0" layoutX="619.0" layoutY="142.0" pickOnBounds="true">
+         <image>
+            <Image url="@../clock%20insert.png" />
+         </image>
+      </ImageView>
       <ImageView fitHeight="165.0" fitWidth="231.0" layoutX="511.0" layoutY="74.0" pickOnBounds="true">
          <image>
             <Image url="@../11501757.png" />
