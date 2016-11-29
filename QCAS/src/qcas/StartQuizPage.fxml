@@ -68,8 +68,14 @@
       <Label layoutX="108.0" layoutY="105.0" />
       <VBox layoutX="108.0" layoutY="124.0" prefHeight="69.0" prefWidth="122.0">
          <children>
-            <Label fx:id="studentNameLabel" prefHeight="36.0" prefWidth="100.0" text="studentName" />
-            <Label fx:id="userIDLabel" prefHeight="8.0" prefWidth="104.0" text="userID" />
+            <Label fx:id="studentNameLabel" prefHeight="36.0" prefWidth="100.0" text="studentName">
+               <font>
+                  <Font size="13.0" />
+               </font></Label>
+            <Label fx:id="userIDLabel" prefHeight="8.0" prefWidth="104.0" text="userID">
+               <font>
+                  <Font size="13.0" />
+               </font></Label>
          </children>
       </VBox>
       <Label layoutX="253.0" layoutY="403.0" text="Select the Desired Difficulty Level for Quiz Questions">
