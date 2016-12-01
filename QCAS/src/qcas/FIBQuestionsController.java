@@ -88,7 +88,7 @@ public class FIBQuestionsController implements Initializable {
     }
 
     /**
-     * 
+     * Method to set user variables in Fill in the blanks controller
      * @param ID
      * @throws SQLException
      */
@@ -107,7 +107,7 @@ public class FIBQuestionsController implements Initializable {
     }
 
     /**
-     *
+     * Setter method for quiz score variable
      * @param num
      */
     public void setScore(int num) {
@@ -115,7 +115,7 @@ public class FIBQuestionsController implements Initializable {
     }
 
     /**
-     *
+     * Setter method for number of questions variable
      * @param num
      */
     public void setNumOfQuestions(int num) {
@@ -123,7 +123,7 @@ public class FIBQuestionsController implements Initializable {
     }
 
     /**
-     *
+     * Setter method for correct count variable
      * @param num
      */
     public void setCorrect(int num) {
@@ -131,7 +131,7 @@ public class FIBQuestionsController implements Initializable {
     }
 
     /**
-     *
+     * Setter method for incorrect count variable
      * @param num
      */
     public void setIncorrect(int num) {
@@ -139,7 +139,7 @@ public class FIBQuestionsController implements Initializable {
     }
 
     /**
-     *
+     * Getter method for correctQuestions arraylist variable
      * @return
      */
     public ArrayList<Question> getCorrectQuestions() {
@@ -147,7 +147,7 @@ public class FIBQuestionsController implements Initializable {
     }
 
     /**
-     *
+     * Setter method for correct questions arraylist variable
      * @param correctQuestions
      */
     public void setCorrectQuestions(ArrayList<Question> correctQuestions) {
@@ -155,7 +155,7 @@ public class FIBQuestionsController implements Initializable {
     }
 
     /**
-     * Getter method for page number variable
+     * Getter method for incorrect questions arraylist variable
      * @return
      */
     public ArrayList<Question> getIncorrectQuestions() {
@@ -217,30 +217,30 @@ public class FIBQuestionsController implements Initializable {
     public void launchFIB(ArrayList<MultipleChoice> multipleChoiceQuestions, ArrayList<MultipleAnswer> multipleAnswerQuestions,
             ArrayList<TrueFalse> trueFalseQuestions, ArrayList<FillInTheBlanks> fillInTheBlanksQuestions, int size) throws IOException, SQLException, DocumentException {
         Parent root;
-        this.multipleAnswerQuestions = multipleAnswerQuestions;
-        this.multipleChoiceQuestions = multipleChoiceQuestions;
-        this.trueFalseQuestions = trueFalseQuestions;
+        this.multipleAnswerQuestions = multipleAnswerQuestions; //sets multiple answer questions to be displayed in results page
+        this.multipleChoiceQuestions = multipleChoiceQuestions; //sets multiple choice questions to be displayed in results page
+        this.trueFalseQuestions = trueFalseQuestions; //sets true / false questions to be displayed in results page
 
         if (size != 0) {
             pageNumber += 1;
             questionNumberLabel.setText(pageNumber + "/" + this.numOfQuestions + "");
             this.fillInTheBlanksQuestions = fillInTheBlanksQuestions;
-            FIBQuestionDescriptionLabel.setText(fillInTheBlanksQuestions.get(size - 1).description);
+            FIBQuestionDescriptionLabel.setText(fillInTheBlanksQuestions.get(size - 1).description); //sets question description on display
 
             nextButton.setOnAction(e -> {
                 if (userAnswerField.getText() == null) {
                     String answer = "  ";
-                    this.numIncorrect++;
-                    this.incorrectQuestions.add(fillInTheBlanksQuestions.get(size - 1));
-                    this.userAnswers.add(answer);
+                    this.numIncorrect++; //increase score count
+                    this.incorrectQuestions.add(fillInTheBlanksQuestions.get(size - 1)); //add incorrect questions to incorrectQuestions arrayList
+                    this.userAnswers.add(answer); //adds answers to userAnswers arrayList
                 } else {
                     String answer = userAnswerField.getText().trim();
                     if (answer.equalsIgnoreCase(fillInTheBlanksQuestions.get(size - 1).correctAnswer)) {
-                        this.numCorrect++;
-                        this.correctQuestions.add(fillInTheBlanksQuestions.get(size - 1));
-                        this.userAnswers.add(answer);
+                        this.numCorrect++; //increase score count
+                        this.correctQuestions.add(fillInTheBlanksQuestions.get(size - 1)); //add correct questions to correctQuestions arrayList
+                        this.userAnswers.add(answer); //addscorrect questions to correctQuestions arrayList
                     } else {
-                        this.numIncorrect++;
+                        this.numIncorrect++; //increase score count
                         this.incorrectQuestions.add(fillInTheBlanksQuestions.get(size - 1));
                         this.userAnswers.add(answer);
                     }
@@ -266,8 +266,10 @@ public class FIBQuestionsController implements Initializable {
             Stage stage = (Stage) nextButton.getScene().getWindow();
             FXMLLoader f = new FXMLLoader(getClass().getResource("TFQuestions.fxml"));
             root = f.load();
-            TFQuestionsController sc = f.<TFQuestionsController>getController();
-
+            TFQuestionsController sc = f.<TFQuestionsController>getController(); //creating true / false controller for next scene
+            
+            /* Sets variables to be used in true / false controller */
+            
             sc.initID(this.userId);
             sc.setUserAnswerCheck(this.userAnswerCheck);
             sc.setNumOfQuestions(this.numOfQuestions);
@@ -326,7 +328,6 @@ public class FIBQuestionsController implements Initializable {
         try {
             this.connection = DriverManager.getConnection(url, username, password);
             if (this.connection != null) {
-                //     System.out.println("Conencted");
             }
         } catch (SQLException e) {
             System.out.println("SQLException: " + e);

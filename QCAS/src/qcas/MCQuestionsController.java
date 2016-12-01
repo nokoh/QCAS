@@ -193,21 +193,22 @@ public class MCQuestionsController implements Initializable {
         startTimer(this.numOfQuestions);
         Parent root;
 
-        this.multipleAnswerQuestions = multipleAnswerQuestions;
-        this.trueFalseQuestions = trueFalseQuestions;
-        this.fillInTheBlanksQuestions = fillInTheBlanksQuestions;
+        this.multipleAnswerQuestions = multipleAnswerQuestions; //sets multiple answer questions to be displayed in results page
+        this.trueFalseQuestions = trueFalseQuestions; //sets true / false questions to be displayed in results page
+        this.fillInTheBlanksQuestions = fillInTheBlanksQuestions; //sets fill in the blanks questions to be displayed in results page
 
         if (size != 0) {
             this.multipleChoiceQuestions = multipleChoiceQuestions;
-            MCQuestionDescriptionLabel.setText(multipleChoiceQuestions.get(size - 1).description);
-            MCOptionA.setText(multipleChoiceQuestions.get(size - 1).answer1);
-            MCOptionB.setText(multipleChoiceQuestions.get(size - 1).answer2);
-            MCOptionC.setText(multipleChoiceQuestions.get(size - 1).answer3);
-            MCOptionD.setText(multipleChoiceQuestions.get(size - 1).answer4);
-            this.allAnsweredQuestions.add(multipleChoiceQuestions.get(size - 1));
+            MCQuestionDescriptionLabel.setText(multipleChoiceQuestions.get(size - 1).description); //sets question description on display
+            MCOptionA.setText(multipleChoiceQuestions.get(size - 1).answer1); //sets options on display
+            MCOptionB.setText(multipleChoiceQuestions.get(size - 1).answer2); //sets options on display
+            MCOptionC.setText(multipleChoiceQuestions.get(size - 1).answer3); //sets options on display
+            MCOptionD.setText(multipleChoiceQuestions.get(size - 1).answer4); //sets options on display
+            this.allAnsweredQuestions.add(multipleChoiceQuestions.get(size - 1)); //add questions to answered questions arrayList
 
+            /*Adds correct answer for question to user asnwer check arrayList*/
             if (multipleChoiceQuestions.get(size - 1).correct1.equals("correct")) {
-                this.userAnswerCheck.add(multipleChoiceQuestions.get(size - 1).answer1);
+                this.userAnswerCheck.add(multipleChoiceQuestions.get(size - 1).answer1); 
             } else if (multipleChoiceQuestions.get(size - 1).correct2.equals("correct")) {
                 this.userAnswerCheck.add(multipleChoiceQuestions.get(size - 1).answer2);
             } else if (multipleChoiceQuestions.get(size - 1).correct3.equals("correct")) {
@@ -216,17 +217,18 @@ public class MCQuestionsController implements Initializable {
                 this.userAnswerCheck.add(multipleChoiceQuestions.get(size - 1).answer4);
             }
             pageNumber += 1;
-            questionNumberLabel.setText(pageNumber + "/" + this.numOfQuestions + "");
-
+            questionNumberLabel.setText(pageNumber + "/" + this.numOfQuestions + "");//sets page number to current question being answered
+            
+            /*Sets Action for option A Button*/
             AButton.setOnAction(e -> {
                 if (multipleChoiceQuestions.get(size - 1).correct1.equals("correct")) {
-                    this.numCorrect++;
-                    this.correctQuestions.add(multipleChoiceQuestions.get(size - 1));
-                    this.userAnswers.add(multipleChoiceQuestions.get(size - 1).answer1);
+                    this.numCorrect++; //increase score count
+                    this.correctQuestions.add(multipleChoiceQuestions.get(size - 1)); //add questions to correct questions arrayList
+                    this.userAnswers.add(multipleChoiceQuestions.get(size - 1).answer1);//add answers to user answers arrayList
                 } else {
-                    this.numIncorrect++;
-                    this.incorrectQuestions.add(multipleChoiceQuestions.get(size - 1));
-                    this.userAnswers.add(multipleChoiceQuestions.get(size - 1).answer1);
+                    this.numIncorrect++; //increase score count
+                    this.incorrectQuestions.add(multipleChoiceQuestions.get(size - 1));//add questions to incorrect questions arrayList
+                    this.userAnswers.add(multipleChoiceQuestions.get(size - 1).answer1);//add answers to user answers arrayList
                 }
                 int m = size - 1;
                 try {
@@ -241,16 +243,17 @@ public class MCQuestionsController implements Initializable {
                 }
 
             });
-
+            
+            /*Sets Action for option B Button*/
             BButton.setOnAction(e -> {
                 if (multipleChoiceQuestions.get(size - 1).correct2.equals("correct")) {
-                    this.numCorrect++;
-                    this.correctQuestions.add(multipleChoiceQuestions.get(size - 1));
-                    this.userAnswers.add(multipleChoiceQuestions.get(size - 1).answer2);
+                    this.numCorrect++; //increase score count
+                    this.correctQuestions.add(multipleChoiceQuestions.get(size - 1)); //add correct questions to correctQuestions arrayList
+                    this.userAnswers.add(multipleChoiceQuestions.get(size - 1).answer2);//add answers to userAnswers arrayList
                 } else {
-                    this.numIncorrect++;
-                    this.incorrectQuestions.add(multipleChoiceQuestions.get(size - 1));
-                    this.userAnswers.add(multipleChoiceQuestions.get(size - 1).answer2);
+                    this.numIncorrect++; //increase score count
+                    this.incorrectQuestions.add(multipleChoiceQuestions.get(size - 1)); //add incorrect questions to incorrect questions arrayList
+                    this.userAnswers.add(multipleChoiceQuestions.get(size - 1).answer2); //add user answers to answered questions arrayList
                 }
                 int m = size - 1;
 
@@ -267,15 +270,16 @@ public class MCQuestionsController implements Initializable {
 
             });
 
+            /*Sets Action for option C Button*/
             CButton.setOnAction(e -> {
                 if (multipleChoiceQuestions.get(size - 1).correct3.equals("correct")) {
-                    this.numCorrect++;
-                    this.correctQuestions.add(multipleChoiceQuestions.get(size - 1));
-                    this.userAnswers.add(multipleChoiceQuestions.get(size - 1).answer3);
+                    this.numCorrect++; //increase score count
+                    this.correctQuestions.add(multipleChoiceQuestions.get(size - 1)); //add questions to correct questions arrayList
+                    this.userAnswers.add(multipleChoiceQuestions.get(size - 1).answer3); //add questions to user answers arrayList
                 } else {
-                    this.numIncorrect++;
-                    this.incorrectQuestions.add(multipleChoiceQuestions.get(size - 1));
-                    this.userAnswers.add(multipleChoiceQuestions.get(size - 1).answer3);
+                    this.numIncorrect++; //increase score count
+                    this.incorrectQuestions.add(multipleChoiceQuestions.get(size - 1)); //add questions to incorrect questions arrayList
+                    this.userAnswers.add(multipleChoiceQuestions.get(size - 1).answer3); //add answer to user answers arrayList
                 }
                 int m = size - 1;
                 try {
@@ -291,15 +295,16 @@ public class MCQuestionsController implements Initializable {
 
             });
 
+            /*Sets Action for option D Button*/
             DButton.setOnAction(e -> {
                 if (multipleChoiceQuestions.get(size - 1).correct4.equals("correct")) {
-                    this.numCorrect++;
-                    this.correctQuestions.add(multipleChoiceQuestions.get(size - 1));
-                    this.userAnswers.add(multipleChoiceQuestions.get(size - 1).answer4);
+                    this.numCorrect++; //increase score count
+                    this.correctQuestions.add(multipleChoiceQuestions.get(size - 1)); //add questions to correct questions arrayList
+                    this.userAnswers.add(multipleChoiceQuestions.get(size - 1).answer4); //add questions to user answers questions arrayList
                 } else {
-                    this.numIncorrect++;
-                    this.incorrectQuestions.add(multipleChoiceQuestions.get(size - 1));
-                    this.userAnswers.add(multipleChoiceQuestions.get(size - 1).answer4);
+                    this.numIncorrect++; //increase score count
+                    this.incorrectQuestions.add(multipleChoiceQuestions.get(size - 1));//add incorrect questions to incorrect questions arrayList
+                    this.userAnswers.add(multipleChoiceQuestions.get(size - 1).answer4); //add user answers to user answers ArrayList 
                 }
                 int m = size - 1;
                 try {
@@ -317,8 +322,10 @@ public class MCQuestionsController implements Initializable {
             Stage stage = (Stage) AButton.getScene().getWindow();
             FXMLLoader f = new FXMLLoader(getClass().getResource("MAQuestions.fxml"));
             root = f.load();
-            MAQuestionsController sc = f.<MAQuestionsController>getController();
-
+            MAQuestionsController sc = f.<MAQuestionsController>getController(); //creating multiple answer controller for next scene
+            
+            /* Sets variables to be used in multiple answer controller */
+            
             sc.initID(this.userId);
             sc.setUserAnswerCheck(this.userAnswerCheck);
             sc.setNumOfQuestions(this.numOfQuestions);
@@ -374,7 +381,6 @@ public class MCQuestionsController implements Initializable {
         try {
             this.connection = DriverManager.getConnection(url, username, password);
             if (this.connection != null) {
-                //      System.out.println("Conencted");
             }
         } catch (SQLException e) {
             System.out.println("SQLException: " + e);
