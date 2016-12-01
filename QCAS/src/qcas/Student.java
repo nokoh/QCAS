@@ -17,6 +17,13 @@ public class Student {
     String studentID;
     String status;
 
+    /**
+     *
+     * @param firstName
+     * @param lastName
+     * @param password
+     * @param studentID
+     */
     public Student(String firstName, String lastName, String password, String studentID) {
         
         this.status = "Student";

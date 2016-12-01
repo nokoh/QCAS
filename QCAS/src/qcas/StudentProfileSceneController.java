@@ -61,6 +61,12 @@ public class StudentProfileSceneController implements Initializable {
         // TODO
     }
 
+    /**
+     * This method pulls from the database the first and last name of the student 
+     * and also pulls up the exam id or exam number.
+     * @param ID
+     * @throws SQLException
+     */
     public void initID(String ID) throws SQLException{ 
         UserIDLabel.setText(ID);
         userId = ID;
@@ -82,6 +88,9 @@ public class StudentProfileSceneController implements Initializable {
     
     }
     
+    /**
+     * StartQuiz method redirects to the selectQuestions scene. 
+     */
     public void startQuiz(){
         
         takeQuizButton.setOnAction(e -> {
@@ -89,12 +98,10 @@ public class StudentProfileSceneController implements Initializable {
             Parent root;
             stage = (Stage)takeQuizButton.getScene().getWindow();
             try {
-                //load up OTHER FXML document
                 FXMLLoader f = new FXMLLoader(getClass().getResource("SelectQuestions.fxml"));
                 root = f.load();
                 SelectQuestionsController sc = f.<SelectQuestionsController>getController();
                 sc.initID(userId);
-//                Parent studentHomePage = FXMLLoader.load(getClass().getResource("studentProfileScene.fxml"));
                 scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
@@ -108,6 +115,10 @@ public class StudentProfileSceneController implements Initializable {
         
     }
     
+    /**
+     * Method to establish database connection to USerDB.
+     * @throws SQLException
+     */
     public void connectToDatabase() throws SQLException{
         
         String url = "jdbc:mysql://adelaide-mysql-qcas1.caswkasqdmel.ap-southeast-2.rds.amazonaws.com:3306/UserDB"; //creates network connection to database for application   

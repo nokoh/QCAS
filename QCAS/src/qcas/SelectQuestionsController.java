@@ -46,7 +46,15 @@ public class SelectQuestionsController implements Initializable {
     Scene scene;
     String userId;
     Connection connection;
+
+    /**
+     *
+     */
     public static int secs;
+
+    /**
+     *
+     */
     public static int maxTime;
     
     
@@ -57,8 +65,11 @@ public class SelectQuestionsController implements Initializable {
     @FXML
     private TextArea outputTextArea;
     
-    
-    
+    /**
+     * Method to set user variables in Select Questions controller
+     * @param ID
+     * @throws SQLException
+     */
     public void initID(String ID) throws SQLException{ 
        userIDLabel.setText(ID);
         userId = ID;
@@ -73,11 +84,18 @@ public class SelectQuestionsController implements Initializable {
             }
     }
     
-
+    /**
+     * Getter method for number of questions
+     * @return
+     */
     public int getNumOfQuestions() {
         return numOfQuestions;
     }
 
+    /**
+     * Setter method for number of questions
+     * @param numOfQuestions
+     */
     public void setNumOfQuestions(int numOfQuestions) {
         this.numOfQuestions = numOfQuestions;
     }
@@ -93,22 +111,28 @@ public class SelectQuestionsController implements Initializable {
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
     
+    /**
+     * Gets the number of questions for a particular user and 
+     * sets the number of questions to be answered in the quiz. 
+     */
     public void getNumberOfQuestions(){
         
+        /* Event handling for selecting questions button */
         eightQuestionsButton.setOnAction(e -> {
             setNumOfQuestions(8);
             Stage stage;
             Parent root;
             stage = (Stage)eightQuestionsButton.getScene().getWindow();
             try {
-                //load up OTHER FXML document
-                FXMLLoader f = new FXMLLoader(getClass().getResource("StartQuizPage.fxml"));
+                FXMLLoader f = new FXMLLoader(getClass().getResource("StartQuizPage.fxml"));//sets scene for start of quiz
                 root = f.load();
                 StartQuizPageController sc = f.<StartQuizPageController>getController();
                 sc.numberOfQuestions = 8;
@@ -122,14 +146,15 @@ public class SelectQuestionsController implements Initializable {
                 Logger.getLogger(SelectQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
             }   
         });
+        
+        /* Event handling for selecting questions button */
         sixteenQuestionsButton.setOnAction(e -> {
             setNumOfQuestions(16);
             Stage stage;
             Parent root;
             stage = (Stage)eightQuestionsButton.getScene().getWindow();
             try {
-                //load up OTHER FXML document
-                FXMLLoader f = new FXMLLoader(getClass().getResource("StartQuizPage.fxml"));
+                FXMLLoader f = new FXMLLoader(getClass().getResource("StartQuizPage.fxml"));//sets scene for start of quiz
                 root = f.load();
                 StartQuizPageController sc = f.<StartQuizPageController>getController();
                 sc.numberOfQuestions = 16;
@@ -143,14 +168,15 @@ public class SelectQuestionsController implements Initializable {
                 Logger.getLogger(SelectQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
             }  
         });
+        
+        /* Event handling for selecting questions button */
         twentyfourQuestionsButton.setOnAction(e -> {
             setNumOfQuestions(24);
             Stage stage;
             Parent root;
             stage = (Stage)eightQuestionsButton.getScene().getWindow();
             try {
-                //load up OTHER FXML document
-                FXMLLoader f = new FXMLLoader(getClass().getResource("StartQuizPage.fxml"));
+                FXMLLoader f = new FXMLLoader(getClass().getResource("StartQuizPage.fxml"));//sets scene for start of quiz
                 root = f.load();
                 StartQuizPageController sc = f.<StartQuizPageController>getController();
                 sc.numberOfQuestions = 24;
@@ -164,14 +190,15 @@ public class SelectQuestionsController implements Initializable {
                 Logger.getLogger(SelectQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
             }  
         });
+        
+        /* Event handling for selecting questions button */
         thirtytwoQuestionsButton.setOnAction(e -> {
             setNumOfQuestions(32);
             Stage stage;
             Parent root;
             stage = (Stage)eightQuestionsButton.getScene().getWindow();
             try {
-                //load up OTHER FXML document
-                FXMLLoader f = new FXMLLoader(getClass().getResource("StartQuizPage.fxml"));
+                FXMLLoader f = new FXMLLoader(getClass().getResource("StartQuizPage.fxml"));//sets scene for start of quiz
                 root = f.load();
                 StartQuizPageController sc = f.<StartQuizPageController>getController();
                 sc.numberOfQuestions = 32;
@@ -188,6 +215,10 @@ public class SelectQuestionsController implements Initializable {
         
     }
     
+    /**
+     * Method to establish database connection to USerDB.
+     * @throws SQLException
+     */
     public void connectToDatabase() throws SQLException{
         
         String url = "jdbc:mysql://adelaide-mysql-qcas1.caswkasqdmel.ap-southeast-2.rds.amazonaws.com:3306/UserDB"; //creates network connection to database for application   

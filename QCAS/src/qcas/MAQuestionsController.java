@@ -404,7 +404,7 @@ public class MAQuestionsController implements Initializable {
     }
 
     /**
-     * 
+     * Method to establish database connection to USerDB.
      * @throws SQLException
      */
     public void connectToDatabase() throws SQLException {

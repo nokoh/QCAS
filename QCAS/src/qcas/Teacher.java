@@ -31,6 +31,13 @@ public class Teacher {
     int teacherID;
     String status;
 
+    /**
+     *
+     * @param firstName
+     * @param lastName
+     * @param password
+     * @param teacherID
+     */
     public Teacher(String firstName, String lastName, String password, int teacherID) {
         this.status = "Teacher";
         this.firstName = firstName;
