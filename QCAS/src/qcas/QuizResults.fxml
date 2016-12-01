@@ -110,15 +110,15 @@
       </Label>
       <VBox layoutX="99.0" layoutY="114.0" prefHeight="81.0" prefWidth="115.0">
          <children>
-            <Label fx:id="studentNameLabel" prefHeight="30.0" prefWidth="114.0" text="studentNameLabel">
+            <Label fx:id="studentNameLabel" prefHeight="30.0" prefWidth="114.0" text="studentNameLabel" textFill="#c31616">
                <font>
                   <Font size="13.0" />
                </font></Label>
-            <Label fx:id="userIDLabel" prefHeight="23.0" prefWidth="102.0" text="userIDLabel">
+            <Label fx:id="userIDLabel" prefHeight="23.0" prefWidth="102.0" text="userIDLabel" textFill="#b91a1a">
                <font>
                   <Font size="13.0" />
                </font></Label>
-            <Label fx:id="quizDateLabel" prefHeight="25.0" prefWidth="115.0" text="quizDateLabel">
+            <Label fx:id="quizDateLabel" prefHeight="25.0" prefWidth="115.0" text="quizDateLabel" textFill="#bc2121">
                <font>
                   <Font size="13.0" />
                </font></Label>

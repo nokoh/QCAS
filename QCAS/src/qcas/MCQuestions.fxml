@@ -95,11 +95,11 @@
       </ImageView>-->
       <VBox layoutX="107.0" layoutY="131.0" prefHeight="62.0" prefWidth="127.0">
          <children>
-            <Label fx:id="studentNameLabel" prefHeight="23.0" prefWidth="112.0" text="studentNameLabel" textFill="#dd1313">
+            <Label fx:id="studentNameLabel" prefHeight="23.0" prefWidth="112.0" text="studentNameLabel" textFill="#a81919">
                <font>
                   <Font size="13.0" />
                </font></Label>
-            <Label fx:id="userIDLabel" prefHeight="26.0" prefWidth="107.0" text="userIDLabel" textFill="#e82222">
+            <Label fx:id="userIDLabel" prefHeight="26.0" prefWidth="107.0" text="userIDLabel" textFill="#c32121">
                <font>
                   <Font size="13.0" />
                </font></Label>
