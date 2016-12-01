@@ -90,6 +90,7 @@
             <Image url="@../clock%20frame.png" />
          </image>
       </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="50.0" layoutX="594.0" layoutY="160.0" stroke="WHITE" strokeType="INSIDE" width="40.0" />
       <TextArea fx:id="outputTextArea" blendMode="MULTIPLY" layoutX="522.0" layoutY="139.0" prefHeight="88.0" prefWidth="196.0">
          <font>
             <Font name="System Bold" size="42.0" />
