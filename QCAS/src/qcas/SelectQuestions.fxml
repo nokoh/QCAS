@@ -28,7 +28,7 @@
                </stops>
             </LinearGradient>
          </fill></Rectangle>
-      <Button id="eightQuestionsButton" fx:id="eightQuestionsButton" layoutX="301.0" layoutY="224.0" mnemonicParsing="false" onAction="#getNumberOfQuestions" prefHeight="25.0" prefWidth="163.0" style="-fx-background-color: maroon;" text="8 Questions" textFill="#fcf9f9">
+      <Button id="eightQuestionsButton" fx:id="eightQuestionsButton" layoutX="301.0" layoutY="224.0" mnemonicParsing="false" onAction="#getNumberOfQuestions" prefHeight="25.0" prefWidth="163.0" style="-fx-background-color: maroon;" text="8 Questions" textFill="WHITE">
          <effect>
             <InnerShadow />
          </effect></Button>
@@ -36,11 +36,11 @@
          <effect>
             <InnerShadow />
          </effect></Button>
-      <Button id="twentyfourQuestionsButton" fx:id="twentyfourQuestionsButton" layoutX="301.0" layoutY="320.0" mnemonicParsing="false" onAction="#getNumberOfQuestions" prefHeight="25.0" prefWidth="163.0" style="-fx-background-color: maroon;" text="24 Questions" textFill="#f8f7f7">
+      <Button id="twentyfourQuestionsButton" fx:id="twentyfourQuestionsButton" layoutX="301.0" layoutY="320.0" mnemonicParsing="false" onAction="#getNumberOfQuestions" prefHeight="25.0" prefWidth="163.0" style="-fx-background-color: maroon;" text="24 Questions" textFill="WHITE">
          <effect>
             <InnerShadow />
          </effect></Button>
-      <Button id="thirtytwoQuestionsButton" fx:id="thirtytwoQuestionsButton" layoutX="301.0" layoutY="371.0" mnemonicParsing="false" onAction="#getNumberOfQuestions" prefHeight="25.0" prefWidth="163.0" style="-fx-background-color: maroon;" text="32 Questions" textFill="#fffdfd">
+      <Button id="thirtytwoQuestionsButton" fx:id="thirtytwoQuestionsButton" layoutX="301.0" layoutY="371.0" mnemonicParsing="false" onAction="#getNumberOfQuestions" prefHeight="25.0" prefWidth="163.0" style="-fx-background-color: maroon;" text="32 Questions" textFill="WHITE">
          <effect>
             <InnerShadow />
          </effect></Button>
@@ -65,13 +65,13 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <VBox layoutX="105.0" layoutY="124.0" prefHeight="53.0" prefWidth="136.0">
+      <VBox layoutX="109.0" layoutY="124.0" prefHeight="53.0" prefWidth="132.0">
          <children>
-            <Label fx:id="studentNameLabel" prefHeight="27.0" prefWidth="136.0" text="studentNameLabel">
+            <Label fx:id="studentNameLabel" prefHeight="27.0" prefWidth="136.0" text="studentNameLabel" textFill="#ab2424">
                <font>
                   <Font size="13.0" />
                </font></Label>
-            <Label fx:id="userIDLabel" prefHeight="23.0" prefWidth="126.0" text="userIDLabel">
+            <Label fx:id="userIDLabel" prefHeight="23.0" prefWidth="126.0" text="userIDLabel" textFill="#a81919">
                <font>
                   <Font size="13.0" />
                </font></Label>

@@ -162,6 +162,10 @@ public class LoginScreenController implements Initializable {
             passwordField.clear();
         }
     }
+    /**
+     * 
+     * @throws IOException 
+     */
      public void signUp() throws IOException {
         signUpButton.setOnAction(h -> {
 
@@ -175,6 +179,8 @@ public class LoginScreenController implements Initializable {
         }
     }
     /**
+     * When the Sign Up Button is clicked, users are allowed to create a 
+     * new profile. Users are directed to the SignUpQCAS Scene
      *
      * @throws java.io.IOException
      */
