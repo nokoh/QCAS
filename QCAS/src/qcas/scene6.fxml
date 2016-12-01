@@ -14,10 +14,10 @@
 
 <AnchorPane id="AnchorPane" fx:id="teacherDashboardPane" prefHeight="700.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qcas.Scene6Controller">
         <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#edeeee" height="101.0" layoutX="15.0" layoutY="212.0" stroke="BLACK" strokeType="INSIDE" width="572.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#edeeee" height="45.0" layoutX="15.0" layoutY="212.0" stroke="BLACK" strokeType="INSIDE" width="572.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f2f0f0" height="45.0" layoutX="14.0" layoutY="160.0" stroke="BLACK" strokeType="INSIDE" width="572.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e9eaeb" height="53.0" layoutX="14.0" layoutY="101.0" stroke="BLACK" strokeType="INSIDE" width="572.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="53.0" layoutX="19.0" layoutY="15.0" stroke="BLACK" strokeType="INSIDE" width="561.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="53.0" layoutX="19.0" layoutY="15.0" stroke="BLACK" strokeType="INSIDE" width="572.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0" startX="1.0">
                <stops>
@@ -26,9 +26,9 @@
                </stops>
             </LinearGradient>
          </fill></Rectangle>
-      <Label layoutX="215.0" layoutY="19.0" text="Quiz Results" textFill="#fffbfb">
+      <Label layoutX="59.0" layoutY="14.0" text="Quiz Results - Teacher Dashboard" textFill="WHITE">
          <font>
-            <Font name="Segoe UI Semilight" size="30.0" />
+            <Font name="Segoe UI Light" size="34.0" />
          </font>
       </Label>
       <Label layoutX="506.0" layoutY="644.0" text="Teacher Reports">
@@ -56,17 +56,17 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label layoutX="92.0" layoutY="174.0" text="# Tests Taken:">
+      <Label alignment="CENTER_RIGHT" layoutX="92.0" layoutY="174.0" prefHeight="17.0" prefWidth="87.0" text="# Tests Taken:">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label layoutX="62.0" layoutY="110.0" prefHeight="17.0" prefWidth="131.0" text="# Passing Students:">
+      <Label alignment="CENTER_RIGHT" layoutX="48.0" layoutY="110.0" prefHeight="17.0" prefWidth="133.0" text="# Passing Students: ">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label layoutX="33.0" layoutY="127.0" text="# Non-Passing Students:">
+      <Label alignment="CENTER" layoutX="31.0" layoutY="127.0" prefHeight="17.0" prefWidth="158.0" text="# Non-Passing Students:">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -76,53 +76,29 @@
             <InnerShadow />
          </effect>
       </Button>
-      <VBox alignment="CENTER" layoutX="27.0" layoutY="213.0" prefHeight="100.0" prefWidth="158.0">
+      <VBox alignment="CENTER" layoutX="27.0" layoutY="213.0" prefHeight="45.0" prefWidth="158.0">
          <children>
             <Label prefHeight="17.0" prefWidth="188.0" text="Average Overall Quiz Score:">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="157.0" text="Average Easy Score:">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="17.0" prefWidth="158.0" text="Average Medium Score:">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="159.0" text="Average Hard Score:">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
          </children>
       </VBox>
-      <HBox layoutX="185.0" layoutY="219.0" prefHeight="93.0" prefWidth="393.0">
+      <HBox layoutX="185.0" layoutY="212.0" prefHeight="45.0" prefWidth="402.0">
          <children>
             <VBox alignment="CENTER" prefHeight="88.0" prefWidth="133.0">
                <children>
-                  <Label fx:id="avgQuizScoreLM" text="Label" />
-                  <Label fx:id="avgEasyScoreLM" text="Label" />
-                  <Label fx:id="avgMediumScoreLM" text="Label" />
-                  <Label fx:id="avgHardScoreLM" text="Label" />
+                  <Label fx:id="avgQuizScoreLM" alignment="CENTER" text="Label" />
                </children></VBox>
             <VBox alignment="CENTER" prefHeight="88.0" prefWidth="133.0">
                <children>
                   <Label fx:id="avgQuizScoreLQ" text="Label" />
-                  <Label fx:id="avgEasyScoreLQ" text="Label" />
-                  <Label fx:id="avgMediumScoreLQ" text="Label" />
-                  <Label fx:id="avgHardScoreLQ" text="Label" />
                </children>
             </VBox>
             <VBox alignment="CENTER" prefHeight="88.0" prefWidth="133.0">
                <children>
                   <Label fx:id="avgQuizScoreLY" text="Label" />
-                  <Label fx:id="avgEasyScoreLY" text="Label" />
-                  <Label fx:id="avgMediumScoreLY" text="Label" />
-                  <Label fx:id="avgHardScoreLY" text="Label" />
                </children>
             </VBox>
          </children>
@@ -233,7 +209,7 @@
             </BarChart>
          </children>
       </VBox>
-      <VBox layoutX="19.0" layoutY="314.0" prefHeight="327.0" prefWidth="572.0">
+      <VBox layoutX="19.0" layoutY="260.0" prefHeight="381.0" prefWidth="572.0">
          <children>
             <ComboBox fx:id="yearSelector" prefWidth="150.0" promptText="Select Year" visibleRowCount="4">
                <VBox.margin>
@@ -253,13 +229,13 @@
             </LineChart>
          </children>
       </VBox>
-      <Label fx:id="testTakenLastMonth" layoutX="240.0" layoutY="174.0" text="Label" />
-      <Label fx:id="testTakenLastQuarter" layoutX="359.0" layoutY="174.0" text="Label" />
+      <Label fx:id="testTakenLastMonth" alignment="CENTER" layoutX="233.0" layoutY="174.0" prefHeight="17.0" prefWidth="35.0" text="Label" />
+      <Label fx:id="testTakenLastQuarter" alignment="CENTER" layoutX="359.0" layoutY="174.0" prefHeight="17.0" prefWidth="41.0" text="Label" />
       <Label fx:id="testTakenLastYear" layoutX="498.0" layoutY="175.0" text="Label" />
-      <Label fx:id="passingLastMonth" layoutX="226.0" layoutY="110.0" text="Label" />
-      <Label fx:id="nonPassingLastMonth" layoutX="226.0" layoutY="127.0" text="Label" />
-      <Label fx:id="passingLastQuarter" layoutX="359.0" layoutY="110.0" text="Label" />
-      <Label fx:id="nonPassingLastQuarter" layoutX="359.0" layoutY="127.0" text="Label" />
+      <Label fx:id="passingLastMonth" alignment="CENTER" layoutX="226.0" layoutY="110.0" prefHeight="17.0" prefWidth="48.0" text="Label" />
+      <Label fx:id="nonPassingLastMonth" alignment="CENTER" layoutX="226.0" layoutY="127.0" prefHeight="17.0" prefWidth="48.0" text="Label" />
+      <Label fx:id="passingLastQuarter" alignment="CENTER" layoutX="359.0" layoutY="110.0" prefHeight="17.0" prefWidth="41.0" text="Label" />
+      <Label fx:id="nonPassingLastQuarter" alignment="CENTER" layoutX="359.0" layoutY="127.0" prefHeight="17.0" prefWidth="41.0" text="Label" />
       <Label fx:id="passingLastYear" layoutX="498.0" layoutY="110.0" text="Label" />
       <Label fx:id="nonPassingLastYear" layoutX="498.0" layoutY="127.0" text="Label" />
    </children>

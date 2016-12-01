@@ -11,11 +11,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qcas.SignUpQCASController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="qcas.SignUpQCASController">
     <children>
       <ImageView fitHeight="550.0" fitWidth="700.0" layoutX="-1.0" pickOnBounds="true">
          <image>
-            <Image url="@../../../CMU%20Plaid.jpg" />
+            <Image url="@../CMU%20Plaid.jpg" />
          </image>
       </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="475.0" layoutX="21.0" layoutY="60.0" stroke="BLACK" strokeType="INSIDE" width="658.0" />
@@ -32,9 +32,9 @@
          <effect>
             <InnerShadow />
          </effect></Button>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="197.0" layoutY="19.0" prefHeight="75.0" prefWidth="306.0" text="Sign Up" textAlignment="CENTER" textFill="#fcf8f8">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="197.0" layoutY="19.0" prefHeight="75.0" prefWidth="306.0" text="Sign Up" textAlignment="CENTER" textFill="WHITE">
          <font>
-            <Font name="Segoe UI Semilight" size="35.0" />
+            <Font name="Segoe UI Light" size="36.0" />
          </font>
       </Label>
       <VBox layoutX="99.0" layoutY="122.0" prefHeight="336.0" prefWidth="504.0">
@@ -80,7 +80,10 @@
             </HBox>
          </children>
       </VBox>
-      <Button fx:id="signUpButton" layoutX="383.0" layoutY="476.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" style="-fx-background-color: maroon;" text="Sign Up" textFill="#f8f7f7" />
+      <Button fx:id="signUpButton" layoutX="383.0" layoutY="476.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" style="-fx-background-color: maroon;" text="Sign Up" textFill="#f8f7f7">
+         <effect>
+            <InnerShadow />
+         </effect></Button>
       <Label fx:id="errorMessageLabel" layoutX="337.0" layoutY="450.0" text="Label" />
    </children>
    <effect>
