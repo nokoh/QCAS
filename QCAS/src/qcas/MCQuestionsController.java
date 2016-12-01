@@ -363,7 +363,7 @@ public class MCQuestionsController implements Initializable {
                 outputTextArea.setText((Integer.toString(secs / 60)) + " : " + Integer.toString(secs % 60));
 
                 if (secs == 0) {
-                    outputTextArea.setText("Time Up!!");
+                    outputTextArea.setText("       ");
                     service.shutdownNow();
                 }
             }
