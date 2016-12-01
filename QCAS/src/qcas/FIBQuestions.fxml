@@ -90,15 +90,15 @@
             <Image url="@../clock%20frame.png" />
          </image>
       </ImageView>
-      <TextArea fx:id="outputTextArea" blendMode="MULTIPLY" layoutX="522.0" layoutY="152.0" prefHeight="75.0" prefWidth="196.0">
+      <TextArea fx:id="outputTextArea" blendMode="MULTIPLY" layoutX="522.0" layoutY="139.0" prefHeight="88.0" prefWidth="196.0">
          <font>
-            <Font size="42.0" />
+            <Font name="System Bold" size="42.0" />
          </font>
          <effect>
-            <Blend mode="MULTIPLY" />
+            <Blend mode="OVERLAY" />
          </effect>
       </TextArea>
-      <ImageView fitHeight="184.0" fitWidth="292.0" layoutX="455.0" layoutY="89.0" pickOnBounds="true">
+      <ImageView fitHeight="184.0" fitWidth="292.0" layoutX="458.0" layoutY="88.0" pickOnBounds="true">
          <image>
             <Image url="@../11501757.png" />
          </image>
