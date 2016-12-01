@@ -15,13 +15,13 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: maroon;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qcas.MCQuestionsController">
     <children>
-      <ImageView fitHeight="550.0" fitWidth="750.0" layoutX="1.0" layoutY="-1.0" pickOnBounds="true">
+      <ImageView fitHeight="550.0" fitWidth="790.0" layoutX="1.0" layoutY="-1.0" pickOnBounds="true">
          <image>
             <Image url="@../CMU%20Plaid.jpg" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="509.0" layoutX="20.0" layoutY="18.0" stroke="BLACK" strokeType="INSIDE" width="712.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="81.0" layoutX="20.0" layoutY="19.0" stroke="BLACK" strokeType="INSIDE" width="712.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="509.0" layoutX="20.0" layoutY="18.0" stroke="BLACK" strokeType="INSIDE" width="753.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="81.0" layoutX="20.0" layoutY="19.0" stroke="BLACK" strokeType="INSIDE" width="753.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.28095238095238095">
                <stops>
@@ -42,7 +42,7 @@
             <Label fx:id="MCOptionC" prefHeight="41.0" prefWidth="365.0" text="MCOptionC" wrapText="true" />
             <Label fx:id="MCOptionD" prefHeight="43.0" prefWidth="365.0" text="MCOptionD" wrapText="true" />
          </children></VBox>
-      <Label layoutX="642.0" layoutY="498.0" text="Multiple Choice">
+      <Label layoutX="684.0" layoutY="500.0" text="Multiple Choice">
          <font>
             <Font size="10.0" />
          </font>
@@ -119,16 +119,6 @@
             <Image url="@../clock%20frame.png" />
          </image>
       </ImageView>
-      <TextArea fx:id="outputTextArea" blendMode="MULTIPLY" editable="false" layoutX="534.0" layoutY="122.0" prefHeight="81.0" prefWidth="188.0">
-         <font>
-            <Font name="System Bold" size="42.0" />
-         </font>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-         <effect>
-            <Blend mode="MULTIPLY" />
-         </effect></TextArea>
       <ImageView fitHeight="46.0" fitWidth="25.0" layoutX="613.0" layoutY="145.0" pickOnBounds="true">
          <image>
             <Image url="@../clock%20insert.png" />
@@ -139,6 +129,16 @@
             <Image url="@../11501757.png" />
          </image>
       </ImageView>
+      <TextArea fx:id="outputTextArea" blendMode="MULTIPLY" editable="false" layoutX="534.0" layoutY="122.0" prefHeight="81.0" prefWidth="188.0">
+         <font>
+            <Font name="System Bold" size="42.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <effect>
+            <Blend mode="OVERLAY" />
+         </effect></TextArea>
 <!--      <ImageView fitHeight="38.0" fitWidth="25.0" layoutX="619.0" layoutY="142.0" pickOnBounds="true">
          <image>
             <Image url="@../clock%20insert.png" />

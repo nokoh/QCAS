@@ -13,13 +13,13 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: maroon;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qcas.MAQuestionsController">
    <children>
-      <ImageView fitHeight="550.0" fitWidth="750.0" layoutX="-6.0" pickOnBounds="true">
+      <ImageView fitHeight="550.0" fitWidth="790.0" layoutX="-6.0" pickOnBounds="true">
          <image>
             <Image url="@../CMU%20Plaid.jpg" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="501.0" layoutX="17.0" layoutY="33.0" stroke="BLACK" strokeType="INSIDE" width="708.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="86.0" layoutX="17.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="708.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="501.0" layoutX="17.0" layoutY="33.0" stroke="BLACK" strokeType="INSIDE" width="748.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="86.0" layoutX="17.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="748.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.17619047619047618">
                <stops>
@@ -121,7 +121,7 @@
             <Font name="System Bold" size="42.0" />
          </font>
          <effect>
-            <Blend />
+            <Blend mode="MULTIPLY" />
          </effect></TextArea>
       <ImageView fitHeight="53.0" fitWidth="32.0" layoutX="608.0" layoutY="139.0" pickOnBounds="true" preserveRatio="true">
          <image>

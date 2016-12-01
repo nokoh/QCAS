@@ -92,7 +92,7 @@
          <font>
             <Font size="13.0" />
          </font></Label>
-      <TextArea fx:id="outputTextArea" layoutX="507.0" layoutY="132.0" prefHeight="81.0" prefWidth="196.0">
+      <TextArea fx:id="outputTextArea" blendMode="MULTIPLY" layoutX="505.0" layoutY="123.0" prefHeight="81.0" prefWidth="196.0">
          <font>
             <Font size="42.0" />
          </font></TextArea>
