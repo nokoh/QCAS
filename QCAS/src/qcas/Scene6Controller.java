@@ -568,6 +568,7 @@ public class Scene6Controller implements Initializable {
   
            xAxis.setLabel("Questions Difficulty");       
            yAxis.setLabel("Average Score");
+
             XYChart.Series series1 = new XYChart.Series();
             XYChart.Series series2 = new XYChart.Series();
             XYChart.Series series3 = new XYChart.Series();

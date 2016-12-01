@@ -5,6 +5,7 @@
  */
 package qcas;
 
+import com.itextpdf.text.DocumentException;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -155,7 +156,7 @@ public class TFQuestionsController implements Initializable {
     
     
     public void launchTF(ArrayList<MultipleChoice>multipleChoiceQuestions, ArrayList<MultipleAnswer>multipleAnswerQuestions, 
-            ArrayList<TrueFalse>trueFalseQuestions, ArrayList<FillInTheBlanks>fillInTheBlanksQuestions,int size) throws IOException, SQLException{
+            ArrayList<TrueFalse>trueFalseQuestions, ArrayList<FillInTheBlanks>fillInTheBlanksQuestions,int size) throws IOException, SQLException, DocumentException{
         Parent root;
         this.multipleAnswerQuestions = multipleAnswerQuestions;
         this.multipleChoiceQuestions = multipleChoiceQuestions;
@@ -192,6 +193,8 @@ public class TFQuestionsController implements Initializable {
                 Logger.getLogger(MCQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
             }   catch (SQLException ex) {
                     Logger.getLogger(TFQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (DocumentException ex) {
+                    Logger.getLogger(TFQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 
             });
@@ -215,6 +218,8 @@ public class TFQuestionsController implements Initializable {
             } catch (IOException ex) {
                 Logger.getLogger(MCQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
             }   catch (SQLException ex) {
+                    Logger.getLogger(TFQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (DocumentException ex) {
                     Logger.getLogger(TFQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             });

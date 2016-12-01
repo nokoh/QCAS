@@ -5,6 +5,7 @@
  */
 package qcas;
 
+import com.itextpdf.text.DocumentException;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -142,6 +143,8 @@ public class StartQuizPageController implements Initializable {
              //   Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SQLException ex) {
                 Logger.getLogger(StartQuizPageController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (DocumentException ex) {
+                Logger.getLogger(StartQuizPageController.class.getName()).log(Level.SEVERE, null, ex);
             } 
         });
         
@@ -200,6 +203,8 @@ public class StartQuizPageController implements Initializable {
              //   Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SQLException ex) {
                 Logger.getLogger(StartQuizPageController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (DocumentException ex) {
+                Logger.getLogger(StartQuizPageController.class.getName()).log(Level.SEVERE, null, ex);
             } 
         });
         
@@ -257,6 +262,8 @@ public class StartQuizPageController implements Initializable {
                 } catch (IOException ex) {
              //   Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SQLException ex) {
+                Logger.getLogger(StartQuizPageController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (DocumentException ex) {
                 Logger.getLogger(StartQuizPageController.class.getName()).log(Level.SEVERE, null, ex);
             } 
         });
@@ -348,6 +355,8 @@ public class StartQuizPageController implements Initializable {
                 } catch (IOException ex) {
              //   Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SQLException ex) {
+                Logger.getLogger(StartQuizPageController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (DocumentException ex) {
                 Logger.getLogger(StartQuizPageController.class.getName()).log(Level.SEVERE, null, ex);
             } 
             

@@ -5,6 +5,7 @@
  */
 package qcas;
 
+import com.itextpdf.text.DocumentException;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -145,7 +146,7 @@ public class MCQuestionsController implements Initializable {
     }
 
     public void launchMCQ(ArrayList<MultipleAnswer>multipleAnswerQuestions, ArrayList<MultipleChoice>multipleChoiceQuestions, 
-            ArrayList<TrueFalse>trueFalseQuestions, ArrayList<FillInTheBlanks>fillInTheBlanksQuestions, int size) throws IOException, SQLException{
+            ArrayList<TrueFalse>trueFalseQuestions, ArrayList<FillInTheBlanks>fillInTheBlanksQuestions, int size) throws IOException, SQLException, DocumentException{
         startTimer(this.numOfQuestions);
         Parent root;
     //    System.out.println("This is sizw: " + size);
@@ -196,6 +197,8 @@ public class MCQuestionsController implements Initializable {
                 Logger.getLogger(MCQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SQLException ex) {
                 Logger.getLogger(MCQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (DocumentException ex) {
+                Logger.getLogger(MCQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
             }
             
         });
@@ -220,6 +223,8 @@ public class MCQuestionsController implements Initializable {
                 Logger.getLogger(MCQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SQLException ex) {
                 Logger.getLogger(MCQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (DocumentException ex) {
+                Logger.getLogger(MCQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
             }
             
         });
@@ -243,6 +248,8 @@ public class MCQuestionsController implements Initializable {
                 Logger.getLogger(MCQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SQLException ex) {
                 Logger.getLogger(MCQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (DocumentException ex) {
+                Logger.getLogger(MCQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
             }
             
         });
@@ -265,6 +272,8 @@ public class MCQuestionsController implements Initializable {
             } catch (IOException ex) {
                 Logger.getLogger(MCQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SQLException ex) {
+                Logger.getLogger(MCQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (DocumentException ex) {
                 Logger.getLogger(MCQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });

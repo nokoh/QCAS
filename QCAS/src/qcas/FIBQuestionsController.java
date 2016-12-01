@@ -5,6 +5,7 @@
  */
 package qcas;
 
+import com.itextpdf.text.DocumentException;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -155,7 +156,7 @@ public class FIBQuestionsController implements Initializable {
     
     
     public void launchFIB(ArrayList<MultipleChoice>multipleChoiceQuestions, ArrayList<MultipleAnswer>multipleAnswerQuestions, 
-            ArrayList<TrueFalse>trueFalseQuestions, ArrayList<FillInTheBlanks>fillInTheBlanksQuestions,int size) throws IOException, SQLException{
+            ArrayList<TrueFalse>trueFalseQuestions, ArrayList<FillInTheBlanks>fillInTheBlanksQuestions,int size) throws IOException, SQLException, DocumentException{
         Parent root;
         this.multipleAnswerQuestions = multipleAnswerQuestions;
         this.multipleChoiceQuestions = multipleChoiceQuestions;
@@ -201,6 +202,8 @@ public class FIBQuestionsController implements Initializable {
             } catch (IOException ex) {
                 Logger.getLogger(MCQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
             }   catch (SQLException ex) {
+                    Logger.getLogger(FIBQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (DocumentException ex) {
                     Logger.getLogger(FIBQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             });
