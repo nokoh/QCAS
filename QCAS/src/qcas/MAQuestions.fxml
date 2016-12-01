@@ -92,11 +92,11 @@
       </Label>
       <VBox layoutX="103.0" layoutY="129.0" prefHeight="67.0" prefWidth="126.0">
          <children>
-            <Label fx:id="studentNameLabel" prefHeight="26.0" prefWidth="126.0" text="studentNameLabel">
+            <Label fx:id="studentNameLabel" prefHeight="26.0" prefWidth="126.0" text="studentNameLabel" textFill="#eb1b1b">
                <font>
                   <Font size="13.0" />
                </font></Label>
-            <Label fx:id="userIDLabel" prefHeight="20.0" prefWidth="126.0" text="userIDLabel">
+            <Label fx:id="userIDLabel" prefHeight="20.0" prefWidth="126.0" text="userIDLabel" textFill="#eb2626">
                <font>
                   <Font size="13.0" />
                </font></Label>

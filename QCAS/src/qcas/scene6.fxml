@@ -87,18 +87,18 @@
       </VBox>
       <HBox layoutX="185.0" layoutY="212.0" prefHeight="45.0" prefWidth="402.0">
          <children>
-            <VBox alignment="CENTER" prefHeight="88.0" prefWidth="133.0">
+            <VBox alignment="CENTER" prefHeight="45.0" prefWidth="127.0">
                <children>
-                  <Label fx:id="avgQuizScoreLM" alignment="CENTER" text="Label" />
+                  <Label fx:id="avgQuizScoreLM" alignment="CENTER" prefHeight="17.0" prefWidth="33.0" text="Label" />
                </children></VBox>
-            <VBox alignment="CENTER" prefHeight="88.0" prefWidth="133.0">
+            <VBox alignment="CENTER" prefHeight="45.0" prefWidth="136.0">
                <children>
                   <Label fx:id="avgQuizScoreLQ" text="Label" />
                </children>
             </VBox>
-            <VBox alignment="CENTER" prefHeight="88.0" prefWidth="133.0">
+            <VBox alignment="CENTER" prefHeight="45.0" prefWidth="131.0">
                <children>
-                  <Label fx:id="avgQuizScoreLY" text="Label" />
+                  <Label fx:id="avgQuizScoreLY" alignment="CENTER" prefHeight="17.0" prefWidth="36.0" text="Label" />
                </children>
             </VBox>
          </children>
@@ -231,7 +231,7 @@
       </VBox>
       <Label fx:id="testTakenLastMonth" alignment="CENTER" layoutX="233.0" layoutY="174.0" prefHeight="17.0" prefWidth="35.0" text="Label" />
       <Label fx:id="testTakenLastQuarter" alignment="CENTER" layoutX="359.0" layoutY="174.0" prefHeight="17.0" prefWidth="41.0" text="Label" />
-      <Label fx:id="testTakenLastYear" layoutX="498.0" layoutY="175.0" text="Label" />
+      <Label fx:id="testTakenLastYear" alignment="CENTER" layoutX="492.0" layoutY="175.0" prefHeight="17.0" prefWidth="41.0" text="Label" />
       <Label fx:id="passingLastMonth" alignment="CENTER" layoutX="226.0" layoutY="110.0" prefHeight="17.0" prefWidth="48.0" text="Label" />
       <Label fx:id="nonPassingLastMonth" alignment="CENTER" layoutX="226.0" layoutY="127.0" prefHeight="17.0" prefWidth="48.0" text="Label" />
       <Label fx:id="passingLastQuarter" alignment="CENTER" layoutX="359.0" layoutY="110.0" prefHeight="17.0" prefWidth="41.0" text="Label" />
