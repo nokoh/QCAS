@@ -139,6 +139,15 @@ public class SignUpQCASController implements Initializable {
                     lastNameField.getText();
                     idNumberField.getText();
                     
+                    preparedStatement = connection.prepareStatement("insert into Users (userid, firstNam, lastname, password, status) VALUES (?,?,?,?);");
+                    preparedStatement.setString(1, idNumberField.getText());
+                    preparedStatement.setString(2, firstNameField.getText());
+                    preparedStatement.setString(3, lastNameField.getText());
+                    preparedStatement.setString(4, password);
+                    preparedStatement.setString(5, selected);
+                    
+                    
+                    
                     FXMLLoader f = new FXMLLoader(getClass().getResource("LoginScreen.fxml"));
                     Parent loginPage = f.load();
                     LoginScreenController sc = f.<LoginScreenController>getController();
