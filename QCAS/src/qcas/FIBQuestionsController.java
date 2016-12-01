@@ -88,7 +88,7 @@ public class FIBQuestionsController implements Initializable {
     }
 
     /**
-     *
+     * 
      * @param ID
      * @throws SQLException
      */
@@ -155,7 +155,7 @@ public class FIBQuestionsController implements Initializable {
     }
 
     /**
-     *
+     * Getter method for page number variable
      * @return
      */
     public ArrayList<Question> getIncorrectQuestions() {
@@ -163,7 +163,7 @@ public class FIBQuestionsController implements Initializable {
     }
 
     /**
-     *
+     * Setter method for incorrect questions variable
      * @param incorrectQuestions
      */
     public void setIncorrectQuestions(ArrayList<Question> incorrectQuestions) {
@@ -171,7 +171,7 @@ public class FIBQuestionsController implements Initializable {
     }
 
     /**
-     *
+     * Setter method for user answers variable
      * @param userAnswers
      */
     public void setUserAnswers(ArrayList<String> userAnswers) {
@@ -179,7 +179,7 @@ public class FIBQuestionsController implements Initializable {
     }
 
     /**
-     *
+     * Setter method correct answer variable
      * @param userAnswerCheck
      */
     public void setUserAnswerCheck(ArrayList<String> userAnswerCheck) {
@@ -187,7 +187,7 @@ public class FIBQuestionsController implements Initializable {
     }
 
     /**
-     *
+     * Setter method for answered questions variable
      * @param allAnsweredQuestions
      */
     public void setAllAnsweredQuestions(ArrayList<Question> allAnsweredQuestions) {
@@ -195,7 +195,7 @@ public class FIBQuestionsController implements Initializable {
     }
 
     /**
-     *
+     * Setter method for page number variable
      * @param pageNumber
      */
     public void setPageNumber(int pageNumber) {
@@ -203,7 +203,8 @@ public class FIBQuestionsController implements Initializable {
     }
 
     /**
-     *
+     * Launch method to display fill in the blank questions generated for quiz.
+     * 
      * @param multipleChoiceQuestions
      * @param multipleAnswerQuestions
      * @param trueFalseQuestions

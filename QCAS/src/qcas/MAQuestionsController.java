@@ -93,7 +93,8 @@ public class MAQuestionsController implements Initializable {
     private TextArea outputTextArea;
 
     /**
-     *
+     * Initialize method for Multiple Choice Questions. 
+     * Sets initial parameters for user information. 
      * @param ID
      * @throws SQLException
      */
@@ -112,7 +113,7 @@ public class MAQuestionsController implements Initializable {
     }
 
     /**
-     *
+     * Setter method for userScore variable. 
      * @param num
      */
     public void setScore(int num) {
@@ -120,7 +121,7 @@ public class MAQuestionsController implements Initializable {
     }
 
     /**
-     *
+     * Setter method for number of questions variable. 
      * @param num
      */
     public void setNumOfQuestions(int num) {
@@ -128,7 +129,7 @@ public class MAQuestionsController implements Initializable {
     }
 
     /**
-     *
+     * Setter method for correct questions variable. 
      * @param num
      */
     public void setCorrect(int num) {
@@ -136,7 +137,7 @@ public class MAQuestionsController implements Initializable {
     }
 
     /**
-     *
+     * Setter method for incorrect questions variable. 
      * @param num
      */
     public void setIncorrect(int num) {
@@ -144,7 +145,7 @@ public class MAQuestionsController implements Initializable {
     }
 
     /**
-     *
+     * Getter method for correct questions variable. 
      * @return
      */
     public ArrayList<Question> getCorrectQuestions() {
@@ -152,7 +153,7 @@ public class MAQuestionsController implements Initializable {
     }
 
     /**
-     *
+     * Setter method for correct questions variable
      * @param correctQuestions
      */
     public void setCorrectQuestions(ArrayList<Question> correctQuestions) {
@@ -160,7 +161,7 @@ public class MAQuestionsController implements Initializable {
     }
 
     /**
-     *
+     * Getter method for incorrect questions variable
      * @return
      */
     public ArrayList<Question> getIncorrectQuestions() {
@@ -168,7 +169,7 @@ public class MAQuestionsController implements Initializable {
     }
 
     /**
-     *
+     * Setter method for incorrect questions variable
      * @param incorrectQuestions
      */
     public void setIncorrectQuestions(ArrayList<Question> incorrectQuestions) {
@@ -176,7 +177,7 @@ public class MAQuestionsController implements Initializable {
     }
 
     /**
-     * 
+     * Setter method for user answers variable
      * @param userAnswers
      */
     public void setUserAnswers(ArrayList<String> userAnswers) {

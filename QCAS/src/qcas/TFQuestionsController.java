@@ -37,21 +37,21 @@ import static qcas.SelectQuestionsController.secs;
  * FXML Controller class
  *
  * @author Nnamdi
- * 
- * 
- * 
+ *
+ *
+ *
  */
 public class TFQuestionsController implements Initializable {
-    
-    ArrayList<MultipleChoice>multipleChoiceQuestions = new ArrayList();
-    ArrayList<MultipleAnswer>multipleAnswerQuestions = new ArrayList();
-    ArrayList<TrueFalse>trueFalseQuestions = new ArrayList();
-    ArrayList<FillInTheBlanks>fillInTheBlanksQuestions = new ArrayList();
-    ArrayList <Question> correctQuestions = new ArrayList();
-    ArrayList <Question> incorrectQuestions = new ArrayList();
-    ArrayList <String> userAnswers = new ArrayList();
-    ArrayList <String> userAnswerCheck = new ArrayList();
-    ArrayList <Question> allAnsweredQuestions = new ArrayList();
+
+    ArrayList<MultipleChoice> multipleChoiceQuestions = new ArrayList();
+    ArrayList<MultipleAnswer> multipleAnswerQuestions = new ArrayList();
+    ArrayList<TrueFalse> trueFalseQuestions = new ArrayList();
+    ArrayList<FillInTheBlanks> fillInTheBlanksQuestions = new ArrayList();
+    ArrayList<Question> correctQuestions = new ArrayList();
+    ArrayList<Question> incorrectQuestions = new ArrayList();
+    ArrayList<String> userAnswers = new ArrayList();
+    ArrayList<String> userAnswerCheck = new ArrayList();
+    ArrayList<Question> allAnsweredQuestions = new ArrayList();
 
     @FXML
     private Button trueButton;
@@ -63,14 +63,14 @@ public class TFQuestionsController implements Initializable {
     private Button nextButton;
     @FXML
     private Label questionNumberLabel;
-    
+
     @FXML
     private Label studentNameLabel;
-    @FXML 
+    @FXML
     private Label userIDLabel;
     @FXML
     private TextArea outputTextArea;
-    
+
     Scene scene;
     String userId;
     Pane question = new Pane();
@@ -83,149 +83,207 @@ public class TFQuestionsController implements Initializable {
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
 
-    public void initID(String ID) throws SQLException{ 
+    /**
+     * 
+     * @param ID
+     * @throws SQLException
+     */
+    public void initID(String ID) throws SQLException {
         userId = ID;
         userIDLabel.setText(ID);
         connectToDatabase();
-        
+
         String dbQuery = "Select firstname, lastname, userid from Users WHERE userid = ?";
-            PreparedStatement preparedStatement = connection.prepareStatement(dbQuery);
-            preparedStatement.setString(1, userId);
-            ResultSet rset = preparedStatement.executeQuery();
-            if (rset.next()) {
-                studentNameLabel.setText(rset.getString("firstname") + " " + rset.getString("lastname"));
-            }
+        PreparedStatement preparedStatement = connection.prepareStatement(dbQuery);
+        preparedStatement.setString(1, userId);
+        ResultSet rset = preparedStatement.executeQuery();
+        if (rset.next()) {
+            studentNameLabel.setText(rset.getString("firstname") + " " + rset.getString("lastname"));
+        }
     }
-    
-    public void setScore(int num){ 
+
+    /**
+     * 
+     * @param num
+     */
+    public void setScore(int num) {
         userScore = num;
     }
-    
-    public void setNumOfQuestions(int num){ 
+
+    /**
+     *
+     * @param num
+     */
+    public void setNumOfQuestions(int num) {
         numOfQuestions = num;
     }
-    
-    public void setCorrect(int num){ 
+
+    /**
+     *
+     * @param num
+     */
+    public void setCorrect(int num) {
         numCorrect = num;
     }
-    
-    public void setIncorrect(int num){ 
+
+    /**
+     *
+     * @param num
+     */
+    public void setIncorrect(int num) {
         numIncorrect = num;
     }
-    
+
+    /**
+     *
+     * @return
+     */
     public ArrayList<Question> getCorrectQuestions() {
         return correctQuestions;
     }
 
+    /**
+     *
+     * @param correctQuestions
+     */
     public void setCorrectQuestions(ArrayList<Question> correctQuestions) {
         this.correctQuestions = correctQuestions;
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Question> getIncorrectQuestions() {
         return incorrectQuestions;
     }
 
+    /**
+     *
+     * @param incorrectQuestions
+     */
     public void setIncorrectQuestions(ArrayList<Question> incorrectQuestions) {
         this.incorrectQuestions = incorrectQuestions;
     }
-    
+
+    /**
+     *
+     * @param userAnswers
+     */
     public void setUserAnswers(ArrayList<String> userAnswers) {
         this.userAnswers = userAnswers;
     }
-    
-    public void setUserAnswerCheck(ArrayList <String> userAnswerCheck) {
+
+    /**
+     *
+     * @param userAnswerCheck
+     */
+    public void setUserAnswerCheck(ArrayList<String> userAnswerCheck) {
         this.userAnswerCheck = userAnswerCheck;
     }
 
+    /**
+     *
+     * @param allAnsweredQuestions
+     */
     public void setAllAnsweredQuestions(ArrayList<Question> allAnsweredQuestions) {
         this.allAnsweredQuestions = allAnsweredQuestions;
     }
 
+    /**
+     *
+     * @param pageNumber
+     */
     public void setPageNumber(int pageNumber) {
         this.pageNumber = pageNumber;
     }
-    
-    
-    
-    
-    
-    public void launchTF(ArrayList<MultipleChoice>multipleChoiceQuestions, ArrayList<MultipleAnswer>multipleAnswerQuestions, 
-            ArrayList<TrueFalse>trueFalseQuestions, ArrayList<FillInTheBlanks>fillInTheBlanksQuestions,int size) throws IOException, SQLException, DocumentException{
+
+    /**
+     * Launch method to display true / false questions generated for quiz.
+     * 
+     * @param multipleChoiceQuestions
+     * @param multipleAnswerQuestions
+     * @param trueFalseQuestions
+     * @param fillInTheBlanksQuestions
+     * @param size
+     * @throws IOException
+     * @throws SQLException
+     * @throws DocumentException
+     */
+    public void launchTF(ArrayList<MultipleChoice> multipleChoiceQuestions, ArrayList<MultipleAnswer> multipleAnswerQuestions,
+            ArrayList<TrueFalse> trueFalseQuestions, ArrayList<FillInTheBlanks> fillInTheBlanksQuestions, int size) throws IOException, SQLException, DocumentException {
         Parent root;
         this.multipleAnswerQuestions = multipleAnswerQuestions;
         this.multipleChoiceQuestions = multipleChoiceQuestions;
         this.fillInTheBlanksQuestions = fillInTheBlanksQuestions;
-        pageNumber+=1;
+        pageNumber += 1;
         questionNumberLabel.setText(pageNumber + "/" + this.numOfQuestions + "");
-    //    System.out.println("TF "+this.allAnsweredQuestions.size());
-       // Stage stage = (Stage) AButton.getScene().getWindow();
-        if(size != 0){
-            
+        //    System.out.println("TF "+this.allAnsweredQuestions.size());
+        // Stage stage = (Stage) AButton.getScene().getWindow();
+        if (size != 0) {
 
             this.trueFalseQuestions = trueFalseQuestions;
             this.allAnsweredQuestions.add(this.trueFalseQuestions.get(size - 1));
-            TFStatementLabel.setText(trueFalseQuestions.get(size-1).description);
-            this.userAnswerCheck.add(trueFalseQuestions.get(size-1).correctAnswer);
-            
-            
+            TFStatementLabel.setText(trueFalseQuestions.get(size - 1).description);
+            this.userAnswerCheck.add(trueFalseQuestions.get(size - 1).correctAnswer);
+
             trueButton.setOnAction(e -> {
-                if(trueFalseQuestions.get(size-1).correctAnswer.equals("true")){
+                if (trueFalseQuestions.get(size - 1).correctAnswer.equals("true")) {
                     this.numCorrect++;
-                    this.correctQuestions.add(trueFalseQuestions.get(size-1));
-                    this.userAnswers.add(trueFalseQuestions.get(size-1).correctAnswer);
-                }
-                else{
+                    this.correctQuestions.add(trueFalseQuestions.get(size - 1));
+                    this.userAnswers.add(trueFalseQuestions.get(size - 1).correctAnswer);
+                } else {
                     this.numIncorrect++;
-                    this.incorrectQuestions.add(trueFalseQuestions.get(size-1));
-                    this.userAnswers.add(trueFalseQuestions.get(size-1).correctAnswer);
+                    this.incorrectQuestions.add(trueFalseQuestions.get(size - 1));
+                    this.userAnswers.add(trueFalseQuestions.get(size - 1).correctAnswer);
                 }
                 int m = size - 1;
-            try {
-                launchTF(this.multipleChoiceQuestions, this.multipleAnswerQuestions, 
-                        this.trueFalseQuestions, this.fillInTheBlanksQuestions, m);
-            } catch (IOException ex) {
-                Logger.getLogger(MCQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
-            }   catch (SQLException ex) {
+                try {
+                    launchTF(this.multipleChoiceQuestions, this.multipleAnswerQuestions,
+                            this.trueFalseQuestions, this.fillInTheBlanksQuestions, m);
+                } catch (IOException ex) {
+                    Logger.getLogger(MCQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
                     Logger.getLogger(TFQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (DocumentException ex) {
                     Logger.getLogger(TFQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                
+
             });
             falseButton.setOnAction(e -> {
-                if(trueFalseQuestions.get(size-1).correctAnswer.equals("false")){
+                if (trueFalseQuestions.get(size - 1).correctAnswer.equals("false")) {
                     this.numCorrect++;
-                    this.correctQuestions.add(trueFalseQuestions.get(size-1));
-                    this.userAnswers.add(trueFalseQuestions.get(size-1).correctAnswer);
-                }
-                else{
+                    this.correctQuestions.add(trueFalseQuestions.get(size - 1));
+                    this.userAnswers.add(trueFalseQuestions.get(size - 1).correctAnswer);
+                } else {
                     this.numIncorrect++;
-                    this.incorrectQuestions.add(trueFalseQuestions.get(size-1));
-                    this.userAnswers.add(trueFalseQuestions.get(size-1).correctAnswer);
+                    this.incorrectQuestions.add(trueFalseQuestions.get(size - 1));
+                    this.userAnswers.add(trueFalseQuestions.get(size - 1).correctAnswer);
                 }
                 int m = size - 1;
                 this.userAnswerCheck.add(this.trueFalseQuestions.get(m).correctAnswer);
-                
-            try {
-                launchTF(this.multipleChoiceQuestions, this.multipleAnswerQuestions, 
-                        this.trueFalseQuestions, this.fillInTheBlanksQuestions, m);
-            } catch (IOException ex) {
-                Logger.getLogger(MCQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
-            }   catch (SQLException ex) {
+
+                try {
+                    launchTF(this.multipleChoiceQuestions, this.multipleAnswerQuestions,
+                            this.trueFalseQuestions, this.fillInTheBlanksQuestions, m);
+                } catch (IOException ex) {
+                    Logger.getLogger(MCQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
                     Logger.getLogger(TFQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (DocumentException ex) {
                     Logger.getLogger(TFQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             });
-            
-        }
-        else{
+
+        } else {
             Stage stage = (Stage) trueButton.getScene().getWindow();
             FXMLLoader f = new FXMLLoader(getClass().getResource("QuizResults.fxml"));
             root = f.load();
@@ -244,33 +302,38 @@ public class TFQuestionsController implements Initializable {
             stage.setScene(scene);
             stage.show();
         }
-        
-        
+
     }
-    
-    public void startTimer(int remaining){
-        secs=(remaining);
-    final ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
-    service.scheduleWithFixedDelay(new Runnable()
-      {
-        @Override
-        public void run()
-        {
-            secs--;
-            
-          outputTextArea.setText((Integer.toString(secs/60))+ " : " +Integer.toString(secs%60));
-        
-          if(secs==0){
-            outputTextArea.setText("Time Up!!");
-              service.shutdownNow();
-          }
-        
-        }
-      }, 0, 1, TimeUnit.SECONDS);
+
+    /**
+     *
+     * @param remaining
+     */
+    public void startTimer(int remaining) {
+        secs = (remaining);
+        final ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
+        service.scheduleWithFixedDelay(new Runnable() {
+            @Override
+            public void run() {
+                secs--;
+
+                outputTextArea.setText((Integer.toString(secs / 60)) + " : " + Integer.toString(secs % 60));
+
+                if (secs == 0) {
+                    outputTextArea.setText("Time Up!!");
+                    service.shutdownNow();
+                }
+
+            }
+        }, 0, 1, TimeUnit.SECONDS);
     }
-    
-    public void connectToDatabase() throws SQLException{
-        
+
+    /**
+     *
+     * @throws SQLException
+     */
+    public void connectToDatabase() throws SQLException {
+
         String url = "jdbc:mysql://adelaide-mysql-qcas1.caswkasqdmel.ap-southeast-2.rds.amazonaws.com:3306/UserDB"; //creates network connection to database for application   
         String username = "qcastest";//username for accessing database
         String password = "qcastest";//password for accessing database
@@ -278,12 +341,12 @@ public class TFQuestionsController implements Initializable {
         try {
             this.connection = DriverManager.getConnection(url, username, password);
             if (this.connection != null) {
-              //  System.out.println("Conencted");
+                //  System.out.println("Conencted");
             }
         } catch (SQLException e) {
             System.out.println("SQLException: " + e);
             this.connection.close();//closes connection resource
         } // end of try-with-resourc
-        }
-    
+    }
+
 }
