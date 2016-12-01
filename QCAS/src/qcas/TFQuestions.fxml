@@ -88,7 +88,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="questionNumberLabel" layoutX="132.0" layoutY="477.0" prefHeight="45.0" prefWidth="139.0" text="questionNumberLabel">
+      <Label fx:id="questionNumberLabel" layoutX="132.0" layoutY="477.0" prefHeight="45.0" prefWidth="139.0" text="questionNumberLabel" textFill="#ab1919">
          <font>
             <Font size="13.0" />
          </font></Label>
@@ -100,8 +100,11 @@
       <TextArea fx:id="outputTextArea" blendMode="MULTIPLY" editable="false" layoutX="521.0" layoutY="128.0" prefHeight="75.0" prefWidth="196.0">
          <font>
             <Font size="42.0" />
-         </font></TextArea>
-      <ImageView fitHeight="183.0" fitWidth="280.0" layoutX="461.0" layoutY="76.0" pickOnBounds="true">
+         </font>
+         <effect>
+            <Blend mode="MULTIPLY" />
+         </effect></TextArea>
+      <ImageView fitHeight="183.0" fitWidth="287.0" layoutX="461.0" layoutY="76.0" pickOnBounds="true">
          <image>
             <Image url="@../11501757.png" />
          </image>
