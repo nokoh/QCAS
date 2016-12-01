@@ -13,7 +13,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: maroon;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qcas.MCQuestionsController">
+<AnchorPane id="AnchorPane" prefHeight="549.0" prefWidth="790.0" style="-fx-background-color: maroon;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qcas.MCQuestionsController">
     <children>
       <ImageView fitHeight="550.0" fitWidth="790.0" layoutX="1.0" layoutY="-1.0" pickOnBounds="true">
          <image>
@@ -99,7 +99,7 @@
                <font>
                   <Font size="13.0" />
                </font></Label>
-            <Label fx:id="userIDLabel" prefHeight="26.0" prefWidth="107.0" text="userIDLabel" textFill="#c32121">
+            <Label fx:id="userIDLabel" prefHeight="26.0" prefWidth="107.0" text="userIDLabel" textFill="#971818">
                <font>
                   <Font size="13.0" />
                </font></Label>
@@ -134,7 +134,7 @@
             <Image url="@../clock%20insert.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="171.0" fitWidth="358.0" layoutX="432.0" layoutY="77.0" pickOnBounds="true">
+      <ImageView fitHeight="171.0" fitWidth="295.0" layoutX="463.0" layoutY="77.0" pickOnBounds="true">
          <image>
             <Image url="@../11501757.png" />
          </image>
