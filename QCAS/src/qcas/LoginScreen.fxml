@@ -74,7 +74,7 @@
             <InnerShadow />
          </effect>
       </ImageView>
-      <Button id="login" fx:id="login" layoutX="458.0" layoutY="272.0" mnemonicParsing="false" onAction="#loginVerify" prefHeight="25.0" prefWidth="141.0" style="-fx-background-color: maroon;" text="Login" textFill="#f8f5f5">
+      <Button id="login" fx:id="login" layoutX="464.0" layoutY="241.0" mnemonicParsing="false" onAction="#loginVerify" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: maroon;" text="Login" textFill="WHITE">
          <effect>
             <InnerShadow />
          </effect></Button>
@@ -85,6 +85,11 @@
             <Image url="@../Copyright_white.svg.png" />
          </image>
       </ImageView>
+      <Button fx:id="signUpButton" layoutX="467.0" layoutY="299.0" mnemonicParsing="false" onAction="#signUpButtonClicked" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: maroon;" text="Sign Up" textFill="WHITE">
+         <effect>
+            <InnerShadow />
+         </effect>
+      </Button>
     </children>
    <effect>
       <InnerShadow />

@@ -55,6 +55,8 @@ public class LoginScreenController implements Initializable {
 
     @FXML
     private Button login;
+    @FXML
+    private Button signUpButton;
 
     @FXML
     private TextField userIDField;
@@ -159,5 +161,34 @@ public class LoginScreenController implements Initializable {
             userIDField.clear();
             passwordField.clear();
         }
-    
-    }}     
+    }
+     public void signUp() throws IOException {
+        signUpButton.setOnAction(h -> {
+
+            try {
+                signUpButtonClicked();
+            } catch (IOException ex) {
+                Logger.getLogger(SignUpQCASController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        {
+        }
+    }
+    /**
+     *
+     * @throws java.io.IOException
+     */
+    @FXML
+    public void signUpButtonClicked() throws IOException {
+        FXMLLoader f = new FXMLLoader(getClass().getResource("SignUpQCAS.fxml"));
+        Parent login = f.load();
+        SignUpQCASController signUp = f.<SignUpQCASController>getController();
+
+        Scene signUpNew = new Scene(login);
+        homeStage = (Stage) signUpButton.getScene().getWindow();
+        homeStage.hide();
+        homeStage.setScene(signUpNew);
+        homeStage.show();
+
+    }   
+}    
