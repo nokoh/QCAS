@@ -158,10 +158,9 @@ public class Scene6Controller implements Initializable {
     @FXML
     private Label avgHardScoreLY;
 
-    /* Method To Initialise Teacher Dashboard */
-
     /**
-     *
+     * Method To Initialise Teacher Dashboard
+     * Displays all charts and tables used to provide information about quizzes taken.
      * @param ID
      * @throws SQLException
      */
@@ -316,7 +315,7 @@ public class Scene6Controller implements Initializable {
     }
 
     /**
-     * Method to month 
+     * Method to convert month integer to string representation of month.
      * @param year
      * @return
      */
