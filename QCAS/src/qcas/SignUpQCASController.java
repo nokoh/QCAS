@@ -35,19 +35,23 @@ import javafx.stage.Stage;
 /**
  * FXML Controller class
  *
- * The Sign up Controller allows a new user to create a profile for the QCAS 
+ * The Sign up Controller allows a new user to create a profile for the QCAS
  * program.
- * 
- * 
+ *
+ *
  * @author Nnamdi
  */
 public class SignUpQCASController implements Initializable {
 
     Connection connection;
-    int userId;
+    String userId;
     String userPassword;
     Stage homeStage;
     String selected;
+    String fName;
+    String lName;
+    String passw;
+    String status;
 
     @FXML
     private Button returnHomeButton;
@@ -58,27 +62,15 @@ public class SignUpQCASController implements Initializable {
     @FXML
     private TextField idNumberField;
     @FXML
-    private ComboBox statusSelector;
-    @FXML
     private Button signUpButton;
     @FXML
     private Text errorMessageLabel;
 
-
-    private ObservableList statusList = FXCollections.observableArrayList();
     @FXML
     private PasswordField passwordField;
+    @FXML
+    private TextField staffRole;
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     /**
      * Initializes the controller class.
      *
@@ -90,14 +82,45 @@ public class SignUpQCASController implements Initializable {
         // TODO
     }
 
+    
+    
     /**
      * Authenticate user in system and adds user credentials if user does not
      * already exist.
-     *
-     * @throws SQLException
-     * @throws IOException
      */
-    public void authentication() throws SQLException, IOException {
+    @FXML
+    public void signUp(){
+    signUpButton.setOnAction(e -> {
+        
+        this.fName = firstNameField.getText();
+        this.lName = lastNameField.getText();
+        this.userId = idNumberField.getText();
+        this.passw = passwordField.getText();
+        this.status = staffRole.getText();
+        
+        System.out.println(this.fName);
+            try {
+                connectToDatabase();
+            } catch (SQLException ex) {
+                Logger.getLogger(SignUpQCASController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        try {
+            addToDatabase();
+        } catch (SQLException ex) {
+            Logger.getLogger(SignUpQCASController.class.getName()).log(Level.SEVERE, null, ex);
+            errorMessageLabel.setText("User already exists, please log in.");
+        } catch (IOException ex) {
+            Logger.getLogger(SignUpQCASController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        });
+    }
+
+    /**
+     * Connect to database to verify credentials
+     * @throws SQLException
+     */
+    public void connectToDatabase() throws SQLException {
         String url = "jdbc:mysql://adelaide-mysql-qcas1.caswkasqdmel.ap-southeast-2.rds.amazonaws.com:3306/UserDB"; //creates network connection to database for application   
         String username = "qcastest";//username for accessing database
         String password = "qcastest";//password for accessing database
@@ -111,70 +134,45 @@ public class SignUpQCASController implements Initializable {
             this.connection.close();//closes connection resource
         } // end of try-with-resource
 
-        statusList.add("Student");
-        statusList.add("Teacher");
-        statusSelector.setItems(statusList);
-        
-        statusSelector.setOnAction(t -> {
-            
-            if(statusSelector.getSelectionModel().getSelectedItem().equals("Teacher")){
-                selected = "teacher";
-            }
-            else if(statusSelector.getSelectionModel().getSelectedItem().equals("Student")){
-                selected = "student";
-            } 
-        });
-        
-        signUpButton.setOnAction(e -> {
-            try {
-                userId = Integer.parseInt(idNumberField.getText());
-                //     userPassword = passwordField.getText();
+    }
 
-                String loginQuery = "Select userid from Users WHERE userid = ?";
-                PreparedStatement preparedStatement = connection.prepareStatement(loginQuery);
-                preparedStatement.setInt(1, userId);
-                ResultSet rset = preparedStatement.executeQuery();
-                while(rset.next()){
-                if (userId == Integer.parseInt(rset.getString(1))) {
-                    errorMessageLabel.setText(" User already exists in system, proceed to login page. ");
-                } else {
-                    firstNameField.getText();
-                    lastNameField.getText();
-                    idNumberField.getText();
-                    
-                    preparedStatement = connection.prepareStatement("insert into Users (userid, firstNam, lastname, password, status) VALUES (?,?,?,?);");
-                    preparedStatement.setString(1, idNumberField.getText());
-                    preparedStatement.setString(2, firstNameField.getText());
-                    preparedStatement.setString(3, lastNameField.getText());
-                    preparedStatement.setString(4, password);
-                    preparedStatement.setString(5, selected);
-                    
-                    
-                    
-                    FXMLLoader f = new FXMLLoader(getClass().getResource("LoginScreen.fxml"));
-                    Parent loginPage = f.load();
-                    LoginScreenController sc = f.<LoginScreenController>getController();
-                    Scene loginScene = new Scene(loginPage);
-                    homeStage = (Stage) signUpButton.getScene().getWindow();
-                    homeStage.hide();
-                    homeStage.setScene(loginScene);
-                    homeStage.show();
-                }
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(SignUpQCASController.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IOException ex) {
-                Logger.getLogger(SignUpQCASController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+    /**
+     * Add new user information to database
+     * @throws SQLException
+     * @throws IOException
+     */
+    public void addToDatabase() throws SQLException, IOException {
+        connectToDatabase();
 
-        });
-        
-        
+        System.out.println("pls enter");
+        String check = "insert into Users (userid, firstName, lastname, password, status) VALUES (?,?,?,?,?);";
+        PreparedStatement stmt = connection.prepareStatement(check);
+        stmt.setString(1, userId);
+        stmt.setString(2, fName);
+        stmt.setString(3, lName);
+        stmt.setString(4, passw);
+        stmt.setString(5, status);
+        stmt.executeUpdate();
 
+        FXMLLoader f = new FXMLLoader(getClass().getResource("LoginScreen.fxml"));
+        Parent loginPage = f.load();
+        LoginScreenController sc = f.<LoginScreenController>getController();
+        Scene loginScene = new Scene(loginPage);
+        homeStage = (Stage) signUpButton.getScene().getWindow();
+        homeStage.hide();
+        homeStage.setScene(loginScene);
+        homeStage.show();
     }
 
     @FXML
-    private void returnHomeButtonClicked(ActionEvent event) {
+    private void returnHomeButtonClicked(ActionEvent event) throws IOException {
+        FXMLLoader f = new FXMLLoader(getClass().getResource("LoginScreen.fxml"));
+        Parent loginPage = f.load();
+        LoginScreenController sc = f.<LoginScreenController>getController();
+        Scene loginScene = new Scene(loginPage);
+        homeStage = (Stage) signUpButton.getScene().getWindow();
+        homeStage.hide();
+        homeStage.setScene(loginScene);
+        homeStage.show();
     }
-
 }

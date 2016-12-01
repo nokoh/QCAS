@@ -79,14 +79,16 @@
                   <PasswordField fx:id="passwordField" />
                </children>
             </VBox>
-            <HBox alignment="CENTER" prefHeight="46.0" prefWidth="256.0">
+            <HBox alignment="CENTER" prefHeight="46.0" prefWidth="256.0" />
+            <VBox alignment="CENTER" prefHeight="64.0" prefWidth="256.0">
                <children>
-                  <ComboBox fx:id="statusSelector" prefWidth="150.0" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="34.0" prefWidth="256.0" text="Staff Role" />
+                  <TextField fx:id="staffRole" />
                </children>
-            </HBox>
+            </VBox>
          </children>
       </VBox>
-      <Button fx:id="signUpButton" layoutX="582.0" layoutY="285.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" style="-fx-background-color: maroon;" text="Sign Up" textFill="WHITE">
+      <Button fx:id="signUpButton" layoutX="582.0" layoutY="285.0" mnemonicParsing="false" onAction="#signUp" prefHeight="25.0" prefWidth="136.0" style="-fx-background-color: maroon;" text="Sign Up" textFill="WHITE">
          <effect>
             <InnerShadow />
          </effect></Button>

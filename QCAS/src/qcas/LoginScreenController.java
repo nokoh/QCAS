@@ -189,7 +189,6 @@ public class LoginScreenController implements Initializable {
         FXMLLoader f = new FXMLLoader(getClass().getResource("SignUpQCAS.fxml"));
         Parent login = f.load();
         SignUpQCASController signUp = f.<SignUpQCASController>getController();
-        signUp.authentication();
         Scene signUpNew = new Scene(login);
         homeStage = (Stage) signUpButton.getScene().getWindow();
         homeStage.hide();
