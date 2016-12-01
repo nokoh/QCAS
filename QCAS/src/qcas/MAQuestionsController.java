@@ -239,7 +239,7 @@ public class MAQuestionsController implements Initializable {
         this.fillInTheBlanksQuestions = fillInTheBlanksQuestions; //sets fill in the blanks questions to be displayed in results page
 
         if (size != 0) {
-            this.multipleAnswerQuestions = multipleAnswerQuestions;
+            this.multipleAnswerQuestions = multipleAnswerQuestions; //assigns multiple answer questions generated for quiz
             MAQuestionDescriptionLabel.setText(multipleAnswerQuestions.get(size - 1).description); //sets question description on display
             MAOptionALabel.setText(multipleAnswerQuestions.get(size - 1).answer1); //sets options on display
             MAOptionBLabel.setText(multipleAnswerQuestions.get(size - 1).answer2); //sets options on display
@@ -330,12 +330,12 @@ public class MAQuestionsController implements Initializable {
 
             DButton.setOnAction(e -> {
                 if (multipleAnswerQuestions.get(size - 1).correct4.equals("correct")) {
-                    this.numCorrect++;
+                    this.numCorrect++;//increase score count
                     this.correctQuestions.add(multipleAnswerQuestions.get(size - 1)); //add correct questions to correctQuestions arrayList
                     this.userAnswers.add(multipleAnswerQuestions.get(size - 1).answer4); //adds user answers to userAnswers arrayList
 
                 } else {
-                    this.numIncorrect++;
+                    this.numIncorrect++; //increase score count
                     this.incorrectQuestions.add(multipleAnswerQuestions.get(size - 1)); //add incorrect questions to incorrectQuestions arrayList
                     this.userAnswers.add(multipleAnswerQuestions.get(size - 1).answer4); //adds user answers to userAnswers arrayList
                 }

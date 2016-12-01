@@ -224,7 +224,7 @@ public class FIBQuestionsController implements Initializable {
         if (size != 0) {
             pageNumber += 1;
             questionNumberLabel.setText(pageNumber + "/" + this.numOfQuestions + "");
-            this.fillInTheBlanksQuestions = fillInTheBlanksQuestions;
+            this.fillInTheBlanksQuestions = fillInTheBlanksQuestions; //assigns fill in the blank questions generated for quiz
             FIBQuestionDescriptionLabel.setText(fillInTheBlanksQuestions.get(size - 1).description); //sets question description on display
 
             nextButton.setOnAction(e -> {
@@ -238,11 +238,11 @@ public class FIBQuestionsController implements Initializable {
                     if (answer.equalsIgnoreCase(fillInTheBlanksQuestions.get(size - 1).correctAnswer)) {
                         this.numCorrect++; //increase score count
                         this.correctQuestions.add(fillInTheBlanksQuestions.get(size - 1)); //add correct questions to correctQuestions arrayList
-                        this.userAnswers.add(answer); //addscorrect questions to correctQuestions arrayList
+                        this.userAnswers.add(answer); //adds user answer option to userAnswers arrayList
                     } else {
                         this.numIncorrect++; //increase score count
                         this.incorrectQuestions.add(fillInTheBlanksQuestions.get(size - 1));
-                        this.userAnswers.add(answer);
+                        this.userAnswers.add(answer); //adds user answer option to userAnswers arrayList
                     }
                     userAnswerField.setText(null);
                 }

@@ -159,6 +159,13 @@ public class Scene6Controller implements Initializable {
     private Label avgHardScoreLY;
 
     /* Method To Initialise Teacher Dashboard */
+
+    /**
+     *
+     * @param ID
+     * @throws SQLException
+     */
+
     public void launchReports(String ID) throws SQLException {
 
         TeacherIDLabel.setText(ID);
@@ -195,16 +202,21 @@ public class Scene6Controller implements Initializable {
 
     }
 
-    /* Draws all charts in dashboard for a given month */
+    /**
+     * Draw carts method is used for displaying different charts, Pie and Bar chart 
+     * Draws all charts in dashboard for a given month
+     * @param month
+     * @throws SQLException
+     */
+
     public void drawCharts(String month) throws SQLException {
-        //defining the axes
 
         drawPieChart(month);
         drawBarChart(month);
 
         countNumberOfQuizzes(month);
 
-        yearSelector.setItems(yearList);
+        yearSelector.setItems(yearList); //selector list for different years
         yearSelector.setOnAction(e -> {
             if (yearSelector.getSelectionModel().getSelectedItem().equals("2015")) {
                 try {
@@ -221,7 +233,9 @@ public class Scene6Controller implements Initializable {
             }
         });
 
-        monthSelector.setItems(monthList);
+        monthSelector.setItems(monthList); //selector list for different months
+        
+        /* Event handling for different months */
         monthSelector.setOnAction(e -> {
 
             if (monthSelector.getSelectionModel().getSelectedItem().equals("January")) {
@@ -301,38 +315,48 @@ public class Scene6Controller implements Initializable {
 
     }
 
-    public String setYear(int year) {
+    /**
+     * Method to month 
+     * @param year
+     * @return
+     */
+    public String setMonth(int monthNum) {
         String yearName = "";
-        if (year == 1) {
+        if (monthNum == 1) {
             yearName = "January";
-
-        } else if (year == 2) {
+        } else if (monthNum == 2) {
             yearName = "February";
-        } else if (year == 3) {
+        } else if (monthNum == 3) {
             yearName = "March";
-        } else if (year == 4) {
+        } else if (monthNum == 4) {
             yearName = "April";
-        } else if (year == 5) {
+        } else if (monthNum == 5) {
             yearName = "May";
-        } else if (year == 6) {
+        } else if (monthNum == 6) {
             yearName = "June";
-        } else if (year == 7) {
+        } else if (monthNum == 7) {
             yearName = "July";
-        } else if (year == 8) {
+        } else if (monthNum == 8) {
             yearName = "August";
-        } else if (year == 9) {
+        } else if (monthNum == 9) {
             yearName = "September";
-        } else if (year == 10) {
+        } else if (monthNum == 10) {
             yearName = "October";
-        } else if (year == 11) {
+        } else if (monthNum == 11) {
             yearName = "November";
-        } else if (year == 12) {
+        } else if (monthNum == 12) {
             yearName = "December";
         }
 
         return yearName;
     }
 
+    /**
+     * DrawLineChart method is used for displaying Line charts based on the 
+     * month and year the test was taken.
+     * @param year
+     * @throws SQLException
+     */
     public void drawLineChart(String year) throws SQLException {
 
         int yearNum = Integer.parseInt(year);
@@ -350,15 +374,21 @@ public class Scene6Controller implements Initializable {
         stmt.setInt(1, yearNum); //applies random variable to select statement.
         ResultSet lineChartRS = stmt.executeQuery();//executes statement and returns value to resultset variable
         while (lineChartRS.next()) {
-            series2.getData().add(new XYChart.Data(setYear(Integer.parseInt(lineChartRS.getString(2))), Integer.parseInt(lineChartRS.getString(3))));
-            series.getData().add(new XYChart.Data(setYear(Integer.parseInt(lineChartRS.getString(2))), Integer.parseInt(lineChartRS.getString(4))));
+            series2.getData().add(new XYChart.Data(setMonth(Integer.parseInt(lineChartRS.getString(2))), Integer.parseInt(lineChartRS.getString(3))));
+            series.getData().add(new XYChart.Data(setMonth(Integer.parseInt(lineChartRS.getString(2))), Integer.parseInt(lineChartRS.getString(4))));
         }
         TestsLineChart.getData().addAll(series, series2);
     }
 
-    /*Dashboard draw pie charts
-      Checks difficulty of returned results and sums total number of correct and incorrect answers
+
+
+    /**
+     *Dashboard draw pie charts
+     *Checks difficulty of returned results and sums total number of correct and incorrect answers
+     * @param month
+     * @throws SQLException
      */
+
     public void drawPieChart(String month) throws SQLException {
         PieChartEasy.getData().clear();
         PieChartMedium.getData().clear();
@@ -376,7 +406,7 @@ public class Scene6Controller implements Initializable {
         PreparedStatement stmt = this.connection.prepareStatement(tableCount);
         stmt.setInt(1, monthNum); //applies random variable to select statement.
         ResultSet pieChartRS = stmt.executeQuery();//executes statement and returns value to resultset variable
-//        ResultSet pieChartRS = connection.createStatement().executeQuery("SELECT status, answercheck, count(answercheck) as noQuestion FROM UserDB.ExamTable WHERE substring(examDate,6,2) = 11 group by status, answercheck");
+        
         while (pieChartRS.next()) {
             if (pieChartRS.getString(1).equalsIgnoreCase("e") && pieChartRS.getString(2).equalsIgnoreCase("correct")) {
                 totalNumberOfQuestions += Integer.parseInt(pieChartRS.getString(3));
@@ -422,6 +452,10 @@ public class Scene6Controller implements Initializable {
 
     }
 
+    /**
+     * Method to count number of questions attempted in quiz system 
+     * @throws SQLException
+     */
     public void countNoOfQuizzes() throws SQLException {
         int totalNumberOfQuestions = 0;
         ResultSet pieChartRS = connection.createStatement().executeQuery("SELECT status, answercheck, count(answercheck) FROM UserDB.ExamTable group by status, answercheck");
@@ -432,22 +466,13 @@ public class Scene6Controller implements Initializable {
         totalNumberQuestions.setText(totalNumberOfQuestions + "");
     }
 
-    /* Get number of days in a month */
-    public int getNumberofDaysInMonth(int Month) {
-        int iYear = 2016;
-        int iMonth = Month; // 1 (months begin with 0)
-        int iDay = 1;
+    
 
-        // Create a calendar object and set year and month
-        Calendar mycal = new GregorianCalendar(iYear, iMonth, iDay);
-
-        // Get the number of days in that month
-        int daysInMonth = mycal.getActualMaximum(Calendar.DAY_OF_MONTH);
-
-        return daysInMonth;
-    }
-
-    /* Takes month as string and returns integer */
+    /**
+     * Takes month as string and returns integer representation of month.
+     * @param monthName
+     * @return
+     */
     public int monthNumberConversion(String monthName) {
         int monthValue = 0;
         if (monthName.equalsIgnoreCase("January")) {
@@ -478,6 +503,13 @@ public class Scene6Controller implements Initializable {
         return monthValue;
     }
 
+    /**
+     * Counts total number of quizzes attempted in system
+     * Counts number of quizzes attempted in a month
+     * Counts number of questions attempted in a month
+     * @param month
+     * @throws SQLException
+     */
     public void countNumberOfQuizzes(String month) throws SQLException {
         int monthNum = monthNumberConversion(month);
         int count = 0;
@@ -485,7 +517,7 @@ public class Scene6Controller implements Initializable {
         int count3 = 0;
         String tableCount = "SELECT examDate, count(examID), sum(score), sum(score)/count(examID) FROM UserDB.vw_examResult WHERE substring(examDate,6,2) = ? group by examDate;";
         PreparedStatement stmt = this.connection.prepareStatement(tableCount);
-        stmt.setInt(1, monthNum); //applies random variable to select statement.
+        stmt.setInt(1, monthNum); 
         ResultSet dbQuery1 = stmt.executeQuery();
         ResultSet dbQuery2 = connection.createStatement().executeQuery("SELECT examDate, count(examID), sum(score), sum(score)/count(examID) FROM UserDB.vw_examResult group by examDate;");
         while (dbQuery1.next()) {
@@ -496,7 +528,7 @@ public class Scene6Controller implements Initializable {
         }
         String tableCount2 = "select substring(examDate,6,2) as month, count(question) from UserDB.ExamTable WHERE substring(examDate,1,4) = 2016 and substring(examDate,6,2) = ? group by substring(examDate,6,2);";
         PreparedStatement stmt2 = this.connection.prepareStatement(tableCount2);
-        stmt2.setInt(1, monthNum); //applies random variable to select statement.
+        stmt2.setInt(1, monthNum);
         ResultSet dbQuery3 = stmt2.executeQuery();
         while (dbQuery3.next()) {
             count3 = (Integer.parseInt(dbQuery3.getString(2)));
@@ -507,7 +539,12 @@ public class Scene6Controller implements Initializable {
         totalNumberQuizzesMonth.setText(count2 + "");
     }
 
-    /* Draws Bar chart for given month*/
+    /**
+     * Draws Bar chart representation for a given month
+     * @param month
+     * @throws SQLException
+     */
+
     public void drawBarChart(String month) throws SQLException {
 
         int monthNum = monthNumberConversion(month);
@@ -527,10 +564,9 @@ public class Scene6Controller implements Initializable {
         barChartTeacher.setTitle("Average Student Scores Per Question Difficulty");
         String tableCount2 = "select status, month, score from UserDB.vw_scoreStatus where month = ?";
         PreparedStatement stmt2 = this.connection.prepareStatement(tableCount2);
-        stmt2.setInt(1, monthNum); //applies random variable to select statement.
+        stmt2.setInt(1, monthNum);
         ResultSet levelOfDifficulty = stmt2.executeQuery();
 
-        //         ResultSet levelOfDifficulty = connection.createStatement().executeQuery("select * from UserDB.vw_scoreStatus");
         while (levelOfDifficulty.next()) {
             if (levelOfDifficulty.getString(1).equalsIgnoreCase("e")) {
                 series1.getData().add(new XYChart.Data("Easy Questions", Double.parseDouble(levelOfDifficulty.getString(2))));
@@ -548,7 +584,11 @@ public class Scene6Controller implements Initializable {
 
     }
 
-    /* Displays data for tables in Report */
+    /**
+     * Displays data for tables in Report
+     * @throws SQLException
+     */
+
     public void displayTableData() throws SQLException {
         ResultSet passMonthNum = connection.createStatement().executeQuery("SELECT substring(examDate,6,2) as month, count(examID) as totalpass  FROM UserDB.vw_examResult where (score >= 59) and (substring(examDate,6,2) = 10);");
         while (passMonthNum.next()) {
@@ -596,7 +636,7 @@ public class Scene6Controller implements Initializable {
     }
 
     /**
-     *
+     * 
      * @throws java.io.IOException
      */
     @FXML
@@ -612,6 +652,10 @@ public class Scene6Controller implements Initializable {
         homeStage.show();
     }
 
+    /**
+     * Connects to database and sets connection variable for retrieval of information.
+     * @throws SQLException
+     */
     public void connectToDatabase() throws SQLException {
 
         String url = "jdbc:mysql://adelaide-mysql-qcas1.caswkasqdmel.ap-southeast-2.rds.amazonaws.com:3306/UserDB"; //creates network connection to database for application   
@@ -628,6 +672,10 @@ public class Scene6Controller implements Initializable {
         } // end of try-with-resourc
     }
 
+    /**
+     * Display table values for teacher dashboard
+     * @throws SQLException
+     */
     public void displayTables() throws SQLException {
         String avgScoreLM = "";
         String avgScoreLQ = "";
@@ -638,58 +686,51 @@ public class Scene6Controller implements Initializable {
 
         ResultSet averages = connection.createStatement().executeQuery("select count(examID) as lastmonthcount from UserDB.vw_examResult where substring(examDate,6,2) = substring(current_date,6,2)-1 and substring(examDate,1,4) = substring(current_date,1,4);");
         while (averages.next()) {
-            testTakenLM = averages.getString(1);
+            testTakenLM = averages.getString(1); //sets number of tests taken in last month
         }
         ResultSet averages2 = connection.createStatement().executeQuery("select count(examID) as lastquartercount from UserDB.vw_examResult where substring(examDate,6,2) in ('07','08','09') and substring(examDate,1,4) = substring(current_date,1,4);");
         while (averages2.next()) {
-            testTakenLQ = averages2.getString(1);
+            testTakenLQ = averages2.getString(1); //sets number of tests taken in last quarter
         }
         ResultSet averages3 = connection.createStatement().executeQuery("select count(examID) as lastyearcount from UserDB.vw_examResult where substring(examDate,1,4) = substring(current_date,1,4)-1;");
         while (averages3.next()) {
-            testTakenLY = averages3.getString(1);
+            testTakenLY = averages3.getString(1); //sets number of tests taken in last year
         }
         ResultSet averages4 = connection.createStatement().executeQuery("select AVG(score) as lastmonthavg from UserDB.vw_examResult where substring(examDate,6,2) = substring(current_date,6,2)-1 and substring(examDate,1,4) = substring(current_date,1,4);");
         while (averages4.next()) {
-            avgScoreLM = averages4.getString(1);
+            avgScoreLM = averages4.getString(1); //sets average score of users taken in last month
         }
         ResultSet averages5 = connection.createStatement().executeQuery("select AVG(score) as lastquarteravg from UserDB.vw_examResult where substring(examDate,6,2) in ('07','08','09') and substring(examDate,1,4) = substring(current_date,1,4);");
         while (averages5.next()) {
-            avgScoreLQ = averages5.getString(1);
+            avgScoreLQ = averages5.getString(1); //sets average score of users taken in last quarter
         }
         ResultSet averages6 = connection.createStatement().executeQuery("select AVG(score) as lastyearavg from UserDB.vw_examResult where substring(examDate,1,4) = substring(current_date,1,4)-1;");
         while (averages6.next()) {
-            avgScoreLY = averages6.getString(1);
+            avgScoreLY = averages6.getString(1); //sets average score of users taken in last year
         }
 
         testTakenLastMonth.setText(testTakenLM);
         testTakenLastQuarter.setText(testTakenLQ);
         testTakenLastYear.setText(testTakenLY);
         avgQuizScoreLM.setText(avgScoreLM);
-        avgEasyScoreLM.setText("0");
-        avgMediumScoreLM.setText("0");
-        avgHardScoreLM.setText("0");
         avgQuizScoreLQ.setText(avgScoreLQ);
-        avgEasyScoreLQ.setText("0");
-        avgMediumScoreLQ.setText("0");
-        avgHardScoreLQ.setText("0");
         avgQuizScoreLY.setText(avgScoreLY);
-        avgEasyScoreLY.setText("0");
-        avgMediumScoreLY.setText("0");
-        avgHardScoreLY.setText("0");
-
     }
 
+    /**
+     * Exports PDF report of dashboard for a particular teacher.
+     * @throws IOException
+     * @throws DocumentException
+     */
     @FXML
     public void exportToPdf() throws IOException, DocumentException {
         WritableImage image = teacherDashboardPane.snapshot(new SnapshotParameters(), null);
-        //  WritableImage image2 = buttonchart2.snapshot(new SnapshotParameters(), null);
         File file = new File("Dashboard Report.png");
 
-        ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", file);
-        // ImageIO.write(SwingFXUtils.fromFXImage(image2, null), "png", file); 
+        ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", file);   
 
         Document document = new Document();
-        String input = "Dashboard Report.png"; // .gif and .jpg are ok too!
+        String input = "Dashboard Report.png";
         String output = "Dashboard Report.pdf";
         try {
             FileOutputStream fos = new FileOutputStream(output);

@@ -198,7 +198,7 @@ public class MCQuestionsController implements Initializable {
         this.fillInTheBlanksQuestions = fillInTheBlanksQuestions; //sets fill in the blanks questions to be displayed in results page
 
         if (size != 0) {
-            this.multipleChoiceQuestions = multipleChoiceQuestions;
+            this.multipleChoiceQuestions = multipleChoiceQuestions; //assigns multiple choice questions generated for quiz
             MCQuestionDescriptionLabel.setText(multipleChoiceQuestions.get(size - 1).description); //sets question description on display
             MCOptionA.setText(multipleChoiceQuestions.get(size - 1).answer1); //sets options on display
             MCOptionB.setText(multipleChoiceQuestions.get(size - 1).answer2); //sets options on display
@@ -206,18 +206,20 @@ public class MCQuestionsController implements Initializable {
             MCOptionD.setText(multipleChoiceQuestions.get(size - 1).answer4); //sets options on display
             this.allAnsweredQuestions.add(multipleChoiceQuestions.get(size - 1)); //add questions to answered questions arrayList
 
-            /*Adds correct answer for question to user asnwer check arrayList*/
+            
+            /* Checks for correct answer option for question and adds to user asnwer check arrayList*/
             if (multipleChoiceQuestions.get(size - 1).correct1.equals("correct")) {
-                this.userAnswerCheck.add(multipleChoiceQuestions.get(size - 1).answer1); 
+                this.userAnswerCheck.add(multipleChoiceQuestions.get(size - 1).answer1); //adds correct answer option question to arrayList
             } else if (multipleChoiceQuestions.get(size - 1).correct2.equals("correct")) {
-                this.userAnswerCheck.add(multipleChoiceQuestions.get(size - 1).answer2);
+                this.userAnswerCheck.add(multipleChoiceQuestions.get(size - 1).answer2); //adds correct answer option question to arrayList
             } else if (multipleChoiceQuestions.get(size - 1).correct3.equals("correct")) {
-                this.userAnswerCheck.add(multipleChoiceQuestions.get(size - 1).answer3);
+                this.userAnswerCheck.add(multipleChoiceQuestions.get(size - 1).answer3); //adds correct answer option question to arrayList
             } else if (multipleChoiceQuestions.get(size - 1).correct4.equals("correct")) {
-                this.userAnswerCheck.add(multipleChoiceQuestions.get(size - 1).answer4);
+                this.userAnswerCheck.add(multipleChoiceQuestions.get(size - 1).answer4); //adds correct answer option question to arrayList
             }
             pageNumber += 1;
             questionNumberLabel.setText(pageNumber + "/" + this.numOfQuestions + "");//sets page number to current question being answered
+            
             
             /*Sets Action for option A Button*/
             AButton.setOnAction(e -> {

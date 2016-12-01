@@ -271,8 +271,8 @@ public class TFQuestionsController implements Initializable {
                     this.userAnswers.add(trueFalseQuestions.get(size - 1).correctAnswer);//adds user answer to arraylist
                 } else {
                     this.numIncorrect++; //increase score count
-                    this.incorrectQuestions.add(trueFalseQuestions.get(size - 1));
-                    this.userAnswers.add(trueFalseQuestions.get(size - 1).correctAnswer);
+                    this.incorrectQuestions.add(trueFalseQuestions.get(size - 1));//adds incorrect answer to arraylist
+                    this.userAnswers.add(trueFalseQuestions.get(size - 1).correctAnswer); //adds user answer choice  to correctQuestions arrayList
                 }
                 int m = size - 1;
                 this.userAnswerCheck.add(this.trueFalseQuestions.get(m).correctAnswer);//adds correct answer to arraylist
