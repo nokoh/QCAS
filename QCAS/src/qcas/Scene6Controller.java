@@ -580,7 +580,7 @@ public class Scene6Controller implements Initializable {
      * The returnHome() method switches back to the login screen.
      *
      * @throws java.io.IOException
-        *
+     *
      */
     public void returnHome() throws IOException {
         returnHomeButton.setOnAction(h -> {
@@ -661,18 +661,6 @@ public class Scene6Controller implements Initializable {
             avgScoreLY = averages6.getString(1);
         }
 
-        /*select AVG(score) as lastmonthavg from UserDB.vw_examResult
-where substring(examDate,6,2) = substring(current_date,6,2)-1
-and substring(examDate,1,4) = substring(current_date,1,4);
-
-
-select AVG(score) as lastquarteravg from UserDB.vw_examResult
-where substring(examDate,6,2) in ('07','08','09')
-and substring(examDate,1,4) = substring(current_date,1,4);
-
-
-select AVG(score) as lastyearavg from UserDB.vw_examResult
-where substring(examDate,1,4) = substring(current_date,1,4)-1;*/
         testTakenLastMonth.setText(testTakenLM);
         testTakenLastQuarter.setText(testTakenLQ);
         testTakenLastYear.setText(testTakenLY);
