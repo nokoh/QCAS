@@ -109,7 +109,6 @@ public class LoginScreenController implements Initializable {
         try {
             this.connection = DriverManager.getConnection(url, username, password);
             if (this.connection != null) {
-                System.out.println("Conencted");
             }
         } catch (SQLException e) {
             System.out.println("SQLException: " + e);
@@ -133,7 +132,6 @@ public class LoginScreenController implements Initializable {
                 Parent studentHomePage = f.load();
                 StudentProfileSceneController sc = f.<StudentProfileSceneController>getController();
                 sc.initID(rset.getString("userID"));
-//                Parent studentHomePage = FXMLLoader.load(getClass().getResource("studentProfileScene.fxml"));
                 Scene studentHomeScene = new Scene(studentHomePage);
                 homeStage = (Stage) login.getScene().getWindow();
                 homeStage.hide();
@@ -160,4 +158,13 @@ public class LoginScreenController implements Initializable {
             passwordField.clear();
         }
     
-    }}     
+    }
+    
+    public void signUp(){
+        
+        
+    
+    }
+
+
+}     
