@@ -33,7 +33,7 @@
             <Font size="10.0" />
          </font>
       </Label>
-      <Label layoutX="194.0" layoutY="31.0" prefHeight="53.0" prefWidth="350.0" text="Select Correct Answer" textFill="#f8f6f6">
+      <Label layoutX="194.0" layoutY="31.0" prefHeight="53.0" prefWidth="350.0" text="Select Correct Answer" textFill="WHITE">
          <font>
             <Font name="Segoe UI Light" size="36.0" />
          </font>
@@ -111,10 +111,28 @@
          <font>
             <Font size="13.0" />
          </font></Label>
-      <TextArea fx:id="outputTextArea" editable="false" layoutX="510.0" layoutY="111.0" prefHeight="81.0" prefWidth="196.0">
+      <ImageView fitHeight="280.0" fitWidth="280.0" layoutX="464.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../clock%20frame.png" />
+         </image>
+      </ImageView>
+      <TextArea fx:id="outputTextArea" blendMode="MULTIPLY" editable="false" layoutX="522.0" layoutY="127.0" prefHeight="75.0" prefWidth="196.0">
          <font>
             <Font name="System Bold" size="42.0" />
-         </font></TextArea>
+         </font>
+         <effect>
+            <Blend />
+         </effect></TextArea>
+      <ImageView fitHeight="53.0" fitWidth="32.0" layoutX="608.0" layoutY="139.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../clock%20insert.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="177.0" fitWidth="339.0" layoutX="443.0" layoutY="74.0" pickOnBounds="true">
+         <image>
+            <Image url="@../11501757.png" />
+         </image>
+      </ImageView>
    </children>
    <effect>
       <InnerShadow />
