@@ -1,4 +1,5 @@
 package qcas;
+
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -58,20 +59,19 @@ import javax.imageio.ImageIO;
  */
 public class Scene6Controller implements Initializable {
 
-    
-    Scene scene; 
+    Scene scene;
     Stage homeStage;
     String userId;
     int examNumber;
     Connection connection;
-    
-    @FXML 
+
+    @FXML
     private Button printToPDFButton;
-    @FXML 
+    @FXML
     private Button returnHomeButton;
     @FXML
     private Label TeacherIDLabel;
-    @FXML 
+    @FXML
     private Label TeacherNameLabel;
     @FXML
     private LineChart<String, Integer> TestsLineChart;
@@ -101,32 +101,30 @@ public class Scene6Controller implements Initializable {
     private Label nonPassingLastYear;
     @FXML
     private ComboBox monthSelector;
-    @FXML 
+    @FXML
     private AnchorPane teacherDashboardPane;
-    
-    
-    
+
     private ObservableList monthList = FXCollections.observableArrayList();
     private ObservableList yearList = FXCollections.observableArrayList();
-    
+
     @FXML
     private BarChart<String, Integer> barChartTeacher;
-    
+
     @FXML
     private CategoryAxis xAxis;
-    
+
     @FXML
     private NumberAxis yAxis;
-    
+
     @FXML
-    PieChart PieChartEasy; 
-    
+    PieChart PieChartEasy;
+
     @FXML
-    PieChart PieChartMedium; 
-    
+    PieChart PieChartMedium;
+
     @FXML
-    PieChart PieChartHard; 
-    
+    PieChart PieChartHard;
+
     @FXML
     private Label totalNumberQuestions;
     @FXML
@@ -159,23 +157,21 @@ public class Scene6Controller implements Initializable {
     private Label avgMediumScoreLY;
     @FXML
     private Label avgHardScoreLY;
-    
-    
-    
+
     /* Method To Initialise Teacher Dashboard */
-    public void launchReports(String ID) throws SQLException{
-        
+    public void launchReports(String ID) throws SQLException {
+
         TeacherIDLabel.setText(ID);
         connectToDatabase();
         String dbQuery = "Select firstname, lastname from Users WHERE userid = ?";
-            PreparedStatement preparedStatement = connection.prepareStatement(dbQuery);
-            preparedStatement.setString(1, ID);
-            ResultSet rset = preparedStatement.executeQuery();
-            if (rset.next()) {
-                TeacherNameLabel.setText(rset.getString("firstname").toUpperCase() + " " + rset.getString("lastname").toUpperCase());
-            }
-            int count = 0;
-            monthList.add("January");
+        PreparedStatement preparedStatement = connection.prepareStatement(dbQuery);
+        preparedStatement.setString(1, ID);
+        ResultSet rset = preparedStatement.executeQuery();
+        if (rset.next()) {
+            TeacherNameLabel.setText(rset.getString("firstname").toUpperCase() + " " + rset.getString("lastname").toUpperCase());
+        }
+        int count = 0;
+        monthList.add("January");
         monthList.add("February");
         monthList.add("March");
         monthList.add("April");
@@ -189,38 +185,34 @@ public class Scene6Controller implements Initializable {
         monthList.add("December");
         yearList.add("2015");
         yearList.add("2016");
-        
+
         displayTableData();
         drawCharts("November");
         drawLineChart("2016");
         countNumberOfQuizzes("November");
         countNoOfQuizzes();
         displayTables();
-        
+
     }
-    
-    
-    
+
     /* Draws all charts in dashboard for a given month */
-    public void drawCharts(String month) throws SQLException{
-    //defining the axes
-        
-        
-          drawPieChart(month);
-          drawBarChart(month);
-  
-          countNumberOfQuizzes(month);
-          
+    public void drawCharts(String month) throws SQLException {
+        //defining the axes
+
+        drawPieChart(month);
+        drawBarChart(month);
+
+        countNumberOfQuizzes(month);
+
         yearSelector.setItems(yearList);
-        yearSelector.setOnAction(e-> {
-            if(yearSelector.getSelectionModel().getSelectedItem().equals("2015")){
+        yearSelector.setOnAction(e -> {
+            if (yearSelector.getSelectionModel().getSelectedItem().equals("2015")) {
                 try {
                     drawLineChart("2015");
                 } catch (SQLException ex) {
                     Logger.getLogger(Scene6Controller.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            }
-            else if (yearSelector.getSelectionModel().getSelectedItem().equals("2016")){
+            } else if (yearSelector.getSelectionModel().getSelectedItem().equals("2016")) {
                 try {
                     drawLineChart("2016");
                 } catch (SQLException ex) {
@@ -228,252 +220,220 @@ public class Scene6Controller implements Initializable {
                 }
             }
         });
-        
+
         monthSelector.setItems(monthList);
         monthSelector.setOnAction(e -> {
-        
-        if(monthSelector.getSelectionModel().getSelectedItem().equals("January")){
-            try {
-                drawCharts("January");
-            } catch (SQLException ex) {
-                Logger.getLogger(Scene6Controller.class.getName()).log(Level.SEVERE, null, ex);
+
+            if (monthSelector.getSelectionModel().getSelectedItem().equals("January")) {
+                try {
+                    drawCharts("January");
+                } catch (SQLException ex) {
+                    Logger.getLogger(Scene6Controller.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else if (monthSelector.getSelectionModel().getSelectedItem().equals("February")) {
+                try {
+                    drawCharts("February");
+                } catch (SQLException ex) {
+                    Logger.getLogger(Scene6Controller.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else if (monthSelector.getSelectionModel().getSelectedItem().equals("March")) {
+                try {
+                    drawCharts("March");
+                } catch (SQLException ex) {
+                    Logger.getLogger(Scene6Controller.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else if (monthSelector.getSelectionModel().getSelectedItem().equals("April")) {
+                try {
+                    drawCharts("April");
+                } catch (SQLException ex) {
+                    Logger.getLogger(Scene6Controller.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else if (monthSelector.getSelectionModel().getSelectedItem().equals("May")) {
+                try {
+                    drawCharts("May");
+                } catch (SQLException ex) {
+                    Logger.getLogger(Scene6Controller.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else if (monthSelector.getSelectionModel().getSelectedItem().equals("June")) {
+                try {
+                    drawCharts("June");
+                } catch (SQLException ex) {
+                    Logger.getLogger(Scene6Controller.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else if (monthSelector.getSelectionModel().getSelectedItem().equals("July")) {
+                try {
+                    drawCharts("July");
+                } catch (SQLException ex) {
+                    Logger.getLogger(Scene6Controller.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else if (monthSelector.getSelectionModel().getSelectedItem().equals("August")) {
+                try {
+                    drawCharts("August");
+                } catch (SQLException ex) {
+                    Logger.getLogger(Scene6Controller.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else if (monthSelector.getSelectionModel().getSelectedItem().equals("September")) {
+                try {
+                    drawCharts("September");
+                } catch (SQLException ex) {
+                    Logger.getLogger(Scene6Controller.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else if (monthSelector.getSelectionModel().getSelectedItem().equals("October")) {
+                try {
+                    drawCharts("October");
+                } catch (SQLException ex) {
+                    Logger.getLogger(Scene6Controller.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else if (monthSelector.getSelectionModel().getSelectedItem().equals("November")) {
+                try {
+                    drawCharts("November");
+                } catch (SQLException ex) {
+                    Logger.getLogger(Scene6Controller.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else if (monthSelector.getSelectionModel().getSelectedItem().equals("December")) {
+                try {
+                    drawCharts("December");
+                } catch (SQLException ex) {
+                    Logger.getLogger(Scene6Controller.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
-        }
-        else if(monthSelector.getSelectionModel().getSelectedItem().equals("February")){
-            try {
-                drawCharts("February");
-            } catch (SQLException ex) {
-                Logger.getLogger(Scene6Controller.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        else if(monthSelector.getSelectionModel().getSelectedItem().equals("March")){
-            try {
-                drawCharts("March");
-            } catch (SQLException ex) {
-                Logger.getLogger(Scene6Controller.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        else if(monthSelector.getSelectionModel().getSelectedItem().equals("April")){
-            try {
-                drawCharts("April");
-            } catch (SQLException ex) {
-                Logger.getLogger(Scene6Controller.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        else if(monthSelector.getSelectionModel().getSelectedItem().equals("May")){
-            try {
-                drawCharts("May");
-            } catch (SQLException ex) {
-                Logger.getLogger(Scene6Controller.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        else if(monthSelector.getSelectionModel().getSelectedItem().equals("June")){
-            try {
-                drawCharts("June");
-            } catch (SQLException ex) {
-                Logger.getLogger(Scene6Controller.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        else if(monthSelector.getSelectionModel().getSelectedItem().equals("July")){
-            try {
-                drawCharts("July");
-            } catch (SQLException ex) {
-                Logger.getLogger(Scene6Controller.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        else if(monthSelector.getSelectionModel().getSelectedItem().equals("August")){
-            try {
-                drawCharts("August");
-            } catch (SQLException ex) {
-                Logger.getLogger(Scene6Controller.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        else if(monthSelector.getSelectionModel().getSelectedItem().equals("September")){
-            try {
-                drawCharts("September");
-            } catch (SQLException ex) {
-                Logger.getLogger(Scene6Controller.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        else if(monthSelector.getSelectionModel().getSelectedItem().equals("October")){
-            try {
-                drawCharts("October");
-            } catch (SQLException ex) {
-                Logger.getLogger(Scene6Controller.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        else if(monthSelector.getSelectionModel().getSelectedItem().equals("November")){
-            try {
-                drawCharts("November");
-            } catch (SQLException ex) {
-                Logger.getLogger(Scene6Controller.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        else if(monthSelector.getSelectionModel().getSelectedItem().equals("December")){
-            try {
-                drawCharts("December");
-            } catch (SQLException ex) {
-                Logger.getLogger(Scene6Controller.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
         });
-        
-         
+
     }
-    public String setYear(int year){
+
+    public String setYear(int year) {
         String yearName = "";
-        if (year == 1){
+        if (year == 1) {
             yearName = "January";
-        
-        }else if(year == 2){
+
+        } else if (year == 2) {
             yearName = "February";
-        }
-        else if(year == 3){
+        } else if (year == 3) {
             yearName = "March";
-        }
-        else if(year == 4){
+        } else if (year == 4) {
             yearName = "April";
+        } else if (year == 5) {
+            yearName = "May";
+        } else if (year == 6) {
+            yearName = "June";
+        } else if (year == 7) {
+            yearName = "July";
+        } else if (year == 8) {
+            yearName = "August";
+        } else if (year == 9) {
+            yearName = "September";
+        } else if (year == 10) {
+            yearName = "October";
+        } else if (year == 11) {
+            yearName = "November";
+        } else if (year == 12) {
+            yearName = "December";
         }
-        else if(year == 5){
-        yearName = "May";
-        }
-        else if(year == 6){
-        yearName = "June";
-        }
-        else if(year == 7){
-        yearName = "July";
-        }
-        else if(year == 8){
-        yearName = "August";
-        }
-        else if(year == 9){
-        yearName = "September";
-        }
-        else if(year == 10){
-        yearName = "October";
-        }
-        else if(year == 11){
-        yearName = "November";
-        }
-        else if(year == 12){
-        yearName = "December";
-        }
-        
+
         return yearName;
     }
-    public void drawLineChart(String year) throws SQLException{
-        
+
+    public void drawLineChart(String year) throws SQLException {
+
         int yearNum = Integer.parseInt(year);
-        
+
         TestsLineChart.getData().clear();
-        TestsLineChart.setTitle("Total Tests Passed / Failed Since: "+year);
+        TestsLineChart.setTitle("Total Tests Passed / Failed Since: " + year);
         XYChart.Series series = new XYChart.Series();
         series.setName("Students Failing " + year);
         XYChart.Series series2 = new XYChart.Series();
         series2.setName("Students Passing " + year);
         int size = 12;
-        
+
         String tableCount = "select substring(examDate,1,4), substring(examDate,6,2) as month, count(case when score >= 59 then score else NULL end) as pass, count(case when  score < 59 then score else NULL end) as fail from UserDB.vw_examResult where substring(examDate,1,4) = ? group by substring(examDate,1,4), substring(examDate,6,2)";
         PreparedStatement stmt = this.connection.prepareStatement(tableCount);
         stmt.setInt(1, yearNum); //applies random variable to select statement.
         ResultSet lineChartRS = stmt.executeQuery();//executes statement and returns value to resultset variable
-        while(lineChartRS.next()){
+        while (lineChartRS.next()) {
             series2.getData().add(new XYChart.Data(setYear(Integer.parseInt(lineChartRS.getString(2))), Integer.parseInt(lineChartRS.getString(3))));
             series.getData().add(new XYChart.Data(setYear(Integer.parseInt(lineChartRS.getString(2))), Integer.parseInt(lineChartRS.getString(4))));
         }
-        TestsLineChart.getData().addAll(series, series2);  
+        TestsLineChart.getData().addAll(series, series2);
     }
-    
-    
-    
-    
+
     /*Dashboard draw pie charts
       Checks difficulty of returned results and sums total number of correct and incorrect answers
-    */
-    public void drawPieChart(String month) throws SQLException{
+     */
+    public void drawPieChart(String month) throws SQLException {
         PieChartEasy.getData().clear();
         PieChartMedium.getData().clear();
         PieChartHard.getData().clear();
         int monthNum = monthNumberConversion(month);
-        
+
         int totalNumberOfQuestions = 0;
         int eNumCorrect = 0;
         int eNumInCorrect = 0;
         int mNumCorrect = 0;
         int mNumInCorrect = 0;
-        int hNumCorrect = 0; 
+        int hNumCorrect = 0;
         int hNumInCorrect = 0;
         String tableCount = "SELECT status, answercheck, count(answercheck) as noQuestion FROM UserDB.ExamTable WHERE substring(examDate,6,2) = ? group by status, answercheck";
         PreparedStatement stmt = this.connection.prepareStatement(tableCount);
         stmt.setInt(1, monthNum); //applies random variable to select statement.
         ResultSet pieChartRS = stmt.executeQuery();//executes statement and returns value to resultset variable
 //        ResultSet pieChartRS = connection.createStatement().executeQuery("SELECT status, answercheck, count(answercheck) as noQuestion FROM UserDB.ExamTable WHERE substring(examDate,6,2) = 11 group by status, answercheck");
-            while(pieChartRS.next()){
-                if(pieChartRS.getString(1).equalsIgnoreCase("e") && pieChartRS.getString(2).equalsIgnoreCase("correct")){
-                    totalNumberOfQuestions+= Integer.parseInt(pieChartRS.getString(3));
-                    eNumCorrect = Integer.parseInt(pieChartRS.getString(3));
-                }
-                else if(pieChartRS.getString(1).equalsIgnoreCase("e") && pieChartRS.getString(2).equalsIgnoreCase("incorrect")){
-                    totalNumberOfQuestions+= Integer.parseInt(pieChartRS.getString(3));
-                    eNumInCorrect = Integer.parseInt(pieChartRS.getString(3));
-                }
-                else if(pieChartRS.getString(1).equalsIgnoreCase("m") && pieChartRS.getString(2).equalsIgnoreCase("correct")){
-                    totalNumberOfQuestions+= Integer.parseInt(pieChartRS.getString(3));
-                    mNumCorrect = Integer.parseInt(pieChartRS.getString(3));
-                }
-                else if(pieChartRS.getString(1).equalsIgnoreCase("m") && pieChartRS.getString(2).equalsIgnoreCase("incorrect")){
-                    totalNumberOfQuestions+= Integer.parseInt(pieChartRS.getString(3));
-                    mNumInCorrect = Integer.parseInt(pieChartRS.getString(3));
-                }
-                else if(pieChartRS.getString(1).equalsIgnoreCase("h") && pieChartRS.getString(2).equalsIgnoreCase("correct")){
-                    totalNumberOfQuestions+= Integer.parseInt(pieChartRS.getString(3));
-                    hNumCorrect = Integer.parseInt(pieChartRS.getString(3));
-                }
-                else if(pieChartRS.getString(1).equalsIgnoreCase("h") && pieChartRS.getString(2).equalsIgnoreCase("incorrect")){
-                    totalNumberOfQuestions+= Integer.parseInt(pieChartRS.getString(3));
-                    hNumInCorrect = Integer.parseInt(pieChartRS.getString(3));
-                }
+        while (pieChartRS.next()) {
+            if (pieChartRS.getString(1).equalsIgnoreCase("e") && pieChartRS.getString(2).equalsIgnoreCase("correct")) {
+                totalNumberOfQuestions += Integer.parseInt(pieChartRS.getString(3));
+                eNumCorrect = Integer.parseInt(pieChartRS.getString(3));
+            } else if (pieChartRS.getString(1).equalsIgnoreCase("e") && pieChartRS.getString(2).equalsIgnoreCase("incorrect")) {
+                totalNumberOfQuestions += Integer.parseInt(pieChartRS.getString(3));
+                eNumInCorrect = Integer.parseInt(pieChartRS.getString(3));
+            } else if (pieChartRS.getString(1).equalsIgnoreCase("m") && pieChartRS.getString(2).equalsIgnoreCase("correct")) {
+                totalNumberOfQuestions += Integer.parseInt(pieChartRS.getString(3));
+                mNumCorrect = Integer.parseInt(pieChartRS.getString(3));
+            } else if (pieChartRS.getString(1).equalsIgnoreCase("m") && pieChartRS.getString(2).equalsIgnoreCase("incorrect")) {
+                totalNumberOfQuestions += Integer.parseInt(pieChartRS.getString(3));
+                mNumInCorrect = Integer.parseInt(pieChartRS.getString(3));
+            } else if (pieChartRS.getString(1).equalsIgnoreCase("h") && pieChartRS.getString(2).equalsIgnoreCase("correct")) {
+                totalNumberOfQuestions += Integer.parseInt(pieChartRS.getString(3));
+                hNumCorrect = Integer.parseInt(pieChartRS.getString(3));
+            } else if (pieChartRS.getString(1).equalsIgnoreCase("h") && pieChartRS.getString(2).equalsIgnoreCase("incorrect")) {
+                totalNumberOfQuestions += Integer.parseInt(pieChartRS.getString(3));
+                hNumInCorrect = Integer.parseInt(pieChartRS.getString(3));
             }
-        
-    ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
-            new PieChart.Data("Correct", eNumCorrect),
-            new PieChart.Data("Incorrect", eNumInCorrect));
-    
+        }
+
+        ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
+                new PieChart.Data("Correct", eNumCorrect),
+                new PieChart.Data("Incorrect", eNumInCorrect));
+
         PieChartEasy.setTitle("Easy Questions");
         PieChartEasy.setData(pieChartData);
-        
-    ObservableList<PieChart.Data> pieChartData2 = FXCollections.observableArrayList(
-            new PieChart.Data("Correct", mNumCorrect),
-            new PieChart.Data("Incorrect", mNumInCorrect));
-    
+
+        ObservableList<PieChart.Data> pieChartData2 = FXCollections.observableArrayList(
+                new PieChart.Data("Correct", mNumCorrect),
+                new PieChart.Data("Incorrect", mNumInCorrect));
+
         PieChartMedium.setTitle("Medium Questions");
         PieChartMedium.setData(pieChartData2);
-        
-    ObservableList<PieChart.Data> pieChartData3 = FXCollections.observableArrayList(
-            new PieChart.Data("Correct", hNumCorrect),
-            new PieChart.Data("Incorrect", hNumInCorrect));
-    
+
+        ObservableList<PieChart.Data> pieChartData3 = FXCollections.observableArrayList(
+                new PieChart.Data("Correct", hNumCorrect),
+                new PieChart.Data("Incorrect", hNumInCorrect));
+
         PieChartHard.setTitle("Hard Questions");
         PieChartHard.setData(pieChartData3);
-        
-        
 
     }
-    
-    public void countNoOfQuizzes() throws SQLException{
+
+    public void countNoOfQuizzes() throws SQLException {
         int totalNumberOfQuestions = 0;
         ResultSet pieChartRS = connection.createStatement().executeQuery("SELECT status, answercheck, count(answercheck) FROM UserDB.ExamTable group by status, answercheck");
-            while(pieChartRS.next()){
-                    totalNumberOfQuestions+= Integer.parseInt(pieChartRS.getString(3));
-                }
-            
-        totalNumberQuestions.setText(totalNumberOfQuestions+"");
+        while (pieChartRS.next()) {
+            totalNumberOfQuestions += Integer.parseInt(pieChartRS.getString(3));
+        }
+
+        totalNumberQuestions.setText(totalNumberOfQuestions + "");
     }
-    
-    
-    
+
     /* Get number of days in a month */
-    public int getNumberofDaysInMonth(int Month){
+    public int getNumberofDaysInMonth(int Month) {
         int iYear = 2016;
         int iMonth = Month; // 1 (months begin with 0)
         int iDay = 1;
@@ -483,186 +443,177 @@ public class Scene6Controller implements Initializable {
 
         // Get the number of days in that month
         int daysInMonth = mycal.getActualMaximum(Calendar.DAY_OF_MONTH);
-        
+
         return daysInMonth;
     }
-    
-    
-    
-    
-    
+
     /* Takes month as string and returns integer */
-    public int monthNumberConversion(String monthName){
+    public int monthNumberConversion(String monthName) {
         int monthValue = 0;
-        if(monthName.equalsIgnoreCase("January")){
+        if (monthName.equalsIgnoreCase("January")) {
             monthValue = 1;
-        }else if(monthName.equalsIgnoreCase("February")){
+        } else if (monthName.equalsIgnoreCase("February")) {
             monthValue = 2;
-        }else if(monthName.equalsIgnoreCase("March")){
+        } else if (monthName.equalsIgnoreCase("March")) {
             monthValue = 3;
-        }else if(monthName.equalsIgnoreCase("April")){
+        } else if (monthName.equalsIgnoreCase("April")) {
             monthValue = 4;
-        }else if(monthName.equalsIgnoreCase("May")){
+        } else if (monthName.equalsIgnoreCase("May")) {
             monthValue = 5;
-        }else if(monthName.equalsIgnoreCase("June")){
+        } else if (monthName.equalsIgnoreCase("June")) {
             monthValue = 6;
-        }else if(monthName.equalsIgnoreCase("July")){
+        } else if (monthName.equalsIgnoreCase("July")) {
             monthValue = 7;
-        }else if(monthName.equalsIgnoreCase("August")){
+        } else if (monthName.equalsIgnoreCase("August")) {
             monthValue = 8;
-        }else if(monthName.equalsIgnoreCase("September")){
+        } else if (monthName.equalsIgnoreCase("September")) {
             monthValue = 9;
-        }else if(monthName.equalsIgnoreCase("October")){
+        } else if (monthName.equalsIgnoreCase("October")) {
             monthValue = 10;
-        }else if(monthName.equalsIgnoreCase("November")){
+        } else if (monthName.equalsIgnoreCase("November")) {
             monthValue = 11;
-        }else if(monthName.equalsIgnoreCase("December")){
+        } else if (monthName.equalsIgnoreCase("December")) {
             monthValue = 12;
         }
         return monthValue;
     }
-    
-    
-    public void countNumberOfQuizzes(String month) throws SQLException{
+
+    public void countNumberOfQuizzes(String month) throws SQLException {
         int monthNum = monthNumberConversion(month);
         int count = 0;
         int count2 = 0;
         int count3 = 0;
-            String tableCount = "SELECT examDate, count(examID), sum(score), sum(score)/count(examID) FROM UserDB.vw_examResult WHERE substring(examDate,6,2) = ? group by examDate;";
-            PreparedStatement stmt = this.connection.prepareStatement(tableCount);
-            stmt.setInt(1, monthNum); //applies random variable to select statement.
-            ResultSet dbQuery1 = stmt.executeQuery();
-            ResultSet dbQuery2 = connection.createStatement().executeQuery("SELECT examDate, count(examID), sum(score), sum(score)/count(examID) FROM UserDB.vw_examResult group by examDate;");
-            while(dbQuery1.next()){
-                count2 += (Integer.parseInt(dbQuery1.getString(2)));
-            }
-            while(dbQuery2.next()){
-                count += (Integer.parseInt(dbQuery2.getString(2)));
-            }
-            String tableCount2 = "select substring(examDate,6,2) as month, count(question) from UserDB.ExamTable WHERE substring(examDate,1,4) = 2016 and substring(examDate,6,2) = ? group by substring(examDate,6,2);";
-            PreparedStatement stmt2 = this.connection.prepareStatement(tableCount2);
-            stmt2.setInt(1, monthNum); //applies random variable to select statement.
-            ResultSet dbQuery3 = stmt2.executeQuery();
-            while(dbQuery3.next()){
-                count3 = (Integer.parseInt(dbQuery3.getString(2)));
-            }
-            
-            totalNumberQuestionsMonth.setText(count3+"");
-            totalNumberQuizzes.setText(count+"");
-            totalNumberQuizzesMonth.setText(count2+"");  
-    }
-    
-    
-    
-    
-    /* Draws Bar chart for given month*/
-    public void drawBarChart(String month) throws SQLException{
-        
-        int monthNum = monthNumberConversion(month);
-        barChartTeacher.getData().clear();   
-        
-            String tableCount = "SELECT examDate, count(examID), sum(score), sum(score)/count(examID) FROM UserDB.vw_examResult WHERE substring(examDate,6,2) = ? group by examDate;";
-            PreparedStatement stmt = this.connection.prepareStatement(tableCount);
-            stmt.setInt(1, monthNum); //applies random variable to select statement.
-            ResultSet dbQuery1 = stmt.executeQuery();
-  
-           xAxis.setLabel("Questions Difficulty");       
-           yAxis.setLabel("Average Score");
-
-            XYChart.Series series1 = new XYChart.Series();
-            XYChart.Series series2 = new XYChart.Series();
-            XYChart.Series series3 = new XYChart.Series();
-            barChartTeacher.setTitle("Average Student Scores Per Question Difficulty");
-            String tableCount2 = "select status, month, score from UserDB.vw_scoreStatus where month = ?";
-            PreparedStatement stmt2 = this.connection.prepareStatement(tableCount2);
-            stmt2.setInt(1, monthNum); //applies random variable to select statement.
-            ResultSet levelOfDifficulty = stmt2.executeQuery();
-            
-            
-   //         ResultSet levelOfDifficulty = connection.createStatement().executeQuery("select * from UserDB.vw_scoreStatus");
-            while(levelOfDifficulty.next()){
-                if(levelOfDifficulty.getString(1).equalsIgnoreCase("e")){
-                    series1.getData().add(new XYChart.Data("Easy Questions", Double.parseDouble(levelOfDifficulty.getString(2))));
-                    series1.setName("Easy");
-                }
-                else if(levelOfDifficulty.getString(1).equalsIgnoreCase("m")){
-                    series2.getData().add(new XYChart.Data("Medium Questions", Double.parseDouble(levelOfDifficulty.getString(2))));
-                    series2.setName("Medium");
-                }
-                else if(levelOfDifficulty.getString(1).equalsIgnoreCase("h")){
-                    series3.getData().add(new XYChart.Data("Hard Questions", Double.parseDouble(levelOfDifficulty.getString(2))));
-                    series3.setName("Hard");
-                }
-            }
-
-           barChartTeacher.getData().addAll(series1, series2, series3);
-            
-    }
-    
-    
-   /* Displays data for tables in Report */ 
-   public void displayTableData() throws SQLException{
-   ResultSet passMonthNum = connection.createStatement().executeQuery("SELECT substring(examDate,6,2) as month, count(examID) as totalpass  FROM UserDB.vw_examResult where (score >= 59) and (substring(examDate,6,2) = 10);");
-            while(passMonthNum.next()){
-                passingLastMonth.setText(passMonthNum.getString(2));
-            }
-            ResultSet failMonthNum = connection.createStatement().executeQuery("SELECT substring(examDate,6,2) as month, count(examID) as totalfail  FROM UserDB.vw_examResult where (score < 59) and (substring(examDate,6,2) = 10);");
-            while(failMonthNum.next()){
-                nonPassingLastMonth.setText(failMonthNum.getString(2));
-            }
-            ResultSet passQuarterNum = connection.createStatement().executeQuery("SELECT substring(examDate,6,2) as month, count(examID) as totalpass  FROM UserDB.vw_examResult where (score >= 59) and (substring(examDate,6,2) between 7 and 9);");
-            while(passQuarterNum.next()){
-                passingLastQuarter.setText(passQuarterNum.getString(2));
-            }
-            ResultSet failQuarterNum = connection.createStatement().executeQuery("SELECT substring(examDate,6,2) as month, count(examID) as totalfail  FROM UserDB.vw_examResult where (score < 59) and (substring(examDate,6,2) between 7 and 9);");
-            while(failQuarterNum.next()){
-                nonPassingLastQuarter.setText(failQuarterNum.getString(2));
-            }
-            ResultSet passYearNum = connection.createStatement().executeQuery("SELECT substring(examDate,6,2) as month, count(examID) as totalpass  FROM UserDB.vw_examResult where (score >= 59) and (substring(examDate,1,4) = 2015);");
-            while(passYearNum.next()){
-                passingLastYear.setText(passYearNum.getString(2));
-            }
-            ResultSet failYearNum = connection.createStatement().executeQuery("SELECT substring(examDate,6,2) as month, count(examID) as totalfail  FROM UserDB.vw_examResult where (score < 59) and (substring(examDate,1,4) = 2015);");
-            while(failYearNum.next()){
-                nonPassingLastYear.setText(failYearNum.getString(2));
-            }
-   }
-    
-    /**
-        *  The returnHome() method switches back to the login screen.
-        * 
-     * @throws java.io.IOException
-        **/
-        public void returnHome() throws IOException{
-            returnHomeButton.setOnAction(h ->{
-                
-                try {
-                    returnHomeButtonClicked();
-                } catch (IOException ex) {
-                    Logger.getLogger(Scene6Controller.class.getName()).log(Level.SEVERE, null, ex);
-                }                 
-            } ); {
-         }       
+        String tableCount = "SELECT examDate, count(examID), sum(score), sum(score)/count(examID) FROM UserDB.vw_examResult WHERE substring(examDate,6,2) = ? group by examDate;";
+        PreparedStatement stmt = this.connection.prepareStatement(tableCount);
+        stmt.setInt(1, monthNum); //applies random variable to select statement.
+        ResultSet dbQuery1 = stmt.executeQuery();
+        ResultSet dbQuery2 = connection.createStatement().executeQuery("SELECT examDate, count(examID), sum(score), sum(score)/count(examID) FROM UserDB.vw_examResult group by examDate;");
+        while (dbQuery1.next()) {
+            count2 += (Integer.parseInt(dbQuery1.getString(2)));
         }
-     /**
-     * 
-     * @throws java.io.IOException
-      */
-            @FXML
-        public void returnHomeButtonClicked() throws IOException{
-            FXMLLoader f = new FXMLLoader(getClass().getResource("LoginScreen.fxml"));
-                Parent scene6 = f.load();
-                LoginScreenController ls = f.<LoginScreenController>getController();
-                
-                Scene LoginScreen = new Scene(scene6);
-                homeStage = (Stage) returnHomeButton.getScene().getWindow();
-                homeStage.hide();
-                homeStage.setScene(LoginScreen);
-                homeStage.show();
+        while (dbQuery2.next()) {
+            count += (Integer.parseInt(dbQuery2.getString(2)));
+        }
+        String tableCount2 = "select substring(examDate,6,2) as month, count(question) from UserDB.ExamTable WHERE substring(examDate,1,4) = 2016 and substring(examDate,6,2) = ? group by substring(examDate,6,2);";
+        PreparedStatement stmt2 = this.connection.prepareStatement(tableCount2);
+        stmt2.setInt(1, monthNum); //applies random variable to select statement.
+        ResultSet dbQuery3 = stmt2.executeQuery();
+        while (dbQuery3.next()) {
+            count3 = (Integer.parseInt(dbQuery3.getString(2)));
+        }
+
+        totalNumberQuestionsMonth.setText(count3 + "");
+        totalNumberQuizzes.setText(count + "");
+        totalNumberQuizzesMonth.setText(count2 + "");
     }
-        
-        public void connectToDatabase() throws SQLException{
-        
+
+    /* Draws Bar chart for given month*/
+    public void drawBarChart(String month) throws SQLException {
+
+        int monthNum = monthNumberConversion(month);
+        barChartTeacher.getData().clear();
+
+        String tableCount = "SELECT examDate, count(examID), sum(score), sum(score)/count(examID) FROM UserDB.vw_examResult WHERE substring(examDate,6,2) = ? group by examDate;";
+        PreparedStatement stmt = this.connection.prepareStatement(tableCount);
+        stmt.setInt(1, monthNum); //applies random variable to select statement.
+        ResultSet dbQuery1 = stmt.executeQuery();
+
+        xAxis.setLabel("Questions Difficulty");
+        yAxis.setLabel("Average Score");
+
+        XYChart.Series series1 = new XYChart.Series();
+        XYChart.Series series2 = new XYChart.Series();
+        XYChart.Series series3 = new XYChart.Series();
+        barChartTeacher.setTitle("Average Student Scores Per Question Difficulty");
+        String tableCount2 = "select status, month, score from UserDB.vw_scoreStatus where month = ?";
+        PreparedStatement stmt2 = this.connection.prepareStatement(tableCount2);
+        stmt2.setInt(1, monthNum); //applies random variable to select statement.
+        ResultSet levelOfDifficulty = stmt2.executeQuery();
+
+        //         ResultSet levelOfDifficulty = connection.createStatement().executeQuery("select * from UserDB.vw_scoreStatus");
+        while (levelOfDifficulty.next()) {
+            if (levelOfDifficulty.getString(1).equalsIgnoreCase("e")) {
+                series1.getData().add(new XYChart.Data("Easy Questions", Double.parseDouble(levelOfDifficulty.getString(2))));
+                series1.setName("Easy");
+            } else if (levelOfDifficulty.getString(1).equalsIgnoreCase("m")) {
+                series2.getData().add(new XYChart.Data("Medium Questions", Double.parseDouble(levelOfDifficulty.getString(2))));
+                series2.setName("Medium");
+            } else if (levelOfDifficulty.getString(1).equalsIgnoreCase("h")) {
+                series3.getData().add(new XYChart.Data("Hard Questions", Double.parseDouble(levelOfDifficulty.getString(2))));
+                series3.setName("Hard");
+            }
+        }
+
+        barChartTeacher.getData().addAll(series1, series2, series3);
+
+    }
+
+    /* Displays data for tables in Report */
+    public void displayTableData() throws SQLException {
+        ResultSet passMonthNum = connection.createStatement().executeQuery("SELECT substring(examDate,6,2) as month, count(examID) as totalpass  FROM UserDB.vw_examResult where (score >= 59) and (substring(examDate,6,2) = 10);");
+        while (passMonthNum.next()) {
+            passingLastMonth.setText(passMonthNum.getString(2));
+        }
+        ResultSet failMonthNum = connection.createStatement().executeQuery("SELECT substring(examDate,6,2) as month, count(examID) as totalfail  FROM UserDB.vw_examResult where (score < 59) and (substring(examDate,6,2) = 10);");
+        while (failMonthNum.next()) {
+            nonPassingLastMonth.setText(failMonthNum.getString(2));
+        }
+        ResultSet passQuarterNum = connection.createStatement().executeQuery("SELECT substring(examDate,6,2) as month, count(examID) as totalpass  FROM UserDB.vw_examResult where (score >= 59) and (substring(examDate,6,2) between 7 and 9);");
+        while (passQuarterNum.next()) {
+            passingLastQuarter.setText(passQuarterNum.getString(2));
+        }
+        ResultSet failQuarterNum = connection.createStatement().executeQuery("SELECT substring(examDate,6,2) as month, count(examID) as totalfail  FROM UserDB.vw_examResult where (score < 59) and (substring(examDate,6,2) between 7 and 9);");
+        while (failQuarterNum.next()) {
+            nonPassingLastQuarter.setText(failQuarterNum.getString(2));
+        }
+        ResultSet passYearNum = connection.createStatement().executeQuery("SELECT substring(examDate,6,2) as month, count(examID) as totalpass  FROM UserDB.vw_examResult where (score >= 59) and (substring(examDate,1,4) = 2015);");
+        while (passYearNum.next()) {
+            passingLastYear.setText(passYearNum.getString(2));
+        }
+        ResultSet failYearNum = connection.createStatement().executeQuery("SELECT substring(examDate,6,2) as month, count(examID) as totalfail  FROM UserDB.vw_examResult where (score < 59) and (substring(examDate,1,4) = 2015);");
+        while (failYearNum.next()) {
+            nonPassingLastYear.setText(failYearNum.getString(2));
+        }
+    }
+
+    /**
+     * The returnHome() method switches back to the login screen.
+     *
+     * @throws java.io.IOException
+        *
+     */
+    public void returnHome() throws IOException {
+        returnHomeButton.setOnAction(h -> {
+
+            try {
+                returnHomeButtonClicked();
+            } catch (IOException ex) {
+                Logger.getLogger(Scene6Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        {
+        }
+    }
+
+    /**
+     *
+     * @throws java.io.IOException
+     */
+    @FXML
+    public void returnHomeButtonClicked() throws IOException {
+        FXMLLoader f = new FXMLLoader(getClass().getResource("LoginScreen.fxml"));
+        Parent scene6 = f.load();
+        LoginScreenController ls = f.<LoginScreenController>getController();
+
+        Scene LoginScreen = new Scene(scene6);
+        homeStage = (Stage) returnHomeButton.getScene().getWindow();
+        homeStage.hide();
+        homeStage.setScene(LoginScreen);
+        homeStage.show();
+    }
+
+    public void connectToDatabase() throws SQLException {
+
         String url = "jdbc:mysql://adelaide-mysql-qcas1.caswkasqdmel.ap-southeast-2.rds.amazonaws.com:3306/UserDB"; //creates network connection to database for application   
         String username = "qcastest";//username for accessing database
         String password = "qcastest";//password for accessing database
@@ -675,42 +626,42 @@ public class Scene6Controller implements Initializable {
             System.out.println("SQLException: " + e);
             this.connection.close();//closes connection resource
         } // end of try-with-resourc
-        }
-    
-    public void displayTables() throws SQLException{
+    }
+
+    public void displayTables() throws SQLException {
         String avgScoreLM = "";
         String avgScoreLQ = "";
         String avgScoreLY = "";
         String testTakenLM = "";
         String testTakenLQ = "";
         String testTakenLY = "";
-        
+
         ResultSet averages = connection.createStatement().executeQuery("select count(examID) as lastmonthcount from UserDB.vw_examResult where substring(examDate,6,2) = substring(current_date,6,2)-1 and substring(examDate,1,4) = substring(current_date,1,4);");
-            while(averages.next()){
-                    testTakenLM = averages.getString(1);
-                }
+        while (averages.next()) {
+            testTakenLM = averages.getString(1);
+        }
         ResultSet averages2 = connection.createStatement().executeQuery("select count(examID) as lastquartercount from UserDB.vw_examResult where substring(examDate,6,2) in ('07','08','09') and substring(examDate,1,4) = substring(current_date,1,4);");
-            while(averages2.next()){
-                    testTakenLQ = averages2.getString(1);
-                }
+        while (averages2.next()) {
+            testTakenLQ = averages2.getString(1);
+        }
         ResultSet averages3 = connection.createStatement().executeQuery("select count(examID) as lastyearcount from UserDB.vw_examResult where substring(examDate,1,4) = substring(current_date,1,4)-1;");
-            while(averages3.next()){
-                    testTakenLY = averages3.getString(1);
-                }
+        while (averages3.next()) {
+            testTakenLY = averages3.getString(1);
+        }
         ResultSet averages4 = connection.createStatement().executeQuery("select AVG(score) as lastmonthavg from UserDB.vw_examResult where substring(examDate,6,2) = substring(current_date,6,2)-1 and substring(examDate,1,4) = substring(current_date,1,4);");
-            while(averages4.next()){
-                    avgScoreLM = averages4.getString(1);
-                }
+        while (averages4.next()) {
+            avgScoreLM = averages4.getString(1);
+        }
         ResultSet averages5 = connection.createStatement().executeQuery("select AVG(score) as lastquarteravg from UserDB.vw_examResult where substring(examDate,6,2) in ('07','08','09') and substring(examDate,1,4) = substring(current_date,1,4);");
-            while(averages5.next()){
-                    avgScoreLQ = averages5.getString(1);
-                }
+        while (averages5.next()) {
+            avgScoreLQ = averages5.getString(1);
+        }
         ResultSet averages6 = connection.createStatement().executeQuery("select AVG(score) as lastyearavg from UserDB.vw_examResult where substring(examDate,1,4) = substring(current_date,1,4)-1;");
-            while(averages6.next()){
-                    avgScoreLY = averages6.getString(1);
-                }
-            
-            /*select AVG(score) as lastmonthavg from UserDB.vw_examResult
+        while (averages6.next()) {
+            avgScoreLY = averages6.getString(1);
+        }
+
+        /*select AVG(score) as lastmonthavg from UserDB.vw_examResult
 where substring(examDate,6,2) = substring(current_date,6,2)-1
 and substring(examDate,1,4) = substring(current_date,1,4);
 
@@ -722,22 +673,22 @@ and substring(examDate,1,4) = substring(current_date,1,4);
 
 select AVG(score) as lastyearavg from UserDB.vw_examResult
 where substring(examDate,1,4) = substring(current_date,1,4)-1;*/
-    testTakenLastMonth.setText(testTakenLM);
-    testTakenLastQuarter.setText(testTakenLQ);
-    testTakenLastYear.setText(testTakenLY);
-    avgQuizScoreLM.setText(avgScoreLM);
-    avgEasyScoreLM.setText("0");
-    avgMediumScoreLM.setText("0");
-    avgHardScoreLM.setText("0");
-    avgQuizScoreLQ.setText(avgScoreLQ);
-    avgEasyScoreLQ.setText("0");
-    avgMediumScoreLQ.setText("0");
-    avgHardScoreLQ.setText("0");
-    avgQuizScoreLY.setText(avgScoreLY);
-    avgEasyScoreLY.setText("0");
-    avgMediumScoreLY.setText("0");
-    avgHardScoreLY.setText("0");
-    
+        testTakenLastMonth.setText(testTakenLM);
+        testTakenLastQuarter.setText(testTakenLQ);
+        testTakenLastYear.setText(testTakenLY);
+        avgQuizScoreLM.setText(avgScoreLM);
+        avgEasyScoreLM.setText("0");
+        avgMediumScoreLM.setText("0");
+        avgHardScoreLM.setText("0");
+        avgQuizScoreLQ.setText(avgScoreLQ);
+        avgEasyScoreLQ.setText("0");
+        avgMediumScoreLQ.setText("0");
+        avgHardScoreLQ.setText("0");
+        avgQuizScoreLY.setText(avgScoreLY);
+        avgEasyScoreLY.setText("0");
+        avgMediumScoreLY.setText("0");
+        avgHardScoreLY.setText("0");
+
     }
 
     @FXML
@@ -757,14 +708,14 @@ where substring(examDate,1,4) = substring(current_date,1,4)-1;*/
             PdfWriter writer = PdfWriter.getInstance(document, fos);
             writer.open();
             document.open();
-        ByteArrayOutputStream  byteOutput = new ByteArrayOutputStream();
+            ByteArrayOutputStream byteOutput = new ByteArrayOutputStream();
 
-        ImageIO.write( SwingFXUtils.fromFXImage( image, null ), "png", byteOutput );
+            ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", byteOutput);
 
-        com.itextpdf.text.Image  graph;
-        graph = com.itextpdf.text.Image.getInstance( byteOutput.toByteArray() );
-        graph.scaleToFit(500,500);
-        
+            com.itextpdf.text.Image graph;
+            graph = com.itextpdf.text.Image.getInstance(byteOutput.toByteArray());
+            graph.scaleToFit(500, 500);
+
             document.add((com.itextpdf.text.Element) graph);
             document.close();
             writer.close();
@@ -777,11 +728,12 @@ where substring(examDate,1,4) = substring(current_date,1,4)-1;*/
 
     /**
      * Initializes the controller class.
+     *
      * @param url
      * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 }

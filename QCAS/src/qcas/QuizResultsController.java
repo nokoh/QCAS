@@ -257,7 +257,7 @@ public class QuizResultsController implements Initializable {
        
        numberCorrectLabel.setText(this.correctQuestions.size()+"");
        numberIncorrectLabel.setText(this.incorrectQuestions.size()+"");
-       exportToPdf();
+       
        for(int i = 0; i < this.correctQuestions.size(); i++){
            if(this.correctQuestions.get(i).getClass() == mc.getClass()){
                mc = (MultipleChoice)this.correctQuestions.get(i);
@@ -528,14 +528,14 @@ public String convertTime(long time){
         WritableImage image = QuizResultsDashboardPane.snapshot(new SnapshotParameters(), null);
         
         //  WritableImage image2 = buttonchart2.snapshot(new SnapshotParameters(), null);
-        File file = new File("Dashboard Report.png");
+        File file = new File("Student Report.png");
 
         ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", file);
         // ImageIO.write(SwingFXUtils.fromFXImage(image2, null), "png", file); 
 
         Document document = new Document();
-        String input = "Dashboard Report.png"; // .gif and .jpg are ok too!
-        String output = "Dashboard Report.pdf";
+        String input = "Student Report.png"; // .gif and .jpg are ok too!
+        String output = "Student Report.pdf";
         try {
             FileOutputStream fos = new FileOutputStream(output);
             PdfWriter writer = PdfWriter.getInstance(document, fos);
@@ -549,9 +549,9 @@ com.itextpdf.text.Image  graph;
 graph = com.itextpdf.text.Image.getInstance( byteOutput.toByteArray() );
 graph.scaleToFit(500,500);
             document.add((com.itextpdf.text.Element) graph);
-//         Font f = new Font(FontFamily.TIMES_ROMAN, 10.0f, Font.UNDERLINE, BaseColor.BLACK);
-//            Paragraph p = new Paragraph(s, f);
-//            document.add(p);
+         Font f = new Font(FontFamily.TIMES_ROMAN, 10.0f, Font.UNDERLINE, BaseColor.BLACK);
+            Paragraph p = new Paragraph(s, f);
+            document.add(p);
 
 
             document.close();

@@ -40,18 +40,17 @@ import static qcas.SelectQuestionsController.secs;
  * @author Nnamdi
  */
 public class MAQuestionsController implements Initializable {
-    
-    ArrayList<MultipleChoice>multipleChoiceQuestions = new ArrayList();
-    ArrayList<MultipleAnswer>multipleAnswerQuestions = new ArrayList();
-    ArrayList<TrueFalse>trueFalseQuestions = new ArrayList();
-    ArrayList<FillInTheBlanks>fillInTheBlanksQuestions = new ArrayList();
-    ArrayList <Question> correctQuestions = new ArrayList();
-    ArrayList <Question> incorrectQuestions = new ArrayList();
-    ArrayList <String> userAnswers = new ArrayList();
-    ArrayList <String> userAnswerCheck = new ArrayList();
-    ArrayList <Question> allAnsweredQuestions = new ArrayList();
 
-    
+    ArrayList<MultipleChoice> multipleChoiceQuestions = new ArrayList();
+    ArrayList<MultipleAnswer> multipleAnswerQuestions = new ArrayList();
+    ArrayList<TrueFalse> trueFalseQuestions = new ArrayList();
+    ArrayList<FillInTheBlanks> fillInTheBlanksQuestions = new ArrayList();
+    ArrayList<Question> correctQuestions = new ArrayList();
+    ArrayList<Question> incorrectQuestions = new ArrayList();
+    ArrayList<String> userAnswers = new ArrayList();
+    ArrayList<String> userAnswerCheck = new ArrayList();
+    ArrayList<Question> allAnsweredQuestions = new ArrayList();
+
     Scene scene;
     String userId;
     Pane question = new Pane();
@@ -61,65 +60,65 @@ public class MAQuestionsController implements Initializable {
     int numOfQuestions;
     Connection connection;
     int pageNumber;
-   
-    @FXML 
+
+    @FXML
     private Button AButton;
-    @FXML 
+    @FXML
     private Button BButton;
-    @FXML 
+    @FXML
     private Button CButton;
-    @FXML 
+    @FXML
     private Button DButton;
     @FXML
     private Label studentNameLabel;
     @FXML
     private Label userIDLabel;
-    
-    @FXML 
-    private Label MAQuestionDescriptionLabel; 
+
+    @FXML
+    private Label MAQuestionDescriptionLabel;
     @FXML
     private Label questionNumberLabel;
-    
-    @FXML 
-    private Label MAOptionALabel; 
-    @FXML 
-    private Label MAOptionBLabel; 
-    @FXML 
-    private Label MAOptionCLabel; 
-    @FXML 
-    private Label MAOptionDLabel;  
-    @FXML 
+
+    @FXML
+    private Label MAOptionALabel;
+    @FXML
+    private Label MAOptionBLabel;
+    @FXML
+    private Label MAOptionCLabel;
+    @FXML
+    private Label MAOptionDLabel;
+    @FXML
     private Pagination pagination;
     @FXML
     private TextArea outputTextArea;
-    
-    public void initID(String ID) throws SQLException{ 
+
+    public void initID(String ID) throws SQLException {
         userId = ID;
         userIDLabel.setText(ID);
         connectToDatabase();
-        
+
         String dbQuery = "Select firstname, lastname, userid from Users WHERE userid = ?";
-            PreparedStatement preparedStatement = connection.prepareStatement(dbQuery);
-            preparedStatement.setString(1, userId);
-            ResultSet rset = preparedStatement.executeQuery();
-            if (rset.next()) {
-                studentNameLabel.setText(rset.getString("firstname") + " " + rset.getString("lastname"));
-            }
+        PreparedStatement preparedStatement = connection.prepareStatement(dbQuery);
+        preparedStatement.setString(1, userId);
+        ResultSet rset = preparedStatement.executeQuery();
+        if (rset.next()) {
+            studentNameLabel.setText(rset.getString("firstname") + " " + rset.getString("lastname"));
+        }
     }
-    
-    public void setScore(int num){ 
+
+    public void setScore(int num) {
         userScore = num;
     }
-    
-    public void setNumOfQuestions(int num){ 
+
+    public void setNumOfQuestions(int num) {
         numOfQuestions = num;
     }
-    
-    public void setCorrect(int num){ 
+
+    public void setCorrect(int num) {
         numCorrect = num;
     }
-    
-    public void setIncorrect(int num){ 
+
+    public void setIncorrect(int num) {
         numIncorrect = num;
     }
 
@@ -135,15 +134,15 @@ public class MAQuestionsController implements Initializable {
         return incorrectQuestions;
     }
 
-    public void setIncorrectQuestions(ArrayList <Question> incorrectQuestions) {
+    public void setIncorrectQuestions(ArrayList<Question> incorrectQuestions) {
         this.incorrectQuestions = incorrectQuestions;
     }
-    
-    public void setUserAnswers(ArrayList <String> userAnswers) {
+
+    public void setUserAnswers(ArrayList<String> userAnswers) {
         this.userAnswers = userAnswers;
     }
-    
-    public void setUserAnswerCheck(ArrayList <String> userAnswerCheck) {
+
+    public void setUserAnswerCheck(ArrayList<String> userAnswerCheck) {
         this.userAnswerCheck = userAnswerCheck;
     }
 
@@ -154,11 +153,6 @@ public class MAQuestionsController implements Initializable {
     public void setPageNumber(int pageNumber) {
         this.pageNumber = pageNumber;
     }
-    
-    
-    
-    
-    
 
     /**
      * Initializes the controller class.
@@ -168,137 +162,130 @@ public class MAQuestionsController implements Initializable {
         // TODO
     }
 
-    public void launchMA(ArrayList<MultipleChoice>multipleChoiceQuestions, ArrayList<MultipleAnswer>multipleAnswerQuestions, ArrayList<TrueFalse>trueFalseQuestions, 
-        ArrayList<FillInTheBlanks>fillInTheBlanksQuestions,int size) throws IOException, SQLException, DocumentException{
-        
+    public void launchMA(ArrayList<MultipleChoice> multipleChoiceQuestions, ArrayList<MultipleAnswer> multipleAnswerQuestions, ArrayList<TrueFalse> trueFalseQuestions,
+            ArrayList<FillInTheBlanks> fillInTheBlanksQuestions, int size) throws IOException, SQLException, DocumentException {
+
         Parent root;
         this.multipleChoiceQuestions = multipleChoiceQuestions;
         this.trueFalseQuestions = trueFalseQuestions;
         this.fillInTheBlanksQuestions = fillInTheBlanksQuestions;
-        
-       // Stage stage = (Stage) AButton.getScene().getWindow();
-        if(size != 0){
+
+        // Stage stage = (Stage) AButton.getScene().getWindow();
+        if (size != 0) {
             this.multipleAnswerQuestions = multipleAnswerQuestions;
-            MAQuestionDescriptionLabel.setText(multipleAnswerQuestions.get(size-1).description);
-            MAOptionALabel.setText(multipleAnswerQuestions.get(size-1).answer1);
-            MAOptionBLabel.setText(multipleAnswerQuestions.get(size-1).answer2);
-            MAOptionCLabel.setText(multipleAnswerQuestions.get(size-1).answer3);
-            MAOptionDLabel.setText(multipleAnswerQuestions.get(size-1).answer4);
-            this.allAnsweredQuestions.add(multipleAnswerQuestions.get(size-1));
-            
-            if(multipleAnswerQuestions.get(size-1).correct1.equals("correct")){
-                this.userAnswerCheck.add(this.multipleAnswerQuestions.get(size- 1).answer1);
-            }
-            else if(multipleAnswerQuestions.get(size-1).correct2.equals("correct")){
+            MAQuestionDescriptionLabel.setText(multipleAnswerQuestions.get(size - 1).description);
+            MAOptionALabel.setText(multipleAnswerQuestions.get(size - 1).answer1);
+            MAOptionBLabel.setText(multipleAnswerQuestions.get(size - 1).answer2);
+            MAOptionCLabel.setText(multipleAnswerQuestions.get(size - 1).answer3);
+            MAOptionDLabel.setText(multipleAnswerQuestions.get(size - 1).answer4);
+            this.allAnsweredQuestions.add(multipleAnswerQuestions.get(size - 1));
+
+            if (multipleAnswerQuestions.get(size - 1).correct1.equals("correct")) {
+                this.userAnswerCheck.add(this.multipleAnswerQuestions.get(size - 1).answer1);
+            } else if (multipleAnswerQuestions.get(size - 1).correct2.equals("correct")) {
                 this.userAnswerCheck.add(this.multipleAnswerQuestions.get(size - 1).answer2);
-            }
-            else if(multipleAnswerQuestions.get(size-1).correct3.equals("correct")){
+            } else if (multipleAnswerQuestions.get(size - 1).correct3.equals("correct")) {
                 this.userAnswerCheck.add(this.multipleAnswerQuestions.get(size - 1).answer3);
-            }
-            else if(multipleAnswerQuestions.get(size-1).correct4.equals("correct")){
+            } else if (multipleAnswerQuestions.get(size - 1).correct4.equals("correct")) {
                 this.userAnswerCheck.add(this.multipleAnswerQuestions.get(size - 1).answer4);
             }
-            pageNumber+=1;
+            pageNumber += 1;
             questionNumberLabel.setText(pageNumber + "/" + this.numOfQuestions + "");
-            
-            AButton.setOnAction(e -> {
-            if(multipleAnswerQuestions.get(size-1).correct1.equals("correct")){
-                this.numCorrect++;
-                this.correctQuestions.add(multipleAnswerQuestions.get(size-1));
-                this.userAnswers.add(multipleAnswerQuestions.get(size-1).answer1);
-            }else{
-                this.numIncorrect++;
-                this.incorrectQuestions.add(multipleAnswerQuestions.get(size-1));
-                this.userAnswers.add(multipleAnswerQuestions.get(size-1).answer1);
-            }
-            int m = size - 1;
-            try {
-                launchMA(this.multipleChoiceQuestions, this.multipleAnswerQuestions, 
-                        this.trueFalseQuestions, this.fillInTheBlanksQuestions, m);
-            } catch (IOException ex) {
-                Logger.getLogger(MCQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
-            }   catch (SQLException ex) {
-                    Logger.getLogger(MAQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (DocumentException ex) {
-                    Logger.getLogger(MAQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-        });
-        
-        BButton.setOnAction(e -> {
-            if(multipleAnswerQuestions.get(size-1).correct2.equals("correct")){
-                this.numCorrect++;
-                this.correctQuestions.add(multipleAnswerQuestions.get(size-1));
-                this.userAnswers.add(multipleAnswerQuestions.get(size-1).answer2);
-            }
-            else{
-                this.numIncorrect++;
-                this.incorrectQuestions.add(multipleAnswerQuestions.get(size-1));
-                this.userAnswers.add(multipleAnswerQuestions.get(size-1).answer2);
-            }
-            int m = size - 1;
-            try {
-                launchMA(this.multipleChoiceQuestions, this.multipleAnswerQuestions,
-                        this.trueFalseQuestions, this.fillInTheBlanksQuestions , m);
-            } catch (IOException ex) {
-                Logger.getLogger(MCQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
-            }   catch (SQLException ex) {
-                    Logger.getLogger(MAQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (DocumentException ex) {
-                    Logger.getLogger(MAQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-        });
-        
-        CButton.setOnAction(e -> {
-            if(multipleAnswerQuestions.get(size-1).correct3.equals("correct")){
-                this.numCorrect++;
-                this.correctQuestions.add(multipleAnswerQuestions.get(size-1));
-                this.userAnswers.add(multipleAnswerQuestions.get(size-1).answer3);
-            }
-            else{
-                this.numIncorrect++;
-                this.incorrectQuestions.add(multipleAnswerQuestions.get(size-1));
-                this.userAnswers.add(multipleAnswerQuestions.get(size-1).answer3);
-            }
-            int m = size - 1;
-            try {
-                launchMA(this.multipleChoiceQuestions, this.multipleAnswerQuestions,
-                        this.trueFalseQuestions, this.fillInTheBlanksQuestions , m);
-            } catch (IOException ex) {
-                Logger.getLogger(MCQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
-            }   catch (SQLException ex) {
-                    Logger.getLogger(MAQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (DocumentException ex) {
-                    Logger.getLogger(MAQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-        });
-        
-        DButton.setOnAction(e -> {
-            if(multipleAnswerQuestions.get(size-1).correct4.equals("correct")){
-                this.numCorrect++;
-                this.correctQuestions.add(multipleAnswerQuestions.get(size-1));
-                this.userAnswers.add(multipleAnswerQuestions.get(size-1).answer4);
-                
-            }
-            else{
-                this.numIncorrect++;
-                this.incorrectQuestions.add(multipleAnswerQuestions.get(size-1));
-                this.userAnswers.add(multipleAnswerQuestions.get(size-1).answer4);
-            }
-            int m = size - 1;
 
-            try {
-                launchMA(this.multipleChoiceQuestions, this.multipleAnswerQuestions, 
-                        this.trueFalseQuestions, this.fillInTheBlanksQuestions , m);
-            } catch (IOException ex) {
-                Logger.getLogger(MCQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
-            }   catch (SQLException ex) {
+            AButton.setOnAction(e -> {
+                if (multipleAnswerQuestions.get(size - 1).correct1.equals("correct")) {
+                    this.numCorrect++;
+                    this.correctQuestions.add(multipleAnswerQuestions.get(size - 1));
+                    this.userAnswers.add(multipleAnswerQuestions.get(size - 1).answer1);
+                } else {
+                    this.numIncorrect++;
+                    this.incorrectQuestions.add(multipleAnswerQuestions.get(size - 1));
+                    this.userAnswers.add(multipleAnswerQuestions.get(size - 1).answer1);
+                }
+                int m = size - 1;
+                try {
+                    launchMA(this.multipleChoiceQuestions, this.multipleAnswerQuestions,
+                            this.trueFalseQuestions, this.fillInTheBlanksQuestions, m);
+                } catch (IOException ex) {
+                    Logger.getLogger(MCQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
                     Logger.getLogger(MAQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (DocumentException ex) {
                     Logger.getLogger(MAQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
                 }
-        });
-        }
-        else{
+            });
+
+            BButton.setOnAction(e -> {
+                if (multipleAnswerQuestions.get(size - 1).correct2.equals("correct")) {
+                    this.numCorrect++;
+                    this.correctQuestions.add(multipleAnswerQuestions.get(size - 1));
+                    this.userAnswers.add(multipleAnswerQuestions.get(size - 1).answer2);
+                } else {
+                    this.numIncorrect++;
+                    this.incorrectQuestions.add(multipleAnswerQuestions.get(size - 1));
+                    this.userAnswers.add(multipleAnswerQuestions.get(size - 1).answer2);
+                }
+                int m = size - 1;
+                try {
+                    launchMA(this.multipleChoiceQuestions, this.multipleAnswerQuestions,
+                            this.trueFalseQuestions, this.fillInTheBlanksQuestions, m);
+                } catch (IOException ex) {
+                    Logger.getLogger(MCQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(MAQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (DocumentException ex) {
+                    Logger.getLogger(MAQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            });
+
+            CButton.setOnAction(e -> {
+                if (multipleAnswerQuestions.get(size - 1).correct3.equals("correct")) {
+                    this.numCorrect++;
+                    this.correctQuestions.add(multipleAnswerQuestions.get(size - 1));
+                    this.userAnswers.add(multipleAnswerQuestions.get(size - 1).answer3);
+                } else {
+                    this.numIncorrect++;
+                    this.incorrectQuestions.add(multipleAnswerQuestions.get(size - 1));
+                    this.userAnswers.add(multipleAnswerQuestions.get(size - 1).answer3);
+                }
+                int m = size - 1;
+                try {
+                    launchMA(this.multipleChoiceQuestions, this.multipleAnswerQuestions,
+                            this.trueFalseQuestions, this.fillInTheBlanksQuestions, m);
+                } catch (IOException ex) {
+                    Logger.getLogger(MCQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(MAQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (DocumentException ex) {
+                    Logger.getLogger(MAQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            });
+
+            DButton.setOnAction(e -> {
+                if (multipleAnswerQuestions.get(size - 1).correct4.equals("correct")) {
+                    this.numCorrect++;
+                    this.correctQuestions.add(multipleAnswerQuestions.get(size - 1));
+                    this.userAnswers.add(multipleAnswerQuestions.get(size - 1).answer4);
+
+                } else {
+                    this.numIncorrect++;
+                    this.incorrectQuestions.add(multipleAnswerQuestions.get(size - 1));
+                    this.userAnswers.add(multipleAnswerQuestions.get(size - 1).answer4);
+                }
+                int m = size - 1;
+
+                try {
+                    launchMA(this.multipleChoiceQuestions, this.multipleAnswerQuestions,
+                            this.trueFalseQuestions, this.fillInTheBlanksQuestions, m);
+                } catch (IOException ex) {
+                    Logger.getLogger(MCQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(MAQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (DocumentException ex) {
+                    Logger.getLogger(MAQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            });
+        } else {
             Stage stage = (Stage) AButton.getScene().getWindow();
             FXMLLoader f = new FXMLLoader(getClass().getResource("FIBQuestions.fxml"));
             root = f.load();
@@ -313,39 +300,36 @@ public class MAQuestionsController implements Initializable {
             sc.setUserAnswers(this.userAnswers);
             sc.setPageNumber(this.pageNumber);
             sc.setAllAnsweredQuestions(this.allAnsweredQuestions);
-            sc.launchFIB(this.multipleChoiceQuestions, this.multipleAnswerQuestions, this.trueFalseQuestions, 
+            sc.launchFIB(this.multipleChoiceQuestions, this.multipleAnswerQuestions, this.trueFalseQuestions,
                     this.fillInTheBlanksQuestions, this.multipleAnswerQuestions.size());
-            
 
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
-        }  
-    }
-    
-    public void startTimer(int remaining){
-        secs=(remaining);
-    final ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
-    service.scheduleWithFixedDelay(new Runnable()
-      {
-        @Override
-        public void run()
-        {
-            secs--;
-            
-          outputTextArea.setText((Integer.toString(secs/60))+ " : " +Integer.toString(secs%60));
-        
-          if(secs==0){
-            outputTextArea.setText("Time Up!!");
-              service.shutdownNow();
-          }
-        
         }
-      }, 0, 1, TimeUnit.SECONDS);
     }
-    
-    public void connectToDatabase() throws SQLException{
-        
+
+    public void startTimer(int remaining) {
+        secs = (remaining);
+        final ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
+        service.scheduleWithFixedDelay(new Runnable() {
+            @Override
+            public void run() {
+                secs--;
+
+                outputTextArea.setText((Integer.toString(secs / 60)) + " : " + Integer.toString(secs % 60));
+
+                if (secs == 0) {
+                    outputTextArea.setText("Time Up!!");
+                    service.shutdownNow();
+                }
+
+            }
+        }, 0, 1, TimeUnit.SECONDS);
+    }
+
+    public void connectToDatabase() throws SQLException {
+
         String url = "jdbc:mysql://adelaide-mysql-qcas1.caswkasqdmel.ap-southeast-2.rds.amazonaws.com:3306/UserDB"; //creates network connection to database for application   
         String username = "qcastest";//username for accessing database
         String password = "qcastest";//password for accessing database
@@ -353,11 +337,11 @@ public class MAQuestionsController implements Initializable {
         try {
             this.connection = DriverManager.getConnection(url, username, password);
             if (this.connection != null) {
-           //     System.out.println("Conencted");
+                //     System.out.println("Conencted");
             }
         } catch (SQLException e) {
             System.out.println("SQLException: " + e);
             this.connection.close();//closes connection resource
         } // end of try-with-resourc
-        }
+    }
 }

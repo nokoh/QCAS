@@ -40,18 +40,17 @@ import static qcas.SelectQuestionsController.secs;
  * @author Nnamdi
  */
 public class FIBQuestionsController implements Initializable {
-    
-    ArrayList<MultipleChoice>multipleChoiceQuestions = new ArrayList();
-    ArrayList<MultipleAnswer>multipleAnswerQuestions = new ArrayList();
-    ArrayList<TrueFalse>trueFalseQuestions = new ArrayList();
-    ArrayList<FillInTheBlanks>fillInTheBlanksQuestions = new ArrayList();
-    ArrayList <Question> correctQuestions = new ArrayList();
-    ArrayList <Question> incorrectQuestions = new ArrayList();
-    ArrayList <String> userAnswers = new ArrayList();
-    ArrayList <String> userAnswerCheck = new ArrayList();
-    ArrayList <Question> allAnsweredQuestions = new ArrayList();
-    
-    
+
+    ArrayList<MultipleChoice> multipleChoiceQuestions = new ArrayList();
+    ArrayList<MultipleAnswer> multipleAnswerQuestions = new ArrayList();
+    ArrayList<TrueFalse> trueFalseQuestions = new ArrayList();
+    ArrayList<FillInTheBlanks> fillInTheBlanksQuestions = new ArrayList();
+    ArrayList<Question> correctQuestions = new ArrayList();
+    ArrayList<Question> incorrectQuestions = new ArrayList();
+    ArrayList<String> userAnswers = new ArrayList();
+    ArrayList<String> userAnswerCheck = new ArrayList();
+    ArrayList<Question> allAnsweredQuestions = new ArrayList();
+
     Scene scene;
     String userId;
     Pane question = new Pane();
@@ -62,7 +61,6 @@ public class FIBQuestionsController implements Initializable {
     Connection connection;
     int pageNumber;
 
-   
     @FXML
     private Button nextButton;
     @FXML
@@ -77,11 +75,10 @@ public class FIBQuestionsController implements Initializable {
     private Label questionNumberLabel;
     @FXML
     private TextArea outputTextArea;
-    
-    
 
     /**
      * Initializes the controller class.
+     *
      * @param url
      * @param rb
      */
@@ -89,105 +86,161 @@ public class FIBQuestionsController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
-    
-    public void initID(String ID) throws SQLException{ 
+
+    /**
+     *
+     * @param ID
+     * @throws SQLException
+     */
+    public void initID(String ID) throws SQLException {
         userId = ID;
         userIDLabel.setText(ID);
         connectToDatabase();
-        
+
         String dbQuery = "Select firstname, lastname, userid from Users WHERE userid = ?";
-            PreparedStatement preparedStatement = connection.prepareStatement(dbQuery);
-            preparedStatement.setString(1, userId);
-            ResultSet rset = preparedStatement.executeQuery();
-            if (rset.next()) {
-                studentNameLabel.setText(rset.getString("firstname") + " " + rset.getString("lastname"));
-            }
+        PreparedStatement preparedStatement = connection.prepareStatement(dbQuery);
+        preparedStatement.setString(1, userId);
+        ResultSet rset = preparedStatement.executeQuery();
+        if (rset.next()) {
+            studentNameLabel.setText(rset.getString("firstname") + " " + rset.getString("lastname"));
+        }
     }
-    public void setScore(int num){ 
+
+    /**
+     *
+     * @param num
+     */
+    public void setScore(int num) {
         userScore = num;
     }
-    
-    public void setNumOfQuestions(int num){ 
+
+    /**
+     *
+     * @param num
+     */
+    public void setNumOfQuestions(int num) {
         numOfQuestions = num;
     }
-    
-    public void setCorrect(int num){ 
+
+    /**
+     *
+     * @param num
+     */
+    public void setCorrect(int num) {
         numCorrect = num;
     }
-    
-    public void setIncorrect(int num){ 
+
+    /**
+     *
+     * @param num
+     */
+    public void setIncorrect(int num) {
         numIncorrect = num;
     }
-    
+
+    /**
+     *
+     * @return
+     */
     public ArrayList<Question> getCorrectQuestions() {
         return correctQuestions;
     }
 
+    /**
+     *
+     * @param correctQuestions
+     */
     public void setCorrectQuestions(ArrayList<Question> correctQuestions) {
         this.correctQuestions = correctQuestions;
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Question> getIncorrectQuestions() {
         return incorrectQuestions;
     }
 
+    /**
+     *
+     * @param incorrectQuestions
+     */
     public void setIncorrectQuestions(ArrayList<Question> incorrectQuestions) {
         this.incorrectQuestions = incorrectQuestions;
     }
 
+    /**
+     *
+     * @param userAnswers
+     */
     public void setUserAnswers(ArrayList<String> userAnswers) {
         this.userAnswers = userAnswers;
     }
-    
-    public void setUserAnswerCheck(ArrayList <String> userAnswerCheck) {
+
+    /**
+     *
+     * @param userAnswerCheck
+     */
+    public void setUserAnswerCheck(ArrayList<String> userAnswerCheck) {
         this.userAnswerCheck = userAnswerCheck;
     }
 
+    /**
+     *
+     * @param allAnsweredQuestions
+     */
     public void setAllAnsweredQuestions(ArrayList<Question> allAnsweredQuestions) {
         this.allAnsweredQuestions = allAnsweredQuestions;
     }
 
+    /**
+     *
+     * @param pageNumber
+     */
     public void setPageNumber(int pageNumber) {
         this.pageNumber = pageNumber;
     }
-    
-    
-    
-    
-    
-    public void launchFIB(ArrayList<MultipleChoice>multipleChoiceQuestions, ArrayList<MultipleAnswer>multipleAnswerQuestions, 
-            ArrayList<TrueFalse>trueFalseQuestions, ArrayList<FillInTheBlanks>fillInTheBlanksQuestions,int size) throws IOException, SQLException, DocumentException{
+
+    /**
+     *
+     * @param multipleChoiceQuestions
+     * @param multipleAnswerQuestions
+     * @param trueFalseQuestions
+     * @param fillInTheBlanksQuestions
+     * @param size
+     * @throws IOException
+     * @throws SQLException
+     * @throws DocumentException
+     */
+    public void launchFIB(ArrayList<MultipleChoice> multipleChoiceQuestions, ArrayList<MultipleAnswer> multipleAnswerQuestions,
+            ArrayList<TrueFalse> trueFalseQuestions, ArrayList<FillInTheBlanks> fillInTheBlanksQuestions, int size) throws IOException, SQLException, DocumentException {
         Parent root;
         this.multipleAnswerQuestions = multipleAnswerQuestions;
         this.multipleChoiceQuestions = multipleChoiceQuestions;
         this.trueFalseQuestions = trueFalseQuestions;
-        
-        
 
-       // Stage stage = (Stage) AButton.getScene().getWindow();
-        if(size != 0){
-            pageNumber+=1;
-            questionNumberLabel.setText(pageNumber + "/" + this.numOfQuestions + "");   
+        if (size != 0) {
+            pageNumber += 1;
+            questionNumberLabel.setText(pageNumber + "/" + this.numOfQuestions + "");
             this.fillInTheBlanksQuestions = fillInTheBlanksQuestions;
-            FIBQuestionDescriptionLabel.setText(fillInTheBlanksQuestions.get(size-1).description);
-            
+            FIBQuestionDescriptionLabel.setText(fillInTheBlanksQuestions.get(size - 1).description);
+
             nextButton.setOnAction(e -> {
-                if(userAnswerField.getText() == null){
+                if (userAnswerField.getText() == null) {
                     String answer = "  ";
                     this.numIncorrect++;
-                        this.incorrectQuestions.add(fillInTheBlanksQuestions.get(size-1));
-                        this.userAnswers.add(answer);
-                }
-                else{
+                    this.incorrectQuestions.add(fillInTheBlanksQuestions.get(size - 1));
+                    this.userAnswers.add(answer);
+                } else {
                     String answer = userAnswerField.getText().trim();
-                    if(answer.equalsIgnoreCase(fillInTheBlanksQuestions.get(size-1).correctAnswer)){
+                    if (answer.equalsIgnoreCase(fillInTheBlanksQuestions.get(size - 1).correctAnswer)) {
                         this.numCorrect++;
-                        this.correctQuestions.add(fillInTheBlanksQuestions.get(size-1));
-                        this.userAnswers.add(answer); 
-                    }
-                    else {
+                        this.correctQuestions.add(fillInTheBlanksQuestions.get(size - 1));
+                        this.userAnswers.add(answer);
+                    } else {
                         this.numIncorrect++;
-                        this.incorrectQuestions.add(fillInTheBlanksQuestions.get(size-1));
+                        this.incorrectQuestions.add(fillInTheBlanksQuestions.get(size - 1));
                         this.userAnswers.add(answer);
                     }
                     userAnswerField.setText(null);
@@ -195,27 +248,25 @@ public class FIBQuestionsController implements Initializable {
                 int m = size - 1;
                 this.userAnswerCheck.add(this.fillInTheBlanksQuestions.get(m).correctAnswer);
                 this.allAnsweredQuestions.add(this.fillInTheBlanksQuestions.get(m));
-                
-            try {
-                launchFIB(this.multipleChoiceQuestions, this.multipleAnswerQuestions, 
-                        this.trueFalseQuestions, this.fillInTheBlanksQuestions, m);
-            } catch (IOException ex) {
-                Logger.getLogger(MCQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
-            }   catch (SQLException ex) {
+
+                try {
+                    launchFIB(this.multipleChoiceQuestions, this.multipleAnswerQuestions,
+                            this.trueFalseQuestions, this.fillInTheBlanksQuestions, m);
+                } catch (IOException ex) {
+                    Logger.getLogger(MCQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
                     Logger.getLogger(FIBQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (DocumentException ex) {
                     Logger.getLogger(FIBQuestionsController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             });
-            
-        }
-        else{
+
+        } else {
             Stage stage = (Stage) nextButton.getScene().getWindow();
             FXMLLoader f = new FXMLLoader(getClass().getResource("TFQuestions.fxml"));
             root = f.load();
             TFQuestionsController sc = f.<TFQuestionsController>getController();
-            
-            
+
             sc.initID(this.userId);
             sc.setUserAnswerCheck(this.userAnswerCheck);
             sc.setNumOfQuestions(this.numOfQuestions);
@@ -226,40 +277,47 @@ public class FIBQuestionsController implements Initializable {
             sc.setUserAnswers(this.userAnswers);
             sc.setPageNumber(this.pageNumber);
             sc.setAllAnsweredQuestions(this.allAnsweredQuestions);
-            sc.launchTF(this.multipleChoiceQuestions, this.multipleAnswerQuestions, this.trueFalseQuestions, 
+            sc.launchTF(this.multipleChoiceQuestions, this.multipleAnswerQuestions, this.trueFalseQuestions,
                     this.fillInTheBlanksQuestions, this.multipleAnswerQuestions.size());
 
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
         }
-        
-        
+
     }
-    
-    public void startTimer(int remaining){
-        secs=(remaining);
-    final ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
-    service.scheduleWithFixedDelay(new Runnable()
-      {
-        @Override
-        public void run()
-        {
-            secs--;
-            
-          outputTextArea.setText((Integer.toString(secs/60))+ " : " +Integer.toString(secs%60));
-        
-          if(secs==0){
-            outputTextArea.setText("Time Up!!");
-              service.shutdownNow();
-          }
-        
-        }
-      }, 0, 1, TimeUnit.SECONDS);
+
+    /**
+     * Method
+     *
+     * @param remaining
+     */
+    public void startTimer(int remaining) {
+        secs = (remaining);
+        final ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
+        service.scheduleWithFixedDelay(new Runnable() {
+            @Override
+            public void run() {
+                secs--;
+
+                outputTextArea.setText((Integer.toString(secs / 60)) + " : " + Integer.toString(secs % 60));
+
+                if (secs == 0) {
+                    outputTextArea.setText("Time Up!!");
+                    service.shutdownNow();
+                }
+
+            }
+        }, 0, 1, TimeUnit.SECONDS);
     }
-    
-    public void connectToDatabase() throws SQLException{
-        
+
+    /**
+     * Method to establish database connection to USerDB.
+     *
+     * @throws SQLException
+     */
+    public void connectToDatabase() throws SQLException {
+
         String url = "jdbc:mysql://adelaide-mysql-qcas1.caswkasqdmel.ap-southeast-2.rds.amazonaws.com:3306/UserDB"; //creates network connection to database for application   
         String username = "qcastest";//username for accessing database
         String password = "qcastest";//password for accessing database
@@ -267,12 +325,12 @@ public class FIBQuestionsController implements Initializable {
         try {
             this.connection = DriverManager.getConnection(url, username, password);
             if (this.connection != null) {
-           //     System.out.println("Conencted");
+                //     System.out.println("Conencted");
             }
         } catch (SQLException e) {
             System.out.println("SQLException: " + e);
             this.connection.close();//closes connection resource
         } // end of try-with-resourc
-        }
-    
+    }
+
 }
