@@ -11,4 +11,24 @@ package qcas;
  */
 public class Student {
     
+    String firstName;
+    String lastName;
+    String password;
+    String studentID;
+    String status;
+
+    public Student(String firstName, String lastName, String password, String studentID) {
+        
+        this.status = "Student";
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.password = password;
+        this.studentID = studentID;
+        
+    }
+    
+    
+    
+    
+   
 }

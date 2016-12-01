@@ -141,6 +141,7 @@ public class MCQuestionsController implements Initializable {
 
     public void launchMCQ(ArrayList<MultipleAnswer> multipleAnswerQuestions, ArrayList<MultipleChoice> multipleChoiceQuestions,
             ArrayList<TrueFalse> trueFalseQuestions, ArrayList<FillInTheBlanks> fillInTheBlanksQuestions, int size) throws IOException, SQLException, DocumentException {
+        
         startTimer(this.numOfQuestions);
         Parent root;
 
@@ -290,17 +291,8 @@ public class MCQuestionsController implements Initializable {
     }
 
     public void startTimer(int num) {
-        int totalSecs = 0;
-        if (num == 8) {
-            totalSecs = 60;
-        } else if (num == 16) {
-            totalSecs = 120;
-        } else if (num == 24) {
-            totalSecs = 180;
-        } else if (num == 32) {
-            totalSecs = 240;
-        }
-        secs = ((totalSecs) * 60);
+        num = this.numOfQuestions;
+        secs = ((num) * 60);
         
         final ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
         service.scheduleWithFixedDelay(new Runnable() {

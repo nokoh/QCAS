@@ -60,39 +60,37 @@ import javax.imageio.ImageIO;
  * FXML Controller class
  *
  * @author Nnamdi
- * 
- * 
- * 
- * 
+ *
+ *
+ *
+ *
  */
 public class QuizResultsController implements Initializable {
-    
-    Scene scene; 
+
+    Scene scene;
     Stage homeStage;
     String userId;
     int userScore;
     int numOfQuestions;
     int numCorrect;
     int numIncorrect;
-    ArrayList <Question> correctQuestions = new ArrayList();
-    ArrayList <Question> incorrectQuestions = new ArrayList();
-    ArrayList <Question> allAnsweredQuestions = new ArrayList();
-    ArrayList <String> userAnswers = new ArrayList();
-    ArrayList <String> userAnswerCheck = new ArrayList();
+    ArrayList<Question> correctQuestions = new ArrayList();
+    ArrayList<Question> incorrectQuestions = new ArrayList();
+    ArrayList<Question> allAnsweredQuestions = new ArrayList();
+    ArrayList<String> userAnswers = new ArrayList();
+    ArrayList<String> userAnswerCheck = new ArrayList();
     Connection connection;
     Date currentDate;
     int examNumber;
     Double examScore;
-   
 
     @FXML
     private Label studentNameLabel;
-    @FXML 
+    @FXML
     private Label userIDLabel;
     @FXML
     private Label quizDateLabel;
-    
-    
+
     @FXML
     private Button PrintToPDFButton;
     @FXML
@@ -101,15 +99,13 @@ public class QuizResultsController implements Initializable {
     private Label numberCorrectLabel;
     @FXML
     private Label numberIncorrectLabel;
-    @FXML 
+    @FXML
     private Label quizScoreLabel;
     @FXML
     private Label letterGradeLabel;
     @FXML
     private AnchorPane QuizResultsDashboardPane;
-    
-    
-    
+
     @FXML
     private BarChart<String, Integer> barChartStudent;
     @FXML
@@ -118,41 +114,37 @@ public class QuizResultsController implements Initializable {
     private NumberAxis yAxis;
     @FXML
     private TextArea questionsDisplay;
-    
-    
 
-    
-    
-    public void initID(String ID) throws SQLException{ 
+    public void initID(String ID) throws SQLException {
         userId = ID;
         userIDLabel.setText(ID);
         connectToDatabase();
-        
+
         String dbQuery = "Select firstname, lastname, userid from Users WHERE userid = ?";
-            PreparedStatement preparedStatement = connection.prepareStatement(dbQuery);
-            preparedStatement.setString(1, userId);
-            ResultSet rset = preparedStatement.executeQuery();
-            if (rset.next()) {
-                studentNameLabel.setText(rset.getString("firstname") + " " + rset.getString("lastname"));
-            }
+        PreparedStatement preparedStatement = connection.prepareStatement(dbQuery);
+        preparedStatement.setString(1, userId);
+        ResultSet rset = preparedStatement.executeQuery();
+        if (rset.next()) {
+            studentNameLabel.setText(rset.getString("firstname") + " " + rset.getString("lastname"));
+        }
     }
-    
-    public void setScore(int num){ 
+
+    public void setScore(int num) {
         userScore = num;
     }
-    
-    public void setNumOfQuestions(int num){ 
+
+    public void setNumOfQuestions(int num) {
         numOfQuestions = num;
     }
-    
-    public void setCorrect(int num){ 
+
+    public void setCorrect(int num) {
         numCorrect = num;
     }
-    
-    public void setIncorrect(int num){ 
+
+    public void setIncorrect(int num) {
         numIncorrect = num;
     }
-    
+
     public ArrayList<Question> getCorrectQuestions() {
         return correctQuestions;
     }
@@ -168,20 +160,18 @@ public class QuizResultsController implements Initializable {
     public void setIncorrectQuestions(ArrayList<Question> incorrectQuestions) {
         this.incorrectQuestions = incorrectQuestions;
     }
-    
+
     public void setUserAnswers(ArrayList<String> userAnswers) {
         this.userAnswers = userAnswers;
     }
-    
-    public void setUserAnswerCheck(ArrayList <String> userAnswerCheck) {
+
+    public void setUserAnswerCheck(ArrayList<String> userAnswerCheck) {
         this.userAnswerCheck = userAnswerCheck;
     }
 
     public void setAllAnsweredQuestions(ArrayList<Question> allAnsweredQuestions) {
         this.allAnsweredQuestions = allAnsweredQuestions;
     }
-    
-    
 
     /**
      * Initializes the controller class.
@@ -189,43 +179,45 @@ public class QuizResultsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }  
-    
-     /**
-        *  The returnHome() method switches back to the login screen.
-        * 
-     * @throws java.io.IOException
-        **/
-        public void returnHome() throws IOException{
-            returnHomeButton.setOnAction(h ->{
-                
-                try {
-                    returnHomeButtonClicked();
-                } catch (IOException ex) {
-                    Logger.getLogger(QuizResultsController.class.getName()).log(Level.SEVERE, null, ex);
-                }                 
-            } ); 
-                
-        }
-     /**
-     * 
-     * @throws java.io.IOException
-      */
-    @FXML
-    public void returnHomeButtonClicked() throws IOException{
-            FXMLLoader f = new FXMLLoader(getClass().getResource("LoginScreen.fxml"));
-                Parent scene13 = f.load();
-                LoginScreenController ls = f.<LoginScreenController>getController();
-                
-                Scene LoginScreen = new Scene(scene13);
-                homeStage = (Stage) returnHomeButton.getScene().getWindow();
-                homeStage.hide();
-                homeStage.setScene(LoginScreen);
-                homeStage.show();
     }
-        
-        public void connectToDatabase() throws SQLException{
-        
+
+    /**
+     * The returnHome() method switches back to the login screen.
+     *
+     * @throws java.io.IOException
+        *
+     */
+    public void returnHome() throws IOException {
+        returnHomeButton.setOnAction(h -> {
+
+            try {
+                returnHomeButtonClicked();
+            } catch (IOException ex) {
+                Logger.getLogger(QuizResultsController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+
+    }
+
+    /**
+     *
+     * @throws java.io.IOException
+     */
+    @FXML
+    public void returnHomeButtonClicked() throws IOException {
+        FXMLLoader f = new FXMLLoader(getClass().getResource("LoginScreen.fxml"));
+        Parent scene13 = f.load();
+        LoginScreenController ls = f.<LoginScreenController>getController();
+
+        Scene LoginScreen = new Scene(scene13);
+        homeStage = (Stage) returnHomeButton.getScene().getWindow();
+        homeStage.hide();
+        homeStage.setScene(LoginScreen);
+        homeStage.show();
+    }
+
+    public void connectToDatabase() throws SQLException {
+
         String url = "jdbc:mysql://adelaide-mysql-qcas1.caswkasqdmel.ap-southeast-2.rds.amazonaws.com:3306/UserDB"; //creates network connection to database for application   
         String username = "qcastest";//username for accessing database
         String password = "qcastest";//password for accessing database
@@ -233,306 +225,268 @@ public class QuizResultsController implements Initializable {
         try {
             this.connection = DriverManager.getConnection(url, username, password);
             if (this.connection != null) {
-            //    System.out.println("Conencted");
+                //    System.out.println("Conencted");
             }
         } catch (SQLException e) {
             System.out.println("SQLException: " + e);
             this.connection.close();//closes connection resource
         } // end of try-with-resourc
-        }
-        
-    public void launchQuizResults(ArrayList<Question>correctQuestions, ArrayList<Question>incorrectQuestions) throws IOException, SQLException, DocumentException{
+    }
+
+    public void launchQuizResults(ArrayList<Question> correctQuestions, ArrayList<Question> incorrectQuestions) throws IOException, SQLException, DocumentException {
         Parent root;
         this.correctQuestions = correctQuestions;
         this.incorrectQuestions = incorrectQuestions;
         displayAnswers();
-      
-        String questionDifficulty;
-        
-       // Stage stage = (Stage) AButton.getScene().getWindow();
-       MultipleChoice mc = new MultipleChoice(0);
-       MultipleAnswer ma = new MultipleAnswer(0);
-       TrueFalse tf = new TrueFalse(0);
-       FillInTheBlanks fib = new FillInTheBlanks(0);
-       
-       numberCorrectLabel.setText(this.correctQuestions.size()+"");
-       numberIncorrectLabel.setText(this.incorrectQuestions.size()+"");
-       
-       for(int i = 0; i < this.correctQuestions.size(); i++){
-           if(this.correctQuestions.get(i).getClass() == mc.getClass()){
-               mc = (MultipleChoice)this.correctQuestions.get(i);
-               questionDifficulty = mc.difficulty;
-           }
-           else if(this.correctQuestions.get(i).getClass() == ma.getClass()){
-               ma = (MultipleAnswer)this.correctQuestions.get(i);
-               questionDifficulty = ma.difficulty;
-           }
-           else if(this.correctQuestions.get(i).getClass() == tf.getClass()){
-               tf = (TrueFalse)this.correctQuestions.get(i);
-               questionDifficulty = tf.difficulty;
-               int num = tf.number;
-           }
-           else if(this.correctQuestions.get(i).getClass() == fib.getClass()){
-               fib = (FillInTheBlanks)this.correctQuestions.get(i);
-               questionDifficulty = fib.difficulty;
-           }
-       }
-           for(int i = 0; i < this.incorrectQuestions.size(); i++){
-           if(this.incorrectQuestions.get(i).getClass() == mc.getClass()){
-               mc = (MultipleChoice)this.incorrectQuestions.get(i);
-           }
-           else if(this.incorrectQuestions.get(i).getClass() == ma.getClass()){
-               ma = (MultipleAnswer)this.incorrectQuestions.get(i);
-           }
-           else if(this.incorrectQuestions.get(i).getClass() == tf.getClass()){
-               tf = (TrueFalse)this.incorrectQuestions.get(i);
-           }
-           else if(this.incorrectQuestions.get(i).getClass() == fib.getClass()){
-               fib = (FillInTheBlanks)this.incorrectQuestions.get(i);
-           }
-       }
-       
 
-          plotResultsGraph();
-           
-            
-        
-            connectToDatabase();
-            String dbQuery = "Select firstname, lastname, userid from Users WHERE userid = ?";
-            PreparedStatement preparedStatement = connection.prepareStatement(dbQuery);
-            preparedStatement.setString(1, userId);
-            ResultSet rset = preparedStatement.executeQuery();
-            if (rset.next()) {
-                barChartStudent.setTitle("Reports for Student: " + rset.getString("firstname") + " " + 
-                        rset.getString("firstname") + " " + rset.getString("userid"));
+        String questionDifficulty;
+
+        // Stage stage = (Stage) AButton.getScene().getWindow();
+        MultipleChoice mc = new MultipleChoice(0);
+        MultipleAnswer ma = new MultipleAnswer(0);
+        TrueFalse tf = new TrueFalse(0);
+        FillInTheBlanks fib = new FillInTheBlanks(0);
+
+        numberCorrectLabel.setText(this.correctQuestions.size() + "");
+        numberIncorrectLabel.setText(this.incorrectQuestions.size() + "");
+
+        for (int i = 0; i < this.correctQuestions.size(); i++) {
+            if (this.correctQuestions.get(i).getClass() == mc.getClass()) {
+                mc = (MultipleChoice) this.correctQuestions.get(i);
+                questionDifficulty = mc.difficulty;
+            } else if (this.correctQuestions.get(i).getClass() == ma.getClass()) {
+                ma = (MultipleAnswer) this.correctQuestions.get(i);
+                questionDifficulty = ma.difficulty;
+            } else if (this.correctQuestions.get(i).getClass() == tf.getClass()) {
+                tf = (TrueFalse) this.correctQuestions.get(i);
+                questionDifficulty = tf.difficulty;
+                int num = tf.number;
+            } else if (this.correctQuestions.get(i).getClass() == fib.getClass()) {
+                fib = (FillInTheBlanks) this.correctQuestions.get(i);
+                questionDifficulty = fib.difficulty;
             }
-            
+        }
+        for (int i = 0; i < this.incorrectQuestions.size(); i++) {
+            if (this.incorrectQuestions.get(i).getClass() == mc.getClass()) {
+                mc = (MultipleChoice) this.incorrectQuestions.get(i);
+            } else if (this.incorrectQuestions.get(i).getClass() == ma.getClass()) {
+                ma = (MultipleAnswer) this.incorrectQuestions.get(i);
+            } else if (this.incorrectQuestions.get(i).getClass() == tf.getClass()) {
+                tf = (TrueFalse) this.incorrectQuestions.get(i);
+            } else if (this.incorrectQuestions.get(i).getClass() == fib.getClass()) {
+                fib = (FillInTheBlanks) this.incorrectQuestions.get(i);
+            }
+        }
+
+        plotResultsGraph();
+
+
+        String dbQuery = "Select firstname, lastname, userid from Users WHERE userid = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(dbQuery);
+        preparedStatement.setString(1, userId);
+        ResultSet rset = preparedStatement.executeQuery();
+        if (rset.next()) {
+            barChartStudent.setTitle("Reports for Student: " + rset.getString("firstname") + " "
+                    + rset.getString("firstname") + " " + rset.getString("userid"));
+        }
+
         ResultSet maxexamid = connection.createStatement().executeQuery("SELECT MAX(examID) FROM UserDB.ExamTable");
         if (maxexamid.next()) {
             examNumber = maxexamid.getInt(1) + 1;
         }
-        
-        this.examScore = (double)this.correctQuestions.size() / (double)this.allAnsweredQuestions.size()*100;
+
+        this.examScore = (double) this.correctQuestions.size() / (double) this.allAnsweredQuestions.size() * 100;
         int finalScore = this.examScore.intValue();
         quizScoreLabel.setText(finalScore + "%");
         String grade = "";
-        
-        if(this.examScore >= 97){
+
+        if (this.examScore >= 97) {
             grade = "A+";
-        }
-        else if(this.examScore >= 93 && this.examScore <= 96){
+        } else if (this.examScore >= 93 && this.examScore <= 96) {
             grade = "A";
-        }
-        else if(this.examScore >= 90 && this.examScore <= 92){
+        } else if (this.examScore >= 90 && this.examScore <= 92) {
             grade = "A-";
-        }
-        else if(this.examScore >= 87 && this.examScore <= 89){
+        } else if (this.examScore >= 87 && this.examScore <= 89) {
             grade = "B+";
-        }
-        else if(this.examScore >= 83 && this.examScore <= 86){
+        } else if (this.examScore >= 83 && this.examScore <= 86) {
             grade = "B";
-        }
-        else if(this.examScore >= 80 && this.examScore <= 82){
+        } else if (this.examScore >= 80 && this.examScore <= 82) {
             grade = "B-";
-        }
-        else if(this.examScore >= 77 && this.examScore <= 79){
+        } else if (this.examScore >= 77 && this.examScore <= 79) {
             grade = "C+";
-        }
-        else if(this.examScore >= 73 && this.examScore <= 76){
+        } else if (this.examScore >= 73 && this.examScore <= 76) {
             grade = "C";
-        }
-        else if(this.examScore >= 70 && this.examScore <= 72){
+        } else if (this.examScore >= 70 && this.examScore <= 72) {
             grade = "C-";
-        }
-        else if(this.examScore >= 67 && this.examScore <= 69){
+        } else if (this.examScore >= 67 && this.examScore <= 69) {
             grade = "D+";
-        }
-        else if(this.examScore >= 63 && this.examScore <= 66){
+        } else if (this.examScore >= 63 && this.examScore <= 66) {
             grade = "D";
-        }
-        else if(this.examScore >= 60 && this.examScore <= 62){
+        } else if (this.examScore >= 60 && this.examScore <= 62) {
             grade = "D-";
-        }
-        else if(this.examScore >=0 && this.examScore <= 59){
+        } else if (this.examScore >= 0 && this.examScore <= 59) {
             grade = "F";
         }
-        
+
         letterGradeLabel.setText(grade);
-            long time = System.currentTimeMillis();
-            String s = convertTime(time);
-            quizDateLabel.setText(s);
-            String storeInDB = "INSERT INTO UserDB.ExamTable (examID, studentid, question, answerchoice, status, questionNo, examDate, correctAnswer, answercheck)"
+        long time = System.currentTimeMillis();
+        String s = convertTime(time);
+        quizDateLabel.setText(s);
+        String storeInDB = "INSERT INTO UserDB.ExamTable (examID, studentid, question, answerchoice, status, questionNo, examDate, correctAnswer, answercheck)"
                 + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement storeDBExecute = this.connection.prepareStatement(storeInDB);
         connection.prepareStatement("SET foreign_key_checks = 0").executeUpdate();
-        
-        for (int t = 0;t < this.allAnsweredQuestions.size(); t++) {
-            if(this.allAnsweredQuestions.get(t).getClass() == mc.getClass()){
-            mc = (MultipleChoice)this.allAnsweredQuestions.get(t);
-            storeDBExecute.setInt(1, examNumber);
-            storeDBExecute.setInt(2, Integer.parseInt(userId));
-            storeDBExecute.setString(3, mc.description);
-            storeDBExecute.setString(4, this.userAnswers.get(t));
-            storeDBExecute.setString(5, mc.difficulty);
-            storeDBExecute.setInt(6, mc.number);
-            storeDBExecute.setString(7, s);
-            storeDBExecute.setString(8, this.userAnswerCheck.get(t));
-            if(this.userAnswers.get(t).equals(this.userAnswerCheck.get(t))){
-                storeDBExecute.setString(9, "correct");
-            }
-            else{
-                storeDBExecute.setString(9, "incorrect");
-            }
-            storeDBExecute.executeUpdate();
-            }
-            else if(this.allAnsweredQuestions.get(t).getClass() == ma.getClass()){
-            ma = (MultipleAnswer)this.allAnsweredQuestions.get(t);
-            storeDBExecute.setInt(1, examNumber);
-            storeDBExecute.setInt(2, Integer.parseInt(userId));
-            storeDBExecute.setString(3, ma.description);
-            storeDBExecute.setString(4, this.userAnswers.get(t));
-            storeDBExecute.setString(5, ma.difficulty);
-            storeDBExecute.setInt(6, ma.number);
-            storeDBExecute.setString(7, s);
-            storeDBExecute.setString(8, this.userAnswerCheck.get(t));
-            if(this.userAnswers.get(t).equals(this.userAnswerCheck.get(t))){
-                storeDBExecute.setString(9, "correct");
-            }
-            else{
-                storeDBExecute.setString(9, "incorrect");
-            }
-            storeDBExecute.executeUpdate();
-            }
-            else if(this.allAnsweredQuestions.get(t).getClass() == fib.getClass()){
-            fib = (FillInTheBlanks)this.allAnsweredQuestions.get(t);
-            storeDBExecute.setInt(1, examNumber);
-            storeDBExecute.setInt(2, Integer.parseInt(userId));
-            storeDBExecute.setString(3, fib.description);
-            storeDBExecute.setString(4, this.userAnswers.get(t));
-            storeDBExecute.setString(5, fib.difficulty);
-            storeDBExecute.setInt(6, fib.number);
-            storeDBExecute.setString(7, s);
-            storeDBExecute.setString(8, this.userAnswerCheck.get(t));
-            if(this.userAnswers.get(t).equals(this.userAnswerCheck.get(t))){
-                storeDBExecute.setString(9, "correct");
-            }
-            else{
-                storeDBExecute.setString(9, "incorrect");
-            }
-            storeDBExecute.executeUpdate();
-            }
-            else if(this.allAnsweredQuestions.get(t).getClass() == tf.getClass()){
-            tf = (TrueFalse)this.allAnsweredQuestions.get(t);
-            storeDBExecute.setInt(1, examNumber);
-            storeDBExecute.setInt(2, Integer.parseInt(userId));
-            storeDBExecute.setString(3, tf.description);
-            storeDBExecute.setString(4, this.userAnswers.get(t));
-            storeDBExecute.setString(5, tf.difficulty);
-            storeDBExecute.setInt(6, tf.number);
-            storeDBExecute.setString(7, s);
-            storeDBExecute.setString(8, this.userAnswerCheck.get(t));
-            if(this.userAnswers.get(t).equals(this.userAnswerCheck.get(t))){
-                storeDBExecute.setString(9, "correct");
-            }
-            else{
-                storeDBExecute.setString(9, "incorrect");
-            }
-            storeDBExecute.executeUpdate();
-            }
-        }
-           
-        }
-  
-    
-    
-public String convertTime(long time){        
-    Date date = new Date(time);
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy MM dd"); 
-    return sdf.format(date);
-}
-        
-        
-        
-    public void plotResultsGraph(){
-        int [] difficultyCorrectScores = new int[3];
-        int [] difficultyInCorrectScores = new int[3];
-        for(Question question:this.correctQuestions){
-           if(question.difficulty.equals("E")){
-               difficultyCorrectScores[0]++;        
-            }
-           else if(question.difficulty.equals("M")){
-               difficultyCorrectScores[1]++;        
-            }
-           else if(question.difficulty.equals("H")){
-               difficultyCorrectScores[2]++;        
-            }
-           }
-          
-           for(Question question:this.incorrectQuestions){
-           if(question.difficulty.equals("E")){
-               difficultyInCorrectScores[0]++;        
-            }
-           else if(question.difficulty.equals("M")){
-               difficultyInCorrectScores[1]++;        
-            }
-           else if(question.difficulty.equals("H")){
-               difficultyInCorrectScores[2]++;        
-            }
-           }
-           
-           barChartStudent.getData().clear();
-        String correct = "Correct";
-           String inCorrect = "Incorrect";
-  
-           xAxis.setLabel("Difficulty Levels");       
-           yAxis.setLabel("Number");
-            
-           /* Easy questions correct and incorrect */
-           XYChart.Series series1 = new XYChart.Series();
-           series1.setName("Easy");       
-           series1.getData().add(new XYChart.Data(correct, difficultyCorrectScores[0]));
-           series1.getData().add(new XYChart.Data(inCorrect, difficultyInCorrectScores[0]));
-           
-           /* Medium questions correct and incorrect */
-           XYChart.Series series2 = new XYChart.Series();
-           series2.setName("Medium");       
-           series2.getData().add(new XYChart.Data(correct, difficultyCorrectScores[1]));
-           series2.getData().add(new XYChart.Data(inCorrect, difficultyInCorrectScores[1]));
-           
-           /* Hard questions correct and incorrect */
-           XYChart.Series series3 = new XYChart.Series();
-           series3.setName("Hard");       
-           series3.getData().add(new XYChart.Data(correct, difficultyCorrectScores[2]));
-           series3.getData().add(new XYChart.Data(inCorrect, difficultyInCorrectScores[2]));
 
-           barChartStudent.getData().addAll(series1, series2, series3);
-}
-    
-    public void displayAnswers(){
-        String s = "";
-         for(int i = 0; i < this.userAnswers.size(); i++){
-             s += "Question ".toUpperCase()+ (i+1)+": " + "\t Your Answer: ".toUpperCase()+ this.userAnswers.get(i) 
-                     + "\t Correct Answer: ".toUpperCase() + this.userAnswerCheck.get(i) + "\n\n";         
+        for (int t = 0; t < this.allAnsweredQuestions.size(); t++) {
+            if (this.allAnsweredQuestions.get(t).getClass() == mc.getClass()) {
+                mc = (MultipleChoice) this.allAnsweredQuestions.get(t);
+                storeDBExecute.setInt(1, examNumber);
+                storeDBExecute.setInt(2, Integer.parseInt(userId));
+                storeDBExecute.setString(3, mc.description);
+                storeDBExecute.setString(4, this.userAnswers.get(t));
+                storeDBExecute.setString(5, mc.difficulty);
+                storeDBExecute.setInt(6, mc.number);
+                storeDBExecute.setString(7, s);
+                storeDBExecute.setString(8, this.userAnswerCheck.get(t));
+                if (this.userAnswers.get(t).equals(this.userAnswerCheck.get(t))) {
+                    storeDBExecute.setString(9, "correct");
+                } else {
+                    storeDBExecute.setString(9, "incorrect");
+                }
+                storeDBExecute.executeUpdate();
+            } else if (this.allAnsweredQuestions.get(t).getClass() == ma.getClass()) {
+                ma = (MultipleAnswer) this.allAnsweredQuestions.get(t);
+                storeDBExecute.setInt(1, examNumber);
+                storeDBExecute.setInt(2, Integer.parseInt(userId));
+                storeDBExecute.setString(3, ma.description);
+                storeDBExecute.setString(4, this.userAnswers.get(t));
+                storeDBExecute.setString(5, ma.difficulty);
+                storeDBExecute.setInt(6, ma.number);
+                storeDBExecute.setString(7, s);
+                storeDBExecute.setString(8, this.userAnswerCheck.get(t));
+                if (this.userAnswers.get(t).equals(this.userAnswerCheck.get(t))) {
+                    storeDBExecute.setString(9, "correct");
+                } else {
+                    storeDBExecute.setString(9, "incorrect");
+                }
+                storeDBExecute.executeUpdate();
+            } else if (this.allAnsweredQuestions.get(t).getClass() == fib.getClass()) {
+                fib = (FillInTheBlanks) this.allAnsweredQuestions.get(t);
+                storeDBExecute.setInt(1, examNumber);
+                storeDBExecute.setInt(2, Integer.parseInt(userId));
+                storeDBExecute.setString(3, fib.description);
+                storeDBExecute.setString(4, this.userAnswers.get(t));
+                storeDBExecute.setString(5, fib.difficulty);
+                storeDBExecute.setInt(6, fib.number);
+                storeDBExecute.setString(7, s);
+                storeDBExecute.setString(8, this.userAnswerCheck.get(t));
+                if (this.userAnswers.get(t).equals(this.userAnswerCheck.get(t))) {
+                    storeDBExecute.setString(9, "correct");
+                } else {
+                    storeDBExecute.setString(9, "incorrect");
+                }
+                storeDBExecute.executeUpdate();
+            } else if (this.allAnsweredQuestions.get(t).getClass() == tf.getClass()) {
+                tf = (TrueFalse) this.allAnsweredQuestions.get(t);
+                storeDBExecute.setInt(1, examNumber);
+                storeDBExecute.setInt(2, Integer.parseInt(userId));
+                storeDBExecute.setString(3, tf.description);
+                storeDBExecute.setString(4, this.userAnswers.get(t));
+                storeDBExecute.setString(5, tf.difficulty);
+                storeDBExecute.setInt(6, tf.number);
+                storeDBExecute.setString(7, s);
+                storeDBExecute.setString(8, this.userAnswerCheck.get(t));
+                if (this.userAnswers.get(t).equals(this.userAnswerCheck.get(t))) {
+                    storeDBExecute.setString(9, "correct");
+                } else {
+                    storeDBExecute.setString(9, "incorrect");
+                }
+                storeDBExecute.executeUpdate();
+            }
         }
-         questionsDisplay.setText(s);
+
     }
-    
-    public void exportToPdf() throws IOException, DocumentException {
-        
+
+    public String convertTime(long time) {
+        Date date = new Date(time);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy MM dd");
+        return sdf.format(date);
+    }
+
+    public void plotResultsGraph() {
+        int[] difficultyCorrectScores = new int[3];
+        int[] difficultyInCorrectScores = new int[3];
+        for (Question question : this.correctQuestions) {
+            if (question.difficulty.equals("E")) {
+                difficultyCorrectScores[0]++;
+            } else if (question.difficulty.equals("M")) {
+                difficultyCorrectScores[1]++;
+            } else if (question.difficulty.equals("H")) {
+                difficultyCorrectScores[2]++;
+            }
+        }
+
+        for (Question question : this.incorrectQuestions) {
+            if (question.difficulty.equals("E")) {
+                difficultyInCorrectScores[0]++;
+            } else if (question.difficulty.equals("M")) {
+                difficultyInCorrectScores[1]++;
+            } else if (question.difficulty.equals("H")) {
+                difficultyInCorrectScores[2]++;
+            }
+        }
+
+        barChartStudent.getData().clear();
+        String correct = "Correct";
+        String inCorrect = "Incorrect";
+
+        xAxis.setLabel("Difficulty Levels");
+        yAxis.setLabel("Number");
+
+        /* Easy questions correct and incorrect */
+        XYChart.Series series1 = new XYChart.Series();
+        series1.setName("Easy");
+        series1.getData().add(new XYChart.Data(correct, difficultyCorrectScores[0]));
+        series1.getData().add(new XYChart.Data(inCorrect, difficultyInCorrectScores[0]));
+
+        /* Medium questions correct and incorrect */
+        XYChart.Series series2 = new XYChart.Series();
+        series2.setName("Medium");
+        series2.getData().add(new XYChart.Data(correct, difficultyCorrectScores[1]));
+        series2.getData().add(new XYChart.Data(inCorrect, difficultyInCorrectScores[1]));
+
+        /* Hard questions correct and incorrect */
+        XYChart.Series series3 = new XYChart.Series();
+        series3.setName("Hard");
+        series3.getData().add(new XYChart.Data(correct, difficultyCorrectScores[2]));
+        series3.getData().add(new XYChart.Data(inCorrect, difficultyInCorrectScores[2]));
+
+        barChartStudent.getData().addAll(series1, series2, series3);
+    }
+
+    public void displayAnswers() {
         String s = "";
-         for(int i = 0; i < this.userAnswers.size(); i++){
-             s += "Question ".toUpperCase()+ (i+1)+": " + "\t Your Answer: ".toUpperCase()+ this.userAnswers.get(i) 
-                     + "\t Correct Answer: ".toUpperCase() + this.userAnswerCheck.get(i) + "\n\n";         
+        for (int i = 0; i < this.userAnswers.size(); i++) {
+            s += "Question ".toUpperCase() + (i + 1) + ": " + "\t Your Answer: ".toUpperCase() + this.userAnswers.get(i)
+                    + "\t Correct Answer: ".toUpperCase() + this.userAnswerCheck.get(i) + "\n\n";
+        }
+        questionsDisplay.setText(s);
+    }
+
+    public void exportToPdf() throws IOException, DocumentException {
+
+        String s = "";
+        for (int i = 0; i < this.userAnswers.size(); i++) {
+            s += "Question ".toUpperCase() + (i + 1) + ": " + "\t Your Answer: ".toUpperCase() + this.userAnswers.get(i)
+                    + "\t Correct Answer: ".toUpperCase() + this.userAnswerCheck.get(i) + "\n\n";
         }
 
         WritableImage image = QuizResultsDashboardPane.snapshot(new SnapshotParameters(), null);
-        
-        //  WritableImage image2 = buttonchart2.snapshot(new SnapshotParameters(), null);
+
         File file = new File("Student Report.png");
 
         ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", file);
-        // ImageIO.write(SwingFXUtils.fromFXImage(image2, null), "png", file); 
-
+        
         Document document = new Document();
         String input = "Student Report.png"; // .gif and .jpg are ok too!
         String output = "Student Report.pdf";
@@ -541,18 +495,17 @@ public String convertTime(long time){
             PdfWriter writer = PdfWriter.getInstance(document, fos);
             writer.open();
             document.open();
-ByteArrayOutputStream  byteOutput = new ByteArrayOutputStream();
+            ByteArrayOutputStream byteOutput = new ByteArrayOutputStream();
 
-ImageIO.write( SwingFXUtils.fromFXImage( image, null ), "png", byteOutput );
+            ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", byteOutput);
 
-com.itextpdf.text.Image  graph;
-graph = com.itextpdf.text.Image.getInstance( byteOutput.toByteArray() );
-graph.scaleToFit(500,500);
+            com.itextpdf.text.Image graph;
+            graph = com.itextpdf.text.Image.getInstance(byteOutput.toByteArray());
+            graph.scaleToFit(500, 500);
             document.add((com.itextpdf.text.Element) graph);
-         Font f = new Font(FontFamily.TIMES_ROMAN, 10.0f, Font.UNDERLINE, BaseColor.BLACK);
+            Font f = new Font(FontFamily.TIMES_ROMAN, 10.0f, Font.UNDERLINE, BaseColor.BLACK);
             Paragraph p = new Paragraph(s, f);
             document.add(p);
-
 
             document.close();
             writer.close();
