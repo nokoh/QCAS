@@ -19,11 +19,16 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 /**
  * FXML Controller class
  *
+ * The Sign up Controller allows a new user to create a profile for the QCAS 
+ * program.
+ * 
+ * 
  * @author Nnamdi
  */
 public class SignUpQCASController implements Initializable {
@@ -41,10 +46,20 @@ public class SignUpQCASController implements Initializable {
     @FXML
     private Button signUpButton;
     @FXML
-    private Label errorMessageLabel;
+    private Text errorMessageLabel;
     @FXML
     private Stage homeStage;
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     /**
      * Initializes the controller class.
      * @param url
@@ -87,6 +102,4 @@ public class SignUpQCASController implements Initializable {
         homeStage.show();
 
     }
-
-    
 }

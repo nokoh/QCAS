@@ -90,7 +90,11 @@
          <effect>
             <InnerShadow />
          </effect></Button>
-      <Label fx:id="errorMessageLabel" layoutX="337.0" layoutY="450.0" text="Label" />
+      <Text fx:id="errorMessageLabel" layoutX="340.0" layoutY="463.0" strokeType="OUTSIDE" strokeWidth="0.0">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font>
+      </Text>
    </children>
    <effect>
       <InnerShadow />
