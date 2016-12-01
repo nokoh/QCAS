@@ -13,13 +13,13 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: maroon;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qcas.TFQuestionsController">
     <children>
-      <ImageView fitHeight="550.0" fitWidth="750.0" pickOnBounds="true">
+      <ImageView fitHeight="550.0" fitWidth="790.0" pickOnBounds="true">
          <image>
             <Image url="@../CMU%20Plaid.jpg" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="475.0" layoutX="22.0" layoutY="54.0" stroke="BLACK" strokeType="INSIDE" width="705.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="81.0" layoutX="22.0" layoutY="22.0" stroke="BLACK" strokeType="INSIDE" width="705.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="475.0" layoutX="22.0" layoutY="54.0" stroke="BLACK" strokeType="INSIDE" width="744.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="81.0" layoutX="22.0" layoutY="22.0" stroke="BLACK" strokeType="INSIDE" width="744.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.3380952380952381">
                <stops>
@@ -28,11 +28,11 @@
                </stops>
             </LinearGradient>
          </fill></Rectangle>
-      <Button id="trueButton" fx:id="trueButton" layoutX="310.0" layoutY="351.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="129.0" style="-fx-background-color: maroon;" text="True" textFill="#fcf6f6">
+      <Button id="trueButton" fx:id="trueButton" layoutX="310.0" layoutY="351.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="145.0" style="-fx-background-color: maroon;" text="True" textFill="#fcf6f6">
          <effect>
             <InnerShadow />
          </effect></Button>
-      <Button id="falseButton" fx:id="falseButton" layoutX="311.0" layoutY="401.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="129.0" style="-fx-background-color: maroon;" text="False" textFill="#fcfafa">
+      <Button id="falseButton" fx:id="falseButton" layoutX="311.0" layoutY="401.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="145.0" style="-fx-background-color: maroon;" text="False" textFill="#fcfafa">
          <effect>
             <InnerShadow />
          </effect></Button>
@@ -56,7 +56,7 @@
          <font>
             <Font size="14.0" />
          </font></Label>
-      <Label layoutX="656.0" layoutY="500.0" text="True / False">
+      <Label layoutX="692.0" layoutY="504.0" text="True / False">
          <font>
             <Font size="10.0" />
          </font>
@@ -105,7 +105,7 @@
          <effect>
             <Blend mode="OVERLAY" />
          </effect></TextArea>
-      <ImageView fitHeight="183.0" fitWidth="287.0" layoutX="461.0" layoutY="76.0" pickOnBounds="true">
+      <ImageView fitHeight="193.0" fitWidth="304.0" layoutX="461.0" layoutY="76.0" pickOnBounds="true">
          <image>
             <Image url="@../11501757.png" />
          </image>
