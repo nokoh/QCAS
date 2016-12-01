@@ -17,6 +17,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -27,11 +28,16 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 /**
  * FXML Controller class
  *
+ * The Sign up Controller allows a new user to create a profile for the QCAS 
+ * program.
+ * 
+ * 
  * @author Nnamdi
  */
 public class SignUpQCASController implements Initializable {
@@ -55,11 +61,21 @@ public class SignUpQCASController implements Initializable {
     @FXML
     private Button signUpButton;
     @FXML
-    private Label errorMessageLabel;
+    private Text errorMessageLabel;
 
 
     private ObservableList statusList = FXCollections.observableArrayList();
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     /**
      * Initializes the controller class.
      *
@@ -143,6 +159,10 @@ public class SignUpQCASController implements Initializable {
         
         
 
+    }
+
+    @FXML
+    private void returnHomeButtonClicked(ActionEvent event) {
     }
 
 }

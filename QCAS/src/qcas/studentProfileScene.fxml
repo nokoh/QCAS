@@ -36,7 +36,7 @@
             <Font name="Segoe UI Light" size="36.0" />
          </font>
       </Label>
-      <Button id="takeQuizButton" fx:id="takeQuizButton" layoutX="319.0" layoutY="255.0" mnemonicParsing="false" onAction="#startQuiz" prefHeight="25.0" prefWidth="124.0" style="-fx-background-color: maroon;" text="Take Quiz" textFill="WHITE">
+      <Button id="takeQuizButton" fx:id="takeQuizButton" layoutX="291.0" layoutY="255.0" mnemonicParsing="false" onAction="#startQuiz" prefHeight="27.0" prefWidth="170.0" style="-fx-background-color: maroon;" text="Take Quiz" textFill="WHITE">
          <effect>
             <InnerShadow />
          </effect></Button>
@@ -51,15 +51,15 @@
             <Font name="Arial Bold" size="13.0" />
          </font>
       </Label>
-      <Button id="viewReportButton" fx:id="viewReportButton" layoutX="319.0" layoutY="314.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="124.0" style="-fx-background-color: maroon;" text="View Report" textFill="WHITE">
+      <Button id="viewReportButton" fx:id="viewReportButton" layoutX="290.0" layoutY="313.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="170.0" style="-fx-background-color: maroon;" text="View Report" textFill="WHITE">
          <effect>
             <InnerShadow />
          </effect></Button>
-      <Label fx:id="UserIDLabel" layoutX="104.0" layoutY="140.0" prefHeight="25.0" prefWidth="124.0" text="userIDLabel">
+      <Label fx:id="UserIDLabel" layoutX="104.0" layoutY="140.0" prefHeight="25.0" prefWidth="124.0" text="userIDLabel" textFill="#8a1616">
          <font>
             <Font size="13.0" />
          </font></Label>
-      <Label fx:id="studentNameLabel" layoutX="104.0" layoutY="116.0" prefHeight="25.0" prefWidth="124.0" text="studentNameLabel">
+      <Label fx:id="studentNameLabel" layoutX="104.0" layoutY="116.0" prefHeight="25.0" prefWidth="124.0" text="studentNameLabel" textFill="#a41818">
          <font>
             <Font size="13.0" />
          </font>

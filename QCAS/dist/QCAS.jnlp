@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="QCAS.jar" size="512989" download="eager" />
+    <jar href="QCAS.jar" size="556654" download="eager" />
     <jar href="lib\itextpdf-5.4.1-sources.jar" size="1934883" download="eager" />
     <jar href="lib\itextpdf-5.4.1.jar" size="1898417" download="eager" />
     <jar href="lib\mysql-connector-java-5.1.40-bin.jar" size="990927" download="eager" />

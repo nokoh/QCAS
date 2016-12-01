@@ -28,12 +28,12 @@
                </stops>
             </LinearGradient>
          </fill></Rectangle>
-      <Label layoutX="638.0" layoutY="506.0" text="Multiple Answer">
+      <Label layoutX="665.0" layoutY="508.0" text="Multiple Answer">
          <font>
             <Font size="10.0" />
          </font>
       </Label>
-      <Label layoutX="194.0" layoutY="31.0" prefHeight="53.0" prefWidth="350.0" text="Select Correct Answer" textFill="WHITE">
+      <Label layoutX="217.0" layoutY="31.0" prefHeight="53.0" prefWidth="350.0" text="Select Correct Answer" textFill="WHITE">
          <font>
             <Font name="Segoe UI Light" size="36.0" />
          </font>
@@ -92,22 +92,22 @@
       </Label>
       <VBox layoutX="103.0" layoutY="129.0" prefHeight="67.0" prefWidth="126.0">
          <children>
-            <Label fx:id="studentNameLabel" prefHeight="26.0" prefWidth="126.0" text="studentNameLabel" textFill="#eb1b1b">
+            <Label fx:id="studentNameLabel" prefHeight="26.0" prefWidth="126.0" text="studentNameLabel" textFill="#9a1a1a">
                <font>
                   <Font size="13.0" />
                </font></Label>
-            <Label fx:id="userIDLabel" prefHeight="20.0" prefWidth="126.0" text="userIDLabel" textFill="#eb2626">
+            <Label fx:id="userIDLabel" prefHeight="20.0" prefWidth="126.0" text="userIDLabel" textFill="#a41b1b">
                <font>
                   <Font size="13.0" />
                </font></Label>
          </children>
       </VBox>
-      <Label layoutX="33.0" layoutY="505.0" text="Question #:">
+      <Label layoutX="27.0" layoutY="505.0" prefHeight="21.0" prefWidth="87.0" text="Question #:">
          <font>
-            <Font name="System Bold" size="13.0" />
+            <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="questionNumberLabel" layoutX="107.0" layoutY="505.0" text="questionNumberLabel">
+      <Label fx:id="questionNumberLabel" layoutX="114.0" layoutY="506.0" text="questionNumberLabel" textFill="#a11d1d">
          <font>
             <Font size="13.0" />
          </font></Label>
@@ -116,18 +116,14 @@
             <Image url="@../clock%20frame.png" />
          </image>
       </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="43.0" layoutX="592.0" layoutY="149.0" stroke="WHITE" strokeType="INSIDE" width="41.0" />
       <TextArea fx:id="outputTextArea" blendMode="MULTIPLY" editable="false" layoutX="522.0" layoutY="127.0" prefHeight="75.0" prefWidth="196.0">
          <font>
             <Font name="System Bold" size="42.0" />
          </font>
          <effect>
-            <Blend mode="MULTIPLY" />
+            <Blend mode="OVERLAY" />
          </effect></TextArea>
-      <ImageView fitHeight="53.0" fitWidth="32.0" layoutX="608.0" layoutY="139.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../clock%20insert.png" />
-         </image>
-      </ImageView>
       <ImageView fitHeight="177.0" fitWidth="339.0" layoutX="443.0" layoutY="74.0" pickOnBounds="true">
          <image>
             <Image url="@../11501757.png" />

@@ -318,6 +318,7 @@ public class TFQuestionsController implements Initializable {
      *
      * @param remaining
      */
+    @FXML
     public void startTimer(int remaining) {
         secs = (remaining);
         final ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
@@ -329,7 +330,7 @@ public class TFQuestionsController implements Initializable {
                 outputTextArea.setText((Integer.toString(secs / 60)) + " : " + Integer.toString(secs % 60));
 
                 if (secs == 0) {
-                    outputTextArea.setText("     ");
+                    outputTextArea.setText("Time UP!");
                     service.shutdownNow();
                 }
 
