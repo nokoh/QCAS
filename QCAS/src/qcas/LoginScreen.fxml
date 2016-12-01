@@ -85,7 +85,7 @@
             <Image url="@../Copyright_white.svg.png" />
          </image>
       </ImageView>
-      <Button fx:id="signUpButton" layoutX="467.0" layoutY="299.0" mnemonicParsing="false" onAction="#signUpButtonClicked" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: maroon;" text="Sign Up" textFill="WHITE">
+      <Button fx:id="signUpButton" layoutX="467.0" layoutY="299.0" mnemonicParsing="false" onAction="#signUp" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: maroon;" text="Sign Up" textFill="WHITE">
          <effect>
             <InnerShadow />
          </effect>

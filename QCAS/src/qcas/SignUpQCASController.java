@@ -37,9 +37,10 @@ import javafx.stage.Stage;
 public class SignUpQCASController implements Initializable {
 
     Connection connection;
-    String userId;
+    int userId;
     String userPassword;
     Stage homeStage;
+    String selected;
 
     @FXML
     private Button returnHomeButton;
@@ -93,21 +94,30 @@ public class SignUpQCASController implements Initializable {
 
         statusList.add("Student");
         statusList.add("Teacher");
+        statusSelector.setItems(statusList);
+        
+        statusSelector.setOnAction(t -> {
+            
+            if(statusSelector.getSelectionModel().getSelectedItem().equals("Teacher")){
+                selected = "teacher";
+            }
+            else if(statusSelector.getSelectionModel().getSelectedItem().equals("Student")){
+                selected = "student";
+            } 
+        });
+        
         signUpButton.setOnAction(e -> {
             try {
-                userId = idNumberField.getText();
+                userId = Integer.parseInt(idNumberField.getText());
                 //     userPassword = passwordField.getText();
 
                 String loginQuery = "Select userid from Users WHERE userid = ?";
-
                 PreparedStatement preparedStatement = connection.prepareStatement(loginQuery);
-
-                preparedStatement.setString(1, userId);
+                preparedStatement.setInt(1, userId);
                 ResultSet rset = preparedStatement.executeQuery();
                 while(rset.next()){
-                if (userId == rset.getString(1)) {
+                if (userId == Integer.parseInt(rset.getString(1))) {
                     errorMessageLabel.setText(" User already exists in system, proceed to login page. ");
-
                 } else {
                     firstNameField.getText();
                     lastNameField.getText();
@@ -130,6 +140,8 @@ public class SignUpQCASController implements Initializable {
             }
 
         });
+        
+        
 
     }
 

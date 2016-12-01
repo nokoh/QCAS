@@ -167,6 +167,8 @@ public class LoginScreenController implements Initializable {
                 signUpButtonClicked();
             } catch (IOException ex) {
                 Logger.getLogger(SignUpQCASController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(LoginScreenController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
         {
@@ -177,11 +179,11 @@ public class LoginScreenController implements Initializable {
      * @throws java.io.IOException
      */
     @FXML
-    public void signUpButtonClicked() throws IOException {
+    public void signUpButtonClicked() throws IOException, SQLException {
         FXMLLoader f = new FXMLLoader(getClass().getResource("SignUpQCAS.fxml"));
         Parent login = f.load();
         SignUpQCASController signUp = f.<SignUpQCASController>getController();
-
+        signUp.authentication();
         Scene signUpNew = new Scene(login);
         homeStage = (Stage) signUpButton.getScene().getWindow();
         homeStage.hide();

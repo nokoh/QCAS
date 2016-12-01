@@ -28,7 +28,7 @@
                </stops>
             </LinearGradient>
          </fill></Rectangle>
-      <Button id="returnHomeButton" fx:id="returnHomeButton" layoutX="187.0" layoutY="476.0" mnemonicParsing="false" onAction="#returnHomeButtonClicked" prefHeight="25.0" prefWidth="136.0" style="-fx-background-color: maroon;" text="Return Home" textFill="#f8f7f7">
+      <Button id="returnHomeButton" fx:id="returnHomeButton" layoutX="187.0" layoutY="476.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" style="-fx-background-color: maroon;" text="Return Home" textFill="#f8f7f7">
          <effect>
             <InnerShadow />
          </effect></Button>
