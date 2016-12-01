@@ -37,7 +37,7 @@
             <Font name="Segoe UI Light" size="36.0" />
          </font>
       </Label>
-      <VBox layoutX="255.0" layoutY="85.0" prefHeight="393.0" prefWidth="256.0">
+      <VBox layoutX="255.0" layoutY="139.0" prefHeight="318.0" prefWidth="256.0">
          <children>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
@@ -76,7 +76,7 @@
             <VBox alignment="CENTER" prefHeight="64.0" prefWidth="256.0">
                <children>
                   <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="34.0" prefWidth="256.0" text="Password:" />
-                  <TextField prefHeight="25.0" prefWidth="396.0" />
+                  <PasswordField fx:id="passwordField" />
                </children>
             </VBox>
             <HBox alignment="CENTER" prefHeight="46.0" prefWidth="256.0">
@@ -90,12 +90,12 @@
          <effect>
             <InnerShadow />
          </effect></Button>
-      <Text fx:id="errorMessageLabel" layoutX="368.0" layoutY="478.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="40.0">
+      <Text fx:id="errorMessageLabel" layoutX="241.0" layoutY="502.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="306.0">
          <font>
             <Font name="System Italic" size="12.0" />
          </font>
       </Text>
-      <Label alignment="CENTER" layoutX="194.0" layoutY="481.0" prefHeight="17.0" prefWidth="378.0" text="Please Enter Your Credentials Above, Then Click 'Sign Up'">
+      <Label alignment="CENTER" layoutX="194.0" layoutY="113.0" prefHeight="17.0" prefWidth="378.0" text="Please Enter Your Credentials Above, Then Click 'Sign Up'">
          <font>
             <Font name="System Italic" size="12.0" />
          </font>
