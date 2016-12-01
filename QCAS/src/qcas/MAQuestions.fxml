@@ -116,18 +116,13 @@
             <Image url="@../clock%20frame.png" />
          </image>
       </ImageView>
-      <TextArea fx:id="outputTextArea" blendMode="MULTIPLY" editable="false" layoutX="522.0" layoutY="116.0" prefHeight="86.0" prefWidth="196.0">
+      <TextArea fx:id="outputTextArea" blendMode="MULTIPLY" editable="false" layoutX="522.0" layoutY="127.0" prefHeight="75.0" prefWidth="196.0">
          <font>
             <Font name="System Bold" size="42.0" />
          </font>
          <effect>
             <Blend mode="OVERLAY" />
          </effect></TextArea>
-      <ImageView fitHeight="53.0" fitWidth="32.0" layoutX="608.0" layoutY="139.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../clock%20insert.png" />
-         </image>
-      </ImageView>
       <ImageView fitHeight="177.0" fitWidth="339.0" layoutX="443.0" layoutY="74.0" pickOnBounds="true">
          <image>
             <Image url="@../11501757.png" />

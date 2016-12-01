@@ -98,7 +98,7 @@
             <Blend mode="OVERLAY" />
          </effect>
       </TextArea>
-      <ImageView fitHeight="184.0" fitWidth="292.0" layoutX="458.0" layoutY="88.0" pickOnBounds="true">
+      <ImageView fitHeight="194.0" fitWidth="300.0" layoutX="458.0" layoutY="88.0" pickOnBounds="true">
          <image>
             <Image url="@../11501757.png" />
          </image>

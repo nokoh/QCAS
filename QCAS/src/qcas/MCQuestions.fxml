@@ -129,12 +129,7 @@
          <effect>
             <Blend mode="OVERLAY" />
          </effect></TextArea>
-      <ImageView fitHeight="46.0" fitWidth="25.0" layoutX="613.0" layoutY="145.0" pickOnBounds="true">
-         <image>
-            <Image url="@../clock%20insert.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="171.0" fitWidth="295.0" layoutX="463.0" layoutY="77.0" pickOnBounds="true">
+      <ImageView fitHeight="171.0" fitWidth="317.0" layoutX="453.0" layoutY="77.0" pickOnBounds="true">
          <image>
             <Image url="@../11501757.png" />
          </image>
