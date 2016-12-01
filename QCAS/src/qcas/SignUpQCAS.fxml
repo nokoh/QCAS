@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qcas.SignUpQCASController">
+    <children>
+      <ImageView fitHeight="550.0" fitWidth="700.0" layoutX="-1.0" pickOnBounds="true">
+         <image>
+            <Image url="@../../../CMU%20Plaid.jpg" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="475.0" layoutX="21.0" layoutY="60.0" stroke="BLACK" strokeType="INSIDE" width="658.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="84.0" layoutX="21.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="658.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.20952380952380953">
+               <stops>
+                  <Stop color="#801212" />
+                  <Stop color="#400b0b" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill></Rectangle>
+      <Button id="returnHomeButton" fx:id="returnHomeButton" layoutX="187.0" layoutY="476.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" style="-fx-background-color: maroon;" text="Return Home" textFill="#f8f7f7">
+         <effect>
+            <InnerShadow />
+         </effect></Button>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="197.0" layoutY="19.0" prefHeight="75.0" prefWidth="306.0" text="Sign Up" textAlignment="CENTER" textFill="#fcf8f8">
+         <font>
+            <Font name="Segoe UI Semilight" size="35.0" />
+         </font>
+      </Label>
+      <VBox layoutX="99.0" layoutY="122.0" prefHeight="336.0" prefWidth="504.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <HBox prefHeight="84.0" prefWidth="253.0">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="84.0" prefWidth="253.0">
+                           <children>
+                              <Label text="First Name:" />
+                              <TextField fx:id="firstNameField" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="84.0" prefWidth="253.0">
+                     <children>
+                        <Label text="Last Name:" />
+                        <TextField fx:id="lastNameField" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="84.0" prefWidth="253.0">
+                     <children>
+                        <Label text="ID Number:" />
+                        <TextField fx:id="idNumberField" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <ComboBox fx:id="statusSelector" prefWidth="150.0" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <Button fx:id="signUpButton" layoutX="383.0" layoutY="476.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" style="-fx-background-color: maroon;" text="Sign Up" textFill="#f8f7f7" />
+      <Label fx:id="errorMessageLabel" layoutX="337.0" layoutY="450.0" text="Label" />
+   </children>
+   <effect>
+      <InnerShadow />
+   </effect>
+</AnchorPane>

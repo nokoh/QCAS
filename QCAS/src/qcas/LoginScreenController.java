@@ -61,8 +61,6 @@ public class LoginScreenController implements Initializable {
 
     @FXML
     private PasswordField passwordField;
-    @FXML
-    private WebView webView;
 
     @FXML
     private Text loginMessage = new Text();
