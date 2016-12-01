@@ -13,13 +13,13 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: maroon;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qcas.SelectQuestionsController">
     <children>
-      <ImageView fitHeight="550.0" fitWidth="750.0" pickOnBounds="true">
+      <ImageView fitHeight="550.0" fitWidth="790.0" pickOnBounds="true">
          <image>
             <Image url="@../CMU%20Plaid.jpg" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="468.0" layoutX="20.0" layoutY="63.0" stroke="BLACK" strokeType="INSIDE" width="710.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="82.0" layoutX="20.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="710.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="468.0" layoutX="20.0" layoutY="63.0" stroke="BLACK" strokeType="INSIDE" width="747.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="82.0" layoutX="20.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="747.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.35714285714285715">
                <stops>
@@ -28,19 +28,19 @@
                </stops>
             </LinearGradient>
          </fill></Rectangle>
-      <Button id="eightQuestionsButton" fx:id="eightQuestionsButton" layoutX="301.0" layoutY="224.0" mnemonicParsing="false" onAction="#getNumberOfQuestions" prefHeight="25.0" prefWidth="163.0" style="-fx-background-color: maroon;" text="8 Questions" textFill="WHITE">
+      <Button id="eightQuestionsButton" fx:id="eightQuestionsButton" layoutX="312.0" layoutY="225.0" mnemonicParsing="false" onAction="#getNumberOfQuestions" prefHeight="25.0" prefWidth="163.0" style="-fx-background-color: maroon;" text="8 Questions" textFill="WHITE">
          <effect>
             <InnerShadow />
          </effect></Button>
-      <Button id="sixteenQuestionsButton" fx:id="sixteenQuestionsButton" layoutX="301.0" layoutY="272.0" mnemonicParsing="false" onAction="#getNumberOfQuestions" prefHeight="25.0" prefWidth="163.0" style="-fx-background-color: maroon;" text="16 Questions" textFill="#fffefe">
+      <Button id="sixteenQuestionsButton" fx:id="sixteenQuestionsButton" layoutX="314.0" layoutY="275.0" mnemonicParsing="false" onAction="#getNumberOfQuestions" prefHeight="25.0" prefWidth="163.0" style="-fx-background-color: maroon;" text="16 Questions" textFill="#fffefe">
          <effect>
             <InnerShadow />
          </effect></Button>
-      <Button id="twentyfourQuestionsButton" fx:id="twentyfourQuestionsButton" layoutX="301.0" layoutY="320.0" mnemonicParsing="false" onAction="#getNumberOfQuestions" prefHeight="25.0" prefWidth="163.0" style="-fx-background-color: maroon;" text="24 Questions" textFill="WHITE">
+      <Button id="twentyfourQuestionsButton" fx:id="twentyfourQuestionsButton" layoutX="314.0" layoutY="320.0" mnemonicParsing="false" onAction="#getNumberOfQuestions" prefHeight="25.0" prefWidth="163.0" style="-fx-background-color: maroon;" text="24 Questions" textFill="WHITE">
          <effect>
             <InnerShadow />
          </effect></Button>
-      <Button id="thirtytwoQuestionsButton" fx:id="thirtytwoQuestionsButton" layoutX="301.0" layoutY="371.0" mnemonicParsing="false" onAction="#getNumberOfQuestions" prefHeight="25.0" prefWidth="163.0" style="-fx-background-color: maroon;" text="32 Questions" textFill="WHITE">
+      <Button id="thirtytwoQuestionsButton" fx:id="thirtytwoQuestionsButton" layoutX="314.0" layoutY="369.0" mnemonicParsing="false" onAction="#getNumberOfQuestions" prefHeight="25.0" prefWidth="163.0" style="-fx-background-color: maroon;" text="32 Questions" textFill="WHITE">
          <effect>
             <InnerShadow />
          </effect></Button>
@@ -77,7 +77,7 @@
                </font></Label>
          </children>
       </VBox>
-      <Label layoutX="266.0" layoutY="415.0" text="Select the Number of Quiz Questions Desired">
+      <Label layoutX="279.0" layoutY="418.0" text="Select the Number of Quiz Questions Desired">
          <font>
             <Font name="System Italic" size="12.0" />
          </font>

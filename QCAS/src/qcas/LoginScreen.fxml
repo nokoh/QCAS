@@ -21,7 +21,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-image: maroon;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qcas.LoginScreenController">
 <children>
-      <ImageView id="imageView" fx:id="imageView" cache="true" fitHeight="550.0" fitWidth="750.0" pickOnBounds="true">
+      <ImageView id="imageView" fx:id="imageView" cache="true" fitHeight="550.0" fitWidth="790.0" pickOnBounds="true">
          <image>
             <Image url="@../CMU%20Plaid.jpg" />
          </image>
@@ -29,8 +29,8 @@
             <ColorAdjust contrast="0.09" saturation="0.7" />
          </effect>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="473.0" layoutX="15.0" layoutY="61.0" stroke="BLACK" strokeType="INSIDE" width="719.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="87.0" layoutX="15.0" layoutY="15.0" stroke="BLACK" strokeType="INSIDE" width="719.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="473.0" layoutX="15.0" layoutY="61.0" stroke="BLACK" strokeType="INSIDE" width="757.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="87.0" layoutX="15.0" layoutY="15.0" stroke="BLACK" strokeType="INSIDE" width="757.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.28095238095238095">
                <stops>

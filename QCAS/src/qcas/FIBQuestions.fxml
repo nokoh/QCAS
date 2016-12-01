@@ -81,7 +81,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="questionNumberLabel" layoutX="123.0" layoutY="498.0" text="questionNumberLabel" textFill="#c31c1c">
+      <Label fx:id="questionNumberLabel" layoutX="123.0" layoutY="496.0" prefHeight="21.0" prefWidth="128.0" text="questionNumberLabel" textFill="#c31c1c">
          <font>
             <Font size="13.0" />
          </font></Label>

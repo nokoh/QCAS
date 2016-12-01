@@ -13,13 +13,13 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qcas.SignUpQCASController">
     <children>
-      <ImageView fitHeight="550.0" fitWidth="700.0" layoutX="-1.0" pickOnBounds="true">
+      <ImageView fitHeight="550.0" fitWidth="790.0" layoutX="-1.0" pickOnBounds="true">
          <image>
             <Image url="@../CMU%20Plaid.jpg" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="475.0" layoutX="21.0" layoutY="60.0" stroke="BLACK" strokeType="INSIDE" width="658.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="84.0" layoutX="21.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="658.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="475.0" layoutX="21.0" layoutY="60.0" stroke="BLACK" strokeType="INSIDE" width="748.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="84.0" layoutX="21.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="748.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.20952380952380953">
                <stops>
@@ -28,16 +28,16 @@
                </stops>
             </LinearGradient>
          </fill></Rectangle>
-      <Button id="returnHomeButton" fx:id="returnHomeButton" layoutX="187.0" layoutY="476.0" mnemonicParsing="false" onAction="#returnHomeButtonClicked" prefHeight="25.0" prefWidth="136.0" style="-fx-background-color: maroon;" text="Return Home" textFill="#f8f7f7">
+      <Button id="returnHomeButton" fx:id="returnHomeButton" layoutX="61.0" layoutY="285.0" mnemonicParsing="false" onAction="#returnHomeButtonClicked" prefHeight="25.0" prefWidth="136.0" style="-fx-background-color: maroon;" text="Return Home" textFill="WHITE">
          <effect>
             <InnerShadow />
          </effect></Button>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="197.0" layoutY="19.0" prefHeight="75.0" prefWidth="306.0" text="Sign Up" textAlignment="CENTER" textFill="WHITE">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="230.0" layoutY="19.0" prefHeight="75.0" prefWidth="306.0" text="New User - Sign Up" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Segoe UI Light" size="36.0" />
          </font>
       </Label>
-      <VBox layoutX="221.0" layoutY="98.0" prefHeight="350.0" prefWidth="256.0">
+      <VBox layoutX="255.0" layoutY="85.0" prefHeight="393.0" prefWidth="256.0">
          <children>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
@@ -86,15 +86,20 @@
             </HBox>
          </children>
       </VBox>
-      <Button fx:id="signUpButton" layoutX="383.0" layoutY="476.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" style="-fx-background-color: maroon;" text="Sign Up" textFill="#f8f7f7">
+      <Button fx:id="signUpButton" layoutX="582.0" layoutY="285.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" style="-fx-background-color: maroon;" text="Sign Up" textFill="WHITE">
          <effect>
             <InnerShadow />
          </effect></Button>
-      <Text fx:id="errorMessageLabel" layoutX="340.0" layoutY="463.0" strokeType="OUTSIDE" strokeWidth="0.0">
+      <Text fx:id="errorMessageLabel" layoutX="368.0" layoutY="478.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="40.0">
          <font>
             <Font name="System Italic" size="12.0" />
          </font>
       </Text>
+      <Label alignment="CENTER" layoutX="194.0" layoutY="481.0" prefHeight="17.0" prefWidth="378.0" text="Please Enter Your Credentials Above, Then Click 'Sign Up'">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font>
+      </Label>
    </children>
    <effect>
       <InnerShadow />
