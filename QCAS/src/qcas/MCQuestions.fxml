@@ -88,11 +88,11 @@
             <Font size="13.0" />
          </font>
       </Label>
-      <ImageView fitHeight="225.0" fitWidth="211.0" layoutX="518.0" layoutY="39.0" pickOnBounds="true">
+<!--      <ImageView fitHeight="225.0" fitWidth="211.0" layoutX="518.0" layoutY="39.0" pickOnBounds="true">
          <image>
             <Image url="@../clock%20frame.png" />
          </image>
-      </ImageView>
+      </ImageView>-->
       <VBox layoutX="103.0" layoutY="126.0" prefHeight="62.0" prefWidth="127.0">
          <children>
             <Label fx:id="studentNameLabel" prefHeight="23.0" prefWidth="112.0" text="studentNameLabel">
@@ -121,16 +121,16 @@
          <effect>
             <Blend mode="SCREEN" />
          </effect></TextArea>
-      <ImageView fitHeight="38.0" fitWidth="25.0" layoutX="619.0" layoutY="142.0" pickOnBounds="true">
+<!--      <ImageView fitHeight="38.0" fitWidth="25.0" layoutX="619.0" layoutY="142.0" pickOnBounds="true">
          <image>
             <Image url="@../clock%20insert.png" />
          </image>
-      </ImageView>
-      <ImageView fitHeight="165.0" fitWidth="231.0" layoutX="511.0" layoutY="74.0" pickOnBounds="true">
+      </ImageView> -->
+ <!--     <ImageView fitHeight="165.0" fitWidth="231.0" layoutX="511.0" layoutY="74.0" pickOnBounds="true">
          <image>
             <Image url="@../11501757.png" />
          </image>
-      </ImageView>
+      </ImageView> -->
    </children>
    <effect>
       <InnerShadow />

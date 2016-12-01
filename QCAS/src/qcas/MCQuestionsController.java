@@ -27,7 +27,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.Pagination;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 import static qcas.SelectQuestionsController.secs;
@@ -87,6 +86,12 @@ public class MCQuestionsController implements Initializable {
     @FXML
     private TextArea outputTextArea;
 
+    /**
+     * Initialize method for Multiple Choice Questions. 
+     * Sets initial parameters for user information. 
+     * @param ID
+     * @throws SQLException
+     */
     public void initID(String ID) throws SQLException {
         userId = ID;
         userIDLabel.setText(ID);
@@ -102,36 +107,67 @@ public class MCQuestionsController implements Initializable {
 
     }
 
+    /**
+     * Setter method for userScore variable. 
+     * @param num
+     */
     public void setScore(int num) {
         userScore = num;
     }
 
+    /**
+     * Setter method for number of questions variable. 
+     * @param num
+     */
     public void setNumOfQuestions(int num) {
         numOfQuestions = num;
     }
 
+    /**
+     * Setter method for correct number of questions answered
+     * @param num
+     */
     public void setCorrect(int num) {
         numCorrect = num;
     }
 
+    /**
+     * Setter method for incorrect number of questions variable
+     * @param num
+     */
     public void setIncorrect(int num) {
         numIncorrect = num;
     }
 
+    /**
+     * Setter method for user answers variable
+     * @param userAnswers
+     */
     public void setUserAnswers(ArrayList<String> userAnswers) {
         this.userAnswers = userAnswers;
     }
 
+    /**
+     * Setter method for all user answered questions.
+     * @param allAnsweredQuestions
+     */
     public void setAllAnsweredQuestions(ArrayList<Question> allAnsweredQuestions) {
         this.allAnsweredQuestions = allAnsweredQuestions;
     }
 
+    /**
+     * Setter method for page number variable
+     * @param pageNumber
+     */
     public void setPageNumber(int pageNumber) {
         this.pageNumber = pageNumber;
     }
 
     /**
      * Initializes the controller class.
+     *
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -139,9 +175,21 @@ public class MCQuestionsController implements Initializable {
 
     }
 
+    /**
+     * Launch method to display multiple choice questions generated for quiz.
+     * 
+     * @param multipleAnswerQuestions
+     * @param multipleChoiceQuestions
+     * @param trueFalseQuestions
+     * @param fillInTheBlanksQuestions
+     * @param size
+     * @throws IOException
+     * @throws SQLException
+     * @throws DocumentException
+     */
     public void launchMCQ(ArrayList<MultipleAnswer> multipleAnswerQuestions, ArrayList<MultipleChoice> multipleChoiceQuestions,
             ArrayList<TrueFalse> trueFalseQuestions, ArrayList<FillInTheBlanks> fillInTheBlanksQuestions, int size) throws IOException, SQLException, DocumentException {
-        
+
         startTimer(this.numOfQuestions);
         Parent root;
 
@@ -290,26 +338,33 @@ public class MCQuestionsController implements Initializable {
         }
     }
 
+    /**
+     *
+     * @param num
+     */
     public void startTimer(int num) {
         num = this.numOfQuestions;
         secs = ((num) * 60);
-        
+
         final ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
         service.scheduleWithFixedDelay(new Runnable() {
             @Override
             public void run() {
-                secs--;
+                secs -= 1;
                 outputTextArea.setText((Integer.toString(secs / 60)) + " : " + Integer.toString(secs % 60));
 
                 if (secs == 0) {
                     outputTextArea.setText("Time Up!!");
                     service.shutdownNow();
                 }
-
             }
         }, 0, 1, TimeUnit.SECONDS);
     }
 
+    /**
+     *
+     * @throws SQLException
+     */
     public void connectToDatabase() throws SQLException {
 
         String url = "jdbc:mysql://adelaide-mysql-qcas1.caswkasqdmel.ap-southeast-2.rds.amazonaws.com:3306/UserDB"; //creates network connection to database for application   

@@ -39,7 +39,7 @@ import javafx.stage.Stage;
 
 /**
  * FXML Controller class
- *
+ * 
  * @author Shay
  *
  * Home Screen // Login Screen - Scene 1 // For Teacher and Student
@@ -77,6 +77,9 @@ public class LoginScreenController implements Initializable {
 
     }
   
+    /**
+     * Verifies the credentials entered by a user and logs in the user to respective profile page.
+     */
     @FXML
     public void loginVerify() {
         login.setOnAction(e -> {
@@ -92,6 +95,11 @@ public class LoginScreenController implements Initializable {
         });
     }
 
+    /**
+     * Authenticates user information with variables stored in database.
+     * @throws SQLException
+     * @throws IOException
+     */
     @FXML
     public void authentication() throws SQLException, IOException {
         String url = "jdbc:mysql://adelaide-mysql-qcas1.caswkasqdmel.ap-southeast-2.rds.amazonaws.com:3306/UserDB"; //creates network connection to database for application   
@@ -106,9 +114,9 @@ public class LoginScreenController implements Initializable {
         } catch (SQLException e) {
             System.out.println("SQLException: " + e);
             this.connection.close();//closes connection resource
-        } // end of try-with-resourc
+        } // end of try-with-resource
 
-        userId = userIDField.getText();
+        userId = userIDField.getText(); //
         userPassword = passwordField.getText();
 
         String loginQuery = "Select userid, Status from Users WHERE userid = ? and password = ?";
