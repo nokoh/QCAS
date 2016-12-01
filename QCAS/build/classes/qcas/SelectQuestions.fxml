@@ -55,23 +55,23 @@
          </image>
       </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="62.0" layoutX="47.0" layoutY="119.0" stroke="BLACK" strokeType="INSIDE" width="179.0" />
-      <Label layoutX="53.0" layoutY="125.0" prefHeight="25.0" prefWidth="48.0" text="Student:">
+      <Label alignment="CENTER_RIGHT" layoutX="49.0" layoutY="125.0" prefHeight="25.0" prefWidth="52.0" text="Student:">
          <font>
-            <Font size="13.0" />
+            <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="54.0" layoutY="150.0" prefHeight="25.0" prefWidth="45.0" text="User ID:">
+      <Label layoutX="55.0" layoutY="151.0" prefHeight="25.0" prefWidth="52.0" text="User ID:">
          <font>
-            <Font size="13.0" />
+            <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <VBox layoutX="104.0" layoutY="124.0" prefHeight="53.0" prefWidth="125.0">
+      <VBox layoutX="105.0" layoutY="124.0" prefHeight="53.0" prefWidth="136.0">
          <children>
             <Label fx:id="studentNameLabel" prefHeight="27.0" prefWidth="136.0" text="studentNameLabel">
                <font>
                   <Font size="13.0" />
                </font></Label>
-            <Label fx:id="userIDLabel" prefHeight="20.0" prefWidth="126.0" text="userIDLabel">
+            <Label fx:id="userIDLabel" prefHeight="23.0" prefWidth="126.0" text="userIDLabel">
                <font>
                   <Font size="13.0" />
                </font></Label>

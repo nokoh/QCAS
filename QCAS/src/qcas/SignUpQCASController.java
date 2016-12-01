@@ -56,6 +56,7 @@ public class SignUpQCASController implements Initializable {
     @FXML
     private Label errorMessageLabel;
 
+
     private ObservableList statusList = FXCollections.observableArrayList();
 
     /**
